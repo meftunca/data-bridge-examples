@@ -1,15 +1,15 @@
 # ============================================================
 # DataBridge V2 — Innovation Hub Demo Configuration
 # ============================================================
-# Bu config.yaml dosyası DataBridge V2 code generator tarafından
-# okunarak tüm API katmanını otomatik olarak üretir.
+# This config.yaml is read by the DataBridge V2 code generator
+# to automatically produce the entire API layer.
 #
-# Tüm özellikler aktif edilmiştir:
-#   ✓ Event Manager Integration (olay tabanlı mimari)
-#   ✓ Test Generation (birim + API testleri)
-#   ✓ RBAC (rol tabanlı erişim kontrolü)
-#   ✓ SSE (gerçek zamanlı server-sent events)
-#   ✓ Outbox Pattern (güvenilir olay dağıtımı)
+# All features are enabled:
+#   - Event Manager Integration (event-driven architecture)
+#   - Test Generation (unit + API tests)
+#   - RBAC (role-based access control)
+#   - SSE (real-time server-sent events)
+#   - Outbox Pattern (reliable event delivery)
 # ============================================================
 
 # ─── Global Defaults ────────────────────────────────────────
@@ -33,7 +33,7 @@ projects:
     helperLibBasePath: "github.com/maple-tech/baseline"
     paginationPackagePath: "backend-generator/apiv2/pagination"
 
-    # Per-project feature flags (tümü aktif)
+    # Per-project feature flags (all enabled)
     generateTests: true
     rbacEnabled: false
     sseEnabled: true
@@ -75,9 +75,9 @@ projects:
 
       # Logistics — Warehouse, Inventory & Shipping
       - name: "logistics"
-        skipSchemaPrefixInOps: false    # schema prefix kalacak (demo: bu seçeneğin etkisini göster)
+        skipSchemaPrefixInOps: false    # keep schema prefix (demo: show effect of this option)
         ignoreTables: []
-        relaxGrouping: true             # düz rota yapısı (demo: grouping farkını göster)
+        relaxGrouping: true             # flat route structure (demo: show grouping difference)
         eventHandlers:
           generate: true
           outputDir: "pkg/logistics_events"

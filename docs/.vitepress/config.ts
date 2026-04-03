@@ -1,10 +1,11 @@
 import { defineConfig } from "vitepress";
+import { withMermaid } from "vitepress-plugin-mermaid";
 import sidebar from "../sidebar.json";
 
-export default defineConfig({
+export default withMermaid(defineConfig({
   title: "Innovation Hub API",
   description:
-    "DataBridge V2 ile otomatik üretilmiş API dokümantasyonu — 5 schema, 54 tablo, 14 RPC",
+    "Auto-generated API documentation with DataBridge V2 — 5 schemas, 54 tables, 14 RPC",
   base: "/data-bridge-examples/",
 
   head: [
@@ -16,7 +17,7 @@ export default defineConfig({
     siteTitle: "Innovation Hub",
 
     nav: [
-      { text: "Ana Sayfa", link: "/" },
+      { text: "Home", link: "/" },
       { text: "API Reference", link: "/API_REFERENCE" },
       {
         text: "Schemas",
@@ -50,17 +51,17 @@ export default defineConfig({
     editLink: {
       pattern:
         "https://github.com/meftunca/data-bridge-examples/edit/main/docs/:path",
-      text: "Bu sayfayı düzenle",
+      text: "Edit this page",
     },
 
     footer: {
-      message: "DataBridge V2 ile otomatik üretilmiştir",
+      message: "Auto-generated with DataBridge V2",
       copyright: "© 2026 Maple Technologies",
     },
 
     outline: {
       level: [2, 3],
-      label: "İçindekiler",
+      label: "On this page",
     },
   },
 
@@ -72,12 +73,16 @@ export default defineConfig({
   lastUpdated: true,
   cleanUrls: true,
   ignoreDeadLinks: true,
-});
+
+  mermaid: {
+    theme: "dark",
+  },
+}));
 
 /**
- * sidebar.json /bg-docs/ prefix'li link'ler içeriyor.
- * VitePress base zaten /data-bridge-examples/ olduğundan,
- * link'lerdeki /bg-docs/ prefix'ini kaldırıyoruz.
+ * sidebar.json contains links with /bg-docs/ prefix.
+ * Since VitePress base is already /data-bridge-examples/,
+ * we strip the /bg-docs/ prefix from links.
  */
 function transformSidebar(raw: Record<string, any[]>): Record<string, any[]> {
   const items = raw["/bg-docs/"] || [];
