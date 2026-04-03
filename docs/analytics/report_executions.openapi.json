@@ -1,0 +1,838 @@
+{
+  "components": {
+    "schemas": {
+      "PaginationBody": {
+        "properties": {
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "filters": {
+            "description": "Filter rules: [[field, op, value], ...]",
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "page": {
+            "default": 1,
+            "type": "integer"
+          },
+          "preloads": {
+            "items": {
+              "enum": [
+                "ReportIdDetail",
+                "ReportIdDetail.ReportExecutionsList",
+                "ReportIdDetail.ReportExecutionsList.ReportIdDetail"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "size": {
+            "default": 10,
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "PaginationResponse_ReportExecutions": {
+        "properties": {
+          "first": {
+            "type": "boolean"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ReportExecutions"
+            },
+            "type": "array"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "maxPage": {
+            "type": "integer"
+          },
+          "page": {
+            "type": "integer"
+          },
+          "size": {
+            "type": "integer"
+          },
+          "total": {
+            "type": "integer"
+          },
+          "totalPages": {
+            "type": "integer"
+          },
+          "visible": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "ReportExecutions": {
+        "properties": {
+          "completedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "durationMs": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "errorMessage": {
+            "type": "string"
+          },
+          "executedBy": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "reportId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "resultData": {
+            "type": "object"
+          },
+          "rowCount": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "startedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "reportId",
+          "status",
+          "rowCount",
+          "durationMs",
+          "errorMessage",
+          "createdAt"
+        ],
+        "type": "object"
+      },
+      "ReportExecutionsBatchUpdate": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ReportExecutionsEdit"
+          },
+          "pathParams": {
+            "properties": {
+              "id": {
+                "format": "uuid",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "pathParams",
+          "data"
+        ],
+        "type": "object"
+      },
+      "ReportExecutionsEdit": {
+        "description": "Partial update — all fields optional",
+        "properties": {
+          "completedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "durationMs": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "errorMessage": {
+            "type": "string"
+          },
+          "executedBy": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "reportId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "resultData": {
+            "type": "object"
+          },
+          "rowCount": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "startedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "ReportExecutionsForm": {
+        "description": "Create request payload",
+        "properties": {
+          "completedAt": {
+            "example": "2026-01-15T10:30:00Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "durationMs": {
+            "example": 1,
+            "format": "int32",
+            "type": "integer"
+          },
+          "errorMessage": {
+            "example": "example_error_message",
+            "type": "string"
+          },
+          "executedBy": {
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "format": "uuid",
+            "type": "string"
+          },
+          "name": {
+            "example": "example_name",
+            "type": "string"
+          },
+          "reportId": {
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "format": "uuid",
+            "type": "string"
+          },
+          "resultData": {
+            "example": {},
+            "type": "object"
+          },
+          "rowCount": {
+            "example": 1,
+            "format": "int32",
+            "type": "integer"
+          },
+          "startedAt": {
+            "example": "2026-01-15T10:30:00Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "status": {
+            "example": "example_status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "reportId"
+        ],
+        "type": "object"
+      },
+      "SearchBody": {
+        "properties": {
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "filters": {
+            "description": "Filter rules: [[field, op, value], ...]",
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "preloads": {
+            "items": {
+              "enum": [
+                "ReportIdDetail",
+                "ReportIdDetail.ReportExecutionsList",
+                "ReportIdDetail.ReportExecutionsList.ReportIdDetail"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "size": {
+            "default": 10,
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "scheme": "bearer",
+        "type": "http"
+      },
+      "companyId": {
+        "in": "header",
+        "name": "x-company",
+        "type": "apiKey"
+      }
+    }
+  },
+  "info": {
+    "description": "Auto-generated OpenAPI spec for `analytics.report_executions`",
+    "title": "ReportExecutions API",
+    "version": "1.0.0"
+  },
+  "openapi": "3.0.3",
+  "paths": {
+    "/api/v1/report-executions/": {
+      "get": {
+        "description": "Retrieve list filtered by query parameters.",
+        "operationId": "getReportExecutions",
+        "parameters": [
+          {
+            "description": "Max results (default: 10)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field. Prefix - for DESC.",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated columns to select",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to preload. Available: ReportIdDetail, ReportIdDetail.ReportExecutionsList, ReportIdDetail.ReportExecutionsList.ReportIdDetail",
+            "in": "query",
+            "name": "preloads",
+            "required": false,
+            "schema": {
+              "enum": [
+                "ReportIdDetail",
+                "ReportIdDetail.ReportExecutionsList",
+                "ReportIdDetail.ReportExecutionsList.ReportIdDetail"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to join. Available: Reports, Reports.Users, Reports.Organizations, Users",
+            "in": "query",
+            "name": "joins",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Reports",
+                "Reports.Users",
+                "Reports.Organizations",
+                "Users"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ReportExecutions"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Search ReportExecutions",
+        "tags": [
+          "ReportExecutions"
+        ]
+      },
+      "post": {
+        "description": "Create a new ReportExecutions record.",
+        "operationId": "postReportExecutions",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportExecutionsForm"
+              }
+            }
+          },
+          "description": "New ReportExecutions data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportExecutions"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "409": {
+            "description": "Conflict — duplicate unique key"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Create ReportExecutions",
+        "tags": [
+          "ReportExecutions"
+        ]
+      }
+    },
+    "/api/v1/report-executions/bulk/": {
+      "post": {
+        "description": "Create multiple ReportExecutions records.",
+        "operationId": "postReportExecutionsBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/ReportExecutionsForm"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Array of create payloads",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ReportExecutions"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Bulk Create ReportExecutions",
+        "tags": [
+          "ReportExecutions"
+        ]
+      },
+      "put": {
+        "description": "Batch update multiple records.",
+        "operationId": "putReportExecutionsBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/ReportExecutionsBatchUpdate"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Array of { pathParams, data }",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Bulk Update ReportExecutions",
+        "tags": [
+          "ReportExecutions"
+        ]
+      }
+    },
+    "/api/v1/report-executions/pagination": {
+      "get": {
+        "description": "Paginated listing.",
+        "operationId": "getReportExecutionsPagination",
+        "parameters": [
+          {
+            "description": "Page number (default: 1)",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Max results (default: 10)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field. Prefix - for DESC.",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated columns to select",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to preload. Available: ReportIdDetail, ReportIdDetail.ReportExecutionsList, ReportIdDetail.ReportExecutionsList.ReportIdDetail",
+            "in": "query",
+            "name": "preloads",
+            "required": false,
+            "schema": {
+              "enum": [
+                "ReportIdDetail",
+                "ReportIdDetail.ReportExecutionsList",
+                "ReportIdDetail.ReportExecutionsList.ReportIdDetail"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to join. Available: Reports, Reports.Users, Reports.Organizations, Users",
+            "in": "query",
+            "name": "joins",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Reports",
+                "Reports.Users",
+                "Reports.Organizations",
+                "Users"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse_ReportExecutions"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Paginate ReportExecutions",
+        "tags": [
+          "ReportExecutions"
+        ]
+      },
+      "post": {
+        "description": "Paginated listing with body filters.",
+        "operationId": "postReportExecutionsPagination",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationBody"
+              }
+            }
+          },
+          "description": "Pagination parameters",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse_ReportExecutions"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Paginate ReportExecutions (POST)",
+        "tags": [
+          "ReportExecutions"
+        ]
+      }
+    },
+    "/api/v1/report-executions/search": {
+      "post": {
+        "description": "Search with body filters.",
+        "operationId": "postReportExecutionsSearch",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchBody"
+              }
+            }
+          },
+          "description": "Search parameters",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ReportExecutions"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Search ReportExecutions (POST)",
+        "tags": [
+          "ReportExecutions"
+        ]
+      }
+    },
+    "/api/v1/report-executions/with-id/{Id}": {
+      "delete": {
+        "description": "Soft-delete.",
+        "operationId": "deleteReportExecutionsById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Delete ReportExecutions",
+        "tags": [
+          "ReportExecutions"
+        ]
+      },
+      "get": {
+        "description": "Retrieve a single record.",
+        "operationId": "getReportExecutionsById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportExecutions"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Find ReportExecutions by ID",
+        "tags": [
+          "ReportExecutions"
+        ]
+      },
+      "put": {
+        "description": "Partial update.",
+        "operationId": "putReportExecutionsById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportExecutionsEdit"
+              }
+            }
+          },
+          "description": "Fields to update",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Update ReportExecutions",
+        "tags": [
+          "ReportExecutions"
+        ]
+      }
+    }
+  },
+  "servers": [
+    {
+      "description": "Development",
+      "url": "http://localhost:3000"
+    }
+  ]
+}

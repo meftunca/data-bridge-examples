@@ -1,0 +1,346 @@
+{
+  "/bg-docs/": [
+    {
+      "text": "API Reference",
+      "link": "/bg-docs/API_REFERENCE"
+    },
+    {
+      "text": "Iam",
+      "collapsed": true,
+      "items": [
+        {
+          "text": "Overview",
+          "link": "/bg-docs/iam/"
+        },
+        {
+          "text": "ApiKeys",
+          "link": "/bg-docs/iam/api_keys"
+        },
+        {
+          "text": "Invitations",
+          "link": "/bg-docs/iam/invitations"
+        },
+        {
+          "text": "Organizations",
+          "link": "/bg-docs/iam/organizations",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Roles",
+              "link": "/bg-docs/iam/roles",
+              "collapsed": true,
+              "items": [
+                {
+                  "text": "RolePermissions",
+                  "link": "/bg-docs/iam/role_permissions"
+                },
+                {
+                  "text": "UserRoles",
+                  "link": "/bg-docs/iam/user_roles"
+                }
+              ]
+            },
+            {
+              "text": "Teams",
+              "link": "/bg-docs/iam/teams",
+              "collapsed": true,
+              "items": [
+                {
+                  "text": "TeamMembers",
+                  "link": "/bg-docs/iam/team_members"
+                }
+              ]
+            },
+            {
+              "text": "Users",
+              "link": "/bg-docs/iam/users",
+              "collapsed": true,
+              "items": [
+                {
+                  "text": "Sessions",
+                  "link": "/bg-docs/iam/sessions"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Permissions",
+          "link": "/bg-docs/iam/permissions"
+        }
+      ]
+    },
+    {
+      "text": "Catalog",
+      "collapsed": true,
+      "items": [
+        {
+          "text": "Overview",
+          "link": "/bg-docs/catalog/"
+        },
+        {
+          "text": "Brands",
+          "link": "/bg-docs/catalog/brands",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Products",
+              "link": "/bg-docs/catalog/products",
+              "collapsed": true,
+              "items": [
+                {
+                  "text": "CollectionProducts",
+                  "link": "/bg-docs/catalog/collection_products"
+                },
+                {
+                  "text": "PriceHistory",
+                  "link": "/bg-docs/catalog/price_history"
+                },
+                {
+                  "text": "ProductMedia",
+                  "link": "/bg-docs/catalog/product_media"
+                },
+                {
+                  "text": "ProductReviews",
+                  "link": "/bg-docs/catalog/product_reviews"
+                },
+                {
+                  "text": "ProductTags",
+                  "link": "/bg-docs/catalog/product_tags"
+                },
+                {
+                  "text": "ProductVariants",
+                  "link": "/bg-docs/catalog/product_variants"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Categories",
+          "link": "/bg-docs/catalog/categories"
+        },
+        {
+          "text": "Collections",
+          "link": "/bg-docs/catalog/collections"
+        },
+        {
+          "text": "Tags",
+          "link": "/bg-docs/catalog/tags"
+        }
+      ]
+    },
+    {
+      "text": "Orders",
+      "collapsed": true,
+      "items": [
+        {
+          "text": "Overview",
+          "link": "/bg-docs/orders/"
+        },
+        {
+          "text": "Cart",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "CartItems",
+              "link": "/bg-docs/orders/cart_items"
+            },
+            {
+              "text": "Carts",
+              "link": "/bg-docs/orders/carts"
+            }
+          ]
+        },
+        {
+          "text": "Coupons",
+          "link": "/bg-docs/orders/coupons",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "Orders",
+              "link": "/bg-docs/orders/orders",
+              "collapsed": true,
+              "items": [
+                {
+                  "text": "OrderItems",
+                  "link": "/bg-docs/orders/order_items"
+                },
+                {
+                  "text": "OrderStatusHistory",
+                  "link": "/bg-docs/orders/order_status_history"
+                },
+                {
+                  "text": "Payments",
+                  "link": "/bg-docs/orders/payments",
+                  "collapsed": true,
+                  "items": [
+                    {
+                      "text": "Refunds",
+                      "link": "/bg-docs/orders/refunds"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Customers",
+          "link": "/bg-docs/orders/customers"
+        }
+      ]
+    },
+    {
+      "text": "Logistics",
+      "collapsed": true,
+      "items": [
+        {
+          "text": "Overview",
+          "link": "/bg-docs/logistics/"
+        },
+        {
+          "text": "Inventory",
+          "link": "/bg-docs/logistics/inventory",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "StockMovements",
+              "link": "/bg-docs/logistics/stock_movements"
+            }
+          ]
+        },
+        {
+          "text": "Purchase",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "PurchaseOrderItems",
+              "link": "/bg-docs/logistics/purchase_order_items"
+            },
+            {
+              "text": "PurchaseOrders",
+              "link": "/bg-docs/logistics/purchase_orders"
+            }
+          ]
+        },
+        {
+          "text": "Shipment",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "ShipmentItems",
+              "link": "/bg-docs/logistics/shipment_items"
+            },
+            {
+              "text": "ShipmentTracking",
+              "link": "/bg-docs/logistics/shipment_tracking"
+            },
+            {
+              "text": "Shipments",
+              "link": "/bg-docs/logistics/shipments"
+            }
+          ]
+        },
+        {
+          "text": "Storage",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "StorageBins",
+              "link": "/bg-docs/logistics/storage_bins"
+            },
+            {
+              "text": "StorageZones",
+              "link": "/bg-docs/logistics/storage_zones"
+            }
+          ]
+        },
+        {
+          "text": "Suppliers",
+          "link": "/bg-docs/logistics/suppliers"
+        },
+        {
+          "text": "Warehouses",
+          "link": "/bg-docs/logistics/warehouses"
+        }
+      ]
+    },
+    {
+      "text": "Analytics",
+      "collapsed": true,
+      "items": [
+        {
+          "text": "Overview",
+          "link": "/bg-docs/analytics/"
+        },
+        {
+          "text": "Alert",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "AlertHistory",
+              "link": "/bg-docs/analytics/alert_history"
+            },
+            {
+              "text": "AlertRules",
+              "link": "/bg-docs/analytics/alert_rules"
+            }
+          ]
+        },
+        {
+          "text": "AuditLogs",
+          "link": "/bg-docs/analytics/audit_logs"
+        },
+        {
+          "text": "Dashboard",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "DashboardWidgets",
+              "link": "/bg-docs/analytics/dashboard_widgets"
+            },
+            {
+              "text": "Dashboards",
+              "link": "/bg-docs/analytics/dashboards"
+            }
+          ]
+        },
+        {
+          "text": "Events",
+          "link": "/bg-docs/analytics/events"
+        },
+        {
+          "text": "Metrics",
+          "link": "/bg-docs/analytics/metrics"
+        },
+        {
+          "text": "Notifications",
+          "link": "/bg-docs/analytics/notifications"
+        },
+        {
+          "text": "RecentEvents",
+          "link": "/bg-docs/analytics/recent_events"
+        },
+        {
+          "text": "Report",
+          "collapsed": true,
+          "items": [
+            {
+              "text": "ReportExecutions",
+              "link": "/bg-docs/analytics/report_executions"
+            },
+            {
+              "text": "Reports",
+              "link": "/bg-docs/analytics/reports"
+            }
+          ]
+        },
+        {
+          "text": "UnreadNotifications",
+          "link": "/bg-docs/analytics/unread_notifications"
+        }
+      ]
+    }
+  ]
+}

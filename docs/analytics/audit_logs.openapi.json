@@ -1,0 +1,829 @@
+{
+  "components": {
+    "schemas": {
+      "AuditLogs": {
+        "properties": {
+          "action": {
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "ipAddress": {
+            "format": "ipv4",
+            "type": "string"
+          },
+          "metadata": {
+            "type": "object"
+          },
+          "name": {
+            "type": "string"
+          },
+          "newValues": {
+            "type": "object"
+          },
+          "oldValues": {
+            "type": "object"
+          },
+          "resourceId": {
+            "type": "string"
+          },
+          "resourceType": {
+            "type": "string"
+          },
+          "severity": {
+            "enum": [
+              "debug",
+              "info",
+              "warning",
+              "error",
+              "critical"
+            ],
+            "type": "string"
+          },
+          "userAgent": {
+            "type": "string"
+          },
+          "userId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "action",
+          "resourceType",
+          "resourceId",
+          "severity",
+          "userAgent",
+          "metadata",
+          "createdAt"
+        ],
+        "type": "object"
+      },
+      "AuditLogsBatchUpdate": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/AuditLogsEdit"
+          },
+          "pathParams": {
+            "properties": {
+              "id": {
+                "format": "uuid",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "pathParams",
+          "data"
+        ],
+        "type": "object"
+      },
+      "AuditLogsEdit": {
+        "description": "Partial update — all fields optional",
+        "properties": {
+          "action": {
+            "type": "string"
+          },
+          "ipAddress": {
+            "format": "ipv4",
+            "type": "string"
+          },
+          "metadata": {
+            "type": "object"
+          },
+          "name": {
+            "type": "string"
+          },
+          "newValues": {
+            "type": "object"
+          },
+          "oldValues": {
+            "type": "object"
+          },
+          "resourceId": {
+            "type": "string"
+          },
+          "resourceType": {
+            "type": "string"
+          },
+          "severity": {
+            "enum": [
+              "debug",
+              "info",
+              "warning",
+              "error",
+              "critical"
+            ],
+            "type": "string"
+          },
+          "userAgent": {
+            "type": "string"
+          },
+          "userId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "AuditLogsForm": {
+        "description": "Create request payload",
+        "properties": {
+          "action": {
+            "example": "example_action",
+            "type": "string"
+          },
+          "ipAddress": {
+            "example": "value",
+            "format": "ipv4",
+            "type": "string"
+          },
+          "metadata": {
+            "example": {},
+            "type": "object"
+          },
+          "name": {
+            "example": "example_name",
+            "type": "string"
+          },
+          "newValues": {
+            "example": {},
+            "type": "object"
+          },
+          "oldValues": {
+            "example": {},
+            "type": "object"
+          },
+          "resourceId": {
+            "example": "example_resource_id",
+            "type": "string"
+          },
+          "resourceType": {
+            "example": "example_resource_type",
+            "type": "string"
+          },
+          "severity": {
+            "enum": [
+              "debug",
+              "info",
+              "warning",
+              "error",
+              "critical"
+            ],
+            "example": "debug",
+            "type": "string"
+          },
+          "userAgent": {
+            "example": "example_user_agent",
+            "type": "string"
+          },
+          "userId": {
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "PaginationBody": {
+        "properties": {
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "filters": {
+            "description": "Filter rules: [[field, op, value], ...]",
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "page": {
+            "default": 1,
+            "type": "integer"
+          },
+          "preloads": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "size": {
+            "default": 10,
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "PaginationResponse_AuditLogs": {
+        "properties": {
+          "first": {
+            "type": "boolean"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/AuditLogs"
+            },
+            "type": "array"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "maxPage": {
+            "type": "integer"
+          },
+          "page": {
+            "type": "integer"
+          },
+          "size": {
+            "type": "integer"
+          },
+          "total": {
+            "type": "integer"
+          },
+          "totalPages": {
+            "type": "integer"
+          },
+          "visible": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "SearchBody": {
+        "properties": {
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "filters": {
+            "description": "Filter rules: [[field, op, value], ...]",
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "preloads": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "size": {
+            "default": 10,
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "scheme": "bearer",
+        "type": "http"
+      },
+      "companyId": {
+        "in": "header",
+        "name": "x-company",
+        "type": "apiKey"
+      }
+    }
+  },
+  "info": {
+    "description": "Auto-generated OpenAPI spec for `analytics.audit_logs`",
+    "title": "AuditLogs API",
+    "version": "1.0.0"
+  },
+  "openapi": "3.0.3",
+  "paths": {
+    "/api/v1/audit-logs/": {
+      "get": {
+        "description": "Retrieve list filtered by query parameters.",
+        "operationId": "getAuditLogs",
+        "parameters": [
+          {
+            "description": "Max results (default: 10)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field. Prefix - for DESC.",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated columns to select",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated relations to preload",
+            "in": "query",
+            "name": "preloads",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to join. Available: Users",
+            "in": "query",
+            "name": "joins",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Users"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/AuditLogs"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Search AuditLogs",
+        "tags": [
+          "AuditLogs"
+        ]
+      },
+      "post": {
+        "description": "Create a new AuditLogs record.",
+        "operationId": "postAuditLogs",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuditLogsForm"
+              }
+            }
+          },
+          "description": "New AuditLogs data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogs"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "409": {
+            "description": "Conflict — duplicate unique key"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Create AuditLogs",
+        "tags": [
+          "AuditLogs"
+        ]
+      }
+    },
+    "/api/v1/audit-logs/bulk/": {
+      "post": {
+        "description": "Create multiple AuditLogs records.",
+        "operationId": "postAuditLogsBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/AuditLogsForm"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Array of create payloads",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/AuditLogs"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Bulk Create AuditLogs",
+        "tags": [
+          "AuditLogs"
+        ]
+      },
+      "put": {
+        "description": "Batch update multiple records.",
+        "operationId": "putAuditLogsBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/AuditLogsBatchUpdate"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Array of { pathParams, data }",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Bulk Update AuditLogs",
+        "tags": [
+          "AuditLogs"
+        ]
+      }
+    },
+    "/api/v1/audit-logs/pagination": {
+      "get": {
+        "description": "Paginated listing.",
+        "operationId": "getAuditLogsPagination",
+        "parameters": [
+          {
+            "description": "Page number (default: 1)",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Max results (default: 10)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field. Prefix - for DESC.",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated columns to select",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated relations to preload",
+            "in": "query",
+            "name": "preloads",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to join. Available: Users",
+            "in": "query",
+            "name": "joins",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Users"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse_AuditLogs"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Paginate AuditLogs",
+        "tags": [
+          "AuditLogs"
+        ]
+      },
+      "post": {
+        "description": "Paginated listing with body filters.",
+        "operationId": "postAuditLogsPagination",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationBody"
+              }
+            }
+          },
+          "description": "Pagination parameters",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse_AuditLogs"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Paginate AuditLogs (POST)",
+        "tags": [
+          "AuditLogs"
+        ]
+      }
+    },
+    "/api/v1/audit-logs/search": {
+      "post": {
+        "description": "Search with body filters.",
+        "operationId": "postAuditLogsSearch",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchBody"
+              }
+            }
+          },
+          "description": "Search parameters",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/AuditLogs"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Search AuditLogs (POST)",
+        "tags": [
+          "AuditLogs"
+        ]
+      }
+    },
+    "/api/v1/audit-logs/with-id/{Id}": {
+      "delete": {
+        "description": "Soft-delete.",
+        "operationId": "deleteAuditLogsById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Delete AuditLogs",
+        "tags": [
+          "AuditLogs"
+        ]
+      },
+      "get": {
+        "description": "Retrieve a single record.",
+        "operationId": "getAuditLogsById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuditLogs"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Find AuditLogs by ID",
+        "tags": [
+          "AuditLogs"
+        ]
+      },
+      "put": {
+        "description": "Partial update.",
+        "operationId": "putAuditLogsById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuditLogsEdit"
+              }
+            }
+          },
+          "description": "Fields to update",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Update AuditLogs",
+        "tags": [
+          "AuditLogs"
+        ]
+      }
+    }
+  },
+  "servers": [
+    {
+      "description": "Development",
+      "url": "http://localhost:3000"
+    }
+  ]
+}

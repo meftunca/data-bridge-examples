@@ -1,0 +1,171 @@
+// Database Structure Templates - Enterprise-Grade Data Models
+//
+// This template generates comprehensive data structures for database entities with:
+// • Complete GORM model definitions with proper tags and relationships
+// • Type-safe form structures for data input validation
+// • Edit structures for partial update operations
+// • Identity structures for efficient bulk operations
+// • Cross-schema relationship support with proper imports
+// • Enterprise-grade validation and serialization tags
+//
+// Generated Structure Types:
+// • CouponsForm     - Data input validation and creation
+// • Coupons        - Main database model with relationships
+// • CouponsEdit    - Partial update operations
+// • CouponsIdentity - Bulk operation identifiers
+//
+// Features:
+// • Automatic field validation through struct tags
+// • JSON serialization with proper naming conventions
+// • Database relationship mapping with foreign keys
+// • Timestamp management (created_at, updated_at, deleted_at)
+// • Cross-schema reference support for complex database designs
+// • GORM compatibility with optimized query generation
+//
+// Architecture Benefits:
+// • Type safety across all data operations
+// • Consistent validation rules throughout the application
+// • Clean separation between input, storage, and output concerns
+// • Efficient bulk operations with identity-based processing
+// • Maintainable code with generated documentation
+package orders_api_structure
+
+import (
+	paginationRuntime "backend-generator/apiv2/pagination"
+
+	"github.com/maple-tech/baseline/types"
+)
+
+// CouponsForm handles data input validation and creation operations.
+//
+// This structure is specifically designed for:
+// • HTTP request body parsing and validation
+// • Data sanitization before database operations
+// • Input validation with comprehensive error messages
+// • Clean separation from database concerns (excludes auto-generated fields)
+//
+// Excluded Fields:
+// • id: Auto-generated primary key
+// • created_at, updated_at: Automatic timestamp management
+// • deleted_at: Soft delete timestamp (managed by GORM)
+//
+// Validation Features:
+// • Required field validation through struct tags
+// • Data type validation and conversion
+// • Custom validation rules via form tags
+// • JSON unmarshaling with proper error handling
+type CouponsForm struct {
+	Name          string         `gorm:"column:name;not null" json:"name" example:"Iste veritatis."`
+	Code          string         `gorm:"column:code;not null" json:"code" example:"Excepturi porro."`
+	DiscountType  string         `gorm:"column:discount_type" json:"discountType" example:"Nihil impedit."`
+	DiscountValue float64        `gorm:"column:discount_value" json:"discountValue"`
+	MinOrderValue float64        `gorm:"column:min_order_value" json:"minOrderValue"`
+	MaxUses       int            `gorm:"column:max_uses" json:"maxUses" example:"8283443190217752861"`
+	UsedCount     int            `gorm:"column:used_count" json:"usedCount" example:"1245949034494424029"`
+	IsActive      bool           `gorm:"column:is_active" json:"isActive" example:"true"`
+	ValidFrom     types.NullTime `gorm:"column:valid_from" json:"validFrom"`
+	ValidUntil    types.NullTime `gorm:"column:valid_until" json:"validUntil,omitempty"`
+}
+
+func (p *CouponsForm) TableName() string {
+	return "orders.coupons"
+}
+
+// Coupons represents the main database model for orders.coupons table.
+//
+// This structure provides:
+// • Complete GORM model definition with proper field mapping
+// • Automatic relationship resolution through struct tags
+// • Cross-schema reference support for complex database designs
+// • Timestamp management with created_at, updated_at, deleted_at
+// • Type-safe field definitions matching database schema
+// • Optimized query generation through GORM integration
+//
+// Database Mapping:
+// • Table: orders.coupons
+// • Type: BASE TABLE
+// • Schema: orders
+//
+// Relationship Features:
+// • Automatic foreign key resolution
+// • Cross-schema relationship support
+// • Lazy loading for performance optimization
+// • Proper join field generation for complex queries
+//
+// GORM Integration:
+// • Automatic primary key detection
+// • Soft delete support (deleted_at field)
+// • Timestamp management (created_at, updated_at)
+// • Index optimization for query performance
+type Coupons struct {
+	Id            types.URID     `gorm:"column:id;primary_key" json:"id" example:"O4EMKW4GIZC7DIN4OBQVAHCPN4"`
+	Name          string         `gorm:"column:name;not null" json:"name" example:"Qui illum."`
+	Code          string         `gorm:"column:code;not null" json:"code" example:"A minima."`
+	DiscountType  string         `gorm:"column:discount_type" json:"discountType" example:"Voluptate incidunt."`
+	DiscountValue float64        `gorm:"column:discount_value" json:"discountValue"`
+	MinOrderValue float64        `gorm:"column:min_order_value" json:"minOrderValue"`
+	MaxUses       int            `gorm:"column:max_uses" json:"maxUses" example:"-8047375840700467527"`
+	UsedCount     int            `gorm:"column:used_count" json:"usedCount" example:"-5805849778057823406"`
+	IsActive      bool           `gorm:"column:is_active" json:"isActive" example:"true"`
+	ValidFrom     types.NullTime `gorm:"column:valid_from" json:"validFrom"`
+	ValidUntil    types.NullTime `gorm:"column:valid_until" json:"validUntil,omitempty"`
+	CreatedAt     types.NullTime `gorm:"column:created_at;autoCreateTime" json:"createdAt"`
+	UpdatedAt     types.NullTime `gorm:"column:updated_at;autoUpdateTime" json:"updatedAt"`
+	OrdersList    *[]Orders      `gorm:"foreignKey:CouponId;references:Id" json:"ordersList,omitempty"`
+}
+
+func (p *Coupons) TableName() string {
+	return "orders.coupons"
+}
+
+// --- Sayfalama (Pagination) için Yardımcı Struct ---
+type CouponsPage struct {
+	paginationRuntime.DefaultPageResponse
+	Items []Coupons `json:"items"`
+}
+
+// --- Edit Struct (Güncelleme için - tüm alanlar pointer) ---
+type CouponsEdit struct {
+	Name          *string         `gorm:"column:name;not null" json:"name" example:"Voluptatem est."`
+	Code          *string         `gorm:"column:code;not null" json:"code" example:"Voluptas aut."`
+	DiscountType  *string         `gorm:"column:discount_type" json:"discountType" example:"Dolores assumenda."`
+	DiscountValue *float64        `gorm:"column:discount_value" json:"discountValue"`
+	MinOrderValue *float64        `gorm:"column:min_order_value" json:"minOrderValue"`
+	MaxUses       *int            `gorm:"column:max_uses" json:"maxUses" example:"-8767843264235977378"`
+	UsedCount     *int            `gorm:"column:used_count" json:"usedCount" example:"4935809079609094623"`
+	IsActive      *bool           `gorm:"column:is_active" json:"isActive" example:"true"`
+	ValidFrom     *types.NullTime `gorm:"column:valid_from" json:"validFrom"`
+	ValidUntil    *types.NullTime `gorm:"column:valid_until" json:"validUntil,omitempty"`
+}
+
+// --- Filter Struct (Filtreleme için - tüm alanlar pointer) ---
+type CouponsFilter struct {
+	Id            *types.URID     `gorm:"column:id;primary_key" json:"id" example:"BTEJVZNSTVDX5JEFN3BM7O66CM"`
+	Name          *string         `gorm:"column:name;not null" json:"name" example:"Quas et."`
+	Code          *string         `gorm:"column:code;not null" json:"code" example:"Accusantium qui."`
+	DiscountType  *string         `gorm:"column:discount_type" json:"discountType" example:"Explicabo dicta."`
+	DiscountValue *float64        `gorm:"column:discount_value" json:"discountValue"`
+	MinOrderValue *float64        `gorm:"column:min_order_value" json:"minOrderValue"`
+	MaxUses       *int            `gorm:"column:max_uses" json:"maxUses" example:"-3383247364145096686"`
+	UsedCount     *int            `gorm:"column:used_count" json:"usedCount" example:"-7240135407346314660"`
+	IsActive      *bool           `gorm:"column:is_active" json:"isActive" example:"false"`
+	ValidFrom     *types.NullTime `gorm:"column:valid_from" json:"validFrom"`
+	ValidUntil    *types.NullTime `gorm:"column:valid_until" json:"validUntil,omitempty"`
+	CreatedAt     *types.NullTime `gorm:"column:created_at;autoCreateTime" json:"createdAt"`
+	UpdatedAt     *types.NullTime `gorm:"column:updated_at;autoUpdateTime" json:"updatedAt"`
+}
+
+func (p *CouponsFilter) TableName() string {
+	return "orders.coupons"
+}
+
+// --- Batch Update Struct ---
+type CouponsBatchUpdate struct {
+	Data       CouponsEdit     `json:"data"`
+	PathParams CouponsIdentity `json:"pathParams"`
+}
+
+// --- Kimlik Struct'ı (Toplu İşlemler için) ---
+type CouponsIdentity struct {
+	Id types.URID `json:"id"`
+}

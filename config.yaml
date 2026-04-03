@@ -1,0 +1,94 @@
+# ============================================================
+# DataBridge V2 — Innovation Hub Demo Configuration
+# ============================================================
+# Bu config.yaml dosyası DataBridge V2 code generator tarafından
+# okunarak tüm API katmanını otomatik olarak üretir.
+#
+# Tüm özellikler aktif edilmiştir:
+#   ✓ Event Manager Integration (olay tabanlı mimari)
+#   ✓ Test Generation (birim + API testleri)
+#   ✓ RBAC (rol tabanlı erişim kontrolü)
+#   ✓ SSE (gerçek zamanlı server-sent events)
+#   ✓ Outbox Pattern (güvenilir olay dağıtımı)
+# ============================================================
+
+# ─── Global Defaults ────────────────────────────────────────
+defaultHelperLibBasePath: "github.com/maple-tech/baseline"
+defaultPaginationPackagePath: "backend-generator/apiv2/pagination"
+defaultImportRepo: "github.com/maple-tech/innovation-hub"
+defaultEventManagerIntegration: true
+defaultGenerateTests: true
+defaultRBACEnabled: false
+defaultSSEEnabled: true
+defaultSSEPackagePath: "backend-generator/apiv2/sse"
+defaultOutboxEnabled: true
+
+# ─── Projects ───────────────────────────────────────────────
+projects:
+  - name: "innovation-hub"
+    outputFolder: "api_v2"
+    projectPath: "github.com/maple-tech/backend-generator/apiv2/data-bridge-examples"
+    moduleName: "data-bridge-examples"
+    importRepo: "data-bridge-examples/api_v2"
+    helperLibBasePath: "github.com/maple-tech/baseline"
+    paginationPackagePath: "backend-generator/apiv2/pagination"
+
+    # Per-project feature flags (tümü aktif)
+    generateTests: true
+    rbacEnabled: false
+    sseEnabled: true
+    ssePackagePath: "backend-generator/apiv2/sse"
+    outboxEnabled: true
+    eventManagerIntegration: true
+
+    # ─── Schema Configurations ──────────────────────────────
+    schemas:
+      # IAM — Identity & Access Management
+      - name: "iam"
+        skipSchemaPrefixInOps: true
+        ignoreTables: []
+        relaxGrouping: false
+        eventHandlers:
+          generate: true
+          outputDir: "pkg/iam_events"
+          packageName: "iam_handlers"
+
+      # Catalog — Product Catalog & Content Management
+      - name: "catalog"
+        skipSchemaPrefixInOps: true
+        ignoreTables: []
+        relaxGrouping: false
+        eventHandlers:
+          generate: true
+          outputDir: "pkg/catalog_events"
+          packageName: "catalog_handlers"
+
+      # Orders — Order Processing & Payments
+      - name: "orders"
+        skipSchemaPrefixInOps: true
+        ignoreTables: []
+        relaxGrouping: false
+        eventHandlers:
+          generate: true
+          outputDir: "pkg/orders_events"
+          packageName: "orders_handlers"
+
+      # Logistics — Warehouse, Inventory & Shipping
+      - name: "logistics"
+        skipSchemaPrefixInOps: false    # schema prefix kalacak (demo: bu seçeneğin etkisini göster)
+        ignoreTables: []
+        relaxGrouping: true             # düz rota yapısı (demo: grouping farkını göster)
+        eventHandlers:
+          generate: true
+          outputDir: "pkg/logistics_events"
+          packageName: "logistics_handlers"
+
+      # Analytics — Audit, Reporting & Real-time Events
+      - name: "analytics"
+        skipSchemaPrefixInOps: true
+        ignoreTables: []
+        relaxGrouping: false
+        eventHandlers:
+          generate: true
+          outputDir: "pkg/analytics_events"
+          packageName: "analytics_handlers"

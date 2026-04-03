@@ -1,0 +1,803 @@
+{
+  "components": {
+    "schemas": {
+      "CartItems": {
+        "properties": {
+          "cartId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "productId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "quantity": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "variantId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "cartId",
+          "productId",
+          "quantity",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
+      "CartItemsBatchUpdate": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CartItemsEdit"
+          },
+          "pathParams": {
+            "properties": {
+              "id": {
+                "format": "uuid",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "pathParams",
+          "data"
+        ],
+        "type": "object"
+      },
+      "CartItemsEdit": {
+        "description": "Partial update — all fields optional",
+        "properties": {
+          "cartId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "productId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "quantity": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "variantId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "CartItemsForm": {
+        "description": "Create request payload",
+        "properties": {
+          "cartId": {
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "format": "uuid",
+            "type": "string"
+          },
+          "name": {
+            "example": "example_name",
+            "type": "string"
+          },
+          "productId": {
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "format": "uuid",
+            "type": "string"
+          },
+          "quantity": {
+            "example": 1,
+            "format": "int32",
+            "type": "integer"
+          },
+          "variantId": {
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "cartId",
+          "productId"
+        ],
+        "type": "object"
+      },
+      "PaginationBody": {
+        "properties": {
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "filters": {
+            "description": "Filter rules: [[field, op, value], ...]",
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "page": {
+            "default": 1,
+            "type": "integer"
+          },
+          "preloads": {
+            "items": {
+              "enum": [
+                "CartIdDetail",
+                "CartIdDetail.CartItemsList",
+                "CartIdDetail.CartItemsList.CartIdDetail",
+                "CartIdDetail.CustomerIdDetail",
+                "CartIdDetail.CustomerIdDetail.OrdersList",
+                "CartIdDetail.CustomerIdDetail.CartsList"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "size": {
+            "default": 10,
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "PaginationResponse_CartItems": {
+        "properties": {
+          "first": {
+            "type": "boolean"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/CartItems"
+            },
+            "type": "array"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "maxPage": {
+            "type": "integer"
+          },
+          "page": {
+            "type": "integer"
+          },
+          "size": {
+            "type": "integer"
+          },
+          "total": {
+            "type": "integer"
+          },
+          "totalPages": {
+            "type": "integer"
+          },
+          "visible": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "SearchBody": {
+        "properties": {
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "filters": {
+            "description": "Filter rules: [[field, op, value], ...]",
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "preloads": {
+            "items": {
+              "enum": [
+                "CartIdDetail",
+                "CartIdDetail.CartItemsList",
+                "CartIdDetail.CartItemsList.CartIdDetail",
+                "CartIdDetail.CustomerIdDetail",
+                "CartIdDetail.CustomerIdDetail.OrdersList",
+                "CartIdDetail.CustomerIdDetail.CartsList"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "size": {
+            "default": 10,
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "scheme": "bearer",
+        "type": "http"
+      },
+      "companyId": {
+        "in": "header",
+        "name": "x-company",
+        "type": "apiKey"
+      }
+    }
+  },
+  "info": {
+    "description": "Auto-generated OpenAPI spec for `orders.cart_items`",
+    "title": "CartItems API",
+    "version": "1.0.0"
+  },
+  "openapi": "3.0.3",
+  "paths": {
+    "/api/v1/cart-items/": {
+      "get": {
+        "description": "Retrieve list filtered by query parameters.",
+        "operationId": "getCartItems",
+        "parameters": [
+          {
+            "description": "Max results (default: 10)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field. Prefix - for DESC.",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated columns to select",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to preload. Available: CartIdDetail, CartIdDetail.CartItemsList, CartIdDetail.CartItemsList.CartIdDetail, CartIdDetail.CustomerIdDetail, CartIdDetail.CustomerIdDetail.OrdersList, CartIdDetail.CustomerIdDetail.CartsList",
+            "in": "query",
+            "name": "preloads",
+            "required": false,
+            "schema": {
+              "enum": [
+                "CartIdDetail",
+                "CartIdDetail.CartItemsList",
+                "CartIdDetail.CartItemsList.CartIdDetail",
+                "CartIdDetail.CustomerIdDetail",
+                "CartIdDetail.CustomerIdDetail.OrdersList",
+                "CartIdDetail.CustomerIdDetail.CartsList"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to join. Available: Carts, Carts.Customers, Carts.Customers.Users, Carts.Customers.Organizations, Products, ProductVariants",
+            "in": "query",
+            "name": "joins",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Carts",
+                "Carts.Customers",
+                "Carts.Customers.Users",
+                "Carts.Customers.Organizations",
+                "Products",
+                "ProductVariants"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CartItems"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Search CartItems",
+        "tags": [
+          "CartItems"
+        ]
+      },
+      "post": {
+        "description": "Create a new CartItems record.",
+        "operationId": "postCartItems",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CartItemsForm"
+              }
+            }
+          },
+          "description": "New CartItems data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CartItems"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "409": {
+            "description": "Conflict — duplicate unique key"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Create CartItems",
+        "tags": [
+          "CartItems"
+        ]
+      }
+    },
+    "/api/v1/cart-items/bulk/": {
+      "post": {
+        "description": "Create multiple CartItems records.",
+        "operationId": "postCartItemsBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/CartItemsForm"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Array of create payloads",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CartItems"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Bulk Create CartItems",
+        "tags": [
+          "CartItems"
+        ]
+      },
+      "put": {
+        "description": "Batch update multiple records.",
+        "operationId": "putCartItemsBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/CartItemsBatchUpdate"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Array of { pathParams, data }",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Bulk Update CartItems",
+        "tags": [
+          "CartItems"
+        ]
+      }
+    },
+    "/api/v1/cart-items/pagination": {
+      "get": {
+        "description": "Paginated listing.",
+        "operationId": "getCartItemsPagination",
+        "parameters": [
+          {
+            "description": "Page number (default: 1)",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Max results (default: 10)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field. Prefix - for DESC.",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated columns to select",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to preload. Available: CartIdDetail, CartIdDetail.CartItemsList, CartIdDetail.CartItemsList.CartIdDetail, CartIdDetail.CustomerIdDetail, CartIdDetail.CustomerIdDetail.OrdersList, CartIdDetail.CustomerIdDetail.CartsList",
+            "in": "query",
+            "name": "preloads",
+            "required": false,
+            "schema": {
+              "enum": [
+                "CartIdDetail",
+                "CartIdDetail.CartItemsList",
+                "CartIdDetail.CartItemsList.CartIdDetail",
+                "CartIdDetail.CustomerIdDetail",
+                "CartIdDetail.CustomerIdDetail.OrdersList",
+                "CartIdDetail.CustomerIdDetail.CartsList"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to join. Available: Carts, Carts.Customers, Carts.Customers.Users, Carts.Customers.Organizations, Products, ProductVariants",
+            "in": "query",
+            "name": "joins",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Carts",
+                "Carts.Customers",
+                "Carts.Customers.Users",
+                "Carts.Customers.Organizations",
+                "Products",
+                "ProductVariants"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse_CartItems"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Paginate CartItems",
+        "tags": [
+          "CartItems"
+        ]
+      },
+      "post": {
+        "description": "Paginated listing with body filters.",
+        "operationId": "postCartItemsPagination",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationBody"
+              }
+            }
+          },
+          "description": "Pagination parameters",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse_CartItems"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Paginate CartItems (POST)",
+        "tags": [
+          "CartItems"
+        ]
+      }
+    },
+    "/api/v1/cart-items/search": {
+      "post": {
+        "description": "Search with body filters.",
+        "operationId": "postCartItemsSearch",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchBody"
+              }
+            }
+          },
+          "description": "Search parameters",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CartItems"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Search CartItems (POST)",
+        "tags": [
+          "CartItems"
+        ]
+      }
+    },
+    "/api/v1/cart-items/with-id/{Id}": {
+      "delete": {
+        "description": "Soft-delete.",
+        "operationId": "deleteCartItemsById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Delete CartItems",
+        "tags": [
+          "CartItems"
+        ]
+      },
+      "get": {
+        "description": "Retrieve a single record.",
+        "operationId": "getCartItemsById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CartItems"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Find CartItems by ID",
+        "tags": [
+          "CartItems"
+        ]
+      },
+      "put": {
+        "description": "Partial update.",
+        "operationId": "putCartItemsById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CartItemsEdit"
+              }
+            }
+          },
+          "description": "Fields to update",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Update CartItems",
+        "tags": [
+          "CartItems"
+        ]
+      }
+    }
+  },
+  "servers": [
+    {
+      "description": "Development",
+      "url": "http://localhost:3000"
+    }
+  ]
+}

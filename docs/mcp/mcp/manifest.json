@@ -1,0 +1,23 @@
+{
+  "formatVersion": "2.0.0",
+  "projectName": "innovation-hub",
+  "packageName": "@maple-tech/innovation-hub",
+  "generatedAt": "2026-04-03T12:39:58+03:00",
+  "schemas": [
+    "iam",
+    "catalog",
+    "orders",
+    "logistics",
+    "analytics"
+  ],
+  "counts": {
+    "nodes": 628,
+    "edges": 723,
+    "chunks": 235
+  },
+  "files": [
+    "graph_nodes.jsonl",
+    "graph_edges.jsonl",
+    "doc_chunks.jsonl"
+  ]
+}

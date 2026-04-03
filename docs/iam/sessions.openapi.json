@@ -1,0 +1,891 @@
+{
+  "components": {
+    "schemas": {
+      "PaginationBody": {
+        "properties": {
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "filters": {
+            "description": "Filter rules: [[field, op, value], ...]",
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "page": {
+            "default": 1,
+            "type": "integer"
+          },
+          "preloads": {
+            "items": {
+              "enum": [
+                "UserIdDetail",
+                "UserIdDetail.UserRolesList",
+                "UserIdDetail.UserRolesList.UserIdDetail",
+                "UserIdDetail.UserRolesList.RoleIdDetail",
+                "UserIdDetail.UserRolesList.GrantedByDetail",
+                "UserIdDetail.TeamsList",
+                "UserIdDetail.TeamsList.TeamMembersList",
+                "UserIdDetail.TeamsList.OrganizationIdDetail",
+                "UserIdDetail.TeamsList.LeadIdDetail",
+                "UserIdDetail.TeamMembersList",
+                "UserIdDetail.TeamMembersList.TeamIdDetail",
+                "UserIdDetail.TeamMembersList.UserIdDetail",
+                "UserIdDetail.ApiKeysList",
+                "UserIdDetail.ApiKeysList.UserIdDetail",
+                "UserIdDetail.ApiKeysList.OrganizationIdDetail",
+                "UserIdDetail.SessionsList",
+                "UserIdDetail.SessionsList.UserIdDetail",
+                "UserIdDetail.InvitationsList",
+                "UserIdDetail.InvitationsList.OrganizationIdDetail",
+                "UserIdDetail.InvitationsList.InvitedByDetail",
+                "UserIdDetail.InvitationsList.RoleIdDetail",
+                "UserIdDetail.OrganizationIdDetail",
+                "UserIdDetail.OrganizationIdDetail.OrganizationsList",
+                "UserIdDetail.OrganizationIdDetail.UsersList",
+                "UserIdDetail.OrganizationIdDetail.RolesList",
+                "UserIdDetail.OrganizationIdDetail.TeamsList",
+                "UserIdDetail.OrganizationIdDetail.ApiKeysList",
+                "UserIdDetail.OrganizationIdDetail.InvitationsList",
+                "UserIdDetail.OrganizationIdDetail.ParentIdDetail"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "size": {
+            "default": 10,
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "PaginationResponse_Sessions": {
+        "properties": {
+          "first": {
+            "type": "boolean"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/Sessions"
+            },
+            "type": "array"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "maxPage": {
+            "type": "integer"
+          },
+          "page": {
+            "type": "integer"
+          },
+          "size": {
+            "type": "integer"
+          },
+          "total": {
+            "type": "integer"
+          },
+          "totalPages": {
+            "type": "integer"
+          },
+          "visible": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "SearchBody": {
+        "properties": {
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "filters": {
+            "description": "Filter rules: [[field, op, value], ...]",
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "preloads": {
+            "items": {
+              "enum": [
+                "UserIdDetail",
+                "UserIdDetail.UserRolesList",
+                "UserIdDetail.UserRolesList.UserIdDetail",
+                "UserIdDetail.UserRolesList.RoleIdDetail",
+                "UserIdDetail.UserRolesList.GrantedByDetail",
+                "UserIdDetail.TeamsList",
+                "UserIdDetail.TeamsList.TeamMembersList",
+                "UserIdDetail.TeamsList.OrganizationIdDetail",
+                "UserIdDetail.TeamsList.LeadIdDetail",
+                "UserIdDetail.TeamMembersList",
+                "UserIdDetail.TeamMembersList.TeamIdDetail",
+                "UserIdDetail.TeamMembersList.UserIdDetail",
+                "UserIdDetail.ApiKeysList",
+                "UserIdDetail.ApiKeysList.UserIdDetail",
+                "UserIdDetail.ApiKeysList.OrganizationIdDetail",
+                "UserIdDetail.SessionsList",
+                "UserIdDetail.SessionsList.UserIdDetail",
+                "UserIdDetail.InvitationsList",
+                "UserIdDetail.InvitationsList.OrganizationIdDetail",
+                "UserIdDetail.InvitationsList.InvitedByDetail",
+                "UserIdDetail.InvitationsList.RoleIdDetail",
+                "UserIdDetail.OrganizationIdDetail",
+                "UserIdDetail.OrganizationIdDetail.OrganizationsList",
+                "UserIdDetail.OrganizationIdDetail.UsersList",
+                "UserIdDetail.OrganizationIdDetail.RolesList",
+                "UserIdDetail.OrganizationIdDetail.TeamsList",
+                "UserIdDetail.OrganizationIdDetail.ApiKeysList",
+                "UserIdDetail.OrganizationIdDetail.InvitationsList",
+                "UserIdDetail.OrganizationIdDetail.ParentIdDetail"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "size": {
+            "default": 10,
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "Sessions": {
+        "properties": {
+          "createdAt": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "expiresAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "ipAddress": {
+            "format": "ipv4",
+            "type": "string"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "userAgent": {
+            "type": "string"
+          },
+          "userId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "userId",
+          "userAgent",
+          "isActive",
+          "expiresAt",
+          "createdAt"
+        ],
+        "type": "object"
+      },
+      "SessionsBatchUpdate": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/SessionsEdit"
+          },
+          "pathParams": {
+            "properties": {
+              "id": {
+                "format": "uuid",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "pathParams",
+          "data"
+        ],
+        "type": "object"
+      },
+      "SessionsEdit": {
+        "description": "Partial update — all fields optional",
+        "properties": {
+          "expiresAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "ipAddress": {
+            "format": "ipv4",
+            "type": "string"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "userAgent": {
+            "type": "string"
+          },
+          "userId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SessionsForm": {
+        "description": "Create request payload",
+        "properties": {
+          "expiresAt": {
+            "example": "2026-01-15T10:30:00Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "ipAddress": {
+            "example": "value",
+            "format": "ipv4",
+            "type": "string"
+          },
+          "isActive": {
+            "example": true,
+            "type": "boolean"
+          },
+          "name": {
+            "example": "example_name",
+            "type": "string"
+          },
+          "userAgent": {
+            "example": "example_user_agent",
+            "type": "string"
+          },
+          "userId": {
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "userId",
+          "expiresAt"
+        ],
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "scheme": "bearer",
+        "type": "http"
+      },
+      "companyId": {
+        "in": "header",
+        "name": "x-company",
+        "type": "apiKey"
+      }
+    }
+  },
+  "info": {
+    "description": "Auto-generated OpenAPI spec for `iam.sessions`",
+    "title": "Sessions API",
+    "version": "1.0.0"
+  },
+  "openapi": "3.0.3",
+  "paths": {
+    "/api/v1/sessions/": {
+      "get": {
+        "description": "Retrieve list filtered by query parameters.",
+        "operationId": "getSessions",
+        "parameters": [
+          {
+            "description": "Max results (default: 10)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field. Prefix - for DESC.",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated columns to select",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to preload. Available: UserIdDetail, UserIdDetail.UserRolesList, UserIdDetail.UserRolesList.UserIdDetail, UserIdDetail.UserRolesList.RoleIdDetail, UserIdDetail.UserRolesList.GrantedByDetail, UserIdDetail.TeamsList, UserIdDetail.TeamsList.TeamMembersList, UserIdDetail.TeamsList.OrganizationIdDetail, UserIdDetail.TeamsList.LeadIdDetail, UserIdDetail.TeamMembersList, UserIdDetail.TeamMembersList.TeamIdDetail, UserIdDetail.TeamMembersList.UserIdDetail, UserIdDetail.ApiKeysList, UserIdDetail.ApiKeysList.UserIdDetail, UserIdDetail.ApiKeysList.OrganizationIdDetail, UserIdDetail.SessionsList, UserIdDetail.SessionsList.UserIdDetail, UserIdDetail.InvitationsList, UserIdDetail.InvitationsList.OrganizationIdDetail, UserIdDetail.InvitationsList.InvitedByDetail, UserIdDetail.InvitationsList.RoleIdDetail, UserIdDetail.OrganizationIdDetail, UserIdDetail.OrganizationIdDetail.OrganizationsList, UserIdDetail.OrganizationIdDetail.UsersList, UserIdDetail.OrganizationIdDetail.RolesList, UserIdDetail.OrganizationIdDetail.TeamsList, UserIdDetail.OrganizationIdDetail.ApiKeysList, UserIdDetail.OrganizationIdDetail.InvitationsList, UserIdDetail.OrganizationIdDetail.ParentIdDetail",
+            "in": "query",
+            "name": "preloads",
+            "required": false,
+            "schema": {
+              "enum": [
+                "UserIdDetail",
+                "UserIdDetail.UserRolesList",
+                "UserIdDetail.UserRolesList.UserIdDetail",
+                "UserIdDetail.UserRolesList.RoleIdDetail",
+                "UserIdDetail.UserRolesList.GrantedByDetail",
+                "UserIdDetail.TeamsList",
+                "UserIdDetail.TeamsList.TeamMembersList",
+                "UserIdDetail.TeamsList.OrganizationIdDetail",
+                "UserIdDetail.TeamsList.LeadIdDetail",
+                "UserIdDetail.TeamMembersList",
+                "UserIdDetail.TeamMembersList.TeamIdDetail",
+                "UserIdDetail.TeamMembersList.UserIdDetail",
+                "UserIdDetail.ApiKeysList",
+                "UserIdDetail.ApiKeysList.UserIdDetail",
+                "UserIdDetail.ApiKeysList.OrganizationIdDetail",
+                "UserIdDetail.SessionsList",
+                "UserIdDetail.SessionsList.UserIdDetail",
+                "UserIdDetail.InvitationsList",
+                "UserIdDetail.InvitationsList.OrganizationIdDetail",
+                "UserIdDetail.InvitationsList.InvitedByDetail",
+                "UserIdDetail.InvitationsList.RoleIdDetail",
+                "UserIdDetail.OrganizationIdDetail",
+                "UserIdDetail.OrganizationIdDetail.OrganizationsList",
+                "UserIdDetail.OrganizationIdDetail.UsersList",
+                "UserIdDetail.OrganizationIdDetail.RolesList",
+                "UserIdDetail.OrganizationIdDetail.TeamsList",
+                "UserIdDetail.OrganizationIdDetail.ApiKeysList",
+                "UserIdDetail.OrganizationIdDetail.InvitationsList",
+                "UserIdDetail.OrganizationIdDetail.ParentIdDetail"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to join. Available: Users, Users.Organizations, Users.Organizations.Organizations",
+            "in": "query",
+            "name": "joins",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Users",
+                "Users.Organizations",
+                "Users.Organizations.Organizations"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Sessions"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Search Sessions",
+        "tags": [
+          "Sessions"
+        ]
+      },
+      "post": {
+        "description": "Create a new Sessions record.",
+        "operationId": "postSessions",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionsForm"
+              }
+            }
+          },
+          "description": "New Sessions data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Sessions"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "409": {
+            "description": "Conflict — duplicate unique key"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Create Sessions",
+        "tags": [
+          "Sessions"
+        ]
+      }
+    },
+    "/api/v1/sessions/bulk/": {
+      "post": {
+        "description": "Create multiple Sessions records.",
+        "operationId": "postSessionsBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/SessionsForm"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Array of create payloads",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Sessions"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Bulk Create Sessions",
+        "tags": [
+          "Sessions"
+        ]
+      },
+      "put": {
+        "description": "Batch update multiple records.",
+        "operationId": "putSessionsBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/SessionsBatchUpdate"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Array of { pathParams, data }",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Bulk Update Sessions",
+        "tags": [
+          "Sessions"
+        ]
+      }
+    },
+    "/api/v1/sessions/pagination": {
+      "get": {
+        "description": "Paginated listing.",
+        "operationId": "getSessionsPagination",
+        "parameters": [
+          {
+            "description": "Page number (default: 1)",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Max results (default: 10)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field. Prefix - for DESC.",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated columns to select",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to preload. Available: UserIdDetail, UserIdDetail.UserRolesList, UserIdDetail.UserRolesList.UserIdDetail, UserIdDetail.UserRolesList.RoleIdDetail, UserIdDetail.UserRolesList.GrantedByDetail, UserIdDetail.TeamsList, UserIdDetail.TeamsList.TeamMembersList, UserIdDetail.TeamsList.OrganizationIdDetail, UserIdDetail.TeamsList.LeadIdDetail, UserIdDetail.TeamMembersList, UserIdDetail.TeamMembersList.TeamIdDetail, UserIdDetail.TeamMembersList.UserIdDetail, UserIdDetail.ApiKeysList, UserIdDetail.ApiKeysList.UserIdDetail, UserIdDetail.ApiKeysList.OrganizationIdDetail, UserIdDetail.SessionsList, UserIdDetail.SessionsList.UserIdDetail, UserIdDetail.InvitationsList, UserIdDetail.InvitationsList.OrganizationIdDetail, UserIdDetail.InvitationsList.InvitedByDetail, UserIdDetail.InvitationsList.RoleIdDetail, UserIdDetail.OrganizationIdDetail, UserIdDetail.OrganizationIdDetail.OrganizationsList, UserIdDetail.OrganizationIdDetail.UsersList, UserIdDetail.OrganizationIdDetail.RolesList, UserIdDetail.OrganizationIdDetail.TeamsList, UserIdDetail.OrganizationIdDetail.ApiKeysList, UserIdDetail.OrganizationIdDetail.InvitationsList, UserIdDetail.OrganizationIdDetail.ParentIdDetail",
+            "in": "query",
+            "name": "preloads",
+            "required": false,
+            "schema": {
+              "enum": [
+                "UserIdDetail",
+                "UserIdDetail.UserRolesList",
+                "UserIdDetail.UserRolesList.UserIdDetail",
+                "UserIdDetail.UserRolesList.RoleIdDetail",
+                "UserIdDetail.UserRolesList.GrantedByDetail",
+                "UserIdDetail.TeamsList",
+                "UserIdDetail.TeamsList.TeamMembersList",
+                "UserIdDetail.TeamsList.OrganizationIdDetail",
+                "UserIdDetail.TeamsList.LeadIdDetail",
+                "UserIdDetail.TeamMembersList",
+                "UserIdDetail.TeamMembersList.TeamIdDetail",
+                "UserIdDetail.TeamMembersList.UserIdDetail",
+                "UserIdDetail.ApiKeysList",
+                "UserIdDetail.ApiKeysList.UserIdDetail",
+                "UserIdDetail.ApiKeysList.OrganizationIdDetail",
+                "UserIdDetail.SessionsList",
+                "UserIdDetail.SessionsList.UserIdDetail",
+                "UserIdDetail.InvitationsList",
+                "UserIdDetail.InvitationsList.OrganizationIdDetail",
+                "UserIdDetail.InvitationsList.InvitedByDetail",
+                "UserIdDetail.InvitationsList.RoleIdDetail",
+                "UserIdDetail.OrganizationIdDetail",
+                "UserIdDetail.OrganizationIdDetail.OrganizationsList",
+                "UserIdDetail.OrganizationIdDetail.UsersList",
+                "UserIdDetail.OrganizationIdDetail.RolesList",
+                "UserIdDetail.OrganizationIdDetail.TeamsList",
+                "UserIdDetail.OrganizationIdDetail.ApiKeysList",
+                "UserIdDetail.OrganizationIdDetail.InvitationsList",
+                "UserIdDetail.OrganizationIdDetail.ParentIdDetail"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to join. Available: Users, Users.Organizations, Users.Organizations.Organizations",
+            "in": "query",
+            "name": "joins",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Users",
+                "Users.Organizations",
+                "Users.Organizations.Organizations"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse_Sessions"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Paginate Sessions",
+        "tags": [
+          "Sessions"
+        ]
+      },
+      "post": {
+        "description": "Paginated listing with body filters.",
+        "operationId": "postSessionsPagination",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationBody"
+              }
+            }
+          },
+          "description": "Pagination parameters",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse_Sessions"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Paginate Sessions (POST)",
+        "tags": [
+          "Sessions"
+        ]
+      }
+    },
+    "/api/v1/sessions/search": {
+      "post": {
+        "description": "Search with body filters.",
+        "operationId": "postSessionsSearch",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchBody"
+              }
+            }
+          },
+          "description": "Search parameters",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Sessions"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Search Sessions (POST)",
+        "tags": [
+          "Sessions"
+        ]
+      }
+    },
+    "/api/v1/sessions/with-id/{Id}": {
+      "delete": {
+        "description": "Soft-delete.",
+        "operationId": "deleteSessionsById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Delete Sessions",
+        "tags": [
+          "Sessions"
+        ]
+      },
+      "get": {
+        "description": "Retrieve a single record.",
+        "operationId": "getSessionsById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Sessions"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Find Sessions by ID",
+        "tags": [
+          "Sessions"
+        ]
+      },
+      "put": {
+        "description": "Partial update.",
+        "operationId": "putSessionsById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionsEdit"
+              }
+            }
+          },
+          "description": "Fields to update",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Update Sessions",
+        "tags": [
+          "Sessions"
+        ]
+      }
+    }
+  },
+  "servers": [
+    {
+      "description": "Development",
+      "url": "http://localhost:3000"
+    }
+  ]
+}

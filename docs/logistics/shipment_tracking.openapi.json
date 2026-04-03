@@ -1,0 +1,816 @@
+{
+  "components": {
+    "schemas": {
+      "PaginationBody": {
+        "properties": {
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "filters": {
+            "description": "Filter rules: [[field, op, value], ...]",
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "page": {
+            "default": 1,
+            "type": "integer"
+          },
+          "preloads": {
+            "items": {
+              "enum": [
+                "ShipmentIdDetail",
+                "ShipmentIdDetail.ShipmentItemsList",
+                "ShipmentIdDetail.ShipmentItemsList.ShipmentIdDetail",
+                "ShipmentIdDetail.ShipmentTrackingList",
+                "ShipmentIdDetail.ShipmentTrackingList.ShipmentIdDetail",
+                "ShipmentIdDetail.WarehouseIdDetail",
+                "ShipmentIdDetail.WarehouseIdDetail.StorageZonesList",
+                "ShipmentIdDetail.WarehouseIdDetail.InventoryList",
+                "ShipmentIdDetail.WarehouseIdDetail.PurchaseOrdersList",
+                "ShipmentIdDetail.WarehouseIdDetail.ShipmentsList"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "size": {
+            "default": 10,
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "PaginationResponse_ShipmentTracking": {
+        "properties": {
+          "first": {
+            "type": "boolean"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ShipmentTracking"
+            },
+            "type": "array"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "maxPage": {
+            "type": "integer"
+          },
+          "page": {
+            "type": "integer"
+          },
+          "size": {
+            "type": "integer"
+          },
+          "total": {
+            "type": "integer"
+          },
+          "totalPages": {
+            "type": "integer"
+          },
+          "visible": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "SearchBody": {
+        "properties": {
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "filters": {
+            "description": "Filter rules: [[field, op, value], ...]",
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "preloads": {
+            "items": {
+              "enum": [
+                "ShipmentIdDetail",
+                "ShipmentIdDetail.ShipmentItemsList",
+                "ShipmentIdDetail.ShipmentItemsList.ShipmentIdDetail",
+                "ShipmentIdDetail.ShipmentTrackingList",
+                "ShipmentIdDetail.ShipmentTrackingList.ShipmentIdDetail",
+                "ShipmentIdDetail.WarehouseIdDetail",
+                "ShipmentIdDetail.WarehouseIdDetail.StorageZonesList",
+                "ShipmentIdDetail.WarehouseIdDetail.InventoryList",
+                "ShipmentIdDetail.WarehouseIdDetail.PurchaseOrdersList",
+                "ShipmentIdDetail.WarehouseIdDetail.ShipmentsList"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "size": {
+            "default": 10,
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "ShipmentTracking": {
+        "properties": {
+          "createdAt": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "eventTime": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "shipmentId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "shipmentId",
+          "status",
+          "location",
+          "description",
+          "eventTime",
+          "createdAt"
+        ],
+        "type": "object"
+      },
+      "ShipmentTrackingBatchUpdate": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ShipmentTrackingEdit"
+          },
+          "pathParams": {
+            "properties": {
+              "id": {
+                "format": "uuid",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "pathParams",
+          "data"
+        ],
+        "type": "object"
+      },
+      "ShipmentTrackingEdit": {
+        "description": "Partial update — all fields optional",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "eventTime": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "shipmentId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "ShipmentTrackingForm": {
+        "description": "Create request payload",
+        "properties": {
+          "description": {
+            "example": "example_description",
+            "type": "string"
+          },
+          "eventTime": {
+            "example": "2026-01-15T10:30:00Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "location": {
+            "example": "example_location",
+            "type": "string"
+          },
+          "name": {
+            "example": "example_name",
+            "type": "string"
+          },
+          "shipmentId": {
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "format": "uuid",
+            "type": "string"
+          },
+          "status": {
+            "example": "example_status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "shipmentId"
+        ],
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "scheme": "bearer",
+        "type": "http"
+      },
+      "companyId": {
+        "in": "header",
+        "name": "x-company",
+        "type": "apiKey"
+      }
+    }
+  },
+  "info": {
+    "description": "Auto-generated OpenAPI spec for `logistics.shipment_tracking`",
+    "title": "ShipmentTracking API",
+    "version": "1.0.0"
+  },
+  "openapi": "3.0.3",
+  "paths": {
+    "/api/v1/shipment-tracking/": {
+      "get": {
+        "description": "Retrieve list filtered by query parameters.",
+        "operationId": "getShipmentTracking",
+        "parameters": [
+          {
+            "description": "Max results (default: 10)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field. Prefix - for DESC.",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated columns to select",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to preload. Available: ShipmentIdDetail, ShipmentIdDetail.ShipmentItemsList, ShipmentIdDetail.ShipmentItemsList.ShipmentIdDetail, ShipmentIdDetail.ShipmentTrackingList, ShipmentIdDetail.ShipmentTrackingList.ShipmentIdDetail, ShipmentIdDetail.WarehouseIdDetail, ShipmentIdDetail.WarehouseIdDetail.StorageZonesList, ShipmentIdDetail.WarehouseIdDetail.InventoryList, ShipmentIdDetail.WarehouseIdDetail.PurchaseOrdersList, ShipmentIdDetail.WarehouseIdDetail.ShipmentsList",
+            "in": "query",
+            "name": "preloads",
+            "required": false,
+            "schema": {
+              "enum": [
+                "ShipmentIdDetail",
+                "ShipmentIdDetail.ShipmentItemsList",
+                "ShipmentIdDetail.ShipmentItemsList.ShipmentIdDetail",
+                "ShipmentIdDetail.ShipmentTrackingList",
+                "ShipmentIdDetail.ShipmentTrackingList.ShipmentIdDetail",
+                "ShipmentIdDetail.WarehouseIdDetail",
+                "ShipmentIdDetail.WarehouseIdDetail.StorageZonesList",
+                "ShipmentIdDetail.WarehouseIdDetail.InventoryList",
+                "ShipmentIdDetail.WarehouseIdDetail.PurchaseOrdersList",
+                "ShipmentIdDetail.WarehouseIdDetail.ShipmentsList"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to join. Available: Shipments, Shipments.Orders, Shipments.Warehouses, Shipments.Warehouses.Organizations, Shipments.Warehouses.Users",
+            "in": "query",
+            "name": "joins",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Shipments",
+                "Shipments.Orders",
+                "Shipments.Warehouses",
+                "Shipments.Warehouses.Organizations",
+                "Shipments.Warehouses.Users"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ShipmentTracking"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Search ShipmentTracking",
+        "tags": [
+          "ShipmentTracking"
+        ]
+      },
+      "post": {
+        "description": "Create a new ShipmentTracking record.",
+        "operationId": "postShipmentTracking",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipmentTrackingForm"
+              }
+            }
+          },
+          "description": "New ShipmentTracking data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipmentTracking"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "409": {
+            "description": "Conflict — duplicate unique key"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Create ShipmentTracking",
+        "tags": [
+          "ShipmentTracking"
+        ]
+      }
+    },
+    "/api/v1/shipment-tracking/bulk/": {
+      "post": {
+        "description": "Create multiple ShipmentTracking records.",
+        "operationId": "postShipmentTrackingBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/ShipmentTrackingForm"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Array of create payloads",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ShipmentTracking"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Bulk Create ShipmentTracking",
+        "tags": [
+          "ShipmentTracking"
+        ]
+      },
+      "put": {
+        "description": "Batch update multiple records.",
+        "operationId": "putShipmentTrackingBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/ShipmentTrackingBatchUpdate"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Array of { pathParams, data }",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Bulk Update ShipmentTracking",
+        "tags": [
+          "ShipmentTracking"
+        ]
+      }
+    },
+    "/api/v1/shipment-tracking/pagination": {
+      "get": {
+        "description": "Paginated listing.",
+        "operationId": "getShipmentTrackingPagination",
+        "parameters": [
+          {
+            "description": "Page number (default: 1)",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Max results (default: 10)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field. Prefix - for DESC.",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated columns to select",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to preload. Available: ShipmentIdDetail, ShipmentIdDetail.ShipmentItemsList, ShipmentIdDetail.ShipmentItemsList.ShipmentIdDetail, ShipmentIdDetail.ShipmentTrackingList, ShipmentIdDetail.ShipmentTrackingList.ShipmentIdDetail, ShipmentIdDetail.WarehouseIdDetail, ShipmentIdDetail.WarehouseIdDetail.StorageZonesList, ShipmentIdDetail.WarehouseIdDetail.InventoryList, ShipmentIdDetail.WarehouseIdDetail.PurchaseOrdersList, ShipmentIdDetail.WarehouseIdDetail.ShipmentsList",
+            "in": "query",
+            "name": "preloads",
+            "required": false,
+            "schema": {
+              "enum": [
+                "ShipmentIdDetail",
+                "ShipmentIdDetail.ShipmentItemsList",
+                "ShipmentIdDetail.ShipmentItemsList.ShipmentIdDetail",
+                "ShipmentIdDetail.ShipmentTrackingList",
+                "ShipmentIdDetail.ShipmentTrackingList.ShipmentIdDetail",
+                "ShipmentIdDetail.WarehouseIdDetail",
+                "ShipmentIdDetail.WarehouseIdDetail.StorageZonesList",
+                "ShipmentIdDetail.WarehouseIdDetail.InventoryList",
+                "ShipmentIdDetail.WarehouseIdDetail.PurchaseOrdersList",
+                "ShipmentIdDetail.WarehouseIdDetail.ShipmentsList"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to join. Available: Shipments, Shipments.Orders, Shipments.Warehouses, Shipments.Warehouses.Organizations, Shipments.Warehouses.Users",
+            "in": "query",
+            "name": "joins",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Shipments",
+                "Shipments.Orders",
+                "Shipments.Warehouses",
+                "Shipments.Warehouses.Organizations",
+                "Shipments.Warehouses.Users"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse_ShipmentTracking"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Paginate ShipmentTracking",
+        "tags": [
+          "ShipmentTracking"
+        ]
+      },
+      "post": {
+        "description": "Paginated listing with body filters.",
+        "operationId": "postShipmentTrackingPagination",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationBody"
+              }
+            }
+          },
+          "description": "Pagination parameters",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse_ShipmentTracking"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Paginate ShipmentTracking (POST)",
+        "tags": [
+          "ShipmentTracking"
+        ]
+      }
+    },
+    "/api/v1/shipment-tracking/search": {
+      "post": {
+        "description": "Search with body filters.",
+        "operationId": "postShipmentTrackingSearch",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchBody"
+              }
+            }
+          },
+          "description": "Search parameters",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ShipmentTracking"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Search ShipmentTracking (POST)",
+        "tags": [
+          "ShipmentTracking"
+        ]
+      }
+    },
+    "/api/v1/shipment-tracking/with-id/{Id}": {
+      "delete": {
+        "description": "Soft-delete.",
+        "operationId": "deleteShipmentTrackingById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Delete ShipmentTracking",
+        "tags": [
+          "ShipmentTracking"
+        ]
+      },
+      "get": {
+        "description": "Retrieve a single record.",
+        "operationId": "getShipmentTrackingById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipmentTracking"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Find ShipmentTracking by ID",
+        "tags": [
+          "ShipmentTracking"
+        ]
+      },
+      "put": {
+        "description": "Partial update.",
+        "operationId": "putShipmentTrackingById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipmentTrackingEdit"
+              }
+            }
+          },
+          "description": "Fields to update",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Update ShipmentTracking",
+        "tags": [
+          "ShipmentTracking"
+        ]
+      }
+    }
+  },
+  "servers": [
+    {
+      "description": "Development",
+      "url": "http://localhost:3000"
+    }
+  ]
+}

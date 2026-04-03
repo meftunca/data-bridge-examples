@@ -1,0 +1,853 @@
+{
+  "components": {
+    "schemas": {
+      "PaginationBody": {
+        "properties": {
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "filters": {
+            "description": "Filter rules: [[field, op, value], ...]",
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "page": {
+            "default": 1,
+            "type": "integer"
+          },
+          "preloads": {
+            "items": {
+              "enum": [
+                "InventoryList",
+                "InventoryList.StockMovementsList",
+                "InventoryList.StockMovementsList.InventoryIdDetail",
+                "InventoryList.WarehouseIdDetail",
+                "InventoryList.WarehouseIdDetail.StorageZonesList",
+                "InventoryList.WarehouseIdDetail.InventoryList",
+                "InventoryList.WarehouseIdDetail.PurchaseOrdersList",
+                "InventoryList.WarehouseIdDetail.ShipmentsList",
+                "InventoryList.BinIdDetail",
+                "InventoryList.BinIdDetail.InventoryList",
+                "InventoryList.BinIdDetail.ZoneIdDetail",
+                "ZoneIdDetail",
+                "ZoneIdDetail.StorageBinsList",
+                "ZoneIdDetail.StorageBinsList.InventoryList",
+                "ZoneIdDetail.StorageBinsList.ZoneIdDetail",
+                "ZoneIdDetail.WarehouseIdDetail",
+                "ZoneIdDetail.WarehouseIdDetail.StorageZonesList",
+                "ZoneIdDetail.WarehouseIdDetail.InventoryList",
+                "ZoneIdDetail.WarehouseIdDetail.PurchaseOrdersList",
+                "ZoneIdDetail.WarehouseIdDetail.ShipmentsList"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "size": {
+            "default": 10,
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "PaginationResponse_StorageBins": {
+        "properties": {
+          "first": {
+            "type": "boolean"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/StorageBins"
+            },
+            "type": "array"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "maxPage": {
+            "type": "integer"
+          },
+          "page": {
+            "type": "integer"
+          },
+          "size": {
+            "type": "integer"
+          },
+          "total": {
+            "type": "integer"
+          },
+          "totalPages": {
+            "type": "integer"
+          },
+          "visible": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "SearchBody": {
+        "properties": {
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "filters": {
+            "description": "Filter rules: [[field, op, value], ...]",
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "preloads": {
+            "items": {
+              "enum": [
+                "InventoryList",
+                "InventoryList.StockMovementsList",
+                "InventoryList.StockMovementsList.InventoryIdDetail",
+                "InventoryList.WarehouseIdDetail",
+                "InventoryList.WarehouseIdDetail.StorageZonesList",
+                "InventoryList.WarehouseIdDetail.InventoryList",
+                "InventoryList.WarehouseIdDetail.PurchaseOrdersList",
+                "InventoryList.WarehouseIdDetail.ShipmentsList",
+                "InventoryList.BinIdDetail",
+                "InventoryList.BinIdDetail.InventoryList",
+                "InventoryList.BinIdDetail.ZoneIdDetail",
+                "ZoneIdDetail",
+                "ZoneIdDetail.StorageBinsList",
+                "ZoneIdDetail.StorageBinsList.InventoryList",
+                "ZoneIdDetail.StorageBinsList.ZoneIdDetail",
+                "ZoneIdDetail.WarehouseIdDetail",
+                "ZoneIdDetail.WarehouseIdDetail.StorageZonesList",
+                "ZoneIdDetail.WarehouseIdDetail.InventoryList",
+                "ZoneIdDetail.WarehouseIdDetail.PurchaseOrdersList",
+                "ZoneIdDetail.WarehouseIdDetail.ShipmentsList"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "size": {
+            "default": 10,
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "StorageBins": {
+        "properties": {
+          "binCode": {
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "currentCount": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "maxCapacity": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "zoneId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "zoneId",
+          "binCode",
+          "maxCapacity",
+          "currentCount",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
+      "StorageBinsBatchUpdate": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/StorageBinsEdit"
+          },
+          "pathParams": {
+            "properties": {
+              "id": {
+                "format": "uuid",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "pathParams",
+          "data"
+        ],
+        "type": "object"
+      },
+      "StorageBinsEdit": {
+        "description": "Partial update — all fields optional",
+        "properties": {
+          "binCode": {
+            "type": "string"
+          },
+          "currentCount": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "maxCapacity": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "zoneId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "StorageBinsForm": {
+        "description": "Create request payload",
+        "properties": {
+          "binCode": {
+            "example": "example_bin_code",
+            "type": "string"
+          },
+          "currentCount": {
+            "example": 1,
+            "format": "int32",
+            "type": "integer"
+          },
+          "maxCapacity": {
+            "example": 1,
+            "format": "int32",
+            "type": "integer"
+          },
+          "name": {
+            "example": "example_name",
+            "type": "string"
+          },
+          "zoneId": {
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "zoneId"
+        ],
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "scheme": "bearer",
+        "type": "http"
+      },
+      "companyId": {
+        "in": "header",
+        "name": "x-company",
+        "type": "apiKey"
+      }
+    }
+  },
+  "info": {
+    "description": "Auto-generated OpenAPI spec for `logistics.storage_bins`",
+    "title": "StorageBins API",
+    "version": "1.0.0"
+  },
+  "openapi": "3.0.3",
+  "paths": {
+    "/api/v1/storage-bins/": {
+      "get": {
+        "description": "Retrieve list filtered by query parameters.",
+        "operationId": "getStorageBins",
+        "parameters": [
+          {
+            "description": "Max results (default: 10)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field. Prefix - for DESC.",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated columns to select",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to preload. Available: InventoryList, InventoryList.StockMovementsList, InventoryList.StockMovementsList.InventoryIdDetail, InventoryList.WarehouseIdDetail, InventoryList.WarehouseIdDetail.StorageZonesList, InventoryList.WarehouseIdDetail.InventoryList, InventoryList.WarehouseIdDetail.PurchaseOrdersList, InventoryList.WarehouseIdDetail.ShipmentsList, InventoryList.BinIdDetail, InventoryList.BinIdDetail.InventoryList, InventoryList.BinIdDetail.ZoneIdDetail, ZoneIdDetail, ZoneIdDetail.StorageBinsList, ZoneIdDetail.StorageBinsList.InventoryList, ZoneIdDetail.StorageBinsList.ZoneIdDetail, ZoneIdDetail.WarehouseIdDetail, ZoneIdDetail.WarehouseIdDetail.StorageZonesList, ZoneIdDetail.WarehouseIdDetail.InventoryList, ZoneIdDetail.WarehouseIdDetail.PurchaseOrdersList, ZoneIdDetail.WarehouseIdDetail.ShipmentsList",
+            "in": "query",
+            "name": "preloads",
+            "required": false,
+            "schema": {
+              "enum": [
+                "InventoryList",
+                "InventoryList.StockMovementsList",
+                "InventoryList.StockMovementsList.InventoryIdDetail",
+                "InventoryList.WarehouseIdDetail",
+                "InventoryList.WarehouseIdDetail.StorageZonesList",
+                "InventoryList.WarehouseIdDetail.InventoryList",
+                "InventoryList.WarehouseIdDetail.PurchaseOrdersList",
+                "InventoryList.WarehouseIdDetail.ShipmentsList",
+                "InventoryList.BinIdDetail",
+                "InventoryList.BinIdDetail.InventoryList",
+                "InventoryList.BinIdDetail.ZoneIdDetail",
+                "ZoneIdDetail",
+                "ZoneIdDetail.StorageBinsList",
+                "ZoneIdDetail.StorageBinsList.InventoryList",
+                "ZoneIdDetail.StorageBinsList.ZoneIdDetail",
+                "ZoneIdDetail.WarehouseIdDetail",
+                "ZoneIdDetail.WarehouseIdDetail.StorageZonesList",
+                "ZoneIdDetail.WarehouseIdDetail.InventoryList",
+                "ZoneIdDetail.WarehouseIdDetail.PurchaseOrdersList",
+                "ZoneIdDetail.WarehouseIdDetail.ShipmentsList"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to join. Available: StorageZones, StorageZones.Warehouses, StorageZones.Warehouses.Organizations, StorageZones.Warehouses.Users",
+            "in": "query",
+            "name": "joins",
+            "required": false,
+            "schema": {
+              "enum": [
+                "StorageZones",
+                "StorageZones.Warehouses",
+                "StorageZones.Warehouses.Organizations",
+                "StorageZones.Warehouses.Users"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/StorageBins"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Search StorageBins",
+        "tags": [
+          "StorageBins"
+        ]
+      },
+      "post": {
+        "description": "Create a new StorageBins record.",
+        "operationId": "postStorageBins",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StorageBinsForm"
+              }
+            }
+          },
+          "description": "New StorageBins data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StorageBins"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "409": {
+            "description": "Conflict — duplicate unique key"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Create StorageBins",
+        "tags": [
+          "StorageBins"
+        ]
+      }
+    },
+    "/api/v1/storage-bins/bulk/": {
+      "post": {
+        "description": "Create multiple StorageBins records.",
+        "operationId": "postStorageBinsBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/StorageBinsForm"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Array of create payloads",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/StorageBins"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Bulk Create StorageBins",
+        "tags": [
+          "StorageBins"
+        ]
+      },
+      "put": {
+        "description": "Batch update multiple records.",
+        "operationId": "putStorageBinsBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/StorageBinsBatchUpdate"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Array of { pathParams, data }",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Bulk Update StorageBins",
+        "tags": [
+          "StorageBins"
+        ]
+      }
+    },
+    "/api/v1/storage-bins/pagination": {
+      "get": {
+        "description": "Paginated listing.",
+        "operationId": "getStorageBinsPagination",
+        "parameters": [
+          {
+            "description": "Page number (default: 1)",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Max results (default: 10)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field. Prefix - for DESC.",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated columns to select",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to preload. Available: InventoryList, InventoryList.StockMovementsList, InventoryList.StockMovementsList.InventoryIdDetail, InventoryList.WarehouseIdDetail, InventoryList.WarehouseIdDetail.StorageZonesList, InventoryList.WarehouseIdDetail.InventoryList, InventoryList.WarehouseIdDetail.PurchaseOrdersList, InventoryList.WarehouseIdDetail.ShipmentsList, InventoryList.BinIdDetail, InventoryList.BinIdDetail.InventoryList, InventoryList.BinIdDetail.ZoneIdDetail, ZoneIdDetail, ZoneIdDetail.StorageBinsList, ZoneIdDetail.StorageBinsList.InventoryList, ZoneIdDetail.StorageBinsList.ZoneIdDetail, ZoneIdDetail.WarehouseIdDetail, ZoneIdDetail.WarehouseIdDetail.StorageZonesList, ZoneIdDetail.WarehouseIdDetail.InventoryList, ZoneIdDetail.WarehouseIdDetail.PurchaseOrdersList, ZoneIdDetail.WarehouseIdDetail.ShipmentsList",
+            "in": "query",
+            "name": "preloads",
+            "required": false,
+            "schema": {
+              "enum": [
+                "InventoryList",
+                "InventoryList.StockMovementsList",
+                "InventoryList.StockMovementsList.InventoryIdDetail",
+                "InventoryList.WarehouseIdDetail",
+                "InventoryList.WarehouseIdDetail.StorageZonesList",
+                "InventoryList.WarehouseIdDetail.InventoryList",
+                "InventoryList.WarehouseIdDetail.PurchaseOrdersList",
+                "InventoryList.WarehouseIdDetail.ShipmentsList",
+                "InventoryList.BinIdDetail",
+                "InventoryList.BinIdDetail.InventoryList",
+                "InventoryList.BinIdDetail.ZoneIdDetail",
+                "ZoneIdDetail",
+                "ZoneIdDetail.StorageBinsList",
+                "ZoneIdDetail.StorageBinsList.InventoryList",
+                "ZoneIdDetail.StorageBinsList.ZoneIdDetail",
+                "ZoneIdDetail.WarehouseIdDetail",
+                "ZoneIdDetail.WarehouseIdDetail.StorageZonesList",
+                "ZoneIdDetail.WarehouseIdDetail.InventoryList",
+                "ZoneIdDetail.WarehouseIdDetail.PurchaseOrdersList",
+                "ZoneIdDetail.WarehouseIdDetail.ShipmentsList"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to join. Available: StorageZones, StorageZones.Warehouses, StorageZones.Warehouses.Organizations, StorageZones.Warehouses.Users",
+            "in": "query",
+            "name": "joins",
+            "required": false,
+            "schema": {
+              "enum": [
+                "StorageZones",
+                "StorageZones.Warehouses",
+                "StorageZones.Warehouses.Organizations",
+                "StorageZones.Warehouses.Users"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse_StorageBins"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Paginate StorageBins",
+        "tags": [
+          "StorageBins"
+        ]
+      },
+      "post": {
+        "description": "Paginated listing with body filters.",
+        "operationId": "postStorageBinsPagination",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationBody"
+              }
+            }
+          },
+          "description": "Pagination parameters",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse_StorageBins"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Paginate StorageBins (POST)",
+        "tags": [
+          "StorageBins"
+        ]
+      }
+    },
+    "/api/v1/storage-bins/search": {
+      "post": {
+        "description": "Search with body filters.",
+        "operationId": "postStorageBinsSearch",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchBody"
+              }
+            }
+          },
+          "description": "Search parameters",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/StorageBins"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Search StorageBins (POST)",
+        "tags": [
+          "StorageBins"
+        ]
+      }
+    },
+    "/api/v1/storage-bins/with-id/{Id}": {
+      "delete": {
+        "description": "Soft-delete.",
+        "operationId": "deleteStorageBinsById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Delete StorageBins",
+        "tags": [
+          "StorageBins"
+        ]
+      },
+      "get": {
+        "description": "Retrieve a single record.",
+        "operationId": "getStorageBinsById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StorageBins"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Find StorageBins by ID",
+        "tags": [
+          "StorageBins"
+        ]
+      },
+      "put": {
+        "description": "Partial update.",
+        "operationId": "putStorageBinsById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StorageBinsEdit"
+              }
+            }
+          },
+          "description": "Fields to update",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Update StorageBins",
+        "tags": [
+          "StorageBins"
+        ]
+      }
+    }
+  },
+  "servers": [
+    {
+      "description": "Development",
+      "url": "http://localhost:3000"
+    }
+  ]
+}

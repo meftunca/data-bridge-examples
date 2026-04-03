@@ -1,0 +1,967 @@
+{
+  "components": {
+    "schemas": {
+      "Categories": {
+        "properties": {
+          "createdAt": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "icon": {
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "parentId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "sortOrder": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "slug",
+          "description",
+          "icon",
+          "sortOrder",
+          "isActive",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
+      "CategoriesBatchUpdate": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CategoriesEdit"
+          },
+          "pathParams": {
+            "properties": {
+              "id": {
+                "format": "uuid",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "pathParams",
+          "data"
+        ],
+        "type": "object"
+      },
+      "CategoriesEdit": {
+        "description": "Partial update — all fields optional",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "icon": {
+            "type": "string"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "parentId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "sortOrder": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "CategoriesForm": {
+        "description": "Create request payload",
+        "properties": {
+          "description": {
+            "example": "example_description",
+            "type": "string"
+          },
+          "icon": {
+            "example": "example_icon",
+            "type": "string"
+          },
+          "isActive": {
+            "example": true,
+            "type": "boolean"
+          },
+          "name": {
+            "example": "example_name",
+            "type": "string"
+          },
+          "parentId": {
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "format": "uuid",
+            "type": "string"
+          },
+          "slug": {
+            "example": "example_slug",
+            "type": "string"
+          },
+          "sortOrder": {
+            "example": 1,
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "name",
+          "slug"
+        ],
+        "type": "object"
+      },
+      "PaginationBody": {
+        "properties": {
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "filters": {
+            "description": "Filter rules: [[field, op, value], ...]",
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "page": {
+            "default": 1,
+            "type": "integer"
+          },
+          "preloads": {
+            "items": {
+              "enum": [
+                "CategoriesList",
+                "CategoriesList.CategoriesList",
+                "CategoriesList.ProductsList",
+                "CategoriesList.ProductsList.ProductVariantsList",
+                "CategoriesList.ProductsList.ProductMediaList",
+                "CategoriesList.ProductsList.ProductReviewsList",
+                "CategoriesList.ProductsList.CollectionProductsList",
+                "CategoriesList.ProductsList.ProductTagsList",
+                "CategoriesList.ProductsList.PriceHistoryList",
+                "CategoriesList.ProductsList.BrandIdDetail",
+                "CategoriesList.ProductsList.CategoryIdDetail",
+                "CategoriesList.ParentIdDetail",
+                "ProductsList",
+                "ProductsList.ProductVariantsList",
+                "ProductsList.ProductVariantsList.ProductIdDetail",
+                "ProductsList.ProductMediaList",
+                "ProductsList.ProductMediaList.ProductIdDetail",
+                "ProductsList.ProductReviewsList",
+                "ProductsList.ProductReviewsList.ProductIdDetail",
+                "ProductsList.CollectionProductsList",
+                "ProductsList.CollectionProductsList.CollectionIdDetail",
+                "ProductsList.CollectionProductsList.ProductIdDetail",
+                "ProductsList.ProductTagsList",
+                "ProductsList.ProductTagsList.ProductIdDetail",
+                "ProductsList.ProductTagsList.TagIdDetail",
+                "ProductsList.PriceHistoryList",
+                "ProductsList.PriceHistoryList.ProductIdDetail",
+                "ProductsList.BrandIdDetail",
+                "ProductsList.BrandIdDetail.ProductsList",
+                "ProductsList.CategoryIdDetail",
+                "ProductsList.CategoryIdDetail.CategoriesList",
+                "ProductsList.CategoryIdDetail.ProductsList",
+                "ProductsList.CategoryIdDetail.ParentIdDetail",
+                "ParentIdDetail",
+                "ParentIdDetail.CategoriesList",
+                "ParentIdDetail.ProductsList",
+                "ParentIdDetail.ProductsList.ProductVariantsList",
+                "ParentIdDetail.ProductsList.ProductMediaList",
+                "ParentIdDetail.ProductsList.ProductReviewsList",
+                "ParentIdDetail.ProductsList.CollectionProductsList",
+                "ParentIdDetail.ProductsList.ProductTagsList",
+                "ParentIdDetail.ProductsList.PriceHistoryList",
+                "ParentIdDetail.ProductsList.BrandIdDetail",
+                "ParentIdDetail.ProductsList.CategoryIdDetail",
+                "ParentIdDetail.ParentIdDetail"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "size": {
+            "default": 10,
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "PaginationResponse_Categories": {
+        "properties": {
+          "first": {
+            "type": "boolean"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/Categories"
+            },
+            "type": "array"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "maxPage": {
+            "type": "integer"
+          },
+          "page": {
+            "type": "integer"
+          },
+          "size": {
+            "type": "integer"
+          },
+          "total": {
+            "type": "integer"
+          },
+          "totalPages": {
+            "type": "integer"
+          },
+          "visible": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "SearchBody": {
+        "properties": {
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "filters": {
+            "description": "Filter rules: [[field, op, value], ...]",
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "preloads": {
+            "items": {
+              "enum": [
+                "CategoriesList",
+                "CategoriesList.CategoriesList",
+                "CategoriesList.ProductsList",
+                "CategoriesList.ProductsList.ProductVariantsList",
+                "CategoriesList.ProductsList.ProductMediaList",
+                "CategoriesList.ProductsList.ProductReviewsList",
+                "CategoriesList.ProductsList.CollectionProductsList",
+                "CategoriesList.ProductsList.ProductTagsList",
+                "CategoriesList.ProductsList.PriceHistoryList",
+                "CategoriesList.ProductsList.BrandIdDetail",
+                "CategoriesList.ProductsList.CategoryIdDetail",
+                "CategoriesList.ParentIdDetail",
+                "ProductsList",
+                "ProductsList.ProductVariantsList",
+                "ProductsList.ProductVariantsList.ProductIdDetail",
+                "ProductsList.ProductMediaList",
+                "ProductsList.ProductMediaList.ProductIdDetail",
+                "ProductsList.ProductReviewsList",
+                "ProductsList.ProductReviewsList.ProductIdDetail",
+                "ProductsList.CollectionProductsList",
+                "ProductsList.CollectionProductsList.CollectionIdDetail",
+                "ProductsList.CollectionProductsList.ProductIdDetail",
+                "ProductsList.ProductTagsList",
+                "ProductsList.ProductTagsList.ProductIdDetail",
+                "ProductsList.ProductTagsList.TagIdDetail",
+                "ProductsList.PriceHistoryList",
+                "ProductsList.PriceHistoryList.ProductIdDetail",
+                "ProductsList.BrandIdDetail",
+                "ProductsList.BrandIdDetail.ProductsList",
+                "ProductsList.CategoryIdDetail",
+                "ProductsList.CategoryIdDetail.CategoriesList",
+                "ProductsList.CategoryIdDetail.ProductsList",
+                "ProductsList.CategoryIdDetail.ParentIdDetail",
+                "ParentIdDetail",
+                "ParentIdDetail.CategoriesList",
+                "ParentIdDetail.ProductsList",
+                "ParentIdDetail.ProductsList.ProductVariantsList",
+                "ParentIdDetail.ProductsList.ProductMediaList",
+                "ParentIdDetail.ProductsList.ProductReviewsList",
+                "ParentIdDetail.ProductsList.CollectionProductsList",
+                "ParentIdDetail.ProductsList.ProductTagsList",
+                "ParentIdDetail.ProductsList.PriceHistoryList",
+                "ParentIdDetail.ProductsList.BrandIdDetail",
+                "ParentIdDetail.ProductsList.CategoryIdDetail",
+                "ParentIdDetail.ParentIdDetail"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "size": {
+            "default": 10,
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "scheme": "bearer",
+        "type": "http"
+      },
+      "companyId": {
+        "in": "header",
+        "name": "x-company",
+        "type": "apiKey"
+      }
+    }
+  },
+  "info": {
+    "description": "Auto-generated OpenAPI spec for `catalog.categories`",
+    "title": "Categories API",
+    "version": "1.0.0"
+  },
+  "openapi": "3.0.3",
+  "paths": {
+    "/api/v1/categories/": {
+      "get": {
+        "description": "Retrieve list filtered by query parameters.",
+        "operationId": "getCategories",
+        "parameters": [
+          {
+            "description": "Max results (default: 10)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field. Prefix - for DESC.",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated columns to select",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to preload. Available: CategoriesList, CategoriesList.CategoriesList, CategoriesList.ProductsList, CategoriesList.ProductsList.ProductVariantsList, CategoriesList.ProductsList.ProductMediaList, CategoriesList.ProductsList.ProductReviewsList, CategoriesList.ProductsList.CollectionProductsList, CategoriesList.ProductsList.ProductTagsList, CategoriesList.ProductsList.PriceHistoryList, CategoriesList.ProductsList.BrandIdDetail, CategoriesList.ProductsList.CategoryIdDetail, CategoriesList.ParentIdDetail, ProductsList, ProductsList.ProductVariantsList, ProductsList.ProductVariantsList.ProductIdDetail, ProductsList.ProductMediaList, ProductsList.ProductMediaList.ProductIdDetail, ProductsList.ProductReviewsList, ProductsList.ProductReviewsList.ProductIdDetail, ProductsList.CollectionProductsList, ProductsList.CollectionProductsList.CollectionIdDetail, ProductsList.CollectionProductsList.ProductIdDetail, ProductsList.ProductTagsList, ProductsList.ProductTagsList.ProductIdDetail, ProductsList.ProductTagsList.TagIdDetail, ProductsList.PriceHistoryList, ProductsList.PriceHistoryList.ProductIdDetail, ProductsList.BrandIdDetail, ProductsList.BrandIdDetail.ProductsList, ProductsList.CategoryIdDetail, ProductsList.CategoryIdDetail.CategoriesList, ProductsList.CategoryIdDetail.ProductsList, ProductsList.CategoryIdDetail.ParentIdDetail, ParentIdDetail, ParentIdDetail.CategoriesList, ParentIdDetail.ProductsList, ParentIdDetail.ProductsList.ProductVariantsList, ParentIdDetail.ProductsList.ProductMediaList, ParentIdDetail.ProductsList.ProductReviewsList, ParentIdDetail.ProductsList.CollectionProductsList, ParentIdDetail.ProductsList.ProductTagsList, ParentIdDetail.ProductsList.PriceHistoryList, ParentIdDetail.ProductsList.BrandIdDetail, ParentIdDetail.ProductsList.CategoryIdDetail, ParentIdDetail.ParentIdDetail",
+            "in": "query",
+            "name": "preloads",
+            "required": false,
+            "schema": {
+              "enum": [
+                "CategoriesList",
+                "CategoriesList.CategoriesList",
+                "CategoriesList.ProductsList",
+                "CategoriesList.ProductsList.ProductVariantsList",
+                "CategoriesList.ProductsList.ProductMediaList",
+                "CategoriesList.ProductsList.ProductReviewsList",
+                "CategoriesList.ProductsList.CollectionProductsList",
+                "CategoriesList.ProductsList.ProductTagsList",
+                "CategoriesList.ProductsList.PriceHistoryList",
+                "CategoriesList.ProductsList.BrandIdDetail",
+                "CategoriesList.ProductsList.CategoryIdDetail",
+                "CategoriesList.ParentIdDetail",
+                "ProductsList",
+                "ProductsList.ProductVariantsList",
+                "ProductsList.ProductVariantsList.ProductIdDetail",
+                "ProductsList.ProductMediaList",
+                "ProductsList.ProductMediaList.ProductIdDetail",
+                "ProductsList.ProductReviewsList",
+                "ProductsList.ProductReviewsList.ProductIdDetail",
+                "ProductsList.CollectionProductsList",
+                "ProductsList.CollectionProductsList.CollectionIdDetail",
+                "ProductsList.CollectionProductsList.ProductIdDetail",
+                "ProductsList.ProductTagsList",
+                "ProductsList.ProductTagsList.ProductIdDetail",
+                "ProductsList.ProductTagsList.TagIdDetail",
+                "ProductsList.PriceHistoryList",
+                "ProductsList.PriceHistoryList.ProductIdDetail",
+                "ProductsList.BrandIdDetail",
+                "ProductsList.BrandIdDetail.ProductsList",
+                "ProductsList.CategoryIdDetail",
+                "ProductsList.CategoryIdDetail.CategoriesList",
+                "ProductsList.CategoryIdDetail.ProductsList",
+                "ProductsList.CategoryIdDetail.ParentIdDetail",
+                "ParentIdDetail",
+                "ParentIdDetail.CategoriesList",
+                "ParentIdDetail.ProductsList",
+                "ParentIdDetail.ProductsList.ProductVariantsList",
+                "ParentIdDetail.ProductsList.ProductMediaList",
+                "ParentIdDetail.ProductsList.ProductReviewsList",
+                "ParentIdDetail.ProductsList.CollectionProductsList",
+                "ParentIdDetail.ProductsList.ProductTagsList",
+                "ParentIdDetail.ProductsList.PriceHistoryList",
+                "ParentIdDetail.ProductsList.BrandIdDetail",
+                "ParentIdDetail.ProductsList.CategoryIdDetail",
+                "ParentIdDetail.ParentIdDetail"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to join. Available: Categories, Categories.Categories",
+            "in": "query",
+            "name": "joins",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Categories",
+                "Categories.Categories"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Categories"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Search Categories",
+        "tags": [
+          "Categories"
+        ]
+      },
+      "post": {
+        "description": "Create a new Categories record.",
+        "operationId": "postCategories",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoriesForm"
+              }
+            }
+          },
+          "description": "New Categories data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Categories"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "409": {
+            "description": "Conflict — duplicate unique key"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Create Categories",
+        "tags": [
+          "Categories"
+        ]
+      }
+    },
+    "/api/v1/categories/bulk/": {
+      "post": {
+        "description": "Create multiple Categories records.",
+        "operationId": "postCategoriesBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/CategoriesForm"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Array of create payloads",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Categories"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Bulk Create Categories",
+        "tags": [
+          "Categories"
+        ]
+      },
+      "put": {
+        "description": "Batch update multiple records.",
+        "operationId": "putCategoriesBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/CategoriesBatchUpdate"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Array of { pathParams, data }",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Bulk Update Categories",
+        "tags": [
+          "Categories"
+        ]
+      }
+    },
+    "/api/v1/categories/pagination": {
+      "get": {
+        "description": "Paginated listing.",
+        "operationId": "getCategoriesPagination",
+        "parameters": [
+          {
+            "description": "Page number (default: 1)",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Max results (default: 10)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field. Prefix - for DESC.",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated columns to select",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to preload. Available: CategoriesList, CategoriesList.CategoriesList, CategoriesList.ProductsList, CategoriesList.ProductsList.ProductVariantsList, CategoriesList.ProductsList.ProductMediaList, CategoriesList.ProductsList.ProductReviewsList, CategoriesList.ProductsList.CollectionProductsList, CategoriesList.ProductsList.ProductTagsList, CategoriesList.ProductsList.PriceHistoryList, CategoriesList.ProductsList.BrandIdDetail, CategoriesList.ProductsList.CategoryIdDetail, CategoriesList.ParentIdDetail, ProductsList, ProductsList.ProductVariantsList, ProductsList.ProductVariantsList.ProductIdDetail, ProductsList.ProductMediaList, ProductsList.ProductMediaList.ProductIdDetail, ProductsList.ProductReviewsList, ProductsList.ProductReviewsList.ProductIdDetail, ProductsList.CollectionProductsList, ProductsList.CollectionProductsList.CollectionIdDetail, ProductsList.CollectionProductsList.ProductIdDetail, ProductsList.ProductTagsList, ProductsList.ProductTagsList.ProductIdDetail, ProductsList.ProductTagsList.TagIdDetail, ProductsList.PriceHistoryList, ProductsList.PriceHistoryList.ProductIdDetail, ProductsList.BrandIdDetail, ProductsList.BrandIdDetail.ProductsList, ProductsList.CategoryIdDetail, ProductsList.CategoryIdDetail.CategoriesList, ProductsList.CategoryIdDetail.ProductsList, ProductsList.CategoryIdDetail.ParentIdDetail, ParentIdDetail, ParentIdDetail.CategoriesList, ParentIdDetail.ProductsList, ParentIdDetail.ProductsList.ProductVariantsList, ParentIdDetail.ProductsList.ProductMediaList, ParentIdDetail.ProductsList.ProductReviewsList, ParentIdDetail.ProductsList.CollectionProductsList, ParentIdDetail.ProductsList.ProductTagsList, ParentIdDetail.ProductsList.PriceHistoryList, ParentIdDetail.ProductsList.BrandIdDetail, ParentIdDetail.ProductsList.CategoryIdDetail, ParentIdDetail.ParentIdDetail",
+            "in": "query",
+            "name": "preloads",
+            "required": false,
+            "schema": {
+              "enum": [
+                "CategoriesList",
+                "CategoriesList.CategoriesList",
+                "CategoriesList.ProductsList",
+                "CategoriesList.ProductsList.ProductVariantsList",
+                "CategoriesList.ProductsList.ProductMediaList",
+                "CategoriesList.ProductsList.ProductReviewsList",
+                "CategoriesList.ProductsList.CollectionProductsList",
+                "CategoriesList.ProductsList.ProductTagsList",
+                "CategoriesList.ProductsList.PriceHistoryList",
+                "CategoriesList.ProductsList.BrandIdDetail",
+                "CategoriesList.ProductsList.CategoryIdDetail",
+                "CategoriesList.ParentIdDetail",
+                "ProductsList",
+                "ProductsList.ProductVariantsList",
+                "ProductsList.ProductVariantsList.ProductIdDetail",
+                "ProductsList.ProductMediaList",
+                "ProductsList.ProductMediaList.ProductIdDetail",
+                "ProductsList.ProductReviewsList",
+                "ProductsList.ProductReviewsList.ProductIdDetail",
+                "ProductsList.CollectionProductsList",
+                "ProductsList.CollectionProductsList.CollectionIdDetail",
+                "ProductsList.CollectionProductsList.ProductIdDetail",
+                "ProductsList.ProductTagsList",
+                "ProductsList.ProductTagsList.ProductIdDetail",
+                "ProductsList.ProductTagsList.TagIdDetail",
+                "ProductsList.PriceHistoryList",
+                "ProductsList.PriceHistoryList.ProductIdDetail",
+                "ProductsList.BrandIdDetail",
+                "ProductsList.BrandIdDetail.ProductsList",
+                "ProductsList.CategoryIdDetail",
+                "ProductsList.CategoryIdDetail.CategoriesList",
+                "ProductsList.CategoryIdDetail.ProductsList",
+                "ProductsList.CategoryIdDetail.ParentIdDetail",
+                "ParentIdDetail",
+                "ParentIdDetail.CategoriesList",
+                "ParentIdDetail.ProductsList",
+                "ParentIdDetail.ProductsList.ProductVariantsList",
+                "ParentIdDetail.ProductsList.ProductMediaList",
+                "ParentIdDetail.ProductsList.ProductReviewsList",
+                "ParentIdDetail.ProductsList.CollectionProductsList",
+                "ParentIdDetail.ProductsList.ProductTagsList",
+                "ParentIdDetail.ProductsList.PriceHistoryList",
+                "ParentIdDetail.ProductsList.BrandIdDetail",
+                "ParentIdDetail.ProductsList.CategoryIdDetail",
+                "ParentIdDetail.ParentIdDetail"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to join. Available: Categories, Categories.Categories",
+            "in": "query",
+            "name": "joins",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Categories",
+                "Categories.Categories"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse_Categories"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Paginate Categories",
+        "tags": [
+          "Categories"
+        ]
+      },
+      "post": {
+        "description": "Paginated listing with body filters.",
+        "operationId": "postCategoriesPagination",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationBody"
+              }
+            }
+          },
+          "description": "Pagination parameters",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse_Categories"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Paginate Categories (POST)",
+        "tags": [
+          "Categories"
+        ]
+      }
+    },
+    "/api/v1/categories/search": {
+      "post": {
+        "description": "Search with body filters.",
+        "operationId": "postCategoriesSearch",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchBody"
+              }
+            }
+          },
+          "description": "Search parameters",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Categories"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Search Categories (POST)",
+        "tags": [
+          "Categories"
+        ]
+      }
+    },
+    "/api/v1/categories/with-id/{Id}": {
+      "delete": {
+        "description": "Soft-delete.",
+        "operationId": "deleteCategoriesById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Delete Categories",
+        "tags": [
+          "Categories"
+        ]
+      },
+      "get": {
+        "description": "Retrieve a single record.",
+        "operationId": "getCategoriesById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Categories"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Find Categories by ID",
+        "tags": [
+          "Categories"
+        ]
+      },
+      "put": {
+        "description": "Partial update.",
+        "operationId": "putCategoriesById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoriesEdit"
+              }
+            }
+          },
+          "description": "Fields to update",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Update Categories",
+        "tags": [
+          "Categories"
+        ]
+      }
+    }
+  },
+  "servers": [
+    {
+      "description": "Development",
+      "url": "http://localhost:3000"
+    }
+  ]
+}

@@ -1,0 +1,888 @@
+{
+  "components": {
+    "schemas": {
+      "Coupons": {
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "discountType": {
+            "type": "string"
+          },
+          "discountValue": {
+            "format": "double",
+            "type": "number"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "maxUses": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "minOrderValue": {
+            "format": "double",
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "usedCount": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "validFrom": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "validUntil": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "code",
+          "discountType",
+          "discountValue",
+          "minOrderValue",
+          "maxUses",
+          "usedCount",
+          "isActive",
+          "validFrom",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
+      "CouponsBatchUpdate": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/CouponsEdit"
+          },
+          "pathParams": {
+            "properties": {
+              "id": {
+                "format": "uuid",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "pathParams",
+          "data"
+        ],
+        "type": "object"
+      },
+      "CouponsEdit": {
+        "description": "Partial update — all fields optional",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "discountType": {
+            "type": "string"
+          },
+          "discountValue": {
+            "format": "double",
+            "type": "number"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "maxUses": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "minOrderValue": {
+            "format": "double",
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "usedCount": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "validFrom": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "validUntil": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "CouponsForm": {
+        "description": "Create request payload",
+        "properties": {
+          "code": {
+            "example": "example_code",
+            "type": "string"
+          },
+          "discountType": {
+            "example": "example_discount_type",
+            "type": "string"
+          },
+          "discountValue": {
+            "example": 99.99,
+            "format": "double",
+            "type": "number"
+          },
+          "isActive": {
+            "example": true,
+            "type": "boolean"
+          },
+          "maxUses": {
+            "example": 1,
+            "format": "int32",
+            "type": "integer"
+          },
+          "minOrderValue": {
+            "example": 99.99,
+            "format": "double",
+            "type": "number"
+          },
+          "name": {
+            "example": "example_name",
+            "type": "string"
+          },
+          "usedCount": {
+            "example": 1,
+            "format": "int32",
+            "type": "integer"
+          },
+          "validFrom": {
+            "example": "2026-01-15T10:30:00Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "validUntil": {
+            "example": "2026-01-15T10:30:00Z",
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "code"
+        ],
+        "type": "object"
+      },
+      "PaginationBody": {
+        "properties": {
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "filters": {
+            "description": "Filter rules: [[field, op, value], ...]",
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "page": {
+            "default": 1,
+            "type": "integer"
+          },
+          "preloads": {
+            "items": {
+              "enum": [
+                "OrdersList",
+                "OrdersList.OrderItemsList",
+                "OrdersList.OrderItemsList.OrderIdDetail",
+                "OrdersList.PaymentsList",
+                "OrdersList.PaymentsList.RefundsList",
+                "OrdersList.PaymentsList.OrderIdDetail",
+                "OrdersList.RefundsList",
+                "OrdersList.RefundsList.OrderIdDetail",
+                "OrdersList.RefundsList.PaymentIdDetail",
+                "OrdersList.OrderStatusHistoryList",
+                "OrdersList.OrderStatusHistoryList.OrderIdDetail",
+                "OrdersList.CustomerIdDetail",
+                "OrdersList.CustomerIdDetail.OrdersList",
+                "OrdersList.CustomerIdDetail.CartsList",
+                "OrdersList.CouponIdDetail",
+                "OrdersList.CouponIdDetail.OrdersList"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "size": {
+            "default": 10,
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "PaginationResponse_Coupons": {
+        "properties": {
+          "first": {
+            "type": "boolean"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/Coupons"
+            },
+            "type": "array"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "maxPage": {
+            "type": "integer"
+          },
+          "page": {
+            "type": "integer"
+          },
+          "size": {
+            "type": "integer"
+          },
+          "total": {
+            "type": "integer"
+          },
+          "totalPages": {
+            "type": "integer"
+          },
+          "visible": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "SearchBody": {
+        "properties": {
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "filters": {
+            "description": "Filter rules: [[field, op, value], ...]",
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "preloads": {
+            "items": {
+              "enum": [
+                "OrdersList",
+                "OrdersList.OrderItemsList",
+                "OrdersList.OrderItemsList.OrderIdDetail",
+                "OrdersList.PaymentsList",
+                "OrdersList.PaymentsList.RefundsList",
+                "OrdersList.PaymentsList.OrderIdDetail",
+                "OrdersList.RefundsList",
+                "OrdersList.RefundsList.OrderIdDetail",
+                "OrdersList.RefundsList.PaymentIdDetail",
+                "OrdersList.OrderStatusHistoryList",
+                "OrdersList.OrderStatusHistoryList.OrderIdDetail",
+                "OrdersList.CustomerIdDetail",
+                "OrdersList.CustomerIdDetail.OrdersList",
+                "OrdersList.CustomerIdDetail.CartsList",
+                "OrdersList.CouponIdDetail",
+                "OrdersList.CouponIdDetail.OrdersList"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "size": {
+            "default": 10,
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "scheme": "bearer",
+        "type": "http"
+      },
+      "companyId": {
+        "in": "header",
+        "name": "x-company",
+        "type": "apiKey"
+      }
+    }
+  },
+  "info": {
+    "description": "Auto-generated OpenAPI spec for `orders.coupons`",
+    "title": "Coupons API",
+    "version": "1.0.0"
+  },
+  "openapi": "3.0.3",
+  "paths": {
+    "/api/v1/coupons/": {
+      "get": {
+        "description": "Retrieve list filtered by query parameters.",
+        "operationId": "getCoupons",
+        "parameters": [
+          {
+            "description": "Max results (default: 10)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field. Prefix - for DESC.",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated columns to select",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to preload. Available: OrdersList, OrdersList.OrderItemsList, OrdersList.OrderItemsList.OrderIdDetail, OrdersList.PaymentsList, OrdersList.PaymentsList.RefundsList, OrdersList.PaymentsList.OrderIdDetail, OrdersList.RefundsList, OrdersList.RefundsList.OrderIdDetail, OrdersList.RefundsList.PaymentIdDetail, OrdersList.OrderStatusHistoryList, OrdersList.OrderStatusHistoryList.OrderIdDetail, OrdersList.CustomerIdDetail, OrdersList.CustomerIdDetail.OrdersList, OrdersList.CustomerIdDetail.CartsList, OrdersList.CouponIdDetail, OrdersList.CouponIdDetail.OrdersList",
+            "in": "query",
+            "name": "preloads",
+            "required": false,
+            "schema": {
+              "enum": [
+                "OrdersList",
+                "OrdersList.OrderItemsList",
+                "OrdersList.OrderItemsList.OrderIdDetail",
+                "OrdersList.PaymentsList",
+                "OrdersList.PaymentsList.RefundsList",
+                "OrdersList.PaymentsList.OrderIdDetail",
+                "OrdersList.RefundsList",
+                "OrdersList.RefundsList.OrderIdDetail",
+                "OrdersList.RefundsList.PaymentIdDetail",
+                "OrdersList.OrderStatusHistoryList",
+                "OrdersList.OrderStatusHistoryList.OrderIdDetail",
+                "OrdersList.CustomerIdDetail",
+                "OrdersList.CustomerIdDetail.OrdersList",
+                "OrdersList.CustomerIdDetail.CartsList",
+                "OrdersList.CouponIdDetail",
+                "OrdersList.CouponIdDetail.OrdersList"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated relations to join",
+            "in": "query",
+            "name": "joins",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Coupons"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Search Coupons",
+        "tags": [
+          "Coupons"
+        ]
+      },
+      "post": {
+        "description": "Create a new Coupons record.",
+        "operationId": "postCoupons",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CouponsForm"
+              }
+            }
+          },
+          "description": "New Coupons data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Coupons"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "409": {
+            "description": "Conflict — duplicate unique key"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Create Coupons",
+        "tags": [
+          "Coupons"
+        ]
+      }
+    },
+    "/api/v1/coupons/bulk/": {
+      "post": {
+        "description": "Create multiple Coupons records.",
+        "operationId": "postCouponsBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/CouponsForm"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Array of create payloads",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Coupons"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Bulk Create Coupons",
+        "tags": [
+          "Coupons"
+        ]
+      },
+      "put": {
+        "description": "Batch update multiple records.",
+        "operationId": "putCouponsBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/CouponsBatchUpdate"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Array of { pathParams, data }",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Bulk Update Coupons",
+        "tags": [
+          "Coupons"
+        ]
+      }
+    },
+    "/api/v1/coupons/pagination": {
+      "get": {
+        "description": "Paginated listing.",
+        "operationId": "getCouponsPagination",
+        "parameters": [
+          {
+            "description": "Page number (default: 1)",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Max results (default: 10)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field. Prefix - for DESC.",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated columns to select",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to preload. Available: OrdersList, OrdersList.OrderItemsList, OrdersList.OrderItemsList.OrderIdDetail, OrdersList.PaymentsList, OrdersList.PaymentsList.RefundsList, OrdersList.PaymentsList.OrderIdDetail, OrdersList.RefundsList, OrdersList.RefundsList.OrderIdDetail, OrdersList.RefundsList.PaymentIdDetail, OrdersList.OrderStatusHistoryList, OrdersList.OrderStatusHistoryList.OrderIdDetail, OrdersList.CustomerIdDetail, OrdersList.CustomerIdDetail.OrdersList, OrdersList.CustomerIdDetail.CartsList, OrdersList.CouponIdDetail, OrdersList.CouponIdDetail.OrdersList",
+            "in": "query",
+            "name": "preloads",
+            "required": false,
+            "schema": {
+              "enum": [
+                "OrdersList",
+                "OrdersList.OrderItemsList",
+                "OrdersList.OrderItemsList.OrderIdDetail",
+                "OrdersList.PaymentsList",
+                "OrdersList.PaymentsList.RefundsList",
+                "OrdersList.PaymentsList.OrderIdDetail",
+                "OrdersList.RefundsList",
+                "OrdersList.RefundsList.OrderIdDetail",
+                "OrdersList.RefundsList.PaymentIdDetail",
+                "OrdersList.OrderStatusHistoryList",
+                "OrdersList.OrderStatusHistoryList.OrderIdDetail",
+                "OrdersList.CustomerIdDetail",
+                "OrdersList.CustomerIdDetail.OrdersList",
+                "OrdersList.CustomerIdDetail.CartsList",
+                "OrdersList.CouponIdDetail",
+                "OrdersList.CouponIdDetail.OrdersList"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated relations to join",
+            "in": "query",
+            "name": "joins",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse_Coupons"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Paginate Coupons",
+        "tags": [
+          "Coupons"
+        ]
+      },
+      "post": {
+        "description": "Paginated listing with body filters.",
+        "operationId": "postCouponsPagination",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationBody"
+              }
+            }
+          },
+          "description": "Pagination parameters",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse_Coupons"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Paginate Coupons (POST)",
+        "tags": [
+          "Coupons"
+        ]
+      }
+    },
+    "/api/v1/coupons/search": {
+      "post": {
+        "description": "Search with body filters.",
+        "operationId": "postCouponsSearch",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchBody"
+              }
+            }
+          },
+          "description": "Search parameters",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Coupons"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Search Coupons (POST)",
+        "tags": [
+          "Coupons"
+        ]
+      }
+    },
+    "/api/v1/coupons/with-id/{Id}": {
+      "delete": {
+        "description": "Soft-delete.",
+        "operationId": "deleteCouponsById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Delete Coupons",
+        "tags": [
+          "Coupons"
+        ]
+      },
+      "get": {
+        "description": "Retrieve a single record.",
+        "operationId": "getCouponsById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Coupons"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Find Coupons by ID",
+        "tags": [
+          "Coupons"
+        ]
+      },
+      "put": {
+        "description": "Partial update.",
+        "operationId": "putCouponsById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CouponsEdit"
+              }
+            }
+          },
+          "description": "Fields to update",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Update Coupons",
+        "tags": [
+          "Coupons"
+        ]
+      }
+    }
+  },
+  "servers": [
+    {
+      "description": "Development",
+      "url": "http://localhost:3000"
+    }
+  ]
+}

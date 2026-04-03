@@ -1,0 +1,900 @@
+{
+  "components": {
+    "schemas": {
+      "PaginationBody": {
+        "properties": {
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "filters": {
+            "description": "Filter rules: [[field, op, value], ...]",
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "page": {
+            "default": 1,
+            "type": "integer"
+          },
+          "preloads": {
+            "items": {
+              "enum": [
+                "ProductIdDetail",
+                "ProductIdDetail.ProductVariantsList",
+                "ProductIdDetail.ProductVariantsList.ProductIdDetail",
+                "ProductIdDetail.ProductMediaList",
+                "ProductIdDetail.ProductMediaList.ProductIdDetail",
+                "ProductIdDetail.ProductReviewsList",
+                "ProductIdDetail.ProductReviewsList.ProductIdDetail",
+                "ProductIdDetail.CollectionProductsList",
+                "ProductIdDetail.CollectionProductsList.CollectionIdDetail",
+                "ProductIdDetail.CollectionProductsList.ProductIdDetail",
+                "ProductIdDetail.ProductTagsList",
+                "ProductIdDetail.ProductTagsList.ProductIdDetail",
+                "ProductIdDetail.ProductTagsList.TagIdDetail",
+                "ProductIdDetail.PriceHistoryList",
+                "ProductIdDetail.PriceHistoryList.ProductIdDetail",
+                "ProductIdDetail.BrandIdDetail",
+                "ProductIdDetail.BrandIdDetail.ProductsList",
+                "ProductIdDetail.CategoryIdDetail",
+                "ProductIdDetail.CategoryIdDetail.CategoriesList",
+                "ProductIdDetail.CategoryIdDetail.ProductsList",
+                "ProductIdDetail.CategoryIdDetail.ParentIdDetail"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "size": {
+            "default": 10,
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "PaginationResponse_ProductReviews": {
+        "properties": {
+          "first": {
+            "type": "boolean"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ProductReviews"
+            },
+            "type": "array"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "maxPage": {
+            "type": "integer"
+          },
+          "page": {
+            "type": "integer"
+          },
+          "size": {
+            "type": "integer"
+          },
+          "total": {
+            "type": "integer"
+          },
+          "totalPages": {
+            "type": "integer"
+          },
+          "visible": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "ProductReviews": {
+        "properties": {
+          "body": {
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "helpfulCount": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "isVerified": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "productId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "rating": {
+            "format": "int16",
+            "type": "integer"
+          },
+          "title": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "userId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "productId",
+          "userId",
+          "rating",
+          "title",
+          "body",
+          "isVerified",
+          "helpfulCount",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
+      "ProductReviewsBatchUpdate": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ProductReviewsEdit"
+          },
+          "pathParams": {
+            "properties": {
+              "id": {
+                "format": "uuid",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "pathParams",
+          "data"
+        ],
+        "type": "object"
+      },
+      "ProductReviewsEdit": {
+        "description": "Partial update — all fields optional",
+        "properties": {
+          "body": {
+            "type": "string"
+          },
+          "helpfulCount": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "isVerified": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "productId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "rating": {
+            "format": "int16",
+            "type": "integer"
+          },
+          "title": {
+            "type": "string"
+          },
+          "userId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "ProductReviewsForm": {
+        "description": "Create request payload",
+        "properties": {
+          "body": {
+            "example": "example_body",
+            "type": "string"
+          },
+          "helpfulCount": {
+            "example": 1,
+            "format": "int32",
+            "type": "integer"
+          },
+          "isVerified": {
+            "example": true,
+            "type": "boolean"
+          },
+          "name": {
+            "example": "example_name",
+            "type": "string"
+          },
+          "productId": {
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "format": "uuid",
+            "type": "string"
+          },
+          "rating": {
+            "example": 1,
+            "format": "int16",
+            "type": "integer"
+          },
+          "title": {
+            "example": "example_title",
+            "type": "string"
+          },
+          "userId": {
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "productId",
+          "userId",
+          "rating"
+        ],
+        "type": "object"
+      },
+      "SearchBody": {
+        "properties": {
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "filters": {
+            "description": "Filter rules: [[field, op, value], ...]",
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "preloads": {
+            "items": {
+              "enum": [
+                "ProductIdDetail",
+                "ProductIdDetail.ProductVariantsList",
+                "ProductIdDetail.ProductVariantsList.ProductIdDetail",
+                "ProductIdDetail.ProductMediaList",
+                "ProductIdDetail.ProductMediaList.ProductIdDetail",
+                "ProductIdDetail.ProductReviewsList",
+                "ProductIdDetail.ProductReviewsList.ProductIdDetail",
+                "ProductIdDetail.CollectionProductsList",
+                "ProductIdDetail.CollectionProductsList.CollectionIdDetail",
+                "ProductIdDetail.CollectionProductsList.ProductIdDetail",
+                "ProductIdDetail.ProductTagsList",
+                "ProductIdDetail.ProductTagsList.ProductIdDetail",
+                "ProductIdDetail.ProductTagsList.TagIdDetail",
+                "ProductIdDetail.PriceHistoryList",
+                "ProductIdDetail.PriceHistoryList.ProductIdDetail",
+                "ProductIdDetail.BrandIdDetail",
+                "ProductIdDetail.BrandIdDetail.ProductsList",
+                "ProductIdDetail.CategoryIdDetail",
+                "ProductIdDetail.CategoryIdDetail.CategoriesList",
+                "ProductIdDetail.CategoryIdDetail.ProductsList",
+                "ProductIdDetail.CategoryIdDetail.ParentIdDetail"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "size": {
+            "default": 10,
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "scheme": "bearer",
+        "type": "http"
+      },
+      "companyId": {
+        "in": "header",
+        "name": "x-company",
+        "type": "apiKey"
+      }
+    }
+  },
+  "info": {
+    "description": "Auto-generated OpenAPI spec for `catalog.product_reviews`",
+    "title": "ProductReviews API",
+    "version": "1.0.0"
+  },
+  "openapi": "3.0.3",
+  "paths": {
+    "/api/v1/product-reviews/": {
+      "get": {
+        "description": "Retrieve list filtered by query parameters.",
+        "operationId": "getProductReviews",
+        "parameters": [
+          {
+            "description": "Max results (default: 10)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field. Prefix - for DESC.",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated columns to select",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to preload. Available: ProductIdDetail, ProductIdDetail.ProductVariantsList, ProductIdDetail.ProductVariantsList.ProductIdDetail, ProductIdDetail.ProductMediaList, ProductIdDetail.ProductMediaList.ProductIdDetail, ProductIdDetail.ProductReviewsList, ProductIdDetail.ProductReviewsList.ProductIdDetail, ProductIdDetail.CollectionProductsList, ProductIdDetail.CollectionProductsList.CollectionIdDetail, ProductIdDetail.CollectionProductsList.ProductIdDetail, ProductIdDetail.ProductTagsList, ProductIdDetail.ProductTagsList.ProductIdDetail, ProductIdDetail.ProductTagsList.TagIdDetail, ProductIdDetail.PriceHistoryList, ProductIdDetail.PriceHistoryList.ProductIdDetail, ProductIdDetail.BrandIdDetail, ProductIdDetail.BrandIdDetail.ProductsList, ProductIdDetail.CategoryIdDetail, ProductIdDetail.CategoryIdDetail.CategoriesList, ProductIdDetail.CategoryIdDetail.ProductsList, ProductIdDetail.CategoryIdDetail.ParentIdDetail",
+            "in": "query",
+            "name": "preloads",
+            "required": false,
+            "schema": {
+              "enum": [
+                "ProductIdDetail",
+                "ProductIdDetail.ProductVariantsList",
+                "ProductIdDetail.ProductVariantsList.ProductIdDetail",
+                "ProductIdDetail.ProductMediaList",
+                "ProductIdDetail.ProductMediaList.ProductIdDetail",
+                "ProductIdDetail.ProductReviewsList",
+                "ProductIdDetail.ProductReviewsList.ProductIdDetail",
+                "ProductIdDetail.CollectionProductsList",
+                "ProductIdDetail.CollectionProductsList.CollectionIdDetail",
+                "ProductIdDetail.CollectionProductsList.ProductIdDetail",
+                "ProductIdDetail.ProductTagsList",
+                "ProductIdDetail.ProductTagsList.ProductIdDetail",
+                "ProductIdDetail.ProductTagsList.TagIdDetail",
+                "ProductIdDetail.PriceHistoryList",
+                "ProductIdDetail.PriceHistoryList.ProductIdDetail",
+                "ProductIdDetail.BrandIdDetail",
+                "ProductIdDetail.BrandIdDetail.ProductsList",
+                "ProductIdDetail.CategoryIdDetail",
+                "ProductIdDetail.CategoryIdDetail.CategoriesList",
+                "ProductIdDetail.CategoryIdDetail.ProductsList",
+                "ProductIdDetail.CategoryIdDetail.ParentIdDetail"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to join. Available: Products, Products.Brands, Products.Brands.Organizations, Products.Categories, Products.Categories.Categories, Products.Users, Users",
+            "in": "query",
+            "name": "joins",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Products",
+                "Products.Brands",
+                "Products.Brands.Organizations",
+                "Products.Categories",
+                "Products.Categories.Categories",
+                "Products.Users",
+                "Users"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ProductReviews"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Search ProductReviews",
+        "tags": [
+          "ProductReviews"
+        ]
+      },
+      "post": {
+        "description": "Create a new ProductReviews record.",
+        "operationId": "postProductReviews",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductReviewsForm"
+              }
+            }
+          },
+          "description": "New ProductReviews data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductReviews"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "409": {
+            "description": "Conflict — duplicate unique key"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Create ProductReviews",
+        "tags": [
+          "ProductReviews"
+        ]
+      }
+    },
+    "/api/v1/product-reviews/bulk/": {
+      "post": {
+        "description": "Create multiple ProductReviews records.",
+        "operationId": "postProductReviewsBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/ProductReviewsForm"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Array of create payloads",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ProductReviews"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Bulk Create ProductReviews",
+        "tags": [
+          "ProductReviews"
+        ]
+      },
+      "put": {
+        "description": "Batch update multiple records.",
+        "operationId": "putProductReviewsBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/ProductReviewsBatchUpdate"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Array of { pathParams, data }",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Bulk Update ProductReviews",
+        "tags": [
+          "ProductReviews"
+        ]
+      }
+    },
+    "/api/v1/product-reviews/pagination": {
+      "get": {
+        "description": "Paginated listing.",
+        "operationId": "getProductReviewsPagination",
+        "parameters": [
+          {
+            "description": "Page number (default: 1)",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Max results (default: 10)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field. Prefix - for DESC.",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated columns to select",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to preload. Available: ProductIdDetail, ProductIdDetail.ProductVariantsList, ProductIdDetail.ProductVariantsList.ProductIdDetail, ProductIdDetail.ProductMediaList, ProductIdDetail.ProductMediaList.ProductIdDetail, ProductIdDetail.ProductReviewsList, ProductIdDetail.ProductReviewsList.ProductIdDetail, ProductIdDetail.CollectionProductsList, ProductIdDetail.CollectionProductsList.CollectionIdDetail, ProductIdDetail.CollectionProductsList.ProductIdDetail, ProductIdDetail.ProductTagsList, ProductIdDetail.ProductTagsList.ProductIdDetail, ProductIdDetail.ProductTagsList.TagIdDetail, ProductIdDetail.PriceHistoryList, ProductIdDetail.PriceHistoryList.ProductIdDetail, ProductIdDetail.BrandIdDetail, ProductIdDetail.BrandIdDetail.ProductsList, ProductIdDetail.CategoryIdDetail, ProductIdDetail.CategoryIdDetail.CategoriesList, ProductIdDetail.CategoryIdDetail.ProductsList, ProductIdDetail.CategoryIdDetail.ParentIdDetail",
+            "in": "query",
+            "name": "preloads",
+            "required": false,
+            "schema": {
+              "enum": [
+                "ProductIdDetail",
+                "ProductIdDetail.ProductVariantsList",
+                "ProductIdDetail.ProductVariantsList.ProductIdDetail",
+                "ProductIdDetail.ProductMediaList",
+                "ProductIdDetail.ProductMediaList.ProductIdDetail",
+                "ProductIdDetail.ProductReviewsList",
+                "ProductIdDetail.ProductReviewsList.ProductIdDetail",
+                "ProductIdDetail.CollectionProductsList",
+                "ProductIdDetail.CollectionProductsList.CollectionIdDetail",
+                "ProductIdDetail.CollectionProductsList.ProductIdDetail",
+                "ProductIdDetail.ProductTagsList",
+                "ProductIdDetail.ProductTagsList.ProductIdDetail",
+                "ProductIdDetail.ProductTagsList.TagIdDetail",
+                "ProductIdDetail.PriceHistoryList",
+                "ProductIdDetail.PriceHistoryList.ProductIdDetail",
+                "ProductIdDetail.BrandIdDetail",
+                "ProductIdDetail.BrandIdDetail.ProductsList",
+                "ProductIdDetail.CategoryIdDetail",
+                "ProductIdDetail.CategoryIdDetail.CategoriesList",
+                "ProductIdDetail.CategoryIdDetail.ProductsList",
+                "ProductIdDetail.CategoryIdDetail.ParentIdDetail"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to join. Available: Products, Products.Brands, Products.Brands.Organizations, Products.Categories, Products.Categories.Categories, Products.Users, Users",
+            "in": "query",
+            "name": "joins",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Products",
+                "Products.Brands",
+                "Products.Brands.Organizations",
+                "Products.Categories",
+                "Products.Categories.Categories",
+                "Products.Users",
+                "Users"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse_ProductReviews"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Paginate ProductReviews",
+        "tags": [
+          "ProductReviews"
+        ]
+      },
+      "post": {
+        "description": "Paginated listing with body filters.",
+        "operationId": "postProductReviewsPagination",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationBody"
+              }
+            }
+          },
+          "description": "Pagination parameters",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse_ProductReviews"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Paginate ProductReviews (POST)",
+        "tags": [
+          "ProductReviews"
+        ]
+      }
+    },
+    "/api/v1/product-reviews/search": {
+      "post": {
+        "description": "Search with body filters.",
+        "operationId": "postProductReviewsSearch",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchBody"
+              }
+            }
+          },
+          "description": "Search parameters",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ProductReviews"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Search ProductReviews (POST)",
+        "tags": [
+          "ProductReviews"
+        ]
+      }
+    },
+    "/api/v1/product-reviews/with-id/{Id}": {
+      "delete": {
+        "description": "Soft-delete.",
+        "operationId": "deleteProductReviewsById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Delete ProductReviews",
+        "tags": [
+          "ProductReviews"
+        ]
+      },
+      "get": {
+        "description": "Retrieve a single record.",
+        "operationId": "getProductReviewsById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductReviews"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Find ProductReviews by ID",
+        "tags": [
+          "ProductReviews"
+        ]
+      },
+      "put": {
+        "description": "Partial update.",
+        "operationId": "putProductReviewsById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductReviewsEdit"
+              }
+            }
+          },
+          "description": "Fields to update",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Update ProductReviews",
+        "tags": [
+          "ProductReviews"
+        ]
+      }
+    }
+  },
+  "servers": [
+    {
+      "description": "Development",
+      "url": "http://localhost:3000"
+    }
+  ]
+}

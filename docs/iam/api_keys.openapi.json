@@ -1,0 +1,1047 @@
+{
+  "components": {
+    "schemas": {
+      "ApiKeys": {
+        "properties": {
+          "createdAt": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "expiresAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "keyHash": {
+            "type": "string"
+          },
+          "lastUsedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "organizationId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "scopes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "userId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "keyHash",
+          "userId",
+          "organizationId",
+          "scopes",
+          "isActive",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
+      "ApiKeysBatchUpdate": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ApiKeysEdit"
+          },
+          "pathParams": {
+            "properties": {
+              "id": {
+                "format": "uuid",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "pathParams",
+          "data"
+        ],
+        "type": "object"
+      },
+      "ApiKeysEdit": {
+        "description": "Partial update — all fields optional",
+        "properties": {
+          "expiresAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "keyHash": {
+            "type": "string"
+          },
+          "lastUsedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "organizationId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "scopes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "userId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "ApiKeysForm": {
+        "description": "Create request payload",
+        "properties": {
+          "expiresAt": {
+            "example": "2026-01-15T10:30:00Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "isActive": {
+            "example": true,
+            "type": "boolean"
+          },
+          "keyHash": {
+            "example": "example_key_hash",
+            "type": "string"
+          },
+          "lastUsedAt": {
+            "example": "2026-01-15T10:30:00Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "name": {
+            "example": "example_name",
+            "type": "string"
+          },
+          "organizationId": {
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "format": "uuid",
+            "type": "string"
+          },
+          "scopes": {
+            "example": [
+              "value1",
+              "value2"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "userId": {
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "keyHash",
+          "userId",
+          "organizationId"
+        ],
+        "type": "object"
+      },
+      "PaginationBody": {
+        "properties": {
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "filters": {
+            "description": "Filter rules: [[field, op, value], ...]",
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "page": {
+            "default": 1,
+            "type": "integer"
+          },
+          "preloads": {
+            "items": {
+              "enum": [
+                "UserIdDetail",
+                "UserIdDetail.UserRolesList",
+                "UserIdDetail.UserRolesList.UserIdDetail",
+                "UserIdDetail.UserRolesList.RoleIdDetail",
+                "UserIdDetail.UserRolesList.GrantedByDetail",
+                "UserIdDetail.TeamsList",
+                "UserIdDetail.TeamsList.TeamMembersList",
+                "UserIdDetail.TeamsList.OrganizationIdDetail",
+                "UserIdDetail.TeamsList.LeadIdDetail",
+                "UserIdDetail.TeamMembersList",
+                "UserIdDetail.TeamMembersList.TeamIdDetail",
+                "UserIdDetail.TeamMembersList.UserIdDetail",
+                "UserIdDetail.ApiKeysList",
+                "UserIdDetail.ApiKeysList.UserIdDetail",
+                "UserIdDetail.ApiKeysList.OrganizationIdDetail",
+                "UserIdDetail.SessionsList",
+                "UserIdDetail.SessionsList.UserIdDetail",
+                "UserIdDetail.InvitationsList",
+                "UserIdDetail.InvitationsList.OrganizationIdDetail",
+                "UserIdDetail.InvitationsList.InvitedByDetail",
+                "UserIdDetail.InvitationsList.RoleIdDetail",
+                "UserIdDetail.OrganizationIdDetail",
+                "UserIdDetail.OrganizationIdDetail.OrganizationsList",
+                "UserIdDetail.OrganizationIdDetail.UsersList",
+                "UserIdDetail.OrganizationIdDetail.RolesList",
+                "UserIdDetail.OrganizationIdDetail.TeamsList",
+                "UserIdDetail.OrganizationIdDetail.ApiKeysList",
+                "UserIdDetail.OrganizationIdDetail.InvitationsList",
+                "UserIdDetail.OrganizationIdDetail.ParentIdDetail",
+                "OrganizationIdDetail",
+                "OrganizationIdDetail.OrganizationsList",
+                "OrganizationIdDetail.UsersList",
+                "OrganizationIdDetail.UsersList.UserRolesList",
+                "OrganizationIdDetail.UsersList.TeamsList",
+                "OrganizationIdDetail.UsersList.TeamMembersList",
+                "OrganizationIdDetail.UsersList.ApiKeysList",
+                "OrganizationIdDetail.UsersList.SessionsList",
+                "OrganizationIdDetail.UsersList.InvitationsList",
+                "OrganizationIdDetail.UsersList.OrganizationIdDetail",
+                "OrganizationIdDetail.RolesList",
+                "OrganizationIdDetail.RolesList.RolePermissionsList",
+                "OrganizationIdDetail.RolesList.UserRolesList",
+                "OrganizationIdDetail.RolesList.InvitationsList",
+                "OrganizationIdDetail.RolesList.OrganizationIdDetail",
+                "OrganizationIdDetail.TeamsList",
+                "OrganizationIdDetail.TeamsList.TeamMembersList",
+                "OrganizationIdDetail.TeamsList.OrganizationIdDetail",
+                "OrganizationIdDetail.TeamsList.LeadIdDetail",
+                "OrganizationIdDetail.ApiKeysList",
+                "OrganizationIdDetail.ApiKeysList.UserIdDetail",
+                "OrganizationIdDetail.ApiKeysList.OrganizationIdDetail",
+                "OrganizationIdDetail.InvitationsList",
+                "OrganizationIdDetail.InvitationsList.OrganizationIdDetail",
+                "OrganizationIdDetail.InvitationsList.InvitedByDetail",
+                "OrganizationIdDetail.InvitationsList.RoleIdDetail",
+                "OrganizationIdDetail.ParentIdDetail"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "size": {
+            "default": 10,
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "PaginationResponse_ApiKeys": {
+        "properties": {
+          "first": {
+            "type": "boolean"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ApiKeys"
+            },
+            "type": "array"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "maxPage": {
+            "type": "integer"
+          },
+          "page": {
+            "type": "integer"
+          },
+          "size": {
+            "type": "integer"
+          },
+          "total": {
+            "type": "integer"
+          },
+          "totalPages": {
+            "type": "integer"
+          },
+          "visible": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "SearchBody": {
+        "properties": {
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "filters": {
+            "description": "Filter rules: [[field, op, value], ...]",
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "preloads": {
+            "items": {
+              "enum": [
+                "UserIdDetail",
+                "UserIdDetail.UserRolesList",
+                "UserIdDetail.UserRolesList.UserIdDetail",
+                "UserIdDetail.UserRolesList.RoleIdDetail",
+                "UserIdDetail.UserRolesList.GrantedByDetail",
+                "UserIdDetail.TeamsList",
+                "UserIdDetail.TeamsList.TeamMembersList",
+                "UserIdDetail.TeamsList.OrganizationIdDetail",
+                "UserIdDetail.TeamsList.LeadIdDetail",
+                "UserIdDetail.TeamMembersList",
+                "UserIdDetail.TeamMembersList.TeamIdDetail",
+                "UserIdDetail.TeamMembersList.UserIdDetail",
+                "UserIdDetail.ApiKeysList",
+                "UserIdDetail.ApiKeysList.UserIdDetail",
+                "UserIdDetail.ApiKeysList.OrganizationIdDetail",
+                "UserIdDetail.SessionsList",
+                "UserIdDetail.SessionsList.UserIdDetail",
+                "UserIdDetail.InvitationsList",
+                "UserIdDetail.InvitationsList.OrganizationIdDetail",
+                "UserIdDetail.InvitationsList.InvitedByDetail",
+                "UserIdDetail.InvitationsList.RoleIdDetail",
+                "UserIdDetail.OrganizationIdDetail",
+                "UserIdDetail.OrganizationIdDetail.OrganizationsList",
+                "UserIdDetail.OrganizationIdDetail.UsersList",
+                "UserIdDetail.OrganizationIdDetail.RolesList",
+                "UserIdDetail.OrganizationIdDetail.TeamsList",
+                "UserIdDetail.OrganizationIdDetail.ApiKeysList",
+                "UserIdDetail.OrganizationIdDetail.InvitationsList",
+                "UserIdDetail.OrganizationIdDetail.ParentIdDetail",
+                "OrganizationIdDetail",
+                "OrganizationIdDetail.OrganizationsList",
+                "OrganizationIdDetail.UsersList",
+                "OrganizationIdDetail.UsersList.UserRolesList",
+                "OrganizationIdDetail.UsersList.TeamsList",
+                "OrganizationIdDetail.UsersList.TeamMembersList",
+                "OrganizationIdDetail.UsersList.ApiKeysList",
+                "OrganizationIdDetail.UsersList.SessionsList",
+                "OrganizationIdDetail.UsersList.InvitationsList",
+                "OrganizationIdDetail.UsersList.OrganizationIdDetail",
+                "OrganizationIdDetail.RolesList",
+                "OrganizationIdDetail.RolesList.RolePermissionsList",
+                "OrganizationIdDetail.RolesList.UserRolesList",
+                "OrganizationIdDetail.RolesList.InvitationsList",
+                "OrganizationIdDetail.RolesList.OrganizationIdDetail",
+                "OrganizationIdDetail.TeamsList",
+                "OrganizationIdDetail.TeamsList.TeamMembersList",
+                "OrganizationIdDetail.TeamsList.OrganizationIdDetail",
+                "OrganizationIdDetail.TeamsList.LeadIdDetail",
+                "OrganizationIdDetail.ApiKeysList",
+                "OrganizationIdDetail.ApiKeysList.UserIdDetail",
+                "OrganizationIdDetail.ApiKeysList.OrganizationIdDetail",
+                "OrganizationIdDetail.InvitationsList",
+                "OrganizationIdDetail.InvitationsList.OrganizationIdDetail",
+                "OrganizationIdDetail.InvitationsList.InvitedByDetail",
+                "OrganizationIdDetail.InvitationsList.RoleIdDetail",
+                "OrganizationIdDetail.ParentIdDetail"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "size": {
+            "default": 10,
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "scheme": "bearer",
+        "type": "http"
+      },
+      "companyId": {
+        "in": "header",
+        "name": "x-company",
+        "type": "apiKey"
+      }
+    }
+  },
+  "info": {
+    "description": "Auto-generated OpenAPI spec for `iam.api_keys`",
+    "title": "ApiKeys API",
+    "version": "1.0.0"
+  },
+  "openapi": "3.0.3",
+  "paths": {
+    "/api/v1/api-keys/": {
+      "get": {
+        "description": "Retrieve list filtered by query parameters.",
+        "operationId": "getApiKeys",
+        "parameters": [
+          {
+            "description": "Max results (default: 10)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field. Prefix - for DESC.",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated columns to select",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to preload. Available: UserIdDetail, UserIdDetail.UserRolesList, UserIdDetail.UserRolesList.UserIdDetail, UserIdDetail.UserRolesList.RoleIdDetail, UserIdDetail.UserRolesList.GrantedByDetail, UserIdDetail.TeamsList, UserIdDetail.TeamsList.TeamMembersList, UserIdDetail.TeamsList.OrganizationIdDetail, UserIdDetail.TeamsList.LeadIdDetail, UserIdDetail.TeamMembersList, UserIdDetail.TeamMembersList.TeamIdDetail, UserIdDetail.TeamMembersList.UserIdDetail, UserIdDetail.ApiKeysList, UserIdDetail.ApiKeysList.UserIdDetail, UserIdDetail.ApiKeysList.OrganizationIdDetail, UserIdDetail.SessionsList, UserIdDetail.SessionsList.UserIdDetail, UserIdDetail.InvitationsList, UserIdDetail.InvitationsList.OrganizationIdDetail, UserIdDetail.InvitationsList.InvitedByDetail, UserIdDetail.InvitationsList.RoleIdDetail, UserIdDetail.OrganizationIdDetail, UserIdDetail.OrganizationIdDetail.OrganizationsList, UserIdDetail.OrganizationIdDetail.UsersList, UserIdDetail.OrganizationIdDetail.RolesList, UserIdDetail.OrganizationIdDetail.TeamsList, UserIdDetail.OrganizationIdDetail.ApiKeysList, UserIdDetail.OrganizationIdDetail.InvitationsList, UserIdDetail.OrganizationIdDetail.ParentIdDetail, OrganizationIdDetail, OrganizationIdDetail.OrganizationsList, OrganizationIdDetail.UsersList, OrganizationIdDetail.UsersList.UserRolesList, OrganizationIdDetail.UsersList.TeamsList, OrganizationIdDetail.UsersList.TeamMembersList, OrganizationIdDetail.UsersList.ApiKeysList, OrganizationIdDetail.UsersList.SessionsList, OrganizationIdDetail.UsersList.InvitationsList, OrganizationIdDetail.UsersList.OrganizationIdDetail, OrganizationIdDetail.RolesList, OrganizationIdDetail.RolesList.RolePermissionsList, OrganizationIdDetail.RolesList.UserRolesList, OrganizationIdDetail.RolesList.InvitationsList, OrganizationIdDetail.RolesList.OrganizationIdDetail, OrganizationIdDetail.TeamsList, OrganizationIdDetail.TeamsList.TeamMembersList, OrganizationIdDetail.TeamsList.OrganizationIdDetail, OrganizationIdDetail.TeamsList.LeadIdDetail, OrganizationIdDetail.ApiKeysList, OrganizationIdDetail.ApiKeysList.UserIdDetail, OrganizationIdDetail.ApiKeysList.OrganizationIdDetail, OrganizationIdDetail.InvitationsList, OrganizationIdDetail.InvitationsList.OrganizationIdDetail, OrganizationIdDetail.InvitationsList.InvitedByDetail, OrganizationIdDetail.InvitationsList.RoleIdDetail, OrganizationIdDetail.ParentIdDetail",
+            "in": "query",
+            "name": "preloads",
+            "required": false,
+            "schema": {
+              "enum": [
+                "UserIdDetail",
+                "UserIdDetail.UserRolesList",
+                "UserIdDetail.UserRolesList.UserIdDetail",
+                "UserIdDetail.UserRolesList.RoleIdDetail",
+                "UserIdDetail.UserRolesList.GrantedByDetail",
+                "UserIdDetail.TeamsList",
+                "UserIdDetail.TeamsList.TeamMembersList",
+                "UserIdDetail.TeamsList.OrganizationIdDetail",
+                "UserIdDetail.TeamsList.LeadIdDetail",
+                "UserIdDetail.TeamMembersList",
+                "UserIdDetail.TeamMembersList.TeamIdDetail",
+                "UserIdDetail.TeamMembersList.UserIdDetail",
+                "UserIdDetail.ApiKeysList",
+                "UserIdDetail.ApiKeysList.UserIdDetail",
+                "UserIdDetail.ApiKeysList.OrganizationIdDetail",
+                "UserIdDetail.SessionsList",
+                "UserIdDetail.SessionsList.UserIdDetail",
+                "UserIdDetail.InvitationsList",
+                "UserIdDetail.InvitationsList.OrganizationIdDetail",
+                "UserIdDetail.InvitationsList.InvitedByDetail",
+                "UserIdDetail.InvitationsList.RoleIdDetail",
+                "UserIdDetail.OrganizationIdDetail",
+                "UserIdDetail.OrganizationIdDetail.OrganizationsList",
+                "UserIdDetail.OrganizationIdDetail.UsersList",
+                "UserIdDetail.OrganizationIdDetail.RolesList",
+                "UserIdDetail.OrganizationIdDetail.TeamsList",
+                "UserIdDetail.OrganizationIdDetail.ApiKeysList",
+                "UserIdDetail.OrganizationIdDetail.InvitationsList",
+                "UserIdDetail.OrganizationIdDetail.ParentIdDetail",
+                "OrganizationIdDetail",
+                "OrganizationIdDetail.OrganizationsList",
+                "OrganizationIdDetail.UsersList",
+                "OrganizationIdDetail.UsersList.UserRolesList",
+                "OrganizationIdDetail.UsersList.TeamsList",
+                "OrganizationIdDetail.UsersList.TeamMembersList",
+                "OrganizationIdDetail.UsersList.ApiKeysList",
+                "OrganizationIdDetail.UsersList.SessionsList",
+                "OrganizationIdDetail.UsersList.InvitationsList",
+                "OrganizationIdDetail.UsersList.OrganizationIdDetail",
+                "OrganizationIdDetail.RolesList",
+                "OrganizationIdDetail.RolesList.RolePermissionsList",
+                "OrganizationIdDetail.RolesList.UserRolesList",
+                "OrganizationIdDetail.RolesList.InvitationsList",
+                "OrganizationIdDetail.RolesList.OrganizationIdDetail",
+                "OrganizationIdDetail.TeamsList",
+                "OrganizationIdDetail.TeamsList.TeamMembersList",
+                "OrganizationIdDetail.TeamsList.OrganizationIdDetail",
+                "OrganizationIdDetail.TeamsList.LeadIdDetail",
+                "OrganizationIdDetail.ApiKeysList",
+                "OrganizationIdDetail.ApiKeysList.UserIdDetail",
+                "OrganizationIdDetail.ApiKeysList.OrganizationIdDetail",
+                "OrganizationIdDetail.InvitationsList",
+                "OrganizationIdDetail.InvitationsList.OrganizationIdDetail",
+                "OrganizationIdDetail.InvitationsList.InvitedByDetail",
+                "OrganizationIdDetail.InvitationsList.RoleIdDetail",
+                "OrganizationIdDetail.ParentIdDetail"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to join. Available: Users, Users.Organizations, Users.Organizations.Organizations, Organizations, Organizations.Organizations",
+            "in": "query",
+            "name": "joins",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Users",
+                "Users.Organizations",
+                "Users.Organizations.Organizations",
+                "Organizations",
+                "Organizations.Organizations"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ApiKeys"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Search ApiKeys",
+        "tags": [
+          "ApiKeys"
+        ]
+      },
+      "post": {
+        "description": "Create a new ApiKeys record.",
+        "operationId": "postApiKeys",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiKeysForm"
+              }
+            }
+          },
+          "description": "New ApiKeys data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiKeys"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "409": {
+            "description": "Conflict — duplicate unique key"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Create ApiKeys",
+        "tags": [
+          "ApiKeys"
+        ]
+      }
+    },
+    "/api/v1/api-keys/bulk/": {
+      "post": {
+        "description": "Create multiple ApiKeys records.",
+        "operationId": "postApiKeysBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/ApiKeysForm"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Array of create payloads",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ApiKeys"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Bulk Create ApiKeys",
+        "tags": [
+          "ApiKeys"
+        ]
+      },
+      "put": {
+        "description": "Batch update multiple records.",
+        "operationId": "putApiKeysBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/ApiKeysBatchUpdate"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Array of { pathParams, data }",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Bulk Update ApiKeys",
+        "tags": [
+          "ApiKeys"
+        ]
+      }
+    },
+    "/api/v1/api-keys/pagination": {
+      "get": {
+        "description": "Paginated listing.",
+        "operationId": "getApiKeysPagination",
+        "parameters": [
+          {
+            "description": "Page number (default: 1)",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Max results (default: 10)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field. Prefix - for DESC.",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated columns to select",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to preload. Available: UserIdDetail, UserIdDetail.UserRolesList, UserIdDetail.UserRolesList.UserIdDetail, UserIdDetail.UserRolesList.RoleIdDetail, UserIdDetail.UserRolesList.GrantedByDetail, UserIdDetail.TeamsList, UserIdDetail.TeamsList.TeamMembersList, UserIdDetail.TeamsList.OrganizationIdDetail, UserIdDetail.TeamsList.LeadIdDetail, UserIdDetail.TeamMembersList, UserIdDetail.TeamMembersList.TeamIdDetail, UserIdDetail.TeamMembersList.UserIdDetail, UserIdDetail.ApiKeysList, UserIdDetail.ApiKeysList.UserIdDetail, UserIdDetail.ApiKeysList.OrganizationIdDetail, UserIdDetail.SessionsList, UserIdDetail.SessionsList.UserIdDetail, UserIdDetail.InvitationsList, UserIdDetail.InvitationsList.OrganizationIdDetail, UserIdDetail.InvitationsList.InvitedByDetail, UserIdDetail.InvitationsList.RoleIdDetail, UserIdDetail.OrganizationIdDetail, UserIdDetail.OrganizationIdDetail.OrganizationsList, UserIdDetail.OrganizationIdDetail.UsersList, UserIdDetail.OrganizationIdDetail.RolesList, UserIdDetail.OrganizationIdDetail.TeamsList, UserIdDetail.OrganizationIdDetail.ApiKeysList, UserIdDetail.OrganizationIdDetail.InvitationsList, UserIdDetail.OrganizationIdDetail.ParentIdDetail, OrganizationIdDetail, OrganizationIdDetail.OrganizationsList, OrganizationIdDetail.UsersList, OrganizationIdDetail.UsersList.UserRolesList, OrganizationIdDetail.UsersList.TeamsList, OrganizationIdDetail.UsersList.TeamMembersList, OrganizationIdDetail.UsersList.ApiKeysList, OrganizationIdDetail.UsersList.SessionsList, OrganizationIdDetail.UsersList.InvitationsList, OrganizationIdDetail.UsersList.OrganizationIdDetail, OrganizationIdDetail.RolesList, OrganizationIdDetail.RolesList.RolePermissionsList, OrganizationIdDetail.RolesList.UserRolesList, OrganizationIdDetail.RolesList.InvitationsList, OrganizationIdDetail.RolesList.OrganizationIdDetail, OrganizationIdDetail.TeamsList, OrganizationIdDetail.TeamsList.TeamMembersList, OrganizationIdDetail.TeamsList.OrganizationIdDetail, OrganizationIdDetail.TeamsList.LeadIdDetail, OrganizationIdDetail.ApiKeysList, OrganizationIdDetail.ApiKeysList.UserIdDetail, OrganizationIdDetail.ApiKeysList.OrganizationIdDetail, OrganizationIdDetail.InvitationsList, OrganizationIdDetail.InvitationsList.OrganizationIdDetail, OrganizationIdDetail.InvitationsList.InvitedByDetail, OrganizationIdDetail.InvitationsList.RoleIdDetail, OrganizationIdDetail.ParentIdDetail",
+            "in": "query",
+            "name": "preloads",
+            "required": false,
+            "schema": {
+              "enum": [
+                "UserIdDetail",
+                "UserIdDetail.UserRolesList",
+                "UserIdDetail.UserRolesList.UserIdDetail",
+                "UserIdDetail.UserRolesList.RoleIdDetail",
+                "UserIdDetail.UserRolesList.GrantedByDetail",
+                "UserIdDetail.TeamsList",
+                "UserIdDetail.TeamsList.TeamMembersList",
+                "UserIdDetail.TeamsList.OrganizationIdDetail",
+                "UserIdDetail.TeamsList.LeadIdDetail",
+                "UserIdDetail.TeamMembersList",
+                "UserIdDetail.TeamMembersList.TeamIdDetail",
+                "UserIdDetail.TeamMembersList.UserIdDetail",
+                "UserIdDetail.ApiKeysList",
+                "UserIdDetail.ApiKeysList.UserIdDetail",
+                "UserIdDetail.ApiKeysList.OrganizationIdDetail",
+                "UserIdDetail.SessionsList",
+                "UserIdDetail.SessionsList.UserIdDetail",
+                "UserIdDetail.InvitationsList",
+                "UserIdDetail.InvitationsList.OrganizationIdDetail",
+                "UserIdDetail.InvitationsList.InvitedByDetail",
+                "UserIdDetail.InvitationsList.RoleIdDetail",
+                "UserIdDetail.OrganizationIdDetail",
+                "UserIdDetail.OrganizationIdDetail.OrganizationsList",
+                "UserIdDetail.OrganizationIdDetail.UsersList",
+                "UserIdDetail.OrganizationIdDetail.RolesList",
+                "UserIdDetail.OrganizationIdDetail.TeamsList",
+                "UserIdDetail.OrganizationIdDetail.ApiKeysList",
+                "UserIdDetail.OrganizationIdDetail.InvitationsList",
+                "UserIdDetail.OrganizationIdDetail.ParentIdDetail",
+                "OrganizationIdDetail",
+                "OrganizationIdDetail.OrganizationsList",
+                "OrganizationIdDetail.UsersList",
+                "OrganizationIdDetail.UsersList.UserRolesList",
+                "OrganizationIdDetail.UsersList.TeamsList",
+                "OrganizationIdDetail.UsersList.TeamMembersList",
+                "OrganizationIdDetail.UsersList.ApiKeysList",
+                "OrganizationIdDetail.UsersList.SessionsList",
+                "OrganizationIdDetail.UsersList.InvitationsList",
+                "OrganizationIdDetail.UsersList.OrganizationIdDetail",
+                "OrganizationIdDetail.RolesList",
+                "OrganizationIdDetail.RolesList.RolePermissionsList",
+                "OrganizationIdDetail.RolesList.UserRolesList",
+                "OrganizationIdDetail.RolesList.InvitationsList",
+                "OrganizationIdDetail.RolesList.OrganizationIdDetail",
+                "OrganizationIdDetail.TeamsList",
+                "OrganizationIdDetail.TeamsList.TeamMembersList",
+                "OrganizationIdDetail.TeamsList.OrganizationIdDetail",
+                "OrganizationIdDetail.TeamsList.LeadIdDetail",
+                "OrganizationIdDetail.ApiKeysList",
+                "OrganizationIdDetail.ApiKeysList.UserIdDetail",
+                "OrganizationIdDetail.ApiKeysList.OrganizationIdDetail",
+                "OrganizationIdDetail.InvitationsList",
+                "OrganizationIdDetail.InvitationsList.OrganizationIdDetail",
+                "OrganizationIdDetail.InvitationsList.InvitedByDetail",
+                "OrganizationIdDetail.InvitationsList.RoleIdDetail",
+                "OrganizationIdDetail.ParentIdDetail"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to join. Available: Users, Users.Organizations, Users.Organizations.Organizations, Organizations, Organizations.Organizations",
+            "in": "query",
+            "name": "joins",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Users",
+                "Users.Organizations",
+                "Users.Organizations.Organizations",
+                "Organizations",
+                "Organizations.Organizations"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse_ApiKeys"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Paginate ApiKeys",
+        "tags": [
+          "ApiKeys"
+        ]
+      },
+      "post": {
+        "description": "Paginated listing with body filters.",
+        "operationId": "postApiKeysPagination",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationBody"
+              }
+            }
+          },
+          "description": "Pagination parameters",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse_ApiKeys"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Paginate ApiKeys (POST)",
+        "tags": [
+          "ApiKeys"
+        ]
+      }
+    },
+    "/api/v1/api-keys/search": {
+      "post": {
+        "description": "Search with body filters.",
+        "operationId": "postApiKeysSearch",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchBody"
+              }
+            }
+          },
+          "description": "Search parameters",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ApiKeys"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Search ApiKeys (POST)",
+        "tags": [
+          "ApiKeys"
+        ]
+      }
+    },
+    "/api/v1/api-keys/with-id/{Id}": {
+      "delete": {
+        "description": "Soft-delete.",
+        "operationId": "deleteApiKeysById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Delete ApiKeys",
+        "tags": [
+          "ApiKeys"
+        ]
+      },
+      "get": {
+        "description": "Retrieve a single record.",
+        "operationId": "getApiKeysById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiKeys"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Find ApiKeys by ID",
+        "tags": [
+          "ApiKeys"
+        ]
+      },
+      "put": {
+        "description": "Partial update.",
+        "operationId": "putApiKeysById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApiKeysEdit"
+              }
+            }
+          },
+          "description": "Fields to update",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Update ApiKeys",
+        "tags": [
+          "ApiKeys"
+        ]
+      }
+    }
+  },
+  "servers": [
+    {
+      "description": "Development",
+      "url": "http://localhost:3000"
+    }
+  ]
+}

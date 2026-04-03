@@ -1,0 +1,800 @@
+{
+  "components": {
+    "schemas": {
+      "PaginationBody": {
+        "properties": {
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "filters": {
+            "description": "Filter rules: [[field, op, value], ...]",
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "page": {
+            "default": 1,
+            "type": "integer"
+          },
+          "preloads": {
+            "items": {
+              "enum": [
+                "ShipmentIdDetail",
+                "ShipmentIdDetail.ShipmentItemsList",
+                "ShipmentIdDetail.ShipmentItemsList.ShipmentIdDetail",
+                "ShipmentIdDetail.ShipmentTrackingList",
+                "ShipmentIdDetail.ShipmentTrackingList.ShipmentIdDetail",
+                "ShipmentIdDetail.WarehouseIdDetail",
+                "ShipmentIdDetail.WarehouseIdDetail.StorageZonesList",
+                "ShipmentIdDetail.WarehouseIdDetail.InventoryList",
+                "ShipmentIdDetail.WarehouseIdDetail.PurchaseOrdersList",
+                "ShipmentIdDetail.WarehouseIdDetail.ShipmentsList"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "size": {
+            "default": 10,
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "PaginationResponse_ShipmentItems": {
+        "properties": {
+          "first": {
+            "type": "boolean"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ShipmentItems"
+            },
+            "type": "array"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "maxPage": {
+            "type": "integer"
+          },
+          "page": {
+            "type": "integer"
+          },
+          "size": {
+            "type": "integer"
+          },
+          "total": {
+            "type": "integer"
+          },
+          "totalPages": {
+            "type": "integer"
+          },
+          "visible": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "SearchBody": {
+        "properties": {
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "filters": {
+            "description": "Filter rules: [[field, op, value], ...]",
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "preloads": {
+            "items": {
+              "enum": [
+                "ShipmentIdDetail",
+                "ShipmentIdDetail.ShipmentItemsList",
+                "ShipmentIdDetail.ShipmentItemsList.ShipmentIdDetail",
+                "ShipmentIdDetail.ShipmentTrackingList",
+                "ShipmentIdDetail.ShipmentTrackingList.ShipmentIdDetail",
+                "ShipmentIdDetail.WarehouseIdDetail",
+                "ShipmentIdDetail.WarehouseIdDetail.StorageZonesList",
+                "ShipmentIdDetail.WarehouseIdDetail.InventoryList",
+                "ShipmentIdDetail.WarehouseIdDetail.PurchaseOrdersList",
+                "ShipmentIdDetail.WarehouseIdDetail.ShipmentsList"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "size": {
+            "default": 10,
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "ShipmentItems": {
+        "properties": {
+          "createdAt": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "orderItemId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "quantity": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "shipmentId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "shipmentId",
+          "orderItemId",
+          "quantity",
+          "createdAt"
+        ],
+        "type": "object"
+      },
+      "ShipmentItemsBatchUpdate": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ShipmentItemsEdit"
+          },
+          "pathParams": {
+            "properties": {
+              "id": {
+                "format": "uuid",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "pathParams",
+          "data"
+        ],
+        "type": "object"
+      },
+      "ShipmentItemsEdit": {
+        "description": "Partial update — all fields optional",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "orderItemId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "quantity": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "shipmentId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "ShipmentItemsForm": {
+        "description": "Create request payload",
+        "properties": {
+          "name": {
+            "example": "example_name",
+            "type": "string"
+          },
+          "orderItemId": {
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "format": "uuid",
+            "type": "string"
+          },
+          "quantity": {
+            "example": 1,
+            "format": "int32",
+            "type": "integer"
+          },
+          "shipmentId": {
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "shipmentId",
+          "orderItemId"
+        ],
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "scheme": "bearer",
+        "type": "http"
+      },
+      "companyId": {
+        "in": "header",
+        "name": "x-company",
+        "type": "apiKey"
+      }
+    }
+  },
+  "info": {
+    "description": "Auto-generated OpenAPI spec for `logistics.shipment_items`",
+    "title": "ShipmentItems API",
+    "version": "1.0.0"
+  },
+  "openapi": "3.0.3",
+  "paths": {
+    "/api/v1/shipment-items/": {
+      "get": {
+        "description": "Retrieve list filtered by query parameters.",
+        "operationId": "getShipmentItems",
+        "parameters": [
+          {
+            "description": "Max results (default: 10)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field. Prefix - for DESC.",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated columns to select",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to preload. Available: ShipmentIdDetail, ShipmentIdDetail.ShipmentItemsList, ShipmentIdDetail.ShipmentItemsList.ShipmentIdDetail, ShipmentIdDetail.ShipmentTrackingList, ShipmentIdDetail.ShipmentTrackingList.ShipmentIdDetail, ShipmentIdDetail.WarehouseIdDetail, ShipmentIdDetail.WarehouseIdDetail.StorageZonesList, ShipmentIdDetail.WarehouseIdDetail.InventoryList, ShipmentIdDetail.WarehouseIdDetail.PurchaseOrdersList, ShipmentIdDetail.WarehouseIdDetail.ShipmentsList",
+            "in": "query",
+            "name": "preloads",
+            "required": false,
+            "schema": {
+              "enum": [
+                "ShipmentIdDetail",
+                "ShipmentIdDetail.ShipmentItemsList",
+                "ShipmentIdDetail.ShipmentItemsList.ShipmentIdDetail",
+                "ShipmentIdDetail.ShipmentTrackingList",
+                "ShipmentIdDetail.ShipmentTrackingList.ShipmentIdDetail",
+                "ShipmentIdDetail.WarehouseIdDetail",
+                "ShipmentIdDetail.WarehouseIdDetail.StorageZonesList",
+                "ShipmentIdDetail.WarehouseIdDetail.InventoryList",
+                "ShipmentIdDetail.WarehouseIdDetail.PurchaseOrdersList",
+                "ShipmentIdDetail.WarehouseIdDetail.ShipmentsList"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to join. Available: Shipments, Shipments.Orders, Shipments.Warehouses, Shipments.Warehouses.Organizations, Shipments.Warehouses.Users, OrderItems",
+            "in": "query",
+            "name": "joins",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Shipments",
+                "Shipments.Orders",
+                "Shipments.Warehouses",
+                "Shipments.Warehouses.Organizations",
+                "Shipments.Warehouses.Users",
+                "OrderItems"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ShipmentItems"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Search ShipmentItems",
+        "tags": [
+          "ShipmentItems"
+        ]
+      },
+      "post": {
+        "description": "Create a new ShipmentItems record.",
+        "operationId": "postShipmentItems",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipmentItemsForm"
+              }
+            }
+          },
+          "description": "New ShipmentItems data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipmentItems"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "409": {
+            "description": "Conflict — duplicate unique key"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Create ShipmentItems",
+        "tags": [
+          "ShipmentItems"
+        ]
+      }
+    },
+    "/api/v1/shipment-items/bulk/": {
+      "post": {
+        "description": "Create multiple ShipmentItems records.",
+        "operationId": "postShipmentItemsBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/ShipmentItemsForm"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Array of create payloads",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ShipmentItems"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Bulk Create ShipmentItems",
+        "tags": [
+          "ShipmentItems"
+        ]
+      },
+      "put": {
+        "description": "Batch update multiple records.",
+        "operationId": "putShipmentItemsBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/ShipmentItemsBatchUpdate"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Array of { pathParams, data }",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Bulk Update ShipmentItems",
+        "tags": [
+          "ShipmentItems"
+        ]
+      }
+    },
+    "/api/v1/shipment-items/pagination": {
+      "get": {
+        "description": "Paginated listing.",
+        "operationId": "getShipmentItemsPagination",
+        "parameters": [
+          {
+            "description": "Page number (default: 1)",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Max results (default: 10)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field. Prefix - for DESC.",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated columns to select",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to preload. Available: ShipmentIdDetail, ShipmentIdDetail.ShipmentItemsList, ShipmentIdDetail.ShipmentItemsList.ShipmentIdDetail, ShipmentIdDetail.ShipmentTrackingList, ShipmentIdDetail.ShipmentTrackingList.ShipmentIdDetail, ShipmentIdDetail.WarehouseIdDetail, ShipmentIdDetail.WarehouseIdDetail.StorageZonesList, ShipmentIdDetail.WarehouseIdDetail.InventoryList, ShipmentIdDetail.WarehouseIdDetail.PurchaseOrdersList, ShipmentIdDetail.WarehouseIdDetail.ShipmentsList",
+            "in": "query",
+            "name": "preloads",
+            "required": false,
+            "schema": {
+              "enum": [
+                "ShipmentIdDetail",
+                "ShipmentIdDetail.ShipmentItemsList",
+                "ShipmentIdDetail.ShipmentItemsList.ShipmentIdDetail",
+                "ShipmentIdDetail.ShipmentTrackingList",
+                "ShipmentIdDetail.ShipmentTrackingList.ShipmentIdDetail",
+                "ShipmentIdDetail.WarehouseIdDetail",
+                "ShipmentIdDetail.WarehouseIdDetail.StorageZonesList",
+                "ShipmentIdDetail.WarehouseIdDetail.InventoryList",
+                "ShipmentIdDetail.WarehouseIdDetail.PurchaseOrdersList",
+                "ShipmentIdDetail.WarehouseIdDetail.ShipmentsList"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to join. Available: Shipments, Shipments.Orders, Shipments.Warehouses, Shipments.Warehouses.Organizations, Shipments.Warehouses.Users, OrderItems",
+            "in": "query",
+            "name": "joins",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Shipments",
+                "Shipments.Orders",
+                "Shipments.Warehouses",
+                "Shipments.Warehouses.Organizations",
+                "Shipments.Warehouses.Users",
+                "OrderItems"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse_ShipmentItems"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Paginate ShipmentItems",
+        "tags": [
+          "ShipmentItems"
+        ]
+      },
+      "post": {
+        "description": "Paginated listing with body filters.",
+        "operationId": "postShipmentItemsPagination",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationBody"
+              }
+            }
+          },
+          "description": "Pagination parameters",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse_ShipmentItems"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Paginate ShipmentItems (POST)",
+        "tags": [
+          "ShipmentItems"
+        ]
+      }
+    },
+    "/api/v1/shipment-items/search": {
+      "post": {
+        "description": "Search with body filters.",
+        "operationId": "postShipmentItemsSearch",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchBody"
+              }
+            }
+          },
+          "description": "Search parameters",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ShipmentItems"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Search ShipmentItems (POST)",
+        "tags": [
+          "ShipmentItems"
+        ]
+      }
+    },
+    "/api/v1/shipment-items/with-id/{Id}": {
+      "delete": {
+        "description": "Soft-delete.",
+        "operationId": "deleteShipmentItemsById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Delete ShipmentItems",
+        "tags": [
+          "ShipmentItems"
+        ]
+      },
+      "get": {
+        "description": "Retrieve a single record.",
+        "operationId": "getShipmentItemsById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShipmentItems"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Find ShipmentItems by ID",
+        "tags": [
+          "ShipmentItems"
+        ]
+      },
+      "put": {
+        "description": "Partial update.",
+        "operationId": "putShipmentItemsById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShipmentItemsEdit"
+              }
+            }
+          },
+          "description": "Fields to update",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Update ShipmentItems",
+        "tags": [
+          "ShipmentItems"
+        ]
+      }
+    }
+  },
+  "servers": [
+    {
+      "description": "Development",
+      "url": "http://localhost:3000"
+    }
+  ]
+}

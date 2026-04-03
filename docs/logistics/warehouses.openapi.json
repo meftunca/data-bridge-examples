@@ -1,0 +1,951 @@
+{
+  "components": {
+    "schemas": {
+      "PaginationBody": {
+        "properties": {
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "filters": {
+            "description": "Filter rules: [[field, op, value], ...]",
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "page": {
+            "default": 1,
+            "type": "integer"
+          },
+          "preloads": {
+            "items": {
+              "enum": [
+                "StorageZonesList",
+                "StorageZonesList.StorageBinsList",
+                "StorageZonesList.StorageBinsList.InventoryList",
+                "StorageZonesList.StorageBinsList.ZoneIdDetail",
+                "StorageZonesList.WarehouseIdDetail",
+                "StorageZonesList.WarehouseIdDetail.StorageZonesList",
+                "StorageZonesList.WarehouseIdDetail.InventoryList",
+                "StorageZonesList.WarehouseIdDetail.PurchaseOrdersList",
+                "StorageZonesList.WarehouseIdDetail.ShipmentsList",
+                "InventoryList",
+                "InventoryList.StockMovementsList",
+                "InventoryList.StockMovementsList.InventoryIdDetail",
+                "InventoryList.WarehouseIdDetail",
+                "InventoryList.WarehouseIdDetail.StorageZonesList",
+                "InventoryList.WarehouseIdDetail.InventoryList",
+                "InventoryList.WarehouseIdDetail.PurchaseOrdersList",
+                "InventoryList.WarehouseIdDetail.ShipmentsList",
+                "InventoryList.BinIdDetail",
+                "InventoryList.BinIdDetail.InventoryList",
+                "InventoryList.BinIdDetail.ZoneIdDetail",
+                "PurchaseOrdersList",
+                "PurchaseOrdersList.PurchaseOrderItemsList",
+                "PurchaseOrdersList.PurchaseOrderItemsList.PurchaseOrderIdDetail",
+                "PurchaseOrdersList.SupplierIdDetail",
+                "PurchaseOrdersList.SupplierIdDetail.PurchaseOrdersList",
+                "PurchaseOrdersList.WarehouseIdDetail",
+                "PurchaseOrdersList.WarehouseIdDetail.StorageZonesList",
+                "PurchaseOrdersList.WarehouseIdDetail.InventoryList",
+                "PurchaseOrdersList.WarehouseIdDetail.PurchaseOrdersList",
+                "PurchaseOrdersList.WarehouseIdDetail.ShipmentsList",
+                "ShipmentsList",
+                "ShipmentsList.ShipmentItemsList",
+                "ShipmentsList.ShipmentItemsList.ShipmentIdDetail",
+                "ShipmentsList.ShipmentTrackingList",
+                "ShipmentsList.ShipmentTrackingList.ShipmentIdDetail",
+                "ShipmentsList.WarehouseIdDetail",
+                "ShipmentsList.WarehouseIdDetail.StorageZonesList",
+                "ShipmentsList.WarehouseIdDetail.InventoryList",
+                "ShipmentsList.WarehouseIdDetail.PurchaseOrdersList",
+                "ShipmentsList.WarehouseIdDetail.ShipmentsList"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "size": {
+            "default": 10,
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "PaginationResponse_Warehouses": {
+        "properties": {
+          "first": {
+            "type": "boolean"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/Warehouses"
+            },
+            "type": "array"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "maxPage": {
+            "type": "integer"
+          },
+          "page": {
+            "type": "integer"
+          },
+          "size": {
+            "type": "integer"
+          },
+          "total": {
+            "type": "integer"
+          },
+          "totalPages": {
+            "type": "integer"
+          },
+          "visible": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "SearchBody": {
+        "properties": {
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "filters": {
+            "description": "Filter rules: [[field, op, value], ...]",
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "preloads": {
+            "items": {
+              "enum": [
+                "StorageZonesList",
+                "StorageZonesList.StorageBinsList",
+                "StorageZonesList.StorageBinsList.InventoryList",
+                "StorageZonesList.StorageBinsList.ZoneIdDetail",
+                "StorageZonesList.WarehouseIdDetail",
+                "StorageZonesList.WarehouseIdDetail.StorageZonesList",
+                "StorageZonesList.WarehouseIdDetail.InventoryList",
+                "StorageZonesList.WarehouseIdDetail.PurchaseOrdersList",
+                "StorageZonesList.WarehouseIdDetail.ShipmentsList",
+                "InventoryList",
+                "InventoryList.StockMovementsList",
+                "InventoryList.StockMovementsList.InventoryIdDetail",
+                "InventoryList.WarehouseIdDetail",
+                "InventoryList.WarehouseIdDetail.StorageZonesList",
+                "InventoryList.WarehouseIdDetail.InventoryList",
+                "InventoryList.WarehouseIdDetail.PurchaseOrdersList",
+                "InventoryList.WarehouseIdDetail.ShipmentsList",
+                "InventoryList.BinIdDetail",
+                "InventoryList.BinIdDetail.InventoryList",
+                "InventoryList.BinIdDetail.ZoneIdDetail",
+                "PurchaseOrdersList",
+                "PurchaseOrdersList.PurchaseOrderItemsList",
+                "PurchaseOrdersList.PurchaseOrderItemsList.PurchaseOrderIdDetail",
+                "PurchaseOrdersList.SupplierIdDetail",
+                "PurchaseOrdersList.SupplierIdDetail.PurchaseOrdersList",
+                "PurchaseOrdersList.WarehouseIdDetail",
+                "PurchaseOrdersList.WarehouseIdDetail.StorageZonesList",
+                "PurchaseOrdersList.WarehouseIdDetail.InventoryList",
+                "PurchaseOrdersList.WarehouseIdDetail.PurchaseOrdersList",
+                "PurchaseOrdersList.WarehouseIdDetail.ShipmentsList",
+                "ShipmentsList",
+                "ShipmentsList.ShipmentItemsList",
+                "ShipmentsList.ShipmentItemsList.ShipmentIdDetail",
+                "ShipmentsList.ShipmentTrackingList",
+                "ShipmentsList.ShipmentTrackingList.ShipmentIdDetail",
+                "ShipmentsList.WarehouseIdDetail",
+                "ShipmentsList.WarehouseIdDetail.StorageZonesList",
+                "ShipmentsList.WarehouseIdDetail.InventoryList",
+                "ShipmentsList.WarehouseIdDetail.PurchaseOrdersList",
+                "ShipmentsList.WarehouseIdDetail.ShipmentsList"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "size": {
+            "default": 10,
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "Warehouses": {
+        "properties": {
+          "address": {
+            "type": "object"
+          },
+          "capacity": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "code": {
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "managerId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "organizationId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "code",
+          "address",
+          "organizationId",
+          "isActive",
+          "capacity",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
+      "WarehousesBatchUpdate": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/WarehousesEdit"
+          },
+          "pathParams": {
+            "properties": {
+              "id": {
+                "format": "uuid",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "pathParams",
+          "data"
+        ],
+        "type": "object"
+      },
+      "WarehousesEdit": {
+        "description": "Partial update — all fields optional",
+        "properties": {
+          "address": {
+            "type": "object"
+          },
+          "capacity": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "code": {
+            "type": "string"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "managerId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "organizationId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "WarehousesForm": {
+        "description": "Create request payload",
+        "properties": {
+          "address": {
+            "example": {},
+            "type": "object"
+          },
+          "capacity": {
+            "example": 1,
+            "format": "int32",
+            "type": "integer"
+          },
+          "code": {
+            "example": "example_code",
+            "type": "string"
+          },
+          "isActive": {
+            "example": true,
+            "type": "boolean"
+          },
+          "managerId": {
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "format": "uuid",
+            "type": "string"
+          },
+          "name": {
+            "example": "example_name",
+            "type": "string"
+          },
+          "organizationId": {
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "code",
+          "organizationId"
+        ],
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "scheme": "bearer",
+        "type": "http"
+      },
+      "companyId": {
+        "in": "header",
+        "name": "x-company",
+        "type": "apiKey"
+      }
+    }
+  },
+  "info": {
+    "description": "Auto-generated OpenAPI spec for `logistics.warehouses`",
+    "title": "Warehouses API",
+    "version": "1.0.0"
+  },
+  "openapi": "3.0.3",
+  "paths": {
+    "/api/v1/warehouses/": {
+      "get": {
+        "description": "Retrieve list filtered by query parameters.",
+        "operationId": "getWarehouses",
+        "parameters": [
+          {
+            "description": "Max results (default: 10)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field. Prefix - for DESC.",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated columns to select",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to preload. Available: StorageZonesList, StorageZonesList.StorageBinsList, StorageZonesList.StorageBinsList.InventoryList, StorageZonesList.StorageBinsList.ZoneIdDetail, StorageZonesList.WarehouseIdDetail, StorageZonesList.WarehouseIdDetail.StorageZonesList, StorageZonesList.WarehouseIdDetail.InventoryList, StorageZonesList.WarehouseIdDetail.PurchaseOrdersList, StorageZonesList.WarehouseIdDetail.ShipmentsList, InventoryList, InventoryList.StockMovementsList, InventoryList.StockMovementsList.InventoryIdDetail, InventoryList.WarehouseIdDetail, InventoryList.WarehouseIdDetail.StorageZonesList, InventoryList.WarehouseIdDetail.InventoryList, InventoryList.WarehouseIdDetail.PurchaseOrdersList, InventoryList.WarehouseIdDetail.ShipmentsList, InventoryList.BinIdDetail, InventoryList.BinIdDetail.InventoryList, InventoryList.BinIdDetail.ZoneIdDetail, PurchaseOrdersList, PurchaseOrdersList.PurchaseOrderItemsList, PurchaseOrdersList.PurchaseOrderItemsList.PurchaseOrderIdDetail, PurchaseOrdersList.SupplierIdDetail, PurchaseOrdersList.SupplierIdDetail.PurchaseOrdersList, PurchaseOrdersList.WarehouseIdDetail, PurchaseOrdersList.WarehouseIdDetail.StorageZonesList, PurchaseOrdersList.WarehouseIdDetail.InventoryList, PurchaseOrdersList.WarehouseIdDetail.PurchaseOrdersList, PurchaseOrdersList.WarehouseIdDetail.ShipmentsList, ShipmentsList, ShipmentsList.ShipmentItemsList, ShipmentsList.ShipmentItemsList.ShipmentIdDetail, ShipmentsList.ShipmentTrackingList, ShipmentsList.ShipmentTrackingList.ShipmentIdDetail, ShipmentsList.WarehouseIdDetail, ShipmentsList.WarehouseIdDetail.StorageZonesList, ShipmentsList.WarehouseIdDetail.InventoryList, ShipmentsList.WarehouseIdDetail.PurchaseOrdersList, ShipmentsList.WarehouseIdDetail.ShipmentsList",
+            "in": "query",
+            "name": "preloads",
+            "required": false,
+            "schema": {
+              "enum": [
+                "StorageZonesList",
+                "StorageZonesList.StorageBinsList",
+                "StorageZonesList.StorageBinsList.InventoryList",
+                "StorageZonesList.StorageBinsList.ZoneIdDetail",
+                "StorageZonesList.WarehouseIdDetail",
+                "StorageZonesList.WarehouseIdDetail.StorageZonesList",
+                "StorageZonesList.WarehouseIdDetail.InventoryList",
+                "StorageZonesList.WarehouseIdDetail.PurchaseOrdersList",
+                "StorageZonesList.WarehouseIdDetail.ShipmentsList",
+                "InventoryList",
+                "InventoryList.StockMovementsList",
+                "InventoryList.StockMovementsList.InventoryIdDetail",
+                "InventoryList.WarehouseIdDetail",
+                "InventoryList.WarehouseIdDetail.StorageZonesList",
+                "InventoryList.WarehouseIdDetail.InventoryList",
+                "InventoryList.WarehouseIdDetail.PurchaseOrdersList",
+                "InventoryList.WarehouseIdDetail.ShipmentsList",
+                "InventoryList.BinIdDetail",
+                "InventoryList.BinIdDetail.InventoryList",
+                "InventoryList.BinIdDetail.ZoneIdDetail",
+                "PurchaseOrdersList",
+                "PurchaseOrdersList.PurchaseOrderItemsList",
+                "PurchaseOrdersList.PurchaseOrderItemsList.PurchaseOrderIdDetail",
+                "PurchaseOrdersList.SupplierIdDetail",
+                "PurchaseOrdersList.SupplierIdDetail.PurchaseOrdersList",
+                "PurchaseOrdersList.WarehouseIdDetail",
+                "PurchaseOrdersList.WarehouseIdDetail.StorageZonesList",
+                "PurchaseOrdersList.WarehouseIdDetail.InventoryList",
+                "PurchaseOrdersList.WarehouseIdDetail.PurchaseOrdersList",
+                "PurchaseOrdersList.WarehouseIdDetail.ShipmentsList",
+                "ShipmentsList",
+                "ShipmentsList.ShipmentItemsList",
+                "ShipmentsList.ShipmentItemsList.ShipmentIdDetail",
+                "ShipmentsList.ShipmentTrackingList",
+                "ShipmentsList.ShipmentTrackingList.ShipmentIdDetail",
+                "ShipmentsList.WarehouseIdDetail",
+                "ShipmentsList.WarehouseIdDetail.StorageZonesList",
+                "ShipmentsList.WarehouseIdDetail.InventoryList",
+                "ShipmentsList.WarehouseIdDetail.PurchaseOrdersList",
+                "ShipmentsList.WarehouseIdDetail.ShipmentsList"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to join. Available: Organizations, Users",
+            "in": "query",
+            "name": "joins",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Organizations",
+                "Users"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Warehouses"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Search Warehouses",
+        "tags": [
+          "Warehouses"
+        ]
+      },
+      "post": {
+        "description": "Create a new Warehouses record.",
+        "operationId": "postWarehouses",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WarehousesForm"
+              }
+            }
+          },
+          "description": "New Warehouses data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Warehouses"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "409": {
+            "description": "Conflict — duplicate unique key"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Create Warehouses",
+        "tags": [
+          "Warehouses"
+        ]
+      }
+    },
+    "/api/v1/warehouses/bulk/": {
+      "post": {
+        "description": "Create multiple Warehouses records.",
+        "operationId": "postWarehousesBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/WarehousesForm"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Array of create payloads",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Warehouses"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Bulk Create Warehouses",
+        "tags": [
+          "Warehouses"
+        ]
+      },
+      "put": {
+        "description": "Batch update multiple records.",
+        "operationId": "putWarehousesBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/WarehousesBatchUpdate"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Array of { pathParams, data }",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Bulk Update Warehouses",
+        "tags": [
+          "Warehouses"
+        ]
+      }
+    },
+    "/api/v1/warehouses/pagination": {
+      "get": {
+        "description": "Paginated listing.",
+        "operationId": "getWarehousesPagination",
+        "parameters": [
+          {
+            "description": "Page number (default: 1)",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Max results (default: 10)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field. Prefix - for DESC.",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated columns to select",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to preload. Available: StorageZonesList, StorageZonesList.StorageBinsList, StorageZonesList.StorageBinsList.InventoryList, StorageZonesList.StorageBinsList.ZoneIdDetail, StorageZonesList.WarehouseIdDetail, StorageZonesList.WarehouseIdDetail.StorageZonesList, StorageZonesList.WarehouseIdDetail.InventoryList, StorageZonesList.WarehouseIdDetail.PurchaseOrdersList, StorageZonesList.WarehouseIdDetail.ShipmentsList, InventoryList, InventoryList.StockMovementsList, InventoryList.StockMovementsList.InventoryIdDetail, InventoryList.WarehouseIdDetail, InventoryList.WarehouseIdDetail.StorageZonesList, InventoryList.WarehouseIdDetail.InventoryList, InventoryList.WarehouseIdDetail.PurchaseOrdersList, InventoryList.WarehouseIdDetail.ShipmentsList, InventoryList.BinIdDetail, InventoryList.BinIdDetail.InventoryList, InventoryList.BinIdDetail.ZoneIdDetail, PurchaseOrdersList, PurchaseOrdersList.PurchaseOrderItemsList, PurchaseOrdersList.PurchaseOrderItemsList.PurchaseOrderIdDetail, PurchaseOrdersList.SupplierIdDetail, PurchaseOrdersList.SupplierIdDetail.PurchaseOrdersList, PurchaseOrdersList.WarehouseIdDetail, PurchaseOrdersList.WarehouseIdDetail.StorageZonesList, PurchaseOrdersList.WarehouseIdDetail.InventoryList, PurchaseOrdersList.WarehouseIdDetail.PurchaseOrdersList, PurchaseOrdersList.WarehouseIdDetail.ShipmentsList, ShipmentsList, ShipmentsList.ShipmentItemsList, ShipmentsList.ShipmentItemsList.ShipmentIdDetail, ShipmentsList.ShipmentTrackingList, ShipmentsList.ShipmentTrackingList.ShipmentIdDetail, ShipmentsList.WarehouseIdDetail, ShipmentsList.WarehouseIdDetail.StorageZonesList, ShipmentsList.WarehouseIdDetail.InventoryList, ShipmentsList.WarehouseIdDetail.PurchaseOrdersList, ShipmentsList.WarehouseIdDetail.ShipmentsList",
+            "in": "query",
+            "name": "preloads",
+            "required": false,
+            "schema": {
+              "enum": [
+                "StorageZonesList",
+                "StorageZonesList.StorageBinsList",
+                "StorageZonesList.StorageBinsList.InventoryList",
+                "StorageZonesList.StorageBinsList.ZoneIdDetail",
+                "StorageZonesList.WarehouseIdDetail",
+                "StorageZonesList.WarehouseIdDetail.StorageZonesList",
+                "StorageZonesList.WarehouseIdDetail.InventoryList",
+                "StorageZonesList.WarehouseIdDetail.PurchaseOrdersList",
+                "StorageZonesList.WarehouseIdDetail.ShipmentsList",
+                "InventoryList",
+                "InventoryList.StockMovementsList",
+                "InventoryList.StockMovementsList.InventoryIdDetail",
+                "InventoryList.WarehouseIdDetail",
+                "InventoryList.WarehouseIdDetail.StorageZonesList",
+                "InventoryList.WarehouseIdDetail.InventoryList",
+                "InventoryList.WarehouseIdDetail.PurchaseOrdersList",
+                "InventoryList.WarehouseIdDetail.ShipmentsList",
+                "InventoryList.BinIdDetail",
+                "InventoryList.BinIdDetail.InventoryList",
+                "InventoryList.BinIdDetail.ZoneIdDetail",
+                "PurchaseOrdersList",
+                "PurchaseOrdersList.PurchaseOrderItemsList",
+                "PurchaseOrdersList.PurchaseOrderItemsList.PurchaseOrderIdDetail",
+                "PurchaseOrdersList.SupplierIdDetail",
+                "PurchaseOrdersList.SupplierIdDetail.PurchaseOrdersList",
+                "PurchaseOrdersList.WarehouseIdDetail",
+                "PurchaseOrdersList.WarehouseIdDetail.StorageZonesList",
+                "PurchaseOrdersList.WarehouseIdDetail.InventoryList",
+                "PurchaseOrdersList.WarehouseIdDetail.PurchaseOrdersList",
+                "PurchaseOrdersList.WarehouseIdDetail.ShipmentsList",
+                "ShipmentsList",
+                "ShipmentsList.ShipmentItemsList",
+                "ShipmentsList.ShipmentItemsList.ShipmentIdDetail",
+                "ShipmentsList.ShipmentTrackingList",
+                "ShipmentsList.ShipmentTrackingList.ShipmentIdDetail",
+                "ShipmentsList.WarehouseIdDetail",
+                "ShipmentsList.WarehouseIdDetail.StorageZonesList",
+                "ShipmentsList.WarehouseIdDetail.InventoryList",
+                "ShipmentsList.WarehouseIdDetail.PurchaseOrdersList",
+                "ShipmentsList.WarehouseIdDetail.ShipmentsList"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to join. Available: Organizations, Users",
+            "in": "query",
+            "name": "joins",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Organizations",
+                "Users"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse_Warehouses"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Paginate Warehouses",
+        "tags": [
+          "Warehouses"
+        ]
+      },
+      "post": {
+        "description": "Paginated listing with body filters.",
+        "operationId": "postWarehousesPagination",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationBody"
+              }
+            }
+          },
+          "description": "Pagination parameters",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse_Warehouses"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Paginate Warehouses (POST)",
+        "tags": [
+          "Warehouses"
+        ]
+      }
+    },
+    "/api/v1/warehouses/search": {
+      "post": {
+        "description": "Search with body filters.",
+        "operationId": "postWarehousesSearch",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchBody"
+              }
+            }
+          },
+          "description": "Search parameters",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Warehouses"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Search Warehouses (POST)",
+        "tags": [
+          "Warehouses"
+        ]
+      }
+    },
+    "/api/v1/warehouses/with-id/{Id}": {
+      "delete": {
+        "description": "Soft-delete.",
+        "operationId": "deleteWarehousesById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Delete Warehouses",
+        "tags": [
+          "Warehouses"
+        ]
+      },
+      "get": {
+        "description": "Retrieve a single record.",
+        "operationId": "getWarehousesById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Warehouses"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Find Warehouses by ID",
+        "tags": [
+          "Warehouses"
+        ]
+      },
+      "put": {
+        "description": "Partial update.",
+        "operationId": "putWarehousesById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WarehousesEdit"
+              }
+            }
+          },
+          "description": "Fields to update",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Update Warehouses",
+        "tags": [
+          "Warehouses"
+        ]
+      }
+    }
+  },
+  "servers": [
+    {
+      "description": "Development",
+      "url": "http://localhost:3000"
+    }
+  ]
+}

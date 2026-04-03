@@ -1,0 +1,967 @@
+{
+  "components": {
+    "schemas": {
+      "Inventory": {
+        "properties": {
+          "binId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "lastCountedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "productId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "quantity": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "reorderLevel": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "reorderQuantity": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "reserved": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "variantId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "warehouseId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "productId",
+          "warehouseId",
+          "quantity",
+          "reserved",
+          "reorderLevel",
+          "reorderQuantity",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
+      "InventoryBatchUpdate": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/InventoryEdit"
+          },
+          "pathParams": {
+            "properties": {
+              "id": {
+                "format": "uuid",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "pathParams",
+          "data"
+        ],
+        "type": "object"
+      },
+      "InventoryEdit": {
+        "description": "Partial update — all fields optional",
+        "properties": {
+          "binId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "lastCountedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "productId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "quantity": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "reorderLevel": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "reorderQuantity": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "reserved": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "variantId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "warehouseId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "InventoryForm": {
+        "description": "Create request payload",
+        "properties": {
+          "binId": {
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "format": "uuid",
+            "type": "string"
+          },
+          "lastCountedAt": {
+            "example": "2026-01-15T10:30:00Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "name": {
+            "example": "example_name",
+            "type": "string"
+          },
+          "productId": {
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "format": "uuid",
+            "type": "string"
+          },
+          "quantity": {
+            "example": 1,
+            "format": "int32",
+            "type": "integer"
+          },
+          "reorderLevel": {
+            "example": 1,
+            "format": "int32",
+            "type": "integer"
+          },
+          "reorderQuantity": {
+            "example": 1,
+            "format": "int32",
+            "type": "integer"
+          },
+          "reserved": {
+            "example": 1,
+            "format": "int32",
+            "type": "integer"
+          },
+          "variantId": {
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "format": "uuid",
+            "type": "string"
+          },
+          "warehouseId": {
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "productId",
+          "warehouseId"
+        ],
+        "type": "object"
+      },
+      "PaginationBody": {
+        "properties": {
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "filters": {
+            "description": "Filter rules: [[field, op, value], ...]",
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "page": {
+            "default": 1,
+            "type": "integer"
+          },
+          "preloads": {
+            "items": {
+              "enum": [
+                "StockMovementsList",
+                "StockMovementsList.InventoryIdDetail",
+                "StockMovementsList.InventoryIdDetail.StockMovementsList",
+                "StockMovementsList.InventoryIdDetail.WarehouseIdDetail",
+                "StockMovementsList.InventoryIdDetail.BinIdDetail",
+                "WarehouseIdDetail",
+                "WarehouseIdDetail.StorageZonesList",
+                "WarehouseIdDetail.StorageZonesList.StorageBinsList",
+                "WarehouseIdDetail.StorageZonesList.WarehouseIdDetail",
+                "WarehouseIdDetail.InventoryList",
+                "WarehouseIdDetail.InventoryList.StockMovementsList",
+                "WarehouseIdDetail.InventoryList.WarehouseIdDetail",
+                "WarehouseIdDetail.InventoryList.BinIdDetail",
+                "WarehouseIdDetail.PurchaseOrdersList",
+                "WarehouseIdDetail.PurchaseOrdersList.PurchaseOrderItemsList",
+                "WarehouseIdDetail.PurchaseOrdersList.SupplierIdDetail",
+                "WarehouseIdDetail.PurchaseOrdersList.WarehouseIdDetail",
+                "WarehouseIdDetail.ShipmentsList",
+                "WarehouseIdDetail.ShipmentsList.ShipmentItemsList",
+                "WarehouseIdDetail.ShipmentsList.ShipmentTrackingList",
+                "WarehouseIdDetail.ShipmentsList.WarehouseIdDetail",
+                "BinIdDetail",
+                "BinIdDetail.InventoryList",
+                "BinIdDetail.InventoryList.StockMovementsList",
+                "BinIdDetail.InventoryList.WarehouseIdDetail",
+                "BinIdDetail.InventoryList.BinIdDetail",
+                "BinIdDetail.ZoneIdDetail",
+                "BinIdDetail.ZoneIdDetail.StorageBinsList",
+                "BinIdDetail.ZoneIdDetail.WarehouseIdDetail"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "size": {
+            "default": 10,
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "PaginationResponse_Inventory": {
+        "properties": {
+          "first": {
+            "type": "boolean"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/Inventory"
+            },
+            "type": "array"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "maxPage": {
+            "type": "integer"
+          },
+          "page": {
+            "type": "integer"
+          },
+          "size": {
+            "type": "integer"
+          },
+          "total": {
+            "type": "integer"
+          },
+          "totalPages": {
+            "type": "integer"
+          },
+          "visible": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "SearchBody": {
+        "properties": {
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "filters": {
+            "description": "Filter rules: [[field, op, value], ...]",
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "preloads": {
+            "items": {
+              "enum": [
+                "StockMovementsList",
+                "StockMovementsList.InventoryIdDetail",
+                "StockMovementsList.InventoryIdDetail.StockMovementsList",
+                "StockMovementsList.InventoryIdDetail.WarehouseIdDetail",
+                "StockMovementsList.InventoryIdDetail.BinIdDetail",
+                "WarehouseIdDetail",
+                "WarehouseIdDetail.StorageZonesList",
+                "WarehouseIdDetail.StorageZonesList.StorageBinsList",
+                "WarehouseIdDetail.StorageZonesList.WarehouseIdDetail",
+                "WarehouseIdDetail.InventoryList",
+                "WarehouseIdDetail.InventoryList.StockMovementsList",
+                "WarehouseIdDetail.InventoryList.WarehouseIdDetail",
+                "WarehouseIdDetail.InventoryList.BinIdDetail",
+                "WarehouseIdDetail.PurchaseOrdersList",
+                "WarehouseIdDetail.PurchaseOrdersList.PurchaseOrderItemsList",
+                "WarehouseIdDetail.PurchaseOrdersList.SupplierIdDetail",
+                "WarehouseIdDetail.PurchaseOrdersList.WarehouseIdDetail",
+                "WarehouseIdDetail.ShipmentsList",
+                "WarehouseIdDetail.ShipmentsList.ShipmentItemsList",
+                "WarehouseIdDetail.ShipmentsList.ShipmentTrackingList",
+                "WarehouseIdDetail.ShipmentsList.WarehouseIdDetail",
+                "BinIdDetail",
+                "BinIdDetail.InventoryList",
+                "BinIdDetail.InventoryList.StockMovementsList",
+                "BinIdDetail.InventoryList.WarehouseIdDetail",
+                "BinIdDetail.InventoryList.BinIdDetail",
+                "BinIdDetail.ZoneIdDetail",
+                "BinIdDetail.ZoneIdDetail.StorageBinsList",
+                "BinIdDetail.ZoneIdDetail.WarehouseIdDetail"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "size": {
+            "default": 10,
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "scheme": "bearer",
+        "type": "http"
+      },
+      "companyId": {
+        "in": "header",
+        "name": "x-company",
+        "type": "apiKey"
+      }
+    }
+  },
+  "info": {
+    "description": "Auto-generated OpenAPI spec for `logistics.inventory`",
+    "title": "Inventory API",
+    "version": "1.0.0"
+  },
+  "openapi": "3.0.3",
+  "paths": {
+    "/api/v1/inventory/": {
+      "get": {
+        "description": "Retrieve list filtered by query parameters.",
+        "operationId": "getInventory",
+        "parameters": [
+          {
+            "description": "Max results (default: 10)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field. Prefix - for DESC.",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated columns to select",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to preload. Available: StockMovementsList, StockMovementsList.InventoryIdDetail, StockMovementsList.InventoryIdDetail.StockMovementsList, StockMovementsList.InventoryIdDetail.WarehouseIdDetail, StockMovementsList.InventoryIdDetail.BinIdDetail, WarehouseIdDetail, WarehouseIdDetail.StorageZonesList, WarehouseIdDetail.StorageZonesList.StorageBinsList, WarehouseIdDetail.StorageZonesList.WarehouseIdDetail, WarehouseIdDetail.InventoryList, WarehouseIdDetail.InventoryList.StockMovementsList, WarehouseIdDetail.InventoryList.WarehouseIdDetail, WarehouseIdDetail.InventoryList.BinIdDetail, WarehouseIdDetail.PurchaseOrdersList, WarehouseIdDetail.PurchaseOrdersList.PurchaseOrderItemsList, WarehouseIdDetail.PurchaseOrdersList.SupplierIdDetail, WarehouseIdDetail.PurchaseOrdersList.WarehouseIdDetail, WarehouseIdDetail.ShipmentsList, WarehouseIdDetail.ShipmentsList.ShipmentItemsList, WarehouseIdDetail.ShipmentsList.ShipmentTrackingList, WarehouseIdDetail.ShipmentsList.WarehouseIdDetail, BinIdDetail, BinIdDetail.InventoryList, BinIdDetail.InventoryList.StockMovementsList, BinIdDetail.InventoryList.WarehouseIdDetail, BinIdDetail.InventoryList.BinIdDetail, BinIdDetail.ZoneIdDetail, BinIdDetail.ZoneIdDetail.StorageBinsList, BinIdDetail.ZoneIdDetail.WarehouseIdDetail",
+            "in": "query",
+            "name": "preloads",
+            "required": false,
+            "schema": {
+              "enum": [
+                "StockMovementsList",
+                "StockMovementsList.InventoryIdDetail",
+                "StockMovementsList.InventoryIdDetail.StockMovementsList",
+                "StockMovementsList.InventoryIdDetail.WarehouseIdDetail",
+                "StockMovementsList.InventoryIdDetail.BinIdDetail",
+                "WarehouseIdDetail",
+                "WarehouseIdDetail.StorageZonesList",
+                "WarehouseIdDetail.StorageZonesList.StorageBinsList",
+                "WarehouseIdDetail.StorageZonesList.WarehouseIdDetail",
+                "WarehouseIdDetail.InventoryList",
+                "WarehouseIdDetail.InventoryList.StockMovementsList",
+                "WarehouseIdDetail.InventoryList.WarehouseIdDetail",
+                "WarehouseIdDetail.InventoryList.BinIdDetail",
+                "WarehouseIdDetail.PurchaseOrdersList",
+                "WarehouseIdDetail.PurchaseOrdersList.PurchaseOrderItemsList",
+                "WarehouseIdDetail.PurchaseOrdersList.SupplierIdDetail",
+                "WarehouseIdDetail.PurchaseOrdersList.WarehouseIdDetail",
+                "WarehouseIdDetail.ShipmentsList",
+                "WarehouseIdDetail.ShipmentsList.ShipmentItemsList",
+                "WarehouseIdDetail.ShipmentsList.ShipmentTrackingList",
+                "WarehouseIdDetail.ShipmentsList.WarehouseIdDetail",
+                "BinIdDetail",
+                "BinIdDetail.InventoryList",
+                "BinIdDetail.InventoryList.StockMovementsList",
+                "BinIdDetail.InventoryList.WarehouseIdDetail",
+                "BinIdDetail.InventoryList.BinIdDetail",
+                "BinIdDetail.ZoneIdDetail",
+                "BinIdDetail.ZoneIdDetail.StorageBinsList",
+                "BinIdDetail.ZoneIdDetail.WarehouseIdDetail"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to join. Available: Products, ProductVariants, Warehouses, Warehouses.Organizations, Warehouses.Users, StorageBins, StorageBins.StorageZones, StorageBins.StorageZones.Warehouses",
+            "in": "query",
+            "name": "joins",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Products",
+                "ProductVariants",
+                "Warehouses",
+                "Warehouses.Organizations",
+                "Warehouses.Users",
+                "StorageBins",
+                "StorageBins.StorageZones",
+                "StorageBins.StorageZones.Warehouses"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Inventory"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Search Inventory",
+        "tags": [
+          "Inventory"
+        ]
+      },
+      "post": {
+        "description": "Create a new Inventory record.",
+        "operationId": "postInventory",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryForm"
+              }
+            }
+          },
+          "description": "New Inventory data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Inventory"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "409": {
+            "description": "Conflict — duplicate unique key"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Create Inventory",
+        "tags": [
+          "Inventory"
+        ]
+      }
+    },
+    "/api/v1/inventory/bulk/": {
+      "post": {
+        "description": "Create multiple Inventory records.",
+        "operationId": "postInventoryBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/InventoryForm"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Array of create payloads",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Inventory"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Bulk Create Inventory",
+        "tags": [
+          "Inventory"
+        ]
+      },
+      "put": {
+        "description": "Batch update multiple records.",
+        "operationId": "putInventoryBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/InventoryBatchUpdate"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Array of { pathParams, data }",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Bulk Update Inventory",
+        "tags": [
+          "Inventory"
+        ]
+      }
+    },
+    "/api/v1/inventory/pagination": {
+      "get": {
+        "description": "Paginated listing.",
+        "operationId": "getInventoryPagination",
+        "parameters": [
+          {
+            "description": "Page number (default: 1)",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Max results (default: 10)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field. Prefix - for DESC.",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated columns to select",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to preload. Available: StockMovementsList, StockMovementsList.InventoryIdDetail, StockMovementsList.InventoryIdDetail.StockMovementsList, StockMovementsList.InventoryIdDetail.WarehouseIdDetail, StockMovementsList.InventoryIdDetail.BinIdDetail, WarehouseIdDetail, WarehouseIdDetail.StorageZonesList, WarehouseIdDetail.StorageZonesList.StorageBinsList, WarehouseIdDetail.StorageZonesList.WarehouseIdDetail, WarehouseIdDetail.InventoryList, WarehouseIdDetail.InventoryList.StockMovementsList, WarehouseIdDetail.InventoryList.WarehouseIdDetail, WarehouseIdDetail.InventoryList.BinIdDetail, WarehouseIdDetail.PurchaseOrdersList, WarehouseIdDetail.PurchaseOrdersList.PurchaseOrderItemsList, WarehouseIdDetail.PurchaseOrdersList.SupplierIdDetail, WarehouseIdDetail.PurchaseOrdersList.WarehouseIdDetail, WarehouseIdDetail.ShipmentsList, WarehouseIdDetail.ShipmentsList.ShipmentItemsList, WarehouseIdDetail.ShipmentsList.ShipmentTrackingList, WarehouseIdDetail.ShipmentsList.WarehouseIdDetail, BinIdDetail, BinIdDetail.InventoryList, BinIdDetail.InventoryList.StockMovementsList, BinIdDetail.InventoryList.WarehouseIdDetail, BinIdDetail.InventoryList.BinIdDetail, BinIdDetail.ZoneIdDetail, BinIdDetail.ZoneIdDetail.StorageBinsList, BinIdDetail.ZoneIdDetail.WarehouseIdDetail",
+            "in": "query",
+            "name": "preloads",
+            "required": false,
+            "schema": {
+              "enum": [
+                "StockMovementsList",
+                "StockMovementsList.InventoryIdDetail",
+                "StockMovementsList.InventoryIdDetail.StockMovementsList",
+                "StockMovementsList.InventoryIdDetail.WarehouseIdDetail",
+                "StockMovementsList.InventoryIdDetail.BinIdDetail",
+                "WarehouseIdDetail",
+                "WarehouseIdDetail.StorageZonesList",
+                "WarehouseIdDetail.StorageZonesList.StorageBinsList",
+                "WarehouseIdDetail.StorageZonesList.WarehouseIdDetail",
+                "WarehouseIdDetail.InventoryList",
+                "WarehouseIdDetail.InventoryList.StockMovementsList",
+                "WarehouseIdDetail.InventoryList.WarehouseIdDetail",
+                "WarehouseIdDetail.InventoryList.BinIdDetail",
+                "WarehouseIdDetail.PurchaseOrdersList",
+                "WarehouseIdDetail.PurchaseOrdersList.PurchaseOrderItemsList",
+                "WarehouseIdDetail.PurchaseOrdersList.SupplierIdDetail",
+                "WarehouseIdDetail.PurchaseOrdersList.WarehouseIdDetail",
+                "WarehouseIdDetail.ShipmentsList",
+                "WarehouseIdDetail.ShipmentsList.ShipmentItemsList",
+                "WarehouseIdDetail.ShipmentsList.ShipmentTrackingList",
+                "WarehouseIdDetail.ShipmentsList.WarehouseIdDetail",
+                "BinIdDetail",
+                "BinIdDetail.InventoryList",
+                "BinIdDetail.InventoryList.StockMovementsList",
+                "BinIdDetail.InventoryList.WarehouseIdDetail",
+                "BinIdDetail.InventoryList.BinIdDetail",
+                "BinIdDetail.ZoneIdDetail",
+                "BinIdDetail.ZoneIdDetail.StorageBinsList",
+                "BinIdDetail.ZoneIdDetail.WarehouseIdDetail"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to join. Available: Products, ProductVariants, Warehouses, Warehouses.Organizations, Warehouses.Users, StorageBins, StorageBins.StorageZones, StorageBins.StorageZones.Warehouses",
+            "in": "query",
+            "name": "joins",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Products",
+                "ProductVariants",
+                "Warehouses",
+                "Warehouses.Organizations",
+                "Warehouses.Users",
+                "StorageBins",
+                "StorageBins.StorageZones",
+                "StorageBins.StorageZones.Warehouses"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse_Inventory"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Paginate Inventory",
+        "tags": [
+          "Inventory"
+        ]
+      },
+      "post": {
+        "description": "Paginated listing with body filters.",
+        "operationId": "postInventoryPagination",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationBody"
+              }
+            }
+          },
+          "description": "Pagination parameters",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse_Inventory"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Paginate Inventory (POST)",
+        "tags": [
+          "Inventory"
+        ]
+      }
+    },
+    "/api/v1/inventory/search": {
+      "post": {
+        "description": "Search with body filters.",
+        "operationId": "postInventorySearch",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchBody"
+              }
+            }
+          },
+          "description": "Search parameters",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Inventory"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Search Inventory (POST)",
+        "tags": [
+          "Inventory"
+        ]
+      }
+    },
+    "/api/v1/inventory/with-id/{Id}": {
+      "delete": {
+        "description": "Soft-delete.",
+        "operationId": "deleteInventoryById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Delete Inventory",
+        "tags": [
+          "Inventory"
+        ]
+      },
+      "get": {
+        "description": "Retrieve a single record.",
+        "operationId": "getInventoryById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Inventory"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Find Inventory by ID",
+        "tags": [
+          "Inventory"
+        ]
+      },
+      "put": {
+        "description": "Partial update.",
+        "operationId": "putInventoryById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InventoryEdit"
+              }
+            }
+          },
+          "description": "Fields to update",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Update Inventory",
+        "tags": [
+          "Inventory"
+        ]
+      }
+    }
+  },
+  "servers": [
+    {
+      "description": "Development",
+      "url": "http://localhost:3000"
+    }
+  ]
+}

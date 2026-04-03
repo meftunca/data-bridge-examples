@@ -1,0 +1,1215 @@
+{
+  "components": {
+    "schemas": {
+      "Orders": {
+        "properties": {
+          "billingAddress": {
+            "type": "object"
+          },
+          "cancelledAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "confirmedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "couponId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "createdBy": {
+            "format": "uuid",
+            "readOnly": true,
+            "type": "string"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "customerId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "deletedAt": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "deliveredAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "discountAmount": {
+            "format": "double",
+            "type": "number"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "orderNumber": {
+            "type": "string"
+          },
+          "placedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "shippedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "shippingAddress": {
+            "type": "object"
+          },
+          "shippingAmount": {
+            "format": "double",
+            "type": "number"
+          },
+          "status": {
+            "enum": [
+              "pending",
+              "confirmed",
+              "processing",
+              "shipped",
+              "delivered",
+              "cancelled",
+              "refunded"
+            ],
+            "type": "string"
+          },
+          "subtotal": {
+            "format": "double",
+            "type": "number"
+          },
+          "taxAmount": {
+            "format": "double",
+            "type": "number"
+          },
+          "total": {
+            "format": "double",
+            "type": "number"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "orderNumber",
+          "customerId",
+          "status",
+          "subtotal",
+          "taxAmount",
+          "shippingAmount",
+          "discountAmount",
+          "total",
+          "currency",
+          "shippingAddress",
+          "billingAddress",
+          "notes",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
+      "OrdersBatchUpdate": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/OrdersEdit"
+          },
+          "pathParams": {
+            "properties": {
+              "id": {
+                "format": "uuid",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "pathParams",
+          "data"
+        ],
+        "type": "object"
+      },
+      "OrdersEdit": {
+        "description": "Partial update — all fields optional",
+        "properties": {
+          "billingAddress": {
+            "type": "object"
+          },
+          "cancelledAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "confirmedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "couponId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "customerId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "deliveredAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "discountAmount": {
+            "format": "double",
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "orderNumber": {
+            "type": "string"
+          },
+          "placedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "shippedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "shippingAddress": {
+            "type": "object"
+          },
+          "shippingAmount": {
+            "format": "double",
+            "type": "number"
+          },
+          "status": {
+            "enum": [
+              "pending",
+              "confirmed",
+              "processing",
+              "shipped",
+              "delivered",
+              "cancelled",
+              "refunded"
+            ],
+            "type": "string"
+          },
+          "subtotal": {
+            "format": "double",
+            "type": "number"
+          },
+          "taxAmount": {
+            "format": "double",
+            "type": "number"
+          },
+          "total": {
+            "format": "double",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "OrdersForm": {
+        "description": "Create request payload",
+        "properties": {
+          "billingAddress": {
+            "example": {},
+            "type": "object"
+          },
+          "cancelledAt": {
+            "example": "2026-01-15T10:30:00Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "confirmedAt": {
+            "example": "2026-01-15T10:30:00Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "couponId": {
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "format": "uuid",
+            "type": "string"
+          },
+          "currency": {
+            "example": "example_currency",
+            "type": "string"
+          },
+          "customerId": {
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "format": "uuid",
+            "type": "string"
+          },
+          "deliveredAt": {
+            "example": "2026-01-15T10:30:00Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "discountAmount": {
+            "example": 99.99,
+            "format": "double",
+            "type": "number"
+          },
+          "name": {
+            "example": "example_name",
+            "type": "string"
+          },
+          "notes": {
+            "example": "example_notes",
+            "type": "string"
+          },
+          "orderNumber": {
+            "example": "example_order_number",
+            "type": "string"
+          },
+          "placedAt": {
+            "example": "2026-01-15T10:30:00Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "shippedAt": {
+            "example": "2026-01-15T10:30:00Z",
+            "format": "date-time",
+            "type": "string"
+          },
+          "shippingAddress": {
+            "example": {},
+            "type": "object"
+          },
+          "shippingAmount": {
+            "example": 99.99,
+            "format": "double",
+            "type": "number"
+          },
+          "status": {
+            "enum": [
+              "pending",
+              "confirmed",
+              "processing",
+              "shipped",
+              "delivered",
+              "cancelled",
+              "refunded"
+            ],
+            "example": "pending",
+            "type": "string"
+          },
+          "subtotal": {
+            "example": 99.99,
+            "format": "double",
+            "type": "number"
+          },
+          "taxAmount": {
+            "example": 99.99,
+            "format": "double",
+            "type": "number"
+          },
+          "total": {
+            "example": 99.99,
+            "format": "double",
+            "type": "number"
+          }
+        },
+        "required": [
+          "orderNumber",
+          "customerId"
+        ],
+        "type": "object"
+      },
+      "PaginationBody": {
+        "properties": {
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "filters": {
+            "description": "Filter rules: [[field, op, value], ...]",
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "page": {
+            "default": 1,
+            "type": "integer"
+          },
+          "preloads": {
+            "items": {
+              "enum": [
+                "OrderItemsList",
+                "OrderItemsList.OrderIdDetail",
+                "OrderItemsList.OrderIdDetail.OrderItemsList",
+                "OrderItemsList.OrderIdDetail.PaymentsList",
+                "OrderItemsList.OrderIdDetail.RefundsList",
+                "OrderItemsList.OrderIdDetail.OrderStatusHistoryList",
+                "OrderItemsList.OrderIdDetail.CustomerIdDetail",
+                "OrderItemsList.OrderIdDetail.CouponIdDetail",
+                "PaymentsList",
+                "PaymentsList.RefundsList",
+                "PaymentsList.RefundsList.OrderIdDetail",
+                "PaymentsList.RefundsList.PaymentIdDetail",
+                "PaymentsList.OrderIdDetail",
+                "PaymentsList.OrderIdDetail.OrderItemsList",
+                "PaymentsList.OrderIdDetail.PaymentsList",
+                "PaymentsList.OrderIdDetail.RefundsList",
+                "PaymentsList.OrderIdDetail.OrderStatusHistoryList",
+                "PaymentsList.OrderIdDetail.CustomerIdDetail",
+                "PaymentsList.OrderIdDetail.CouponIdDetail",
+                "RefundsList",
+                "RefundsList.OrderIdDetail",
+                "RefundsList.OrderIdDetail.OrderItemsList",
+                "RefundsList.OrderIdDetail.PaymentsList",
+                "RefundsList.OrderIdDetail.RefundsList",
+                "RefundsList.OrderIdDetail.OrderStatusHistoryList",
+                "RefundsList.OrderIdDetail.CustomerIdDetail",
+                "RefundsList.OrderIdDetail.CouponIdDetail",
+                "RefundsList.PaymentIdDetail",
+                "RefundsList.PaymentIdDetail.RefundsList",
+                "RefundsList.PaymentIdDetail.OrderIdDetail",
+                "OrderStatusHistoryList",
+                "OrderStatusHistoryList.OrderIdDetail",
+                "OrderStatusHistoryList.OrderIdDetail.OrderItemsList",
+                "OrderStatusHistoryList.OrderIdDetail.PaymentsList",
+                "OrderStatusHistoryList.OrderIdDetail.RefundsList",
+                "OrderStatusHistoryList.OrderIdDetail.OrderStatusHistoryList",
+                "OrderStatusHistoryList.OrderIdDetail.CustomerIdDetail",
+                "OrderStatusHistoryList.OrderIdDetail.CouponIdDetail",
+                "CustomerIdDetail",
+                "CustomerIdDetail.OrdersList",
+                "CustomerIdDetail.OrdersList.OrderItemsList",
+                "CustomerIdDetail.OrdersList.PaymentsList",
+                "CustomerIdDetail.OrdersList.RefundsList",
+                "CustomerIdDetail.OrdersList.OrderStatusHistoryList",
+                "CustomerIdDetail.OrdersList.CustomerIdDetail",
+                "CustomerIdDetail.OrdersList.CouponIdDetail",
+                "CustomerIdDetail.CartsList",
+                "CustomerIdDetail.CartsList.CartItemsList",
+                "CustomerIdDetail.CartsList.CustomerIdDetail",
+                "CouponIdDetail",
+                "CouponIdDetail.OrdersList",
+                "CouponIdDetail.OrdersList.OrderItemsList",
+                "CouponIdDetail.OrdersList.PaymentsList",
+                "CouponIdDetail.OrdersList.RefundsList",
+                "CouponIdDetail.OrdersList.OrderStatusHistoryList",
+                "CouponIdDetail.OrdersList.CustomerIdDetail",
+                "CouponIdDetail.OrdersList.CouponIdDetail"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "size": {
+            "default": 10,
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "PaginationResponse_Orders": {
+        "properties": {
+          "first": {
+            "type": "boolean"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/Orders"
+            },
+            "type": "array"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "maxPage": {
+            "type": "integer"
+          },
+          "page": {
+            "type": "integer"
+          },
+          "size": {
+            "type": "integer"
+          },
+          "total": {
+            "type": "integer"
+          },
+          "totalPages": {
+            "type": "integer"
+          },
+          "visible": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "SearchBody": {
+        "properties": {
+          "fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "filters": {
+            "description": "Filter rules: [[field, op, value], ...]",
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "preloads": {
+            "items": {
+              "enum": [
+                "OrderItemsList",
+                "OrderItemsList.OrderIdDetail",
+                "OrderItemsList.OrderIdDetail.OrderItemsList",
+                "OrderItemsList.OrderIdDetail.PaymentsList",
+                "OrderItemsList.OrderIdDetail.RefundsList",
+                "OrderItemsList.OrderIdDetail.OrderStatusHistoryList",
+                "OrderItemsList.OrderIdDetail.CustomerIdDetail",
+                "OrderItemsList.OrderIdDetail.CouponIdDetail",
+                "PaymentsList",
+                "PaymentsList.RefundsList",
+                "PaymentsList.RefundsList.OrderIdDetail",
+                "PaymentsList.RefundsList.PaymentIdDetail",
+                "PaymentsList.OrderIdDetail",
+                "PaymentsList.OrderIdDetail.OrderItemsList",
+                "PaymentsList.OrderIdDetail.PaymentsList",
+                "PaymentsList.OrderIdDetail.RefundsList",
+                "PaymentsList.OrderIdDetail.OrderStatusHistoryList",
+                "PaymentsList.OrderIdDetail.CustomerIdDetail",
+                "PaymentsList.OrderIdDetail.CouponIdDetail",
+                "RefundsList",
+                "RefundsList.OrderIdDetail",
+                "RefundsList.OrderIdDetail.OrderItemsList",
+                "RefundsList.OrderIdDetail.PaymentsList",
+                "RefundsList.OrderIdDetail.RefundsList",
+                "RefundsList.OrderIdDetail.OrderStatusHistoryList",
+                "RefundsList.OrderIdDetail.CustomerIdDetail",
+                "RefundsList.OrderIdDetail.CouponIdDetail",
+                "RefundsList.PaymentIdDetail",
+                "RefundsList.PaymentIdDetail.RefundsList",
+                "RefundsList.PaymentIdDetail.OrderIdDetail",
+                "OrderStatusHistoryList",
+                "OrderStatusHistoryList.OrderIdDetail",
+                "OrderStatusHistoryList.OrderIdDetail.OrderItemsList",
+                "OrderStatusHistoryList.OrderIdDetail.PaymentsList",
+                "OrderStatusHistoryList.OrderIdDetail.RefundsList",
+                "OrderStatusHistoryList.OrderIdDetail.OrderStatusHistoryList",
+                "OrderStatusHistoryList.OrderIdDetail.CustomerIdDetail",
+                "OrderStatusHistoryList.OrderIdDetail.CouponIdDetail",
+                "CustomerIdDetail",
+                "CustomerIdDetail.OrdersList",
+                "CustomerIdDetail.OrdersList.OrderItemsList",
+                "CustomerIdDetail.OrdersList.PaymentsList",
+                "CustomerIdDetail.OrdersList.RefundsList",
+                "CustomerIdDetail.OrdersList.OrderStatusHistoryList",
+                "CustomerIdDetail.OrdersList.CustomerIdDetail",
+                "CustomerIdDetail.OrdersList.CouponIdDetail",
+                "CustomerIdDetail.CartsList",
+                "CustomerIdDetail.CartsList.CartItemsList",
+                "CustomerIdDetail.CartsList.CustomerIdDetail",
+                "CouponIdDetail",
+                "CouponIdDetail.OrdersList",
+                "CouponIdDetail.OrdersList.OrderItemsList",
+                "CouponIdDetail.OrdersList.PaymentsList",
+                "CouponIdDetail.OrdersList.RefundsList",
+                "CouponIdDetail.OrdersList.OrderStatusHistoryList",
+                "CouponIdDetail.OrdersList.CustomerIdDetail",
+                "CouponIdDetail.OrdersList.CouponIdDetail"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "size": {
+            "default": 10,
+            "type": "integer"
+          },
+          "sort": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "scheme": "bearer",
+        "type": "http"
+      },
+      "companyId": {
+        "in": "header",
+        "name": "x-company",
+        "type": "apiKey"
+      }
+    }
+  },
+  "info": {
+    "description": "Auto-generated OpenAPI spec for `orders.orders`",
+    "title": "Orders API",
+    "version": "1.0.0"
+  },
+  "openapi": "3.0.3",
+  "paths": {
+    "/api/v1/orders/": {
+      "get": {
+        "description": "Retrieve list filtered by query parameters.",
+        "operationId": "getOrders",
+        "parameters": [
+          {
+            "description": "Max results (default: 10)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field. Prefix - for DESC.",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated columns to select",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to preload. Available: OrderItemsList, OrderItemsList.OrderIdDetail, OrderItemsList.OrderIdDetail.OrderItemsList, OrderItemsList.OrderIdDetail.PaymentsList, OrderItemsList.OrderIdDetail.RefundsList, OrderItemsList.OrderIdDetail.OrderStatusHistoryList, OrderItemsList.OrderIdDetail.CustomerIdDetail, OrderItemsList.OrderIdDetail.CouponIdDetail, PaymentsList, PaymentsList.RefundsList, PaymentsList.RefundsList.OrderIdDetail, PaymentsList.RefundsList.PaymentIdDetail, PaymentsList.OrderIdDetail, PaymentsList.OrderIdDetail.OrderItemsList, PaymentsList.OrderIdDetail.PaymentsList, PaymentsList.OrderIdDetail.RefundsList, PaymentsList.OrderIdDetail.OrderStatusHistoryList, PaymentsList.OrderIdDetail.CustomerIdDetail, PaymentsList.OrderIdDetail.CouponIdDetail, RefundsList, RefundsList.OrderIdDetail, RefundsList.OrderIdDetail.OrderItemsList, RefundsList.OrderIdDetail.PaymentsList, RefundsList.OrderIdDetail.RefundsList, RefundsList.OrderIdDetail.OrderStatusHistoryList, RefundsList.OrderIdDetail.CustomerIdDetail, RefundsList.OrderIdDetail.CouponIdDetail, RefundsList.PaymentIdDetail, RefundsList.PaymentIdDetail.RefundsList, RefundsList.PaymentIdDetail.OrderIdDetail, OrderStatusHistoryList, OrderStatusHistoryList.OrderIdDetail, OrderStatusHistoryList.OrderIdDetail.OrderItemsList, OrderStatusHistoryList.OrderIdDetail.PaymentsList, OrderStatusHistoryList.OrderIdDetail.RefundsList, OrderStatusHistoryList.OrderIdDetail.OrderStatusHistoryList, OrderStatusHistoryList.OrderIdDetail.CustomerIdDetail, OrderStatusHistoryList.OrderIdDetail.CouponIdDetail, CustomerIdDetail, CustomerIdDetail.OrdersList, CustomerIdDetail.OrdersList.OrderItemsList, CustomerIdDetail.OrdersList.PaymentsList, CustomerIdDetail.OrdersList.RefundsList, CustomerIdDetail.OrdersList.OrderStatusHistoryList, CustomerIdDetail.OrdersList.CustomerIdDetail, CustomerIdDetail.OrdersList.CouponIdDetail, CustomerIdDetail.CartsList, CustomerIdDetail.CartsList.CartItemsList, CustomerIdDetail.CartsList.CustomerIdDetail, CouponIdDetail, CouponIdDetail.OrdersList, CouponIdDetail.OrdersList.OrderItemsList, CouponIdDetail.OrdersList.PaymentsList, CouponIdDetail.OrdersList.RefundsList, CouponIdDetail.OrdersList.OrderStatusHistoryList, CouponIdDetail.OrdersList.CustomerIdDetail, CouponIdDetail.OrdersList.CouponIdDetail",
+            "in": "query",
+            "name": "preloads",
+            "required": false,
+            "schema": {
+              "enum": [
+                "OrderItemsList",
+                "OrderItemsList.OrderIdDetail",
+                "OrderItemsList.OrderIdDetail.OrderItemsList",
+                "OrderItemsList.OrderIdDetail.PaymentsList",
+                "OrderItemsList.OrderIdDetail.RefundsList",
+                "OrderItemsList.OrderIdDetail.OrderStatusHistoryList",
+                "OrderItemsList.OrderIdDetail.CustomerIdDetail",
+                "OrderItemsList.OrderIdDetail.CouponIdDetail",
+                "PaymentsList",
+                "PaymentsList.RefundsList",
+                "PaymentsList.RefundsList.OrderIdDetail",
+                "PaymentsList.RefundsList.PaymentIdDetail",
+                "PaymentsList.OrderIdDetail",
+                "PaymentsList.OrderIdDetail.OrderItemsList",
+                "PaymentsList.OrderIdDetail.PaymentsList",
+                "PaymentsList.OrderIdDetail.RefundsList",
+                "PaymentsList.OrderIdDetail.OrderStatusHistoryList",
+                "PaymentsList.OrderIdDetail.CustomerIdDetail",
+                "PaymentsList.OrderIdDetail.CouponIdDetail",
+                "RefundsList",
+                "RefundsList.OrderIdDetail",
+                "RefundsList.OrderIdDetail.OrderItemsList",
+                "RefundsList.OrderIdDetail.PaymentsList",
+                "RefundsList.OrderIdDetail.RefundsList",
+                "RefundsList.OrderIdDetail.OrderStatusHistoryList",
+                "RefundsList.OrderIdDetail.CustomerIdDetail",
+                "RefundsList.OrderIdDetail.CouponIdDetail",
+                "RefundsList.PaymentIdDetail",
+                "RefundsList.PaymentIdDetail.RefundsList",
+                "RefundsList.PaymentIdDetail.OrderIdDetail",
+                "OrderStatusHistoryList",
+                "OrderStatusHistoryList.OrderIdDetail",
+                "OrderStatusHistoryList.OrderIdDetail.OrderItemsList",
+                "OrderStatusHistoryList.OrderIdDetail.PaymentsList",
+                "OrderStatusHistoryList.OrderIdDetail.RefundsList",
+                "OrderStatusHistoryList.OrderIdDetail.OrderStatusHistoryList",
+                "OrderStatusHistoryList.OrderIdDetail.CustomerIdDetail",
+                "OrderStatusHistoryList.OrderIdDetail.CouponIdDetail",
+                "CustomerIdDetail",
+                "CustomerIdDetail.OrdersList",
+                "CustomerIdDetail.OrdersList.OrderItemsList",
+                "CustomerIdDetail.OrdersList.PaymentsList",
+                "CustomerIdDetail.OrdersList.RefundsList",
+                "CustomerIdDetail.OrdersList.OrderStatusHistoryList",
+                "CustomerIdDetail.OrdersList.CustomerIdDetail",
+                "CustomerIdDetail.OrdersList.CouponIdDetail",
+                "CustomerIdDetail.CartsList",
+                "CustomerIdDetail.CartsList.CartItemsList",
+                "CustomerIdDetail.CartsList.CustomerIdDetail",
+                "CouponIdDetail",
+                "CouponIdDetail.OrdersList",
+                "CouponIdDetail.OrdersList.OrderItemsList",
+                "CouponIdDetail.OrdersList.PaymentsList",
+                "CouponIdDetail.OrdersList.RefundsList",
+                "CouponIdDetail.OrdersList.OrderStatusHistoryList",
+                "CouponIdDetail.OrdersList.CustomerIdDetail",
+                "CouponIdDetail.OrdersList.CouponIdDetail"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to join. Available: Customers, Customers.Users, Customers.Organizations, Coupons, Users",
+            "in": "query",
+            "name": "joins",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Customers",
+                "Customers.Users",
+                "Customers.Organizations",
+                "Coupons",
+                "Users"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Orders"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Search Orders",
+        "tags": [
+          "Orders"
+        ]
+      },
+      "post": {
+        "description": "Create a new Orders record.",
+        "operationId": "postOrders",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrdersForm"
+              }
+            }
+          },
+          "description": "New Orders data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Orders"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "409": {
+            "description": "Conflict — duplicate unique key"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Create Orders",
+        "tags": [
+          "Orders"
+        ]
+      }
+    },
+    "/api/v1/orders/bulk/": {
+      "post": {
+        "description": "Create multiple Orders records.",
+        "operationId": "postOrdersBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/OrdersForm"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Array of create payloads",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Orders"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "description": "Validation error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Bulk Create Orders",
+        "tags": [
+          "Orders"
+        ]
+      },
+      "put": {
+        "description": "Batch update multiple records.",
+        "operationId": "putOrdersBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/OrdersBatchUpdate"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "description": "Array of { pathParams, data }",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Bulk Update Orders",
+        "tags": [
+          "Orders"
+        ]
+      }
+    },
+    "/api/v1/orders/pagination": {
+      "get": {
+        "description": "Paginated listing.",
+        "operationId": "getOrdersPagination",
+        "parameters": [
+          {
+            "description": "Page number (default: 1)",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Max results (default: 10)",
+            "in": "query",
+            "name": "size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Sort field. Prefix - for DESC.",
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated columns to select",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to preload. Available: OrderItemsList, OrderItemsList.OrderIdDetail, OrderItemsList.OrderIdDetail.OrderItemsList, OrderItemsList.OrderIdDetail.PaymentsList, OrderItemsList.OrderIdDetail.RefundsList, OrderItemsList.OrderIdDetail.OrderStatusHistoryList, OrderItemsList.OrderIdDetail.CustomerIdDetail, OrderItemsList.OrderIdDetail.CouponIdDetail, PaymentsList, PaymentsList.RefundsList, PaymentsList.RefundsList.OrderIdDetail, PaymentsList.RefundsList.PaymentIdDetail, PaymentsList.OrderIdDetail, PaymentsList.OrderIdDetail.OrderItemsList, PaymentsList.OrderIdDetail.PaymentsList, PaymentsList.OrderIdDetail.RefundsList, PaymentsList.OrderIdDetail.OrderStatusHistoryList, PaymentsList.OrderIdDetail.CustomerIdDetail, PaymentsList.OrderIdDetail.CouponIdDetail, RefundsList, RefundsList.OrderIdDetail, RefundsList.OrderIdDetail.OrderItemsList, RefundsList.OrderIdDetail.PaymentsList, RefundsList.OrderIdDetail.RefundsList, RefundsList.OrderIdDetail.OrderStatusHistoryList, RefundsList.OrderIdDetail.CustomerIdDetail, RefundsList.OrderIdDetail.CouponIdDetail, RefundsList.PaymentIdDetail, RefundsList.PaymentIdDetail.RefundsList, RefundsList.PaymentIdDetail.OrderIdDetail, OrderStatusHistoryList, OrderStatusHistoryList.OrderIdDetail, OrderStatusHistoryList.OrderIdDetail.OrderItemsList, OrderStatusHistoryList.OrderIdDetail.PaymentsList, OrderStatusHistoryList.OrderIdDetail.RefundsList, OrderStatusHistoryList.OrderIdDetail.OrderStatusHistoryList, OrderStatusHistoryList.OrderIdDetail.CustomerIdDetail, OrderStatusHistoryList.OrderIdDetail.CouponIdDetail, CustomerIdDetail, CustomerIdDetail.OrdersList, CustomerIdDetail.OrdersList.OrderItemsList, CustomerIdDetail.OrdersList.PaymentsList, CustomerIdDetail.OrdersList.RefundsList, CustomerIdDetail.OrdersList.OrderStatusHistoryList, CustomerIdDetail.OrdersList.CustomerIdDetail, CustomerIdDetail.OrdersList.CouponIdDetail, CustomerIdDetail.CartsList, CustomerIdDetail.CartsList.CartItemsList, CustomerIdDetail.CartsList.CustomerIdDetail, CouponIdDetail, CouponIdDetail.OrdersList, CouponIdDetail.OrdersList.OrderItemsList, CouponIdDetail.OrdersList.PaymentsList, CouponIdDetail.OrdersList.RefundsList, CouponIdDetail.OrdersList.OrderStatusHistoryList, CouponIdDetail.OrdersList.CustomerIdDetail, CouponIdDetail.OrdersList.CouponIdDetail",
+            "in": "query",
+            "name": "preloads",
+            "required": false,
+            "schema": {
+              "enum": [
+                "OrderItemsList",
+                "OrderItemsList.OrderIdDetail",
+                "OrderItemsList.OrderIdDetail.OrderItemsList",
+                "OrderItemsList.OrderIdDetail.PaymentsList",
+                "OrderItemsList.OrderIdDetail.RefundsList",
+                "OrderItemsList.OrderIdDetail.OrderStatusHistoryList",
+                "OrderItemsList.OrderIdDetail.CustomerIdDetail",
+                "OrderItemsList.OrderIdDetail.CouponIdDetail",
+                "PaymentsList",
+                "PaymentsList.RefundsList",
+                "PaymentsList.RefundsList.OrderIdDetail",
+                "PaymentsList.RefundsList.PaymentIdDetail",
+                "PaymentsList.OrderIdDetail",
+                "PaymentsList.OrderIdDetail.OrderItemsList",
+                "PaymentsList.OrderIdDetail.PaymentsList",
+                "PaymentsList.OrderIdDetail.RefundsList",
+                "PaymentsList.OrderIdDetail.OrderStatusHistoryList",
+                "PaymentsList.OrderIdDetail.CustomerIdDetail",
+                "PaymentsList.OrderIdDetail.CouponIdDetail",
+                "RefundsList",
+                "RefundsList.OrderIdDetail",
+                "RefundsList.OrderIdDetail.OrderItemsList",
+                "RefundsList.OrderIdDetail.PaymentsList",
+                "RefundsList.OrderIdDetail.RefundsList",
+                "RefundsList.OrderIdDetail.OrderStatusHistoryList",
+                "RefundsList.OrderIdDetail.CustomerIdDetail",
+                "RefundsList.OrderIdDetail.CouponIdDetail",
+                "RefundsList.PaymentIdDetail",
+                "RefundsList.PaymentIdDetail.RefundsList",
+                "RefundsList.PaymentIdDetail.OrderIdDetail",
+                "OrderStatusHistoryList",
+                "OrderStatusHistoryList.OrderIdDetail",
+                "OrderStatusHistoryList.OrderIdDetail.OrderItemsList",
+                "OrderStatusHistoryList.OrderIdDetail.PaymentsList",
+                "OrderStatusHistoryList.OrderIdDetail.RefundsList",
+                "OrderStatusHistoryList.OrderIdDetail.OrderStatusHistoryList",
+                "OrderStatusHistoryList.OrderIdDetail.CustomerIdDetail",
+                "OrderStatusHistoryList.OrderIdDetail.CouponIdDetail",
+                "CustomerIdDetail",
+                "CustomerIdDetail.OrdersList",
+                "CustomerIdDetail.OrdersList.OrderItemsList",
+                "CustomerIdDetail.OrdersList.PaymentsList",
+                "CustomerIdDetail.OrdersList.RefundsList",
+                "CustomerIdDetail.OrdersList.OrderStatusHistoryList",
+                "CustomerIdDetail.OrdersList.CustomerIdDetail",
+                "CustomerIdDetail.OrdersList.CouponIdDetail",
+                "CustomerIdDetail.CartsList",
+                "CustomerIdDetail.CartsList.CartItemsList",
+                "CustomerIdDetail.CartsList.CustomerIdDetail",
+                "CouponIdDetail",
+                "CouponIdDetail.OrdersList",
+                "CouponIdDetail.OrdersList.OrderItemsList",
+                "CouponIdDetail.OrdersList.PaymentsList",
+                "CouponIdDetail.OrdersList.RefundsList",
+                "CouponIdDetail.OrdersList.OrderStatusHistoryList",
+                "CouponIdDetail.OrdersList.CustomerIdDetail",
+                "CouponIdDetail.OrdersList.CouponIdDetail"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Relations to join. Available: Customers, Customers.Users, Customers.Organizations, Coupons, Users",
+            "in": "query",
+            "name": "joins",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Customers",
+                "Customers.Users",
+                "Customers.Organizations",
+                "Coupons",
+                "Users"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse_Orders"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Paginate Orders",
+        "tags": [
+          "Orders"
+        ]
+      },
+      "post": {
+        "description": "Paginated listing with body filters.",
+        "operationId": "postOrdersPagination",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaginationBody"
+              }
+            }
+          },
+          "description": "Pagination parameters",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginationResponse_Orders"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Paginate Orders (POST)",
+        "tags": [
+          "Orders"
+        ]
+      }
+    },
+    "/api/v1/orders/search": {
+      "post": {
+        "description": "Search with body filters.",
+        "operationId": "postOrdersSearch",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchBody"
+              }
+            }
+          },
+          "description": "Search parameters",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/Orders"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Search Orders (POST)",
+        "tags": [
+          "Orders"
+        ]
+      }
+    },
+    "/api/v1/orders/with-id/{Id}": {
+      "delete": {
+        "description": "Soft-delete.",
+        "operationId": "deleteOrdersById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Delete Orders",
+        "tags": [
+          "Orders"
+        ]
+      },
+      "get": {
+        "description": "Retrieve a single record.",
+        "operationId": "getOrdersById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Orders"
+                }
+              }
+            },
+            "description": "Successful"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Find Orders by ID",
+        "tags": [
+          "Orders"
+        ]
+      },
+      "put": {
+        "description": "Partial update.",
+        "operationId": "putOrdersById",
+        "parameters": [
+          {
+            "description": "Primary key (uuid)",
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrdersEdit"
+              }
+            }
+          },
+          "description": "Fields to update",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": [],
+            "companyId": []
+          }
+        ],
+        "summary": "Update Orders",
+        "tags": [
+          "Orders"
+        ]
+      }
+    }
+  },
+  "servers": [
+    {
+      "description": "Development",
+      "url": "http://localhost:3000"
+    }
+  ]
+}
