@@ -341,6 +341,68 @@
           "link": "/bg-docs/analytics/unread_notifications"
         }
       ]
+    },
+    {
+      "text": "Presentation",
+      "collapsed": true,
+      "items": [
+        {
+          "text": "Overview",
+          "link": "/bg-docs/presentation/"
+        },
+        {
+          "text": "1. Title & Overview",
+          "link": "/bg-docs/presentation/01_title"
+        },
+        {
+          "text": "2. Architecture",
+          "link": "/bg-docs/presentation/02_architecture_overview"
+        },
+        {
+          "text": "3. Configuration",
+          "link": "/bg-docs/presentation/03_configuration_system"
+        },
+        {
+          "text": "4. Parser Engine",
+          "link": "/bg-docs/presentation/04_parser_engine"
+        },
+        {
+          "text": "5. Template System",
+          "link": "/bg-docs/presentation/05_template_system"
+        },
+        {
+          "text": "6. Generated Code",
+          "link": "/bg-docs/presentation/06_generated_code"
+        },
+        {
+          "text": "7. Pagination Engine",
+          "link": "/bg-docs/presentation/07_pagination_engine"
+        },
+        {
+          "text": "8. Real-Time Events",
+          "link": "/bg-docs/presentation/08_realtime_events"
+        },
+        {
+          "text": "9. Documentation Engine",
+          "link": "/bg-docs/presentation/09_documentation_engine"
+        },
+        {
+          "text": "10. Testing & QA",
+          "link": "/bg-docs/presentation/10_testing_quality"
+        },
+        {
+          "text": "11. Performance",
+          "link": "/bg-docs/presentation/11_performance"
+        },
+        {
+          "text": "12. Demo Showcase",
+          "link": "/bg-docs/presentation/12_demo_showcase"
+        },
+        {
+          "text": "13. Summary",
+          "link": "/bg-docs/presentation/13_summary"
+        }
+      ]
     }
   ]
 }

@@ -1,83 +1,91 @@
 import { defineConfig } from "vitepress";
 import { withMermaid } from "vitepress-plugin-mermaid";
+import { tabsMarkdownPlugin } from "vitepress-plugin-tabs";
 import sidebar from "../sidebar.json";
 
-export default withMermaid(defineConfig({
-  title: "Innovation Hub API",
-  description:
-    "Auto-generated API documentation with DataBridge V2 — 5 schemas, 54 tables, 14 RPC",
-  base: "/data-bridge-examples/",
+export default withMermaid(
+  defineConfig({
+    title: "Innovation Hub API",
+    description:
+      "Auto-generated API documentation with DataBridge V2 — 5 schemas, 54 tables, 14 RPC",
+    base: "/data-bridge-examples/",
 
-  head: [
-    ["link", { rel: "icon", type: "image/svg+xml", href: "/logo.svg" }],
-  ],
+    head: [["link", { rel: "icon", type: "image/svg+xml", href: "/logo.svg" }]],
 
-  themeConfig: {
-    logo: "/logo.svg",
-    siteTitle: "Innovation Hub",
+    themeConfig: {
+      logo: "/logo.svg",
+      siteTitle: "Innovation Hub",
 
-    nav: [
-      { text: "Home", link: "/" },
-      { text: "API Reference", link: "/API_REFERENCE" },
-      {
-        text: "Schemas",
-        items: [
-          { text: "IAM", link: "/iam/" },
-          { text: "Catalog", link: "/catalog/" },
-          { text: "Orders", link: "/orders/" },
-          { text: "Logistics", link: "/logistics/" },
-          { text: "Analytics", link: "/analytics/" },
-        ],
+      nav: [
+        { text: "Home", link: "/" },
+        { text: "API Reference", link: "/API_REFERENCE" },
+        {
+          text: "Schemas",
+          items: [
+            { text: "IAM", link: "/iam/" },
+            { text: "Catalog", link: "/catalog/" },
+            { text: "Orders", link: "/orders/" },
+            { text: "Logistics", link: "/logistics/" },
+            { text: "Analytics", link: "/analytics/" },
+          ],
+        },
+        {
+          text: "Swagger",
+          link: "/swagger",
+        },
+        {
+          text: "Presentation",
+          link: "/presentation/",
+        },
+      ],
+
+      sidebar: transformSidebar(sidebar),
+
+      socialLinks: [
+        {
+          icon: "github",
+          link: "https://github.com/meftunca/data-bridge-examples",
+        },
+      ],
+
+      search: {
+        provider: "local",
       },
-      {
-        text: "Swagger",
-        link: "/swagger",
+
+      editLink: {
+        pattern:
+          "https://github.com/meftunca/data-bridge-examples/edit/main/docs/:path",
+        text: "Edit this page",
       },
-    ],
 
-    sidebar: transformSidebar(sidebar),
-
-    socialLinks: [
-      {
-        icon: "github",
-        link: "https://github.com/meftunca/data-bridge-examples",
+      footer: {
+        message: "Auto-generated with DataBridge V2",
+        copyright: "© 2026 Maple Technologies",
       },
-    ],
 
-    search: {
-      provider: "local",
+      outline: {
+        level: [2, 3],
+        label: "On this page",
+      },
     },
 
-    editLink: {
-      pattern:
-        "https://github.com/meftunca/data-bridge-examples/edit/main/docs/:path",
-      text: "Edit this page",
+    markdown: {
+      lineNumbers: true,
+      image: { lazyLoading: true },
+      config(md) {
+        md.use(tabsMarkdownPlugin);
+      },
     },
 
-    footer: {
-      message: "Auto-generated with DataBridge V2",
-      copyright: "© 2026 Maple Technologies",
+    lastUpdated: true,
+    cleanUrls: true,
+    ignoreDeadLinks: true,
+
+    mermaid: {
+      theme: "dark",
     },
-
-    outline: {
-      level: [2, 3],
-      label: "On this page",
-    },
-  },
-
-  markdown: {
-    lineNumbers: true,
-    image: { lazyLoading: true },
-  },
-
-  lastUpdated: true,
-  cleanUrls: true,
-  ignoreDeadLinks: true,
-
-  mermaid: {
-    theme: "dark",
-  },
-}));
+  }),
+);
 
 /**
  * sidebar.json contains links with /bg-docs/ prefix.
