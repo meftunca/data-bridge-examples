@@ -22,9 +22,11 @@ _Tables this table references via foreign keys._
 
 ## Entity Relationship Diagram
 
+```mermaid
 erDiagram
     ProductReviews }o--|| Products : "FK"
     ProductReviews }o--|| Users : "FK"
+```
 
 ::::tabs
 
@@ -64,9 +66,9 @@ erDiagram
 
 ### Structs
 
-:::tabs
+::::tabs
 
-== Form
+:::tab Form
 
 #### ProductReviewsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductReviews.go#:~:text=type%20ProductReviewsForm%20struct)
 
@@ -85,7 +87,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-== Model
+:::tab Model
 
 #### ProductReviews [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductReviews.go#:~:text=type%20ProductReviews%20struct)
 
@@ -105,7 +107,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-== Edit
+:::tab Edit
 
 #### ProductReviewsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductReviews.go#:~:text=type%20ProductReviewsEdit%20struct)
 
@@ -125,7 +127,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-== Filter
+:::tab Filter
 
 #### ProductReviewsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductReviews.go#:~:text=type%20ProductReviewsFilter%20struct)
 
@@ -145,7 +147,7 @@ _Query filter — all fields are pointers_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-== Page
+:::tab Page
 
 #### ProductReviewsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductReviews.go#:~:text=type%20ProductReviewsPage%20struct)
 
@@ -165,7 +167,7 @@ _Paginated response wrapper_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-== BatchUpdate
+:::tab BatchUpdate
 
 #### ProductReviewsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductReviews.go#:~:text=type%20ProductReviewsBatchUpdate%20struct)
 
@@ -178,13 +180,13 @@ type ProductReviewsBatchUpdate struct {
 }
 ```
 
-:::
+::::
 
 ### Service & Endpoints
 
-:::tabs
+::::tabs
 
-== Service Methods
+:::tab Service Methods
 
 | Method | Signature |
 |---------|-----------|
@@ -194,7 +196,7 @@ type ProductReviewsBatchUpdate struct {
 | [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductReviews.go#:~:text=)%20UpdateProductReviewsMultiple() | `(ProductReviewsService) UpdateProductReviewsMultiple(data []ProductReviewsBatchUpdate) error` |
 | [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductReviews.go#:~:text=)%20DeleteProductReviews() | `(ProductReviewsService) DeleteProductReviews(id uuid.UUID) error` |
 
-== Endpoints
+:::tab Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -207,7 +209,7 @@ type ProductReviewsBatchUpdate struct {
 | `PUT` | `/product-reviews/with-id/:id` | Update by ID |
 | `DELETE` | `/product-reviews/with-id/:id` | Delete by ID |
 
-== Query & Filters
+:::tab Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -222,7 +224,7 @@ type ProductReviewsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-:::
+::::
 
 ### RPC Functions
 
@@ -237,9 +239,9 @@ type ProductReviewsBatchUpdate struct {
 
 ## TypeScript Types & Hooks
 
-:::tabs
+::::tabs
 
-== Interfaces
+:::tab Interfaces
 
 ```typescript
 export interface ProductReviews {
@@ -302,7 +304,7 @@ export type ProductReviewsPathQuery = {
 
 ```
 
-== React Query
+:::tab React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -356,7 +358,7 @@ export function useDeleteProductReviews() {
 
 ```
 
-== Zod Validation
+:::tab Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -378,7 +380,7 @@ export type ProductReviewsFormInput = z.infer<typeof ProductReviewsFormSchema>;
 
 ```
 
-:::
+::::
 
 
 :::tab API
@@ -392,9 +394,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-:::tabs
+::::tabs
 
-== Search
+:::tab Search
 
 #### <Badge type="info" text="GET" /> Search ProductReviews
 
@@ -491,7 +493,7 @@ curl -X POST \
 
 ---
 
-== Pagination
+:::tab Pagination
 
 #### <Badge type="info" text="GET" /> Paginate ProductReviews
 
@@ -590,7 +592,7 @@ curl -X POST \
 
 ---
 
-== Create
+:::tab Create
 
 #### <Badge type="tip" text="POST" /> Create ProductReviews
 
@@ -688,7 +690,7 @@ curl -X POST \
 
 ---
 
-== Find & Update
+:::tab Find & Update
 
 #### <Badge type="info" text="GET" /> Find ProductReviews by ID
 
@@ -816,7 +818,7 @@ curl -X PUT \
 
 ---
 
-== Delete
+:::tab Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete ProductReviews
 
@@ -855,7 +857,7 @@ curl -X DELETE \
 
 ---
 
-:::
+::::
 
 
 ::::

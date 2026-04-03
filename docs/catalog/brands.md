@@ -29,9 +29,11 @@ _Tables that reference this table via foreign keys._
 
 ## Entity Relationship Diagram
 
+```mermaid
 erDiagram
     Brands }o--|| Organizations : "FK"
     Brands ||--o{ Products : "ref"
+```
 
 ::::tabs
 
@@ -72,9 +74,9 @@ erDiagram
 
 ### Structs
 
-:::tabs
+::::tabs
 
-== Form
+:::tab Form
 
 #### BrandsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Brands.go#:~:text=type%20BrandsForm%20struct)
 
@@ -91,7 +93,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-== Model
+:::tab Model
 
 #### Brands [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Brands.go#:~:text=type%20Brands%20struct)
 
@@ -109,7 +111,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-== Edit
+:::tab Edit
 
 #### BrandsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Brands.go#:~:text=type%20BrandsEdit%20struct)
 
@@ -127,7 +129,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-== Filter
+:::tab Filter
 
 #### BrandsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Brands.go#:~:text=type%20BrandsFilter%20struct)
 
@@ -145,7 +147,7 @@ _Query filter — all fields are pointers_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-== Page
+:::tab Page
 
 #### BrandsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Brands.go#:~:text=type%20BrandsPage%20struct)
 
@@ -163,7 +165,7 @@ _Paginated response wrapper_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-== BatchUpdate
+:::tab BatchUpdate
 
 #### BrandsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Brands.go#:~:text=type%20BrandsBatchUpdate%20struct)
 
@@ -176,13 +178,13 @@ type BrandsBatchUpdate struct {
 }
 ```
 
-:::
+::::
 
 ### Service & Endpoints
 
-:::tabs
+::::tabs
 
-== Service Methods
+:::tab Service Methods
 
 | Method | Signature |
 |---------|-----------|
@@ -192,7 +194,7 @@ type BrandsBatchUpdate struct {
 | [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Brands.go#:~:text=)%20UpdateBrandsMultiple() | `(BrandsService) UpdateBrandsMultiple(data []BrandsBatchUpdate) error` |
 | [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Brands.go#:~:text=)%20DeleteBrands() | `(BrandsService) DeleteBrands(id uuid.UUID) error` |
 
-== Endpoints
+:::tab Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -205,7 +207,7 @@ type BrandsBatchUpdate struct {
 | `PUT` | `/brands/with-id/:id` | Update by ID |
 | `DELETE` | `/brands/with-id/:id` | Delete by ID |
 
-== Query & Filters
+:::tab Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -220,7 +222,7 @@ type BrandsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-:::
+::::
 
 ### RPC Functions
 
@@ -235,9 +237,9 @@ type BrandsBatchUpdate struct {
 
 ## TypeScript Types & Hooks
 
-:::tabs
+::::tabs
 
-== Interfaces
+:::tab Interfaces
 
 ```typescript
 export interface Brands {
@@ -294,7 +296,7 @@ export type BrandsPathQuery = {
 
 ```
 
-== React Query
+:::tab React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -348,7 +350,7 @@ export function useDeleteBrands() {
 
 ```
 
-== Zod Validation
+:::tab Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -368,7 +370,7 @@ export type BrandsFormInput = z.infer<typeof BrandsFormSchema>;
 
 ```
 
-:::
+::::
 
 
 :::tab API
@@ -382,9 +384,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-:::tabs
+::::tabs
 
-== Search
+:::tab Search
 
 #### <Badge type="info" text="GET" /> Search Brands
 
@@ -479,7 +481,7 @@ curl -X POST \
 
 ---
 
-== Pagination
+:::tab Pagination
 
 #### <Badge type="info" text="GET" /> Paginate Brands
 
@@ -576,7 +578,7 @@ curl -X POST \
 
 ---
 
-== Create
+:::tab Create
 
 #### <Badge type="tip" text="POST" /> Create Brands
 
@@ -670,7 +672,7 @@ curl -X POST \
 
 ---
 
-== Find & Update
+:::tab Find & Update
 
 #### <Badge type="info" text="GET" /> Find Brands by ID
 
@@ -796,7 +798,7 @@ curl -X PUT \
 
 ---
 
-== Delete
+:::tab Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete Brands
 
@@ -835,7 +837,7 @@ curl -X DELETE \
 
 ---
 
-:::
+::::
 
 
 ::::

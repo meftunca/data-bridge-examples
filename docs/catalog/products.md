@@ -41,6 +41,7 @@ _Tables that reference this table via foreign keys._
 
 ## Entity Relationship Diagram
 
+```mermaid
 erDiagram
     Products }o--|| Brands : "FK"
     Products }o--|| Categories : "FK"
@@ -51,6 +52,7 @@ erDiagram
     Products ||--o{ ProductReviews : "ref"
     Products ||--o{ ProductTags : "ref"
     Products ||--o{ ProductVariants : "ref"
+```
 
 ::::tabs
 
@@ -119,9 +121,9 @@ erDiagram
 
 ### Structs
 
-:::tabs
+::::tabs
 
-== Form
+:::tab Form
 
 #### ProductsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Products.go#:~:text=type%20ProductsForm%20struct)
 
@@ -151,7 +153,7 @@ _Create payload — excludes auto-generated PK fields_
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 | `DeletedAt` | `*time.Time` | `deletedAt` | YES |
 
-== Model
+:::tab Model
 
 #### Products [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Products.go#:~:text=type%20Products%20struct)
 
@@ -182,7 +184,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 | `DeletedAt` | `*time.Time` | `deletedAt` | YES |
 
-== Edit
+:::tab Edit
 
 #### ProductsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Products.go#:~:text=type%20ProductsEdit%20struct)
 
@@ -213,7 +215,7 @@ _Update payload — all fields are pointers (partial update)_
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 | `DeletedAt` | `*time.Time` | `deletedAt` | YES |
 
-== Filter
+:::tab Filter
 
 #### ProductsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Products.go#:~:text=type%20ProductsFilter%20struct)
 
@@ -244,7 +246,7 @@ _Query filter — all fields are pointers_
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 | `DeletedAt` | `*time.Time` | `deletedAt` | YES |
 
-== Page
+:::tab Page
 
 #### ProductsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Products.go#:~:text=type%20ProductsPage%20struct)
 
@@ -275,7 +277,7 @@ _Paginated response wrapper_
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 | `DeletedAt` | `*time.Time` | `deletedAt` | YES |
 
-== BatchUpdate
+:::tab BatchUpdate
 
 #### ProductsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Products.go#:~:text=type%20ProductsBatchUpdate%20struct)
 
@@ -288,13 +290,13 @@ type ProductsBatchUpdate struct {
 }
 ```
 
-:::
+::::
 
 ### Service & Endpoints
 
-:::tabs
+::::tabs
 
-== Service Methods
+:::tab Service Methods
 
 | Method | Signature |
 |---------|-----------|
@@ -304,7 +306,7 @@ type ProductsBatchUpdate struct {
 | [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Products.go#:~:text=)%20UpdateProductsMultiple() | `(ProductsService) UpdateProductsMultiple(data []ProductsBatchUpdate) error` |
 | [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Products.go#:~:text=)%20DeleteProducts() | `(ProductsService) DeleteProducts(id uuid.UUID) error` |
 
-== Endpoints
+:::tab Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -317,7 +319,7 @@ type ProductsBatchUpdate struct {
 | `PUT` | `/products/with-id/:id` | Update by ID |
 | `DELETE` | `/products/with-id/:id` | Delete by ID |
 
-== Query & Filters
+:::tab Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -332,7 +334,7 @@ type ProductsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-:::
+::::
 
 ### RPC Functions
 
@@ -347,9 +349,9 @@ type ProductsBatchUpdate struct {
 
 ## TypeScript Types & Hooks
 
-:::tabs
+::::tabs
 
-== Interfaces
+:::tab Interfaces
 
 ```typescript
 export type CatalogProductStatus =
@@ -453,7 +455,7 @@ export type ProductsPathQuery = {
 
 ```
 
-== React Query
+:::tab React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -507,7 +509,7 @@ export function useDeleteProducts() {
 
 ```
 
-== Zod Validation
+:::tab Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -542,7 +544,7 @@ export type ProductsFormInput = z.infer<typeof ProductsFormSchema>;
 
 ```
 
-:::
+::::
 
 
 :::tab API
@@ -556,9 +558,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-:::tabs
+::::tabs
 
-== Search
+:::tab Search
 
 #### <Badge type="info" text="GET" /> Search Products
 
@@ -663,7 +665,7 @@ curl -X POST \
 
 ---
 
-== Pagination
+:::tab Pagination
 
 #### <Badge type="info" text="GET" /> Paginate Products
 
@@ -770,7 +772,7 @@ curl -X POST \
 
 ---
 
-== Create
+:::tab Create
 
 #### <Badge type="tip" text="POST" /> Create Products
 
@@ -884,7 +886,7 @@ curl -X POST \
 
 ---
 
-== Find & Update
+:::tab Find & Update
 
 #### <Badge type="info" text="GET" /> Find Products by ID
 
@@ -1020,7 +1022,7 @@ curl -X PUT \
 
 ---
 
-== Delete
+:::tab Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete Products
 
@@ -1059,7 +1061,7 @@ curl -X DELETE \
 
 ---
 
-:::
+::::
 
 
 ::::

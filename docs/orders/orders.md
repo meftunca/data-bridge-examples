@@ -35,6 +35,7 @@ _Tables that reference this table via foreign keys._
 
 ## Entity Relationship Diagram
 
+```mermaid
 erDiagram
     Orders }o--|| Customers : "FK"
     Orders }o--|| Coupons : "FK"
@@ -43,6 +44,7 @@ erDiagram
     Orders ||--o{ OrderStatusHistory : "ref"
     Orders ||--o{ Payments : "ref"
     Orders ||--o{ Refunds : "ref"
+```
 
 ::::tabs
 
@@ -114,9 +116,9 @@ erDiagram
 
 ### Structs
 
-:::tabs
+::::tabs
 
-== Form
+:::tab Form
 
 #### OrdersForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Orders.go#:~:text=type%20OrdersForm%20struct)
 
@@ -148,7 +150,7 @@ _Create payload — excludes auto-generated PK fields_
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 | `DeletedAt` | `*time.Time` | `deletedAt` | YES |
 
-== Model
+:::tab Model
 
 #### Orders [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Orders.go#:~:text=type%20Orders%20struct)
 
@@ -181,7 +183,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 | `DeletedAt` | `*time.Time` | `deletedAt` | YES |
 
-== Edit
+:::tab Edit
 
 #### OrdersEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Orders.go#:~:text=type%20OrdersEdit%20struct)
 
@@ -214,7 +216,7 @@ _Update payload — all fields are pointers (partial update)_
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 | `DeletedAt` | `*time.Time` | `deletedAt` | YES |
 
-== Filter
+:::tab Filter
 
 #### OrdersFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Orders.go#:~:text=type%20OrdersFilter%20struct)
 
@@ -247,7 +249,7 @@ _Query filter — all fields are pointers_
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 | `DeletedAt` | `*time.Time` | `deletedAt` | YES |
 
-== Page
+:::tab Page
 
 #### OrdersPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Orders.go#:~:text=type%20OrdersPage%20struct)
 
@@ -280,7 +282,7 @@ _Paginated response wrapper_
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 | `DeletedAt` | `*time.Time` | `deletedAt` | YES |
 
-== BatchUpdate
+:::tab BatchUpdate
 
 #### OrdersBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Orders.go#:~:text=type%20OrdersBatchUpdate%20struct)
 
@@ -293,13 +295,13 @@ type OrdersBatchUpdate struct {
 }
 ```
 
-:::
+::::
 
 ### Service & Endpoints
 
-:::tabs
+::::tabs
 
-== Service Methods
+:::tab Service Methods
 
 | Method | Signature |
 |---------|-----------|
@@ -309,7 +311,7 @@ type OrdersBatchUpdate struct {
 | [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Orders.go#:~:text=)%20UpdateOrdersMultiple() | `(OrdersService) UpdateOrdersMultiple(data []OrdersBatchUpdate) error` |
 | [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Orders.go#:~:text=)%20DeleteOrders() | `(OrdersService) DeleteOrders(id uuid.UUID) error` |
 
-== Endpoints
+:::tab Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -322,7 +324,7 @@ type OrdersBatchUpdate struct {
 | `PUT` | `/orders/with-id/:id` | Update by ID |
 | `DELETE` | `/orders/with-id/:id` | Delete by ID |
 
-== Query & Filters
+:::tab Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -337,7 +339,7 @@ type OrdersBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-:::
+::::
 
 ### RPC Functions
 
@@ -352,9 +354,9 @@ type OrdersBatchUpdate struct {
 
 ## TypeScript Types & Hooks
 
-:::tabs
+::::tabs
 
-== Interfaces
+:::tab Interfaces
 
 ```typescript
 export type OrdersOrderStatus =
@@ -467,7 +469,7 @@ export type OrdersPathQuery = {
 
 ```
 
-== React Query
+:::tab React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -521,7 +523,7 @@ export function useDeleteOrders() {
 
 ```
 
-== Zod Validation
+:::tab Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -558,7 +560,7 @@ export type OrdersFormInput = z.infer<typeof OrdersFormSchema>;
 
 ```
 
-:::
+::::
 
 
 :::tab API
@@ -572,9 +574,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-:::tabs
+::::tabs
 
-== Search
+:::tab Search
 
 #### <Badge type="info" text="GET" /> Search Orders
 
@@ -682,7 +684,7 @@ curl -X POST \
 
 ---
 
-== Pagination
+:::tab Pagination
 
 #### <Badge type="info" text="GET" /> Paginate Orders
 
@@ -792,7 +794,7 @@ curl -X POST \
 
 ---
 
-== Create
+:::tab Create
 
 #### <Badge type="tip" text="POST" /> Create Orders
 
@@ -912,7 +914,7 @@ curl -X POST \
 
 ---
 
-== Find & Update
+:::tab Find & Update
 
 #### <Badge type="info" text="GET" /> Find Orders by ID
 
@@ -1051,7 +1053,7 @@ curl -X PUT \
 
 ---
 
-== Delete
+:::tab Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete Orders
 
@@ -1090,7 +1092,7 @@ curl -X DELETE \
 
 ---
 
-:::
+::::
 
 
 ::::

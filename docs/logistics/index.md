@@ -21,6 +21,7 @@
 ## Entity Relationship Diagram
 
 ```mermaid
+```mermaid
 erDiagram
     Inventory }o--|| Products : "product_id"
     Inventory }o--|| ProductVariants : "variant_id"
@@ -42,6 +43,7 @@ erDiagram
     StorageZones }o--|| Warehouses : "warehouse_id"
     Warehouses }o--|| Organizations : "organization_id"
     Warehouses }o--|| Users : "manager_id"
+```
 ```
 
 ## Enum Types

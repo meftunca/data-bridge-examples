@@ -21,8 +21,10 @@ _Tables this table references via foreign keys._
 
 ## Entity Relationship Diagram
 
+```mermaid
 erDiagram
     ShipmentTracking }o--|| Shipments : "FK"
+```
 
 ::::tabs
 
@@ -58,9 +60,9 @@ erDiagram
 
 ### Structs
 
-:::tabs
+::::tabs
 
-== Form
+:::tab Form
 
 #### ShipmentTrackingForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/ShipmentTracking.go#:~:text=type%20ShipmentTrackingForm%20struct)
 
@@ -76,7 +78,7 @@ _Create payload — excludes auto-generated PK fields_
 | `EventTime` | `time.Time` | `eventTime` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== Model
+:::tab Model
 
 #### ShipmentTracking [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/ShipmentTracking.go#:~:text=type%20ShipmentTracking%20struct)
 
@@ -93,7 +95,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `EventTime` | `time.Time` | `eventTime` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== Edit
+:::tab Edit
 
 #### ShipmentTrackingEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/ShipmentTracking.go#:~:text=type%20ShipmentTrackingEdit%20struct)
 
@@ -110,7 +112,7 @@ _Update payload — all fields are pointers (partial update)_
 | `EventTime` | `*time.Time` | `eventTime` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Filter
+:::tab Filter
 
 #### ShipmentTrackingFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/ShipmentTracking.go#:~:text=type%20ShipmentTrackingFilter%20struct)
 
@@ -127,7 +129,7 @@ _Query filter — all fields are pointers_
 | `EventTime` | `*time.Time` | `eventTime` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Page
+:::tab Page
 
 #### ShipmentTrackingPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/ShipmentTracking.go#:~:text=type%20ShipmentTrackingPage%20struct)
 
@@ -144,7 +146,7 @@ _Paginated response wrapper_
 | `EventTime` | `time.Time` | `eventTime` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== BatchUpdate
+:::tab BatchUpdate
 
 #### ShipmentTrackingBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/ShipmentTracking.go#:~:text=type%20ShipmentTrackingBatchUpdate%20struct)
 
@@ -157,13 +159,13 @@ type ShipmentTrackingBatchUpdate struct {
 }
 ```
 
-:::
+::::
 
 ### Service & Endpoints
 
-:::tabs
+::::tabs
 
-== Service Methods
+:::tab Service Methods
 
 | Method | Signature |
 |---------|-----------|
@@ -173,7 +175,7 @@ type ShipmentTrackingBatchUpdate struct {
 | [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/ShipmentTracking.go#:~:text=)%20UpdateShipmentTrackingMultiple() | `(ShipmentTrackingService) UpdateShipmentTrackingMultiple(data []ShipmentTrackingBatchUpdate) error` |
 | [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/ShipmentTracking.go#:~:text=)%20DeleteShipmentTracking() | `(ShipmentTrackingService) DeleteShipmentTracking(id uuid.UUID) error` |
 
-== Endpoints
+:::tab Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -186,7 +188,7 @@ type ShipmentTrackingBatchUpdate struct {
 | `PUT` | `/shipment-tracking/with-id/:id` | Update by ID |
 | `DELETE` | `/shipment-tracking/with-id/:id` | Delete by ID |
 
-== Query & Filters
+:::tab Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -201,7 +203,7 @@ type ShipmentTrackingBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-:::
+::::
 
 ### RPC Functions
 
@@ -215,9 +217,9 @@ type ShipmentTrackingBatchUpdate struct {
 
 ## TypeScript Types & Hooks
 
-:::tabs
+::::tabs
 
-== Interfaces
+:::tab Interfaces
 
 ```typescript
 export interface ShipmentTracking {
@@ -271,7 +273,7 @@ export type ShipmentTrackingPathQuery = {
 
 ```
 
-== React Query
+:::tab React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -325,7 +327,7 @@ export function useDeleteShipmentTracking() {
 
 ```
 
-== Zod Validation
+:::tab Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -344,7 +346,7 @@ export type ShipmentTrackingFormInput = z.infer<typeof ShipmentTrackingFormSchem
 
 ```
 
-:::
+::::
 
 
 :::tab API
@@ -358,9 +360,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-:::tabs
+::::tabs
 
-== Search
+:::tab Search
 
 #### <Badge type="info" text="GET" /> Search ShipmentTracking
 
@@ -455,7 +457,7 @@ curl -X POST \
 
 ---
 
-== Pagination
+:::tab Pagination
 
 #### <Badge type="info" text="GET" /> Paginate ShipmentTracking
 
@@ -552,7 +554,7 @@ curl -X POST \
 
 ---
 
-== Create
+:::tab Create
 
 #### <Badge type="tip" text="POST" /> Create ShipmentTracking
 
@@ -646,7 +648,7 @@ curl -X POST \
 
 ---
 
-== Find & Update
+:::tab Find & Update
 
 #### <Badge type="info" text="GET" /> Find ShipmentTracking by ID
 
@@ -772,7 +774,7 @@ curl -X PUT \
 
 ---
 
-== Delete
+:::tab Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete ShipmentTracking
 
@@ -811,7 +813,7 @@ curl -X DELETE \
 
 ---
 
-:::
+::::
 
 
 ::::

@@ -21,8 +21,10 @@ _Tables this table references via foreign keys._
 
 ## Entity Relationship Diagram
 
+```mermaid
 erDiagram
     Sessions }o--|| Users : "FK"
+```
 
 ::::tabs
 
@@ -58,9 +60,9 @@ erDiagram
 
 ### Structs
 
-:::tabs
+::::tabs
 
-== Form
+:::tab Form
 
 #### SessionsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Sessions.go#:~:text=type%20SessionsForm%20struct)
 
@@ -76,7 +78,7 @@ _Create payload — excludes auto-generated PK fields_
 | `ExpiresAt` | `time.Time` | `expiresAt` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== Model
+:::tab Model
 
 #### Sessions [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Sessions.go#:~:text=type%20Sessions%20struct)
 
@@ -93,7 +95,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `ExpiresAt` | `time.Time` | `expiresAt` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== Edit
+:::tab Edit
 
 #### SessionsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Sessions.go#:~:text=type%20SessionsEdit%20struct)
 
@@ -110,7 +112,7 @@ _Update payload — all fields are pointers (partial update)_
 | `ExpiresAt` | `*time.Time` | `expiresAt` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Filter
+:::tab Filter
 
 #### SessionsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Sessions.go#:~:text=type%20SessionsFilter%20struct)
 
@@ -127,7 +129,7 @@ _Query filter — all fields are pointers_
 | `ExpiresAt` | `*time.Time` | `expiresAt` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Page
+:::tab Page
 
 #### SessionsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Sessions.go#:~:text=type%20SessionsPage%20struct)
 
@@ -144,7 +146,7 @@ _Paginated response wrapper_
 | `ExpiresAt` | `time.Time` | `expiresAt` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== BatchUpdate
+:::tab BatchUpdate
 
 #### SessionsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Sessions.go#:~:text=type%20SessionsBatchUpdate%20struct)
 
@@ -157,13 +159,13 @@ type SessionsBatchUpdate struct {
 }
 ```
 
-:::
+::::
 
 ### Service & Endpoints
 
-:::tabs
+::::tabs
 
-== Service Methods
+:::tab Service Methods
 
 | Method | Signature |
 |---------|-----------|
@@ -173,7 +175,7 @@ type SessionsBatchUpdate struct {
 | [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Sessions.go#:~:text=)%20UpdateSessionsMultiple() | `(SessionsService) UpdateSessionsMultiple(data []SessionsBatchUpdate) error` |
 | [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Sessions.go#:~:text=)%20DeleteSessions() | `(SessionsService) DeleteSessions(id uuid.UUID) error` |
 
-== Endpoints
+:::tab Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -186,7 +188,7 @@ type SessionsBatchUpdate struct {
 | `PUT` | `/sessions/with-id/:id` | Update by ID |
 | `DELETE` | `/sessions/with-id/:id` | Delete by ID |
 
-== Query & Filters
+:::tab Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -201,7 +203,7 @@ type SessionsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-:::
+::::
 
 ### RPC Functions
 
@@ -216,9 +218,9 @@ type SessionsBatchUpdate struct {
 
 ## TypeScript Types & Hooks
 
-:::tabs
+::::tabs
 
-== Interfaces
+:::tab Interfaces
 
 ```typescript
 export interface Sessions {
@@ -272,7 +274,7 @@ export type SessionsPathQuery = {
 
 ```
 
-== React Query
+:::tab React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -326,7 +328,7 @@ export function useDeleteSessions() {
 
 ```
 
-== Zod Validation
+:::tab Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -345,7 +347,7 @@ export type SessionsFormInput = z.infer<typeof SessionsFormSchema>;
 
 ```
 
-:::
+::::
 
 
 :::tab API
@@ -359,9 +361,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-:::tabs
+::::tabs
 
-== Search
+:::tab Search
 
 #### <Badge type="info" text="GET" /> Search Sessions
 
@@ -456,7 +458,7 @@ curl -X POST \
 
 ---
 
-== Pagination
+:::tab Pagination
 
 #### <Badge type="info" text="GET" /> Paginate Sessions
 
@@ -553,7 +555,7 @@ curl -X POST \
 
 ---
 
-== Create
+:::tab Create
 
 #### <Badge type="tip" text="POST" /> Create Sessions
 
@@ -647,7 +649,7 @@ curl -X POST \
 
 ---
 
-== Find & Update
+:::tab Find & Update
 
 #### <Badge type="info" text="GET" /> Find Sessions by ID
 
@@ -773,7 +775,7 @@ curl -X PUT \
 
 ---
 
-== Delete
+:::tab Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete Sessions
 
@@ -812,7 +814,7 @@ curl -X DELETE \
 
 ---
 
-:::
+::::
 
 
 ::::

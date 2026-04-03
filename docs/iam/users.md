@@ -56,6 +56,7 @@ _Tables that reference this table via foreign keys._
 
 ## Entity Relationship Diagram
 
+```mermaid
 erDiagram
     Users }o--|| Organizations : "FK"
     Users ||--o{ ApiKeys : "ref"
@@ -64,6 +65,7 @@ erDiagram
     Users ||--o{ TeamMembers : "ref"
     Users ||--o{ Teams : "ref"
     Users ||--o{ UserRoles : "ref"
+```
 
 ::::tabs
 
@@ -131,9 +133,9 @@ erDiagram
 
 ### Structs
 
-:::tabs
+::::tabs
 
-== Form
+:::tab Form
 
 #### UsersForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Users.go#:~:text=type%20UsersForm%20struct)
 
@@ -156,7 +158,7 @@ _Create payload — excludes auto-generated PK fields_
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 | `DeletedAt` | `*time.Time` | `deletedAt` | YES |
 
-== Model
+:::tab Model
 
 #### Users [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Users.go#:~:text=type%20Users%20struct)
 
@@ -180,7 +182,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 | `DeletedAt` | `*time.Time` | `deletedAt` | YES |
 
-== Edit
+:::tab Edit
 
 #### UsersEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Users.go#:~:text=type%20UsersEdit%20struct)
 
@@ -204,7 +206,7 @@ _Update payload — all fields are pointers (partial update)_
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 | `DeletedAt` | `*time.Time` | `deletedAt` | YES |
 
-== Filter
+:::tab Filter
 
 #### UsersFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Users.go#:~:text=type%20UsersFilter%20struct)
 
@@ -228,7 +230,7 @@ _Query filter — all fields are pointers_
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 | `DeletedAt` | `*time.Time` | `deletedAt` | YES |
 
-== Page
+:::tab Page
 
 #### UsersPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Users.go#:~:text=type%20UsersPage%20struct)
 
@@ -252,7 +254,7 @@ _Paginated response wrapper_
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 | `DeletedAt` | `*time.Time` | `deletedAt` | YES |
 
-== BatchUpdate
+:::tab BatchUpdate
 
 #### UsersBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Users.go#:~:text=type%20UsersBatchUpdate%20struct)
 
@@ -265,13 +267,13 @@ type UsersBatchUpdate struct {
 }
 ```
 
-:::
+::::
 
 ### Service & Endpoints
 
-:::tabs
+::::tabs
 
-== Service Methods
+:::tab Service Methods
 
 | Method | Signature |
 |---------|-----------|
@@ -281,7 +283,7 @@ type UsersBatchUpdate struct {
 | [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Users.go#:~:text=)%20UpdateUsersMultiple() | `(UsersService) UpdateUsersMultiple(data []UsersBatchUpdate) error` |
 | [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Users.go#:~:text=)%20DeleteUsers() | `(UsersService) DeleteUsers(id uuid.UUID) error` |
 
-== Endpoints
+:::tab Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -294,7 +296,7 @@ type UsersBatchUpdate struct {
 | `PUT` | `/users/with-id/:id` | Update by ID |
 | `DELETE` | `/users/with-id/:id` | Delete by ID |
 
-== Query & Filters
+:::tab Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -309,7 +311,7 @@ type UsersBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-:::
+::::
 
 ### RPC Functions
 
@@ -324,9 +326,9 @@ type UsersBatchUpdate struct {
 
 ## TypeScript Types & Hooks
 
-:::tabs
+::::tabs
 
-== Interfaces
+:::tab Interfaces
 
 ```typescript
 export type IamAuthProvider =
@@ -418,7 +420,7 @@ export type UsersPathQuery = {
 
 ```
 
-== React Query
+:::tab React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -472,7 +474,7 @@ export function useDeleteUsers() {
 
 ```
 
-== Zod Validation
+:::tab Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -502,7 +504,7 @@ export type UsersFormInput = z.infer<typeof UsersFormSchema>;
 
 ```
 
-:::
+::::
 
 
 :::tab API
@@ -516,9 +518,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-:::tabs
+::::tabs
 
-== Search
+:::tab Search
 
 #### <Badge type="info" text="GET" /> Search Users
 
@@ -618,7 +620,7 @@ curl -X POST \
 
 ---
 
-== Pagination
+:::tab Pagination
 
 #### <Badge type="info" text="GET" /> Paginate Users
 
@@ -720,7 +722,7 @@ curl -X POST \
 
 ---
 
-== Create
+:::tab Create
 
 #### <Badge type="tip" text="POST" /> Create Users
 
@@ -824,7 +826,7 @@ curl -X POST \
 
 ---
 
-== Find & Update
+:::tab Find & Update
 
 #### <Badge type="info" text="GET" /> Find Users by ID
 
@@ -955,7 +957,7 @@ curl -X PUT \
 
 ---
 
-== Delete
+:::tab Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete Users
 
@@ -994,7 +996,7 @@ curl -X DELETE \
 
 ---
 
-:::
+::::
 
 
 ::::

@@ -21,6 +21,7 @@
 ## Entity Relationship Diagram
 
 ```mermaid
+```mermaid
 erDiagram
     Brands }o--|| Organizations : "organization_id"
     CollectionProducts }o--|| Collections : "collection_id"
@@ -37,6 +38,7 @@ erDiagram
     Products }o--|| Brands : "brand_id"
     Products }o--|| Categories : "category_id"
     Products }o--|| Users : "created_by"
+```
 ```
 
 ## Enum Types

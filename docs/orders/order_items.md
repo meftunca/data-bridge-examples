@@ -31,10 +31,12 @@ _Tables that reference this table via foreign keys._
 
 ## Entity Relationship Diagram
 
+```mermaid
 erDiagram
     OrderItems }o--|| Orders : "FK"
     OrderItems }o--|| Products : "FK"
     OrderItems }o--|| ProductVariants : "FK"
+```
 
 ::::tabs
 
@@ -76,9 +78,9 @@ erDiagram
 
 ### Structs
 
-:::tabs
+::::tabs
 
-== Form
+:::tab Form
 
 #### OrderItemsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/OrderItems.go#:~:text=type%20OrderItemsForm%20struct)
 
@@ -98,7 +100,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-== Model
+:::tab Model
 
 #### OrderItems [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/OrderItems.go#:~:text=type%20OrderItems%20struct)
 
@@ -119,7 +121,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-== Edit
+:::tab Edit
 
 #### OrderItemsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/OrderItems.go#:~:text=type%20OrderItemsEdit%20struct)
 
@@ -140,7 +142,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-== Filter
+:::tab Filter
 
 #### OrderItemsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/OrderItems.go#:~:text=type%20OrderItemsFilter%20struct)
 
@@ -161,7 +163,7 @@ _Query filter — all fields are pointers_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-== Page
+:::tab Page
 
 #### OrderItemsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/OrderItems.go#:~:text=type%20OrderItemsPage%20struct)
 
@@ -182,7 +184,7 @@ _Paginated response wrapper_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-== BatchUpdate
+:::tab BatchUpdate
 
 #### OrderItemsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/OrderItems.go#:~:text=type%20OrderItemsBatchUpdate%20struct)
 
@@ -195,13 +197,13 @@ type OrderItemsBatchUpdate struct {
 }
 ```
 
-:::
+::::
 
 ### Service & Endpoints
 
-:::tabs
+::::tabs
 
-== Service Methods
+:::tab Service Methods
 
 | Method | Signature |
 |---------|-----------|
@@ -211,7 +213,7 @@ type OrderItemsBatchUpdate struct {
 | [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/OrderItems.go#:~:text=)%20UpdateOrderItemsMultiple() | `(OrderItemsService) UpdateOrderItemsMultiple(data []OrderItemsBatchUpdate) error` |
 | [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/OrderItems.go#:~:text=)%20DeleteOrderItems() | `(OrderItemsService) DeleteOrderItems(id uuid.UUID) error` |
 
-== Endpoints
+:::tab Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -224,7 +226,7 @@ type OrderItemsBatchUpdate struct {
 | `PUT` | `/order-items/with-id/:id` | Update by ID |
 | `DELETE` | `/order-items/with-id/:id` | Delete by ID |
 
-== Query & Filters
+:::tab Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -239,7 +241,7 @@ type OrderItemsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-:::
+::::
 
 ### RPC Functions
 
@@ -254,9 +256,9 @@ type OrderItemsBatchUpdate struct {
 
 ## TypeScript Types & Hooks
 
-:::tabs
+::::tabs
 
-== Interfaces
+:::tab Interfaces
 
 ```typescript
 export interface OrderItems {
@@ -322,7 +324,7 @@ export type OrderItemsPathQuery = {
 
 ```
 
-== React Query
+:::tab React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -376,7 +378,7 @@ export function useDeleteOrderItems() {
 
 ```
 
-== Zod Validation
+:::tab Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -399,7 +401,7 @@ export type OrderItemsFormInput = z.infer<typeof OrderItemsFormSchema>;
 
 ```
 
-:::
+::::
 
 
 :::tab API
@@ -413,9 +415,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-:::tabs
+::::tabs
 
-== Search
+:::tab Search
 
 #### <Badge type="info" text="GET" /> Search OrderItems
 
@@ -513,7 +515,7 @@ curl -X POST \
 
 ---
 
-== Pagination
+:::tab Pagination
 
 #### <Badge type="info" text="GET" /> Paginate OrderItems
 
@@ -613,7 +615,7 @@ curl -X POST \
 
 ---
 
-== Create
+:::tab Create
 
 #### <Badge type="tip" text="POST" /> Create OrderItems
 
@@ -713,7 +715,7 @@ curl -X POST \
 
 ---
 
-== Find & Update
+:::tab Find & Update
 
 #### <Badge type="info" text="GET" /> Find OrderItems by ID
 
@@ -842,7 +844,7 @@ curl -X PUT \
 
 ---
 
-== Delete
+:::tab Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete OrderItems
 
@@ -881,7 +883,7 @@ curl -X DELETE \
 
 ---
 
-:::
+::::
 
 
 ::::

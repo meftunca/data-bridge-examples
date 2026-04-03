@@ -21,8 +21,10 @@ _Tables that reference this table via foreign keys._
 
 ## Entity Relationship Diagram
 
+```mermaid
 erDiagram
     Tags ||--o{ ProductTags : "ref"
+```
 
 ::::tabs
 
@@ -53,9 +55,9 @@ erDiagram
 
 ### Structs
 
-:::tabs
+::::tabs
 
-== Form
+:::tab Form
 
 #### TagsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Tags.go#:~:text=type%20TagsForm%20struct)
 
@@ -67,7 +69,7 @@ _Create payload — excludes auto-generated PK fields_
 | `Slug` | `string` | `slug` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== Model
+:::tab Model
 
 #### Tags [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Tags.go#:~:text=type%20Tags%20struct)
 
@@ -80,7 +82,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `Slug` | `string` | `slug` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== Edit
+:::tab Edit
 
 #### TagsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Tags.go#:~:text=type%20TagsEdit%20struct)
 
@@ -93,7 +95,7 @@ _Update payload — all fields are pointers (partial update)_
 | `Slug` | `*string` | `slug` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Filter
+:::tab Filter
 
 #### TagsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Tags.go#:~:text=type%20TagsFilter%20struct)
 
@@ -106,7 +108,7 @@ _Query filter — all fields are pointers_
 | `Slug` | `*string` | `slug` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Page
+:::tab Page
 
 #### TagsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Tags.go#:~:text=type%20TagsPage%20struct)
 
@@ -119,7 +121,7 @@ _Paginated response wrapper_
 | `Slug` | `string` | `slug` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== BatchUpdate
+:::tab BatchUpdate
 
 #### TagsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Tags.go#:~:text=type%20TagsBatchUpdate%20struct)
 
@@ -132,13 +134,13 @@ type TagsBatchUpdate struct {
 }
 ```
 
-:::
+::::
 
 ### Service & Endpoints
 
-:::tabs
+::::tabs
 
-== Service Methods
+:::tab Service Methods
 
 | Method | Signature |
 |---------|-----------|
@@ -148,7 +150,7 @@ type TagsBatchUpdate struct {
 | [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Tags.go#:~:text=)%20UpdateTagsMultiple() | `(TagsService) UpdateTagsMultiple(data []TagsBatchUpdate) error` |
 | [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Tags.go#:~:text=)%20DeleteTags() | `(TagsService) DeleteTags(id uuid.UUID) error` |
 
-== Endpoints
+:::tab Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -161,7 +163,7 @@ type TagsBatchUpdate struct {
 | `PUT` | `/tags/with-id/:id` | Update by ID |
 | `DELETE` | `/tags/with-id/:id` | Delete by ID |
 
-== Query & Filters
+:::tab Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -176,7 +178,7 @@ type TagsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-:::
+::::
 
 ### RPC Functions
 
@@ -191,9 +193,9 @@ type TagsBatchUpdate struct {
 
 ## TypeScript Types & Hooks
 
-:::tabs
+::::tabs
 
-== Interfaces
+:::tab Interfaces
 
 ```typescript
 export interface Tags {
@@ -235,7 +237,7 @@ export type TagsPathQuery = {
 
 ```
 
-== React Query
+:::tab React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -289,7 +291,7 @@ export function useDeleteTags() {
 
 ```
 
-== Zod Validation
+:::tab Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -304,7 +306,7 @@ export type TagsFormInput = z.infer<typeof TagsFormSchema>;
 
 ```
 
-:::
+::::
 
 
 :::tab API
@@ -318,9 +320,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-:::tabs
+::::tabs
 
-== Search
+:::tab Search
 
 #### <Badge type="info" text="GET" /> Search Tags
 
@@ -411,7 +413,7 @@ curl -X POST \
 
 ---
 
-== Pagination
+:::tab Pagination
 
 #### <Badge type="info" text="GET" /> Paginate Tags
 
@@ -504,7 +506,7 @@ curl -X POST \
 
 ---
 
-== Create
+:::tab Create
 
 #### <Badge type="tip" text="POST" /> Create Tags
 
@@ -590,7 +592,7 @@ curl -X POST \
 
 ---
 
-== Find & Update
+:::tab Find & Update
 
 #### <Badge type="info" text="GET" /> Find Tags by ID
 
@@ -712,7 +714,7 @@ curl -X PUT \
 
 ---
 
-== Delete
+:::tab Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete Tags
 
@@ -751,7 +753,7 @@ curl -X DELETE \
 
 ---
 
-:::
+::::
 
 
 ::::

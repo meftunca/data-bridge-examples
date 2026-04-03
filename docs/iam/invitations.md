@@ -23,10 +23,12 @@ _Tables this table references via foreign keys._
 
 ## Entity Relationship Diagram
 
+```mermaid
 erDiagram
     Invitations }o--|| Organizations : "FK"
     Invitations }o--|| Users : "FK"
     Invitations }o--|| Roles : "FK"
+```
 
 ::::tabs
 
@@ -70,9 +72,9 @@ erDiagram
 
 ### Structs
 
-:::tabs
+::::tabs
 
-== Form
+:::tab Form
 
 #### InvitationsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Invitations.go#:~:text=type%20InvitationsForm%20struct)
 
@@ -90,7 +92,7 @@ _Create payload — excludes auto-generated PK fields_
 | `ExpiresAt` | `time.Time` | `expiresAt` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== Model
+:::tab Model
 
 #### Invitations [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Invitations.go#:~:text=type%20Invitations%20struct)
 
@@ -109,7 +111,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `ExpiresAt` | `time.Time` | `expiresAt` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== Edit
+:::tab Edit
 
 #### InvitationsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Invitations.go#:~:text=type%20InvitationsEdit%20struct)
 
@@ -128,7 +130,7 @@ _Update payload — all fields are pointers (partial update)_
 | `ExpiresAt` | `*time.Time` | `expiresAt` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Filter
+:::tab Filter
 
 #### InvitationsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Invitations.go#:~:text=type%20InvitationsFilter%20struct)
 
@@ -147,7 +149,7 @@ _Query filter — all fields are pointers_
 | `ExpiresAt` | `*time.Time` | `expiresAt` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Page
+:::tab Page
 
 #### InvitationsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Invitations.go#:~:text=type%20InvitationsPage%20struct)
 
@@ -166,7 +168,7 @@ _Paginated response wrapper_
 | `ExpiresAt` | `time.Time` | `expiresAt` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== BatchUpdate
+:::tab BatchUpdate
 
 #### InvitationsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Invitations.go#:~:text=type%20InvitationsBatchUpdate%20struct)
 
@@ -179,13 +181,13 @@ type InvitationsBatchUpdate struct {
 }
 ```
 
-:::
+::::
 
 ### Service & Endpoints
 
-:::tabs
+::::tabs
 
-== Service Methods
+:::tab Service Methods
 
 | Method | Signature |
 |---------|-----------|
@@ -195,7 +197,7 @@ type InvitationsBatchUpdate struct {
 | [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Invitations.go#:~:text=)%20UpdateInvitationsMultiple() | `(InvitationsService) UpdateInvitationsMultiple(data []InvitationsBatchUpdate) error` |
 | [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Invitations.go#:~:text=)%20DeleteInvitations() | `(InvitationsService) DeleteInvitations(id uuid.UUID) error` |
 
-== Endpoints
+:::tab Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -208,7 +210,7 @@ type InvitationsBatchUpdate struct {
 | `PUT` | `/invitations/with-id/:id` | Update by ID |
 | `DELETE` | `/invitations/with-id/:id` | Delete by ID |
 
-== Query & Filters
+:::tab Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -223,7 +225,7 @@ type InvitationsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-:::
+::::
 
 ### RPC Functions
 
@@ -238,9 +240,9 @@ type InvitationsBatchUpdate struct {
 
 ## TypeScript Types & Hooks
 
-:::tabs
+::::tabs
 
-== Interfaces
+:::tab Interfaces
 
 ```typescript
 export interface Invitations {
@@ -300,7 +302,7 @@ export type InvitationsPathQuery = {
 
 ```
 
-== React Query
+:::tab React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -354,7 +356,7 @@ export function useDeleteInvitations() {
 
 ```
 
-== Zod Validation
+:::tab Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -375,7 +377,7 @@ export type InvitationsFormInput = z.infer<typeof InvitationsFormSchema>;
 
 ```
 
-:::
+::::
 
 
 :::tab API
@@ -389,9 +391,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-:::tabs
+::::tabs
 
-== Search
+:::tab Search
 
 #### <Badge type="info" text="GET" /> Search Invitations
 
@@ -488,7 +490,7 @@ curl -X POST \
 
 ---
 
-== Pagination
+:::tab Pagination
 
 #### <Badge type="info" text="GET" /> Paginate Invitations
 
@@ -587,7 +589,7 @@ curl -X POST \
 
 ---
 
-== Create
+:::tab Create
 
 #### <Badge type="tip" text="POST" /> Create Invitations
 
@@ -685,7 +687,7 @@ curl -X POST \
 
 ---
 
-== Find & Update
+:::tab Find & Update
 
 #### <Badge type="info" text="GET" /> Find Invitations by ID
 
@@ -813,7 +815,7 @@ curl -X PUT \
 
 ---
 
-== Delete
+:::tab Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete Invitations
 
@@ -852,7 +854,7 @@ curl -X DELETE \
 
 ---
 
-:::
+::::
 
 
 ::::

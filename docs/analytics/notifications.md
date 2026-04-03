@@ -21,8 +21,10 @@ _Tables this table references via foreign keys._
 
 ## Entity Relationship Diagram
 
+```mermaid
 erDiagram
     Notifications }o--|| Users : "FK"
+```
 
 ::::tabs
 
@@ -61,9 +63,9 @@ erDiagram
 
 ### Structs
 
-:::tabs
+::::tabs
 
-== Form
+:::tab Form
 
 #### NotificationsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Notifications.go#:~:text=type%20NotificationsForm%20struct)
 
@@ -82,7 +84,7 @@ _Create payload — excludes auto-generated PK fields_
 | `ReadAt` | `*time.Time` | `readAt` | YES |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== Model
+:::tab Model
 
 #### Notifications [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Notifications.go#:~:text=type%20Notifications%20struct)
 
@@ -102,7 +104,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `ReadAt` | `*time.Time` | `readAt` | YES |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== Edit
+:::tab Edit
 
 #### NotificationsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Notifications.go#:~:text=type%20NotificationsEdit%20struct)
 
@@ -122,7 +124,7 @@ _Update payload — all fields are pointers (partial update)_
 | `ReadAt` | `*time.Time` | `readAt` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Filter
+:::tab Filter
 
 #### NotificationsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Notifications.go#:~:text=type%20NotificationsFilter%20struct)
 
@@ -142,7 +144,7 @@ _Query filter — all fields are pointers_
 | `ReadAt` | `*time.Time` | `readAt` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Page
+:::tab Page
 
 #### NotificationsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Notifications.go#:~:text=type%20NotificationsPage%20struct)
 
@@ -162,7 +164,7 @@ _Paginated response wrapper_
 | `ReadAt` | `*time.Time` | `readAt` | YES |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== BatchUpdate
+:::tab BatchUpdate
 
 #### NotificationsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Notifications.go#:~:text=type%20NotificationsBatchUpdate%20struct)
 
@@ -175,13 +177,13 @@ type NotificationsBatchUpdate struct {
 }
 ```
 
-:::
+::::
 
 ### Service & Endpoints
 
-:::tabs
+::::tabs
 
-== Service Methods
+:::tab Service Methods
 
 | Method | Signature |
 |---------|-----------|
@@ -191,7 +193,7 @@ type NotificationsBatchUpdate struct {
 | [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Notifications.go#:~:text=)%20UpdateNotificationsMultiple() | `(NotificationsService) UpdateNotificationsMultiple(data []NotificationsBatchUpdate) error` |
 | [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Notifications.go#:~:text=)%20DeleteNotifications() | `(NotificationsService) DeleteNotifications(id uuid.UUID) error` |
 
-== Endpoints
+:::tab Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -204,7 +206,7 @@ type NotificationsBatchUpdate struct {
 | `PUT` | `/notifications/with-id/:id` | Update by ID |
 | `DELETE` | `/notifications/with-id/:id` | Delete by ID |
 
-== Query & Filters
+:::tab Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -219,7 +221,7 @@ type NotificationsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-:::
+::::
 
 ### RPC Functions
 
@@ -234,9 +236,9 @@ type NotificationsBatchUpdate struct {
 
 ## TypeScript Types & Hooks
 
-:::tabs
+::::tabs
 
-== Interfaces
+:::tab Interfaces
 
 ```typescript
 export interface Notifications {
@@ -299,7 +301,7 @@ export type NotificationsPathQuery = {
 
 ```
 
-== React Query
+:::tab React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -353,7 +355,7 @@ export function useDeleteNotifications() {
 
 ```
 
-== Zod Validation
+:::tab Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -375,7 +377,7 @@ export type NotificationsFormInput = z.infer<typeof NotificationsFormSchema>;
 
 ```
 
-:::
+::::
 
 
 :::tab API
@@ -389,9 +391,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-:::tabs
+::::tabs
 
-== Search
+:::tab Search
 
 #### <Badge type="info" text="GET" /> Search Notifications
 
@@ -489,7 +491,7 @@ curl -X POST \
 
 ---
 
-== Pagination
+:::tab Pagination
 
 #### <Badge type="info" text="GET" /> Paginate Notifications
 
@@ -589,7 +591,7 @@ curl -X POST \
 
 ---
 
-== Create
+:::tab Create
 
 #### <Badge type="tip" text="POST" /> Create Notifications
 
@@ -689,7 +691,7 @@ curl -X POST \
 
 ---
 
-== Find & Update
+:::tab Find & Update
 
 #### <Badge type="info" text="GET" /> Find Notifications by ID
 
@@ -818,7 +820,7 @@ curl -X PUT \
 
 ---
 
-== Delete
+:::tab Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete Notifications
 
@@ -857,7 +859,7 @@ curl -X DELETE \
 
 ---
 
-:::
+::::
 
 
 ::::

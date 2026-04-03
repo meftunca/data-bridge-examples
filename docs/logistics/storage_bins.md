@@ -29,9 +29,11 @@ _Tables that reference this table via foreign keys._
 
 ## Entity Relationship Diagram
 
+```mermaid
 erDiagram
     StorageBins }o--|| StorageZones : "FK"
     StorageBins ||--o{ Inventory : "ref"
+```
 
 ::::tabs
 
@@ -67,9 +69,9 @@ erDiagram
 
 ### Structs
 
-:::tabs
+::::tabs
 
-== Form
+:::tab Form
 
 #### StorageBinsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/StorageBins.go#:~:text=type%20StorageBinsForm%20struct)
 
@@ -85,7 +87,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-== Model
+:::tab Model
 
 #### StorageBins [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/StorageBins.go#:~:text=type%20StorageBins%20struct)
 
@@ -102,7 +104,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-== Edit
+:::tab Edit
 
 #### StorageBinsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/StorageBins.go#:~:text=type%20StorageBinsEdit%20struct)
 
@@ -119,7 +121,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-== Filter
+:::tab Filter
 
 #### StorageBinsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/StorageBins.go#:~:text=type%20StorageBinsFilter%20struct)
 
@@ -136,7 +138,7 @@ _Query filter — all fields are pointers_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-== Page
+:::tab Page
 
 #### StorageBinsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/StorageBins.go#:~:text=type%20StorageBinsPage%20struct)
 
@@ -153,7 +155,7 @@ _Paginated response wrapper_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-== BatchUpdate
+:::tab BatchUpdate
 
 #### StorageBinsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/StorageBins.go#:~:text=type%20StorageBinsBatchUpdate%20struct)
 
@@ -166,13 +168,13 @@ type StorageBinsBatchUpdate struct {
 }
 ```
 
-:::
+::::
 
 ### Service & Endpoints
 
-:::tabs
+::::tabs
 
-== Service Methods
+:::tab Service Methods
 
 | Method | Signature |
 |---------|-----------|
@@ -182,7 +184,7 @@ type StorageBinsBatchUpdate struct {
 | [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/StorageBins.go#:~:text=)%20UpdateStorageBinsMultiple() | `(StorageBinsService) UpdateStorageBinsMultiple(data []StorageBinsBatchUpdate) error` |
 | [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/StorageBins.go#:~:text=)%20DeleteStorageBins() | `(StorageBinsService) DeleteStorageBins(id uuid.UUID) error` |
 
-== Endpoints
+:::tab Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -195,7 +197,7 @@ type StorageBinsBatchUpdate struct {
 | `PUT` | `/storage-bins/with-id/:id` | Update by ID |
 | `DELETE` | `/storage-bins/with-id/:id` | Delete by ID |
 
-== Query & Filters
+:::tab Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -210,7 +212,7 @@ type StorageBinsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-:::
+::::
 
 ### RPC Functions
 
@@ -224,9 +226,9 @@ type StorageBinsBatchUpdate struct {
 
 ## TypeScript Types & Hooks
 
-:::tabs
+::::tabs
 
-== Interfaces
+:::tab Interfaces
 
 ```typescript
 export interface StorageBins {
@@ -280,7 +282,7 @@ export type StorageBinsPathQuery = {
 
 ```
 
-== React Query
+:::tab React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -334,7 +336,7 @@ export function useDeleteStorageBins() {
 
 ```
 
-== Zod Validation
+:::tab Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -353,7 +355,7 @@ export type StorageBinsFormInput = z.infer<typeof StorageBinsFormSchema>;
 
 ```
 
-:::
+::::
 
 
 :::tab API
@@ -367,9 +369,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-:::tabs
+::::tabs
 
-== Search
+:::tab Search
 
 #### <Badge type="info" text="GET" /> Search StorageBins
 
@@ -463,7 +465,7 @@ curl -X POST \
 
 ---
 
-== Pagination
+:::tab Pagination
 
 #### <Badge type="info" text="GET" /> Paginate StorageBins
 
@@ -559,7 +561,7 @@ curl -X POST \
 
 ---
 
-== Create
+:::tab Create
 
 #### <Badge type="tip" text="POST" /> Create StorageBins
 
@@ -651,7 +653,7 @@ curl -X POST \
 
 ---
 
-== Find & Update
+:::tab Find & Update
 
 #### <Badge type="info" text="GET" /> Find StorageBins by ID
 
@@ -776,7 +778,7 @@ curl -X PUT \
 
 ---
 
-== Delete
+:::tab Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete StorageBins
 
@@ -815,7 +817,7 @@ curl -X DELETE \
 
 ---
 
-:::
+::::
 
 
 ::::

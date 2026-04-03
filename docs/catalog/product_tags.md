@@ -22,9 +22,11 @@ _Tables this table references via foreign keys._
 
 ## Entity Relationship Diagram
 
+```mermaid
 erDiagram
     ProductTags }o--|| Products : "FK"
     ProductTags }o--|| Tags : "FK"
+```
 
 ::::tabs
 
@@ -58,9 +60,9 @@ erDiagram
 
 ### Structs
 
-:::tabs
+::::tabs
 
-== Form
+:::tab Form
 
 #### ProductTagsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductTags.go#:~:text=type%20ProductTagsForm%20struct)
 
@@ -73,7 +75,7 @@ _Create payload — excludes auto-generated PK fields_
 | `Name` | `string` | `name` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== Model
+:::tab Model
 
 #### ProductTags [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductTags.go#:~:text=type%20ProductTags%20struct)
 
@@ -86,7 +88,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `Name` | `string` | `name` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== Edit
+:::tab Edit
 
 #### ProductTagsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductTags.go#:~:text=type%20ProductTagsEdit%20struct)
 
@@ -99,7 +101,7 @@ _Update payload — all fields are pointers (partial update)_
 | `Name` | `*string` | `name` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Filter
+:::tab Filter
 
 #### ProductTagsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductTags.go#:~:text=type%20ProductTagsFilter%20struct)
 
@@ -112,7 +114,7 @@ _Query filter — all fields are pointers_
 | `Name` | `*string` | `name` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Page
+:::tab Page
 
 #### ProductTagsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductTags.go#:~:text=type%20ProductTagsPage%20struct)
 
@@ -125,7 +127,7 @@ _Paginated response wrapper_
 | `Name` | `string` | `name` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== BatchUpdate
+:::tab BatchUpdate
 
 #### ProductTagsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductTags.go#:~:text=type%20ProductTagsBatchUpdate%20struct)
 
@@ -139,13 +141,13 @@ type ProductTagsBatchUpdate struct {
 }
 ```
 
-:::
+::::
 
 ### Service & Endpoints
 
-:::tabs
+::::tabs
 
-== Service Methods
+:::tab Service Methods
 
 | Method | Signature |
 |---------|-----------|
@@ -155,7 +157,7 @@ type ProductTagsBatchUpdate struct {
 | [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductTags.go#:~:text=)%20UpdateProductTagsMultiple() | `(ProductTagsService) UpdateProductTagsMultiple(data []ProductTagsBatchUpdate) error` |
 | [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductTags.go#:~:text=)%20DeleteProductTags() | `(ProductTagsService) DeleteProductTags(productId uuid.UUID, tagId uuid.UUID) error` |
 
-== Endpoints
+:::tab Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -168,7 +170,7 @@ type ProductTagsBatchUpdate struct {
 | `PUT` | `/product-tags/with-id/:product_id/:tag_id` | Update by ID |
 | `DELETE` | `/product-tags/with-id/:product_id/:tag_id` | Delete by ID |
 
-== Query & Filters
+:::tab Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -183,7 +185,7 @@ type ProductTagsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-:::
+::::
 
 ### RPC Functions
 
@@ -198,9 +200,9 @@ type ProductTagsBatchUpdate struct {
 
 ## TypeScript Types & Hooks
 
-:::tabs
+::::tabs
 
-== Interfaces
+:::tab Interfaces
 
 ```typescript
 export interface ProductTags {
@@ -243,7 +245,7 @@ export type ProductTagsPathQuery = {
 
 ```
 
-== React Query
+:::tab React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -297,7 +299,7 @@ export function useDeleteProductTags() {
 
 ```
 
-== Zod Validation
+:::tab Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -313,7 +315,7 @@ export type ProductTagsFormInput = z.infer<typeof ProductTagsFormSchema>;
 
 ```
 
-:::
+::::
 
 
 :::tab API
@@ -327,9 +329,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-:::tabs
+::::tabs
 
-== Search
+:::tab Search
 
 #### <Badge type="info" text="GET" /> Search ProductTags
 
@@ -420,7 +422,7 @@ curl -X POST \
 
 ---
 
-== Pagination
+:::tab Pagination
 
 #### <Badge type="info" text="GET" /> Paginate ProductTags
 
@@ -513,7 +515,7 @@ curl -X POST \
 
 ---
 
-== Create
+:::tab Create
 
 #### <Badge type="tip" text="POST" /> Create ProductTags
 
@@ -601,7 +603,7 @@ curl -X POST \
 
 ---
 
-== Find & Update
+:::tab Find & Update
 
 #### <Badge type="info" text="GET" /> Find ProductTags by ID
 
@@ -724,7 +726,7 @@ curl -X PUT \
 
 ---
 
-== Delete
+:::tab Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete ProductTags
 
@@ -764,7 +766,7 @@ curl -X DELETE \
 
 ---
 
-:::
+::::
 
 
 ::::

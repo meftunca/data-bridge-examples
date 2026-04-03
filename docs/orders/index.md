@@ -19,6 +19,7 @@
 ## Entity Relationship Diagram
 
 ```mermaid
+```mermaid
 erDiagram
     CartItems }o--|| Carts : "cart_id"
     CartItems }o--|| Products : "product_id"
@@ -38,6 +39,7 @@ erDiagram
     Refunds }o--|| Orders : "order_id"
     Refunds }o--|| Payments : "payment_id"
     Refunds }o--|| Users : "processed_by"
+```
 ```
 
 ## Enum Types

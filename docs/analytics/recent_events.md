@@ -42,9 +42,9 @@ title: RecentEvents
 
 ### Structs
 
-:::tabs
+::::tabs
 
-== Form
+:::tab Form
 
 #### RecentEventsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/RecentEvents.go#:~:text=type%20RecentEventsForm%20struct)
 
@@ -61,7 +61,7 @@ _Create payload — excludes auto-generated PK fields_
 | `Severity` | `*AnalyticsEventSeverity` | `severity` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Model
+:::tab Model
 
 #### RecentEvents [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/RecentEvents.go#:~:text=type%20RecentEvents%20struct)
 
@@ -78,7 +78,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `Severity` | `*AnalyticsEventSeverity` | `severity` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Edit
+:::tab Edit
 
 #### RecentEventsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/RecentEvents.go#:~:text=type%20RecentEventsEdit%20struct)
 
@@ -95,7 +95,7 @@ _Update payload — all fields are pointers (partial update)_
 | `Severity` | `*AnalyticsEventSeverity` | `severity` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Filter
+:::tab Filter
 
 #### RecentEventsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/RecentEvents.go#:~:text=type%20RecentEventsFilter%20struct)
 
@@ -112,7 +112,7 @@ _Query filter — all fields are pointers_
 | `Severity` | `*AnalyticsEventSeverity` | `severity` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Page
+:::tab Page
 
 #### RecentEventsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/RecentEvents.go#:~:text=type%20RecentEventsPage%20struct)
 
@@ -129,24 +129,24 @@ _Paginated response wrapper_
 | `Severity` | `*AnalyticsEventSeverity` | `severity` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-:::
+::::
 
 ### Service & Endpoints
 
-:::tabs
+::::tabs
 
-== Service Methods
+:::tab Service Methods
 
 _View — read-only, no write service methods._
 
-== Endpoints
+:::tab Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
 | `GET` | `/recent-events/` | Search with query params |
 | `GET` | `/recent-events/pagination` | Paginated listing |
 
-== Query & Filters
+:::tab Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -161,7 +161,7 @@ _View — read-only, no write service methods._
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-:::
+::::
 
 ### RPC Functions
 
@@ -176,9 +176,9 @@ _View — read-only, no write service methods._
 
 ## TypeScript Types & Hooks
 
-:::tabs
+::::tabs
 
-== Interfaces
+:::tab Interfaces
 
 ```typescript
 export type AnalyticsEventSeverity =
@@ -242,7 +242,7 @@ export type RecentEventsPathQuery = {
 
 ```
 
-== React Query
+:::tab React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -269,7 +269,7 @@ export function useRecentEventsDetail(id: any) {
 
 ```
 
-== Zod Validation
+:::tab Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -291,7 +291,7 @@ export type RecentEventsFormInput = z.infer<typeof RecentEventsFormSchema>;
 
 ```
 
-:::
+::::
 
 
 :::tab API
@@ -305,9 +305,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-:::tabs
+::::tabs
 
-== Search
+:::tab Search
 
 #### <Badge type="info" text="GET" /> Search RecentEvents
 
@@ -402,7 +402,7 @@ curl -X POST \
 
 ---
 
-== Pagination
+:::tab Pagination
 
 #### <Badge type="info" text="GET" /> Paginate RecentEvents
 
@@ -499,7 +499,7 @@ curl -X POST \
 
 ---
 
-:::
+::::
 
 
 ::::

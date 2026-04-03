@@ -23,9 +23,11 @@ _Tables this table references via foreign keys._
 
 ## Entity Relationship Diagram
 
+```mermaid
 erDiagram
     UserRoles }o--|| Users : "FK"
     UserRoles }o--|| Roles : "FK"
+```
 
 ::::tabs
 
@@ -68,9 +70,9 @@ erDiagram
 
 ### Structs
 
-:::tabs
+::::tabs
 
-== Form
+:::tab Form
 
 #### UserRolesForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/UserRoles.go#:~:text=type%20UserRolesForm%20struct)
 
@@ -86,7 +88,7 @@ _Create payload — excludes auto-generated PK fields_
 | `ExpiresAt` | `*time.Time` | `expiresAt` | YES |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== Model
+:::tab Model
 
 #### UserRoles [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/UserRoles.go#:~:text=type%20UserRoles%20struct)
 
@@ -103,7 +105,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `ExpiresAt` | `*time.Time` | `expiresAt` | YES |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== Edit
+:::tab Edit
 
 #### UserRolesEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/UserRoles.go#:~:text=type%20UserRolesEdit%20struct)
 
@@ -120,7 +122,7 @@ _Update payload — all fields are pointers (partial update)_
 | `ExpiresAt` | `*time.Time` | `expiresAt` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Filter
+:::tab Filter
 
 #### UserRolesFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/UserRoles.go#:~:text=type%20UserRolesFilter%20struct)
 
@@ -137,7 +139,7 @@ _Query filter — all fields are pointers_
 | `ExpiresAt` | `*time.Time` | `expiresAt` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Page
+:::tab Page
 
 #### UserRolesPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/UserRoles.go#:~:text=type%20UserRolesPage%20struct)
 
@@ -154,7 +156,7 @@ _Paginated response wrapper_
 | `ExpiresAt` | `*time.Time` | `expiresAt` | YES |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== BatchUpdate
+:::tab BatchUpdate
 
 #### UserRolesBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/UserRoles.go#:~:text=type%20UserRolesBatchUpdate%20struct)
 
@@ -167,13 +169,13 @@ type UserRolesBatchUpdate struct {
 }
 ```
 
-:::
+::::
 
 ### Service & Endpoints
 
-:::tabs
+::::tabs
 
-== Service Methods
+:::tab Service Methods
 
 | Method | Signature |
 |---------|-----------|
@@ -183,7 +185,7 @@ type UserRolesBatchUpdate struct {
 | [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/UserRoles.go#:~:text=)%20UpdateUserRolesMultiple() | `(UserRolesService) UpdateUserRolesMultiple(data []UserRolesBatchUpdate) error` |
 | [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/UserRoles.go#:~:text=)%20DeleteUserRoles() | `(UserRolesService) DeleteUserRoles(id uuid.UUID) error` |
 
-== Endpoints
+:::tab Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -196,7 +198,7 @@ type UserRolesBatchUpdate struct {
 | `PUT` | `/user-roles/with-id/:id` | Update by ID |
 | `DELETE` | `/user-roles/with-id/:id` | Delete by ID |
 
-== Query & Filters
+:::tab Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -211,7 +213,7 @@ type UserRolesBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-:::
+::::
 
 ### RPC Functions
 
@@ -226,9 +228,9 @@ type UserRolesBatchUpdate struct {
 
 ## TypeScript Types & Hooks
 
-:::tabs
+::::tabs
 
-== Interfaces
+:::tab Interfaces
 
 ```typescript
 export interface UserRoles {
@@ -282,7 +284,7 @@ export type UserRolesPathQuery = {
 
 ```
 
-== React Query
+:::tab React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -336,7 +338,7 @@ export function useDeleteUserRoles() {
 
 ```
 
-== Zod Validation
+:::tab Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -355,7 +357,7 @@ export type UserRolesFormInput = z.infer<typeof UserRolesFormSchema>;
 
 ```
 
-:::
+::::
 
 
 :::tab API
@@ -369,9 +371,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-:::tabs
+::::tabs
 
-== Search
+:::tab Search
 
 #### <Badge type="info" text="GET" /> Search UserRoles
 
@@ -466,7 +468,7 @@ curl -X POST \
 
 ---
 
-== Pagination
+:::tab Pagination
 
 #### <Badge type="info" text="GET" /> Paginate UserRoles
 
@@ -563,7 +565,7 @@ curl -X POST \
 
 ---
 
-== Create
+:::tab Create
 
 #### <Badge type="tip" text="POST" /> Create UserRoles
 
@@ -657,7 +659,7 @@ curl -X POST \
 
 ---
 
-== Find & Update
+:::tab Find & Update
 
 #### <Badge type="info" text="GET" /> Find UserRoles by ID
 
@@ -783,7 +785,7 @@ curl -X PUT \
 
 ---
 
-== Delete
+:::tab Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete UserRoles
 
@@ -822,7 +824,7 @@ curl -X DELETE \
 
 ---
 
-:::
+::::
 
 
 ::::

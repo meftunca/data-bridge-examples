@@ -21,6 +21,7 @@
 ## Entity Relationship Diagram
 
 ```mermaid
+```mermaid
 erDiagram
     ApiKeys }o--|| Users : "user_id"
     ApiKeys }o--|| Organizations : "organization_id"
@@ -38,6 +39,7 @@ erDiagram
     UserRoles }o--|| Users : "user_id"
     UserRoles }o--|| Roles : "role_id"
     Users }o--|| Organizations : "organization_id"
+```
 ```
 
 ## Enum Types

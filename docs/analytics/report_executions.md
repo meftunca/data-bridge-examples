@@ -22,9 +22,11 @@ _Tables this table references via foreign keys._
 
 ## Entity Relationship Diagram
 
+```mermaid
 erDiagram
     ReportExecutions }o--|| Reports : "FK"
     ReportExecutions }o--|| Users : "FK"
+```
 
 ::::tabs
 
@@ -65,9 +67,9 @@ erDiagram
 
 ### Structs
 
-:::tabs
+::::tabs
 
-== Form
+:::tab Form
 
 #### ReportExecutionsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/ReportExecutions.go#:~:text=type%20ReportExecutionsForm%20struct)
 
@@ -87,7 +89,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CompletedAt` | `*time.Time` | `completedAt` | YES |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== Model
+:::tab Model
 
 #### ReportExecutions [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/ReportExecutions.go#:~:text=type%20ReportExecutions%20struct)
 
@@ -108,7 +110,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CompletedAt` | `*time.Time` | `completedAt` | YES |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== Edit
+:::tab Edit
 
 #### ReportExecutionsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/ReportExecutions.go#:~:text=type%20ReportExecutionsEdit%20struct)
 
@@ -129,7 +131,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CompletedAt` | `*time.Time` | `completedAt` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Filter
+:::tab Filter
 
 #### ReportExecutionsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/ReportExecutions.go#:~:text=type%20ReportExecutionsFilter%20struct)
 
@@ -150,7 +152,7 @@ _Query filter — all fields are pointers_
 | `CompletedAt` | `*time.Time` | `completedAt` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Page
+:::tab Page
 
 #### ReportExecutionsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/ReportExecutions.go#:~:text=type%20ReportExecutionsPage%20struct)
 
@@ -171,7 +173,7 @@ _Paginated response wrapper_
 | `CompletedAt` | `*time.Time` | `completedAt` | YES |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== BatchUpdate
+:::tab BatchUpdate
 
 #### ReportExecutionsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/ReportExecutions.go#:~:text=type%20ReportExecutionsBatchUpdate%20struct)
 
@@ -184,13 +186,13 @@ type ReportExecutionsBatchUpdate struct {
 }
 ```
 
-:::
+::::
 
 ### Service & Endpoints
 
-:::tabs
+::::tabs
 
-== Service Methods
+:::tab Service Methods
 
 | Method | Signature |
 |---------|-----------|
@@ -200,7 +202,7 @@ type ReportExecutionsBatchUpdate struct {
 | [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/ReportExecutions.go#:~:text=)%20UpdateReportExecutionsMultiple() | `(ReportExecutionsService) UpdateReportExecutionsMultiple(data []ReportExecutionsBatchUpdate) error` |
 | [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/ReportExecutions.go#:~:text=)%20DeleteReportExecutions() | `(ReportExecutionsService) DeleteReportExecutions(id uuid.UUID) error` |
 
-== Endpoints
+:::tab Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -213,7 +215,7 @@ type ReportExecutionsBatchUpdate struct {
 | `PUT` | `/report-executions/with-id/:id` | Update by ID |
 | `DELETE` | `/report-executions/with-id/:id` | Delete by ID |
 
-== Query & Filters
+:::tab Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -228,7 +230,7 @@ type ReportExecutionsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-:::
+::::
 
 ### RPC Functions
 
@@ -243,9 +245,9 @@ type ReportExecutionsBatchUpdate struct {
 
 ## TypeScript Types & Hooks
 
-:::tabs
+::::tabs
 
-== Interfaces
+:::tab Interfaces
 
 ```typescript
 export interface ReportExecutions {
@@ -311,7 +313,7 @@ export type ReportExecutionsPathQuery = {
 
 ```
 
-== React Query
+:::tab React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -365,7 +367,7 @@ export function useDeleteReportExecutions() {
 
 ```
 
-== Zod Validation
+:::tab Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -388,7 +390,7 @@ export type ReportExecutionsFormInput = z.infer<typeof ReportExecutionsFormSchem
 
 ```
 
-:::
+::::
 
 
 :::tab API
@@ -402,9 +404,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-:::tabs
+::::tabs
 
-== Search
+:::tab Search
 
 #### <Badge type="info" text="GET" /> Search ReportExecutions
 
@@ -503,7 +505,7 @@ curl -X POST \
 
 ---
 
-== Pagination
+:::tab Pagination
 
 #### <Badge type="info" text="GET" /> Paginate ReportExecutions
 
@@ -604,7 +606,7 @@ curl -X POST \
 
 ---
 
-== Create
+:::tab Create
 
 #### <Badge type="tip" text="POST" /> Create ReportExecutions
 
@@ -706,7 +708,7 @@ curl -X POST \
 
 ---
 
-== Find & Update
+:::tab Find & Update
 
 #### <Badge type="info" text="GET" /> Find ReportExecutions by ID
 
@@ -836,7 +838,7 @@ curl -X PUT \
 
 ---
 
-== Delete
+:::tab Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete ReportExecutions
 
@@ -875,7 +877,7 @@ curl -X DELETE \
 
 ---
 
-:::
+::::
 
 
 ::::

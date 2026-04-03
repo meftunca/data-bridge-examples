@@ -22,6 +22,7 @@
 ## Entity Relationship Diagram
 
 ```mermaid
+```mermaid
 erDiagram
     AlertHistory }o--|| AlertRules : "alert_rule_id"
     AlertHistory }o--|| Users : "resolved_by"
@@ -36,6 +37,7 @@ erDiagram
     ReportExecutions }o--|| Users : "executed_by"
     Reports }o--|| Users : "owner_id"
     Reports }o--|| Organizations : "organization_id"
+```
 ```
 
 ## Enum Types

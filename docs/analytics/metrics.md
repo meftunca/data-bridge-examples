@@ -35,9 +35,9 @@ title: Metrics
 
 ### Structs
 
-:::tabs
+::::tabs
 
-== Form
+:::tab Form
 
 #### MetricsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Metrics.go#:~:text=type%20MetricsForm%20struct)
 
@@ -52,7 +52,7 @@ _Create payload — excludes auto-generated PK fields_
 | `RecordedAt` | `time.Time` | `recordedAt` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== Model
+:::tab Model
 
 #### Metrics [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Metrics.go#:~:text=type%20Metrics%20struct)
 
@@ -68,7 +68,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `RecordedAt` | `time.Time` | `recordedAt` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== Edit
+:::tab Edit
 
 #### MetricsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Metrics.go#:~:text=type%20MetricsEdit%20struct)
 
@@ -84,7 +84,7 @@ _Update payload — all fields are pointers (partial update)_
 | `RecordedAt` | `*time.Time` | `recordedAt` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Filter
+:::tab Filter
 
 #### MetricsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Metrics.go#:~:text=type%20MetricsFilter%20struct)
 
@@ -100,7 +100,7 @@ _Query filter — all fields are pointers_
 | `RecordedAt` | `*time.Time` | `recordedAt` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Page
+:::tab Page
 
 #### MetricsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Metrics.go#:~:text=type%20MetricsPage%20struct)
 
@@ -116,7 +116,7 @@ _Paginated response wrapper_
 | `RecordedAt` | `time.Time` | `recordedAt` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== BatchUpdate
+:::tab BatchUpdate
 
 #### MetricsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Metrics.go#:~:text=type%20MetricsBatchUpdate%20struct)
 
@@ -129,13 +129,13 @@ type MetricsBatchUpdate struct {
 }
 ```
 
-:::
+::::
 
 ### Service & Endpoints
 
-:::tabs
+::::tabs
 
-== Service Methods
+:::tab Service Methods
 
 | Method | Signature |
 |---------|-----------|
@@ -145,7 +145,7 @@ type MetricsBatchUpdate struct {
 | [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Metrics.go#:~:text=)%20UpdateMetricsMultiple() | `(MetricsService) UpdateMetricsMultiple(data []MetricsBatchUpdate) error` |
 | [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Metrics.go#:~:text=)%20DeleteMetrics() | `(MetricsService) DeleteMetrics(id uuid.UUID) error` |
 
-== Endpoints
+:::tab Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -158,7 +158,7 @@ type MetricsBatchUpdate struct {
 | `PUT` | `/metrics/with-id/:id` | Update by ID |
 | `DELETE` | `/metrics/with-id/:id` | Delete by ID |
 
-== Query & Filters
+:::tab Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -173,7 +173,7 @@ type MetricsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-:::
+::::
 
 ### RPC Functions
 
@@ -188,9 +188,9 @@ type MetricsBatchUpdate struct {
 
 ## TypeScript Types & Hooks
 
-:::tabs
+::::tabs
 
-== Interfaces
+:::tab Interfaces
 
 ```typescript
 export interface Metrics {
@@ -241,7 +241,7 @@ export type MetricsPathQuery = {
 
 ```
 
-== React Query
+:::tab React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -295,7 +295,7 @@ export function useDeleteMetrics() {
 
 ```
 
-== Zod Validation
+:::tab Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -313,7 +313,7 @@ export type MetricsFormInput = z.infer<typeof MetricsFormSchema>;
 
 ```
 
-:::
+::::
 
 
 :::tab API
@@ -327,9 +327,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-:::tabs
+::::tabs
 
-== Search
+:::tab Search
 
 #### <Badge type="info" text="GET" /> Search Metrics
 
@@ -423,7 +423,7 @@ curl -X POST \
 
 ---
 
-== Pagination
+:::tab Pagination
 
 #### <Badge type="info" text="GET" /> Paginate Metrics
 
@@ -519,7 +519,7 @@ curl -X POST \
 
 ---
 
-== Create
+:::tab Create
 
 #### <Badge type="tip" text="POST" /> Create Metrics
 
@@ -611,7 +611,7 @@ curl -X POST \
 
 ---
 
-== Find & Update
+:::tab Find & Update
 
 #### <Badge type="info" text="GET" /> Find Metrics by ID
 
@@ -736,7 +736,7 @@ curl -X PUT \
 
 ---
 
-== Delete
+:::tab Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete Metrics
 
@@ -775,7 +775,7 @@ curl -X DELETE \
 
 ---
 
-:::
+::::
 
 
 ::::

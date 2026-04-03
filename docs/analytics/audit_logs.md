@@ -21,8 +21,10 @@ _Tables this table references via foreign keys._
 
 ## Entity Relationship Diagram
 
+```mermaid
 erDiagram
     AuditLogs }o--|| Users : "FK"
+```
 
 ::::tabs
 
@@ -75,9 +77,9 @@ erDiagram
 
 ### Structs
 
-:::tabs
+::::tabs
 
-== Form
+:::tab Form
 
 #### AuditLogsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/AuditLogs.go#:~:text=type%20AuditLogsForm%20struct)
 
@@ -98,7 +100,7 @@ _Create payload — excludes auto-generated PK fields_
 | `Metadata` | `json.RawMessage` | `metadata` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== Model
+:::tab Model
 
 #### AuditLogs [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/AuditLogs.go#:~:text=type%20AuditLogs%20struct)
 
@@ -120,7 +122,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `Metadata` | `json.RawMessage` | `metadata` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== Edit
+:::tab Edit
 
 #### AuditLogsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/AuditLogs.go#:~:text=type%20AuditLogsEdit%20struct)
 
@@ -142,7 +144,7 @@ _Update payload — all fields are pointers (partial update)_
 | `Metadata` | `*json.RawMessage` | `metadata` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Filter
+:::tab Filter
 
 #### AuditLogsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/AuditLogs.go#:~:text=type%20AuditLogsFilter%20struct)
 
@@ -164,7 +166,7 @@ _Query filter — all fields are pointers_
 | `Metadata` | `*json.RawMessage` | `metadata` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Page
+:::tab Page
 
 #### AuditLogsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/AuditLogs.go#:~:text=type%20AuditLogsPage%20struct)
 
@@ -186,7 +188,7 @@ _Paginated response wrapper_
 | `Metadata` | `json.RawMessage` | `metadata` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== BatchUpdate
+:::tab BatchUpdate
 
 #### AuditLogsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/AuditLogs.go#:~:text=type%20AuditLogsBatchUpdate%20struct)
 
@@ -199,13 +201,13 @@ type AuditLogsBatchUpdate struct {
 }
 ```
 
-:::
+::::
 
 ### Service & Endpoints
 
-:::tabs
+::::tabs
 
-== Service Methods
+:::tab Service Methods
 
 | Method | Signature |
 |---------|-----------|
@@ -215,7 +217,7 @@ type AuditLogsBatchUpdate struct {
 | [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/AuditLogs.go#:~:text=)%20UpdateAuditLogsMultiple() | `(AuditLogsService) UpdateAuditLogsMultiple(data []AuditLogsBatchUpdate) error` |
 | [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/AuditLogs.go#:~:text=)%20DeleteAuditLogs() | `(AuditLogsService) DeleteAuditLogs(id uuid.UUID) error` |
 
-== Endpoints
+:::tab Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -228,7 +230,7 @@ type AuditLogsBatchUpdate struct {
 | `PUT` | `/audit-logs/with-id/:id` | Update by ID |
 | `DELETE` | `/audit-logs/with-id/:id` | Delete by ID |
 
-== Query & Filters
+:::tab Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -243,7 +245,7 @@ type AuditLogsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-:::
+::::
 
 ### RPC Functions
 
@@ -258,9 +260,9 @@ type AuditLogsBatchUpdate struct {
 
 ## TypeScript Types & Hooks
 
-:::tabs
+::::tabs
 
-== Interfaces
+:::tab Interfaces
 
 ```typescript
 export type AnalyticsEventSeverity =
@@ -338,7 +340,7 @@ export type AuditLogsPathQuery = {
 
 ```
 
-== React Query
+:::tab React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -392,7 +394,7 @@ export function useDeleteAuditLogs() {
 
 ```
 
-== Zod Validation
+:::tab Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -418,7 +420,7 @@ export type AuditLogsFormInput = z.infer<typeof AuditLogsFormSchema>;
 
 ```
 
-:::
+::::
 
 
 :::tab API
@@ -432,9 +434,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-:::tabs
+::::tabs
 
-== Search
+:::tab Search
 
 #### <Badge type="info" text="GET" /> Search AuditLogs
 
@@ -534,7 +536,7 @@ curl -X POST \
 
 ---
 
-== Pagination
+:::tab Pagination
 
 #### <Badge type="info" text="GET" /> Paginate AuditLogs
 
@@ -636,7 +638,7 @@ curl -X POST \
 
 ---
 
-== Create
+:::tab Create
 
 #### <Badge type="tip" text="POST" /> Create AuditLogs
 
@@ -740,7 +742,7 @@ curl -X POST \
 
 ---
 
-== Find & Update
+:::tab Find & Update
 
 #### <Badge type="info" text="GET" /> Find AuditLogs by ID
 
@@ -871,7 +873,7 @@ curl -X PUT \
 
 ---
 
-== Delete
+:::tab Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete AuditLogs
 
@@ -910,7 +912,7 @@ curl -X DELETE \
 
 ---
 
-:::
+::::
 
 
 ::::

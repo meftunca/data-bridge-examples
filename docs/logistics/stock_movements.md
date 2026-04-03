@@ -22,9 +22,11 @@ _Tables this table references via foreign keys._
 
 ## Entity Relationship Diagram
 
+```mermaid
 erDiagram
     StockMovements }o--|| Inventory : "FK"
     StockMovements }o--|| Users : "FK"
+```
 
 ::::tabs
 
@@ -63,9 +65,9 @@ erDiagram
 
 ### Structs
 
-:::tabs
+::::tabs
 
-== Form
+:::tab Form
 
 #### StockMovementsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/StockMovements.go#:~:text=type%20StockMovementsForm%20struct)
 
@@ -83,7 +85,7 @@ _Create payload — excludes auto-generated PK fields_
 | `Notes` | `string` | `notes` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== Model
+:::tab Model
 
 #### StockMovements [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/StockMovements.go#:~:text=type%20StockMovements%20struct)
 
@@ -102,7 +104,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `Notes` | `string` | `notes` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== Edit
+:::tab Edit
 
 #### StockMovementsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/StockMovements.go#:~:text=type%20StockMovementsEdit%20struct)
 
@@ -121,7 +123,7 @@ _Update payload — all fields are pointers (partial update)_
 | `Notes` | `*string` | `notes` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Filter
+:::tab Filter
 
 #### StockMovementsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/StockMovements.go#:~:text=type%20StockMovementsFilter%20struct)
 
@@ -140,7 +142,7 @@ _Query filter — all fields are pointers_
 | `Notes` | `*string` | `notes` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Page
+:::tab Page
 
 #### StockMovementsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/StockMovements.go#:~:text=type%20StockMovementsPage%20struct)
 
@@ -159,7 +161,7 @@ _Paginated response wrapper_
 | `Notes` | `string` | `notes` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== BatchUpdate
+:::tab BatchUpdate
 
 #### StockMovementsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/StockMovements.go#:~:text=type%20StockMovementsBatchUpdate%20struct)
 
@@ -172,13 +174,13 @@ type StockMovementsBatchUpdate struct {
 }
 ```
 
-:::
+::::
 
 ### Service & Endpoints
 
-:::tabs
+::::tabs
 
-== Service Methods
+:::tab Service Methods
 
 | Method | Signature |
 |---------|-----------|
@@ -188,7 +190,7 @@ type StockMovementsBatchUpdate struct {
 | [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/StockMovements.go#:~:text=)%20UpdateStockMovementsMultiple() | `(StockMovementsService) UpdateStockMovementsMultiple(data []StockMovementsBatchUpdate) error` |
 | [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/StockMovements.go#:~:text=)%20DeleteStockMovements() | `(StockMovementsService) DeleteStockMovements(id uuid.UUID) error` |
 
-== Endpoints
+:::tab Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -201,7 +203,7 @@ type StockMovementsBatchUpdate struct {
 | `PUT` | `/stock-movements/with-id/:id` | Update by ID |
 | `DELETE` | `/stock-movements/with-id/:id` | Delete by ID |
 
-== Query & Filters
+:::tab Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -216,7 +218,7 @@ type StockMovementsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-:::
+::::
 
 ### RPC Functions
 
@@ -230,9 +232,9 @@ type StockMovementsBatchUpdate struct {
 
 ## TypeScript Types & Hooks
 
-:::tabs
+::::tabs
 
-== Interfaces
+:::tab Interfaces
 
 ```typescript
 export interface StockMovements {
@@ -292,7 +294,7 @@ export type StockMovementsPathQuery = {
 
 ```
 
-== React Query
+:::tab React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -346,7 +348,7 @@ export function useDeleteStockMovements() {
 
 ```
 
-== Zod Validation
+:::tab Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -367,7 +369,7 @@ export type StockMovementsFormInput = z.infer<typeof StockMovementsFormSchema>;
 
 ```
 
-:::
+::::
 
 
 :::tab API
@@ -381,9 +383,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-:::tabs
+::::tabs
 
-== Search
+:::tab Search
 
 #### <Badge type="info" text="GET" /> Search StockMovements
 
@@ -480,7 +482,7 @@ curl -X POST \
 
 ---
 
-== Pagination
+:::tab Pagination
 
 #### <Badge type="info" text="GET" /> Paginate StockMovements
 
@@ -579,7 +581,7 @@ curl -X POST \
 
 ---
 
-== Create
+:::tab Create
 
 #### <Badge type="tip" text="POST" /> Create StockMovements
 
@@ -677,7 +679,7 @@ curl -X POST \
 
 ---
 
-== Find & Update
+:::tab Find & Update
 
 #### <Badge type="info" text="GET" /> Find StockMovements by ID
 
@@ -805,7 +807,7 @@ curl -X PUT \
 
 ---
 
-== Delete
+:::tab Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete StockMovements
 
@@ -844,7 +846,7 @@ curl -X DELETE \
 
 ---
 
-:::
+::::
 
 
 ::::

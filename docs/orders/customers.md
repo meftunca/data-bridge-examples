@@ -31,11 +31,13 @@ _Tables that reference this table via foreign keys._
 
 ## Entity Relationship Diagram
 
+```mermaid
 erDiagram
     Customers }o--|| Users : "FK"
     Customers }o--|| Organizations : "FK"
     Customers ||--o{ Carts : "ref"
     Customers ||--o{ Orders : "ref"
+```
 
 ::::tabs
 
@@ -75,9 +77,9 @@ erDiagram
 
 ### Structs
 
-:::tabs
+::::tabs
 
-== Form
+:::tab Form
 
 #### CustomersForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Customers.go#:~:text=type%20CustomersForm%20struct)
 
@@ -96,7 +98,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-== Model
+:::tab Model
 
 #### Customers [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Customers.go#:~:text=type%20Customers%20struct)
 
@@ -116,7 +118,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-== Edit
+:::tab Edit
 
 #### CustomersEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Customers.go#:~:text=type%20CustomersEdit%20struct)
 
@@ -136,7 +138,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-== Filter
+:::tab Filter
 
 #### CustomersFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Customers.go#:~:text=type%20CustomersFilter%20struct)
 
@@ -156,7 +158,7 @@ _Query filter — all fields are pointers_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-== Page
+:::tab Page
 
 #### CustomersPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Customers.go#:~:text=type%20CustomersPage%20struct)
 
@@ -176,7 +178,7 @@ _Paginated response wrapper_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-== BatchUpdate
+:::tab BatchUpdate
 
 #### CustomersBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Customers.go#:~:text=type%20CustomersBatchUpdate%20struct)
 
@@ -189,13 +191,13 @@ type CustomersBatchUpdate struct {
 }
 ```
 
-:::
+::::
 
 ### Service & Endpoints
 
-:::tabs
+::::tabs
 
-== Service Methods
+:::tab Service Methods
 
 | Method | Signature |
 |---------|-----------|
@@ -205,7 +207,7 @@ type CustomersBatchUpdate struct {
 | [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Customers.go#:~:text=)%20UpdateCustomersMultiple() | `(CustomersService) UpdateCustomersMultiple(data []CustomersBatchUpdate) error` |
 | [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Customers.go#:~:text=)%20DeleteCustomers() | `(CustomersService) DeleteCustomers(id uuid.UUID) error` |
 
-== Endpoints
+:::tab Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -218,7 +220,7 @@ type CustomersBatchUpdate struct {
 | `PUT` | `/customers/with-id/:id` | Update by ID |
 | `DELETE` | `/customers/with-id/:id` | Delete by ID |
 
-== Query & Filters
+:::tab Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -233,7 +235,7 @@ type CustomersBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-:::
+::::
 
 ### RPC Functions
 
@@ -248,9 +250,9 @@ type CustomersBatchUpdate struct {
 
 ## TypeScript Types & Hooks
 
-:::tabs
+::::tabs
 
-== Interfaces
+:::tab Interfaces
 
 ```typescript
 export interface Customers {
@@ -313,7 +315,7 @@ export type CustomersPathQuery = {
 
 ```
 
-== React Query
+:::tab React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -367,7 +369,7 @@ export function useDeleteCustomers() {
 
 ```
 
-== Zod Validation
+:::tab Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -389,7 +391,7 @@ export type CustomersFormInput = z.infer<typeof CustomersFormSchema>;
 
 ```
 
-:::
+::::
 
 
 :::tab API
@@ -403,9 +405,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-:::tabs
+::::tabs
 
-== Search
+:::tab Search
 
 #### <Badge type="info" text="GET" /> Search Customers
 
@@ -502,7 +504,7 @@ curl -X POST \
 
 ---
 
-== Pagination
+:::tab Pagination
 
 #### <Badge type="info" text="GET" /> Paginate Customers
 
@@ -601,7 +603,7 @@ curl -X POST \
 
 ---
 
-== Create
+:::tab Create
 
 #### <Badge type="tip" text="POST" /> Create Customers
 
@@ -699,7 +701,7 @@ curl -X POST \
 
 ---
 
-== Find & Update
+:::tab Find & Update
 
 #### <Badge type="info" text="GET" /> Find Customers by ID
 
@@ -827,7 +829,7 @@ curl -X PUT \
 
 ---
 
-== Delete
+:::tab Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete Customers
 
@@ -866,7 +868,7 @@ curl -X DELETE \
 
 ---
 
-:::
+::::
 
 
 ::::

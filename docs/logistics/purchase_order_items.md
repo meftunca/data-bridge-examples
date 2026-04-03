@@ -22,9 +22,11 @@ _Tables this table references via foreign keys._
 
 ## Entity Relationship Diagram
 
+```mermaid
 erDiagram
     PurchaseOrderItems }o--|| PurchaseOrders : "FK"
     PurchaseOrderItems }o--|| Products : "FK"
+```
 
 ::::tabs
 
@@ -62,9 +64,9 @@ erDiagram
 
 ### Structs
 
-:::tabs
+::::tabs
 
-== Form
+:::tab Form
 
 #### PurchaseOrderItemsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/PurchaseOrderItems.go#:~:text=type%20PurchaseOrderItemsForm%20struct)
 
@@ -81,7 +83,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-== Model
+:::tab Model
 
 #### PurchaseOrderItems [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/PurchaseOrderItems.go#:~:text=type%20PurchaseOrderItems%20struct)
 
@@ -99,7 +101,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-== Edit
+:::tab Edit
 
 #### PurchaseOrderItemsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/PurchaseOrderItems.go#:~:text=type%20PurchaseOrderItemsEdit%20struct)
 
@@ -117,7 +119,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-== Filter
+:::tab Filter
 
 #### PurchaseOrderItemsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/PurchaseOrderItems.go#:~:text=type%20PurchaseOrderItemsFilter%20struct)
 
@@ -135,7 +137,7 @@ _Query filter — all fields are pointers_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-== Page
+:::tab Page
 
 #### PurchaseOrderItemsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/PurchaseOrderItems.go#:~:text=type%20PurchaseOrderItemsPage%20struct)
 
@@ -153,7 +155,7 @@ _Paginated response wrapper_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-== BatchUpdate
+:::tab BatchUpdate
 
 #### PurchaseOrderItemsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/PurchaseOrderItems.go#:~:text=type%20PurchaseOrderItemsBatchUpdate%20struct)
 
@@ -166,13 +168,13 @@ type PurchaseOrderItemsBatchUpdate struct {
 }
 ```
 
-:::
+::::
 
 ### Service & Endpoints
 
-:::tabs
+::::tabs
 
-== Service Methods
+:::tab Service Methods
 
 | Method | Signature |
 |---------|-----------|
@@ -182,7 +184,7 @@ type PurchaseOrderItemsBatchUpdate struct {
 | [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/PurchaseOrderItems.go#:~:text=)%20UpdatePurchaseOrderItemsMultiple() | `(PurchaseOrderItemsService) UpdatePurchaseOrderItemsMultiple(data []PurchaseOrderItemsBatchUpdate) error` |
 | [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/PurchaseOrderItems.go#:~:text=)%20DeletePurchaseOrderItems() | `(PurchaseOrderItemsService) DeletePurchaseOrderItems(id uuid.UUID) error` |
 
-== Endpoints
+:::tab Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -195,7 +197,7 @@ type PurchaseOrderItemsBatchUpdate struct {
 | `PUT` | `/purchase-order-items/with-id/:id` | Update by ID |
 | `DELETE` | `/purchase-order-items/with-id/:id` | Delete by ID |
 
-== Query & Filters
+:::tab Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -210,7 +212,7 @@ type PurchaseOrderItemsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-:::
+::::
 
 ### RPC Functions
 
@@ -224,9 +226,9 @@ type PurchaseOrderItemsBatchUpdate struct {
 
 ## TypeScript Types & Hooks
 
-:::tabs
+::::tabs
 
-== Interfaces
+:::tab Interfaces
 
 ```typescript
 export interface PurchaseOrderItems {
@@ -283,7 +285,7 @@ export type PurchaseOrderItemsPathQuery = {
 
 ```
 
-== React Query
+:::tab React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -337,7 +339,7 @@ export function useDeletePurchaseOrderItems() {
 
 ```
 
-== Zod Validation
+:::tab Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -357,7 +359,7 @@ export type PurchaseOrderItemsFormInput = z.infer<typeof PurchaseOrderItemsFormS
 
 ```
 
-:::
+::::
 
 
 :::tab API
@@ -371,9 +373,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-:::tabs
+::::tabs
 
-== Search
+:::tab Search
 
 #### <Badge type="info" text="GET" /> Search PurchaseOrderItems
 
@@ -468,7 +470,7 @@ curl -X POST \
 
 ---
 
-== Pagination
+:::tab Pagination
 
 #### <Badge type="info" text="GET" /> Paginate PurchaseOrderItems
 
@@ -565,7 +567,7 @@ curl -X POST \
 
 ---
 
-== Create
+:::tab Create
 
 #### <Badge type="tip" text="POST" /> Create PurchaseOrderItems
 
@@ -659,7 +661,7 @@ curl -X POST \
 
 ---
 
-== Find & Update
+:::tab Find & Update
 
 #### <Badge type="info" text="GET" /> Find PurchaseOrderItems by ID
 
@@ -785,7 +787,7 @@ curl -X PUT \
 
 ---
 
-== Delete
+:::tab Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete PurchaseOrderItems
 
@@ -824,7 +826,7 @@ curl -X DELETE \
 
 ---
 
-:::
+::::
 
 
 ::::

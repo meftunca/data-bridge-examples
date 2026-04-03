@@ -22,9 +22,11 @@ _Tables this table references via foreign keys._
 
 ## Entity Relationship Diagram
 
+```mermaid
 erDiagram
     ShipmentItems }o--|| Shipments : "FK"
     ShipmentItems }o--|| OrderItems : "FK"
+```
 
 ::::tabs
 
@@ -59,9 +61,9 @@ erDiagram
 
 ### Structs
 
-:::tabs
+::::tabs
 
-== Form
+:::tab Form
 
 #### ShipmentItemsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/ShipmentItems.go#:~:text=type%20ShipmentItemsForm%20struct)
 
@@ -75,7 +77,7 @@ _Create payload — excludes auto-generated PK fields_
 | `Quantity` | `int` | `quantity` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== Model
+:::tab Model
 
 #### ShipmentItems [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/ShipmentItems.go#:~:text=type%20ShipmentItems%20struct)
 
@@ -90,7 +92,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `Quantity` | `int` | `quantity` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== Edit
+:::tab Edit
 
 #### ShipmentItemsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/ShipmentItems.go#:~:text=type%20ShipmentItemsEdit%20struct)
 
@@ -105,7 +107,7 @@ _Update payload — all fields are pointers (partial update)_
 | `Quantity` | `*int` | `quantity` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Filter
+:::tab Filter
 
 #### ShipmentItemsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/ShipmentItems.go#:~:text=type%20ShipmentItemsFilter%20struct)
 
@@ -120,7 +122,7 @@ _Query filter — all fields are pointers_
 | `Quantity` | `*int` | `quantity` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Page
+:::tab Page
 
 #### ShipmentItemsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/ShipmentItems.go#:~:text=type%20ShipmentItemsPage%20struct)
 
@@ -135,7 +137,7 @@ _Paginated response wrapper_
 | `Quantity` | `int` | `quantity` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== BatchUpdate
+:::tab BatchUpdate
 
 #### ShipmentItemsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/ShipmentItems.go#:~:text=type%20ShipmentItemsBatchUpdate%20struct)
 
@@ -148,13 +150,13 @@ type ShipmentItemsBatchUpdate struct {
 }
 ```
 
-:::
+::::
 
 ### Service & Endpoints
 
-:::tabs
+::::tabs
 
-== Service Methods
+:::tab Service Methods
 
 | Method | Signature |
 |---------|-----------|
@@ -164,7 +166,7 @@ type ShipmentItemsBatchUpdate struct {
 | [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/ShipmentItems.go#:~:text=)%20UpdateShipmentItemsMultiple() | `(ShipmentItemsService) UpdateShipmentItemsMultiple(data []ShipmentItemsBatchUpdate) error` |
 | [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/ShipmentItems.go#:~:text=)%20DeleteShipmentItems() | `(ShipmentItemsService) DeleteShipmentItems(id uuid.UUID) error` |
 
-== Endpoints
+:::tab Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -177,7 +179,7 @@ type ShipmentItemsBatchUpdate struct {
 | `PUT` | `/shipment-items/with-id/:id` | Update by ID |
 | `DELETE` | `/shipment-items/with-id/:id` | Delete by ID |
 
-== Query & Filters
+:::tab Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -192,7 +194,7 @@ type ShipmentItemsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-:::
+::::
 
 ### RPC Functions
 
@@ -206,9 +208,9 @@ type ShipmentItemsBatchUpdate struct {
 
 ## TypeScript Types & Hooks
 
-:::tabs
+::::tabs
 
-== Interfaces
+:::tab Interfaces
 
 ```typescript
 export interface ShipmentItems {
@@ -256,7 +258,7 @@ export type ShipmentItemsPathQuery = {
 
 ```
 
-== React Query
+:::tab React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -310,7 +312,7 @@ export function useDeleteShipmentItems() {
 
 ```
 
-== Zod Validation
+:::tab Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -327,7 +329,7 @@ export type ShipmentItemsFormInput = z.infer<typeof ShipmentItemsFormSchema>;
 
 ```
 
-:::
+::::
 
 
 :::tab API
@@ -341,9 +343,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-:::tabs
+::::tabs
 
-== Search
+:::tab Search
 
 #### <Badge type="info" text="GET" /> Search ShipmentItems
 
@@ -436,7 +438,7 @@ curl -X POST \
 
 ---
 
-== Pagination
+:::tab Pagination
 
 #### <Badge type="info" text="GET" /> Paginate ShipmentItems
 
@@ -531,7 +533,7 @@ curl -X POST \
 
 ---
 
-== Create
+:::tab Create
 
 #### <Badge type="tip" text="POST" /> Create ShipmentItems
 
@@ -621,7 +623,7 @@ curl -X POST \
 
 ---
 
-== Find & Update
+:::tab Find & Update
 
 #### <Badge type="info" text="GET" /> Find ShipmentItems by ID
 
@@ -745,7 +747,7 @@ curl -X PUT \
 
 ---
 
-== Delete
+:::tab Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete ShipmentItems
 
@@ -784,7 +786,7 @@ curl -X DELETE \
 
 ---
 
-:::
+::::
 
 
 ::::

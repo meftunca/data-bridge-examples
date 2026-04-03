@@ -22,9 +22,11 @@ _Tables this table references via foreign keys._
 
 ## Entity Relationship Diagram
 
+```mermaid
 erDiagram
     ApiKeys }o--|| Users : "FK"
     ApiKeys }o--|| Organizations : "FK"
+```
 
 ::::tabs
 
@@ -64,9 +66,9 @@ erDiagram
 
 ### Structs
 
-:::tabs
+::::tabs
 
-== Form
+:::tab Form
 
 #### ApiKeysForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/ApiKeys.go#:~:text=type%20ApiKeysForm%20struct)
 
@@ -85,7 +87,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-== Model
+:::tab Model
 
 #### ApiKeys [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/ApiKeys.go#:~:text=type%20ApiKeys%20struct)
 
@@ -105,7 +107,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-== Edit
+:::tab Edit
 
 #### ApiKeysEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/ApiKeys.go#:~:text=type%20ApiKeysEdit%20struct)
 
@@ -125,7 +127,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-== Filter
+:::tab Filter
 
 #### ApiKeysFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/ApiKeys.go#:~:text=type%20ApiKeysFilter%20struct)
 
@@ -145,7 +147,7 @@ _Query filter — all fields are pointers_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-== Page
+:::tab Page
 
 #### ApiKeysPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/ApiKeys.go#:~:text=type%20ApiKeysPage%20struct)
 
@@ -165,7 +167,7 @@ _Paginated response wrapper_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-== BatchUpdate
+:::tab BatchUpdate
 
 #### ApiKeysBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/ApiKeys.go#:~:text=type%20ApiKeysBatchUpdate%20struct)
 
@@ -178,13 +180,13 @@ type ApiKeysBatchUpdate struct {
 }
 ```
 
-:::
+::::
 
 ### Service & Endpoints
 
-:::tabs
+::::tabs
 
-== Service Methods
+:::tab Service Methods
 
 | Method | Signature |
 |---------|-----------|
@@ -194,7 +196,7 @@ type ApiKeysBatchUpdate struct {
 | [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/ApiKeys.go#:~:text=)%20UpdateApiKeysMultiple() | `(ApiKeysService) UpdateApiKeysMultiple(data []ApiKeysBatchUpdate) error` |
 | [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/ApiKeys.go#:~:text=)%20DeleteApiKeys() | `(ApiKeysService) DeleteApiKeys(id uuid.UUID) error` |
 
-== Endpoints
+:::tab Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -207,7 +209,7 @@ type ApiKeysBatchUpdate struct {
 | `PUT` | `/api-keys/with-id/:id` | Update by ID |
 | `DELETE` | `/api-keys/with-id/:id` | Delete by ID |
 
-== Query & Filters
+:::tab Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -222,7 +224,7 @@ type ApiKeysBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-:::
+::::
 
 ### RPC Functions
 
@@ -237,9 +239,9 @@ type ApiKeysBatchUpdate struct {
 
 ## TypeScript Types & Hooks
 
-:::tabs
+::::tabs
 
-== Interfaces
+:::tab Interfaces
 
 ```typescript
 export interface ApiKeys {
@@ -302,7 +304,7 @@ export type ApiKeysPathQuery = {
 
 ```
 
-== React Query
+:::tab React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -356,7 +358,7 @@ export function useDeleteApiKeys() {
 
 ```
 
-== Zod Validation
+:::tab Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -378,7 +380,7 @@ export type ApiKeysFormInput = z.infer<typeof ApiKeysFormSchema>;
 
 ```
 
-:::
+::::
 
 
 :::tab API
@@ -392,9 +394,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-:::tabs
+::::tabs
 
-== Search
+:::tab Search
 
 #### <Badge type="info" text="GET" /> Search ApiKeys
 
@@ -491,7 +493,7 @@ curl -X POST \
 
 ---
 
-== Pagination
+:::tab Pagination
 
 #### <Badge type="info" text="GET" /> Paginate ApiKeys
 
@@ -590,7 +592,7 @@ curl -X POST \
 
 ---
 
-== Create
+:::tab Create
 
 #### <Badge type="tip" text="POST" /> Create ApiKeys
 
@@ -688,7 +690,7 @@ curl -X POST \
 
 ---
 
-== Find & Update
+:::tab Find & Update
 
 #### <Badge type="info" text="GET" /> Find ApiKeys by ID
 
@@ -816,7 +818,7 @@ curl -X PUT \
 
 ---
 
-== Delete
+:::tab Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete ApiKeys
 
@@ -855,7 +857,7 @@ curl -X DELETE \
 
 ---
 
-:::
+::::
 
 
 ::::

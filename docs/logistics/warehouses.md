@@ -33,6 +33,7 @@ _Tables that reference this table via foreign keys._
 
 ## Entity Relationship Diagram
 
+```mermaid
 erDiagram
     Warehouses }o--|| Organizations : "FK"
     Warehouses }o--|| Users : "FK"
@@ -40,6 +41,7 @@ erDiagram
     Warehouses ||--o{ PurchaseOrders : "ref"
     Warehouses ||--o{ Shipments : "ref"
     Warehouses ||--o{ StorageZones : "ref"
+```
 
 ::::tabs
 
@@ -82,9 +84,9 @@ erDiagram
 
 ### Structs
 
-:::tabs
+::::tabs
 
-== Form
+:::tab Form
 
 #### WarehousesForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/Warehouses.go#:~:text=type%20WarehousesForm%20struct)
 
@@ -102,7 +104,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-== Model
+:::tab Model
 
 #### Warehouses [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/Warehouses.go#:~:text=type%20Warehouses%20struct)
 
@@ -121,7 +123,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-== Edit
+:::tab Edit
 
 #### WarehousesEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/Warehouses.go#:~:text=type%20WarehousesEdit%20struct)
 
@@ -140,7 +142,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-== Filter
+:::tab Filter
 
 #### WarehousesFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/Warehouses.go#:~:text=type%20WarehousesFilter%20struct)
 
@@ -159,7 +161,7 @@ _Query filter — all fields are pointers_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-== Page
+:::tab Page
 
 #### WarehousesPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/Warehouses.go#:~:text=type%20WarehousesPage%20struct)
 
@@ -178,7 +180,7 @@ _Paginated response wrapper_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-== BatchUpdate
+:::tab BatchUpdate
 
 #### WarehousesBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/Warehouses.go#:~:text=type%20WarehousesBatchUpdate%20struct)
 
@@ -191,13 +193,13 @@ type WarehousesBatchUpdate struct {
 }
 ```
 
-:::
+::::
 
 ### Service & Endpoints
 
-:::tabs
+::::tabs
 
-== Service Methods
+:::tab Service Methods
 
 | Method | Signature |
 |---------|-----------|
@@ -207,7 +209,7 @@ type WarehousesBatchUpdate struct {
 | [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/Warehouses.go#:~:text=)%20UpdateWarehousesMultiple() | `(WarehousesService) UpdateWarehousesMultiple(data []WarehousesBatchUpdate) error` |
 | [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/Warehouses.go#:~:text=)%20DeleteWarehouses() | `(WarehousesService) DeleteWarehouses(id uuid.UUID) error` |
 
-== Endpoints
+:::tab Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -220,7 +222,7 @@ type WarehousesBatchUpdate struct {
 | `PUT` | `/warehouses/with-id/:id` | Update by ID |
 | `DELETE` | `/warehouses/with-id/:id` | Delete by ID |
 
-== Query & Filters
+:::tab Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -235,7 +237,7 @@ type WarehousesBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-:::
+::::
 
 ### RPC Functions
 
@@ -249,9 +251,9 @@ type WarehousesBatchUpdate struct {
 
 ## TypeScript Types & Hooks
 
-:::tabs
+::::tabs
 
-== Interfaces
+:::tab Interfaces
 
 ```typescript
 export interface Warehouses {
@@ -311,7 +313,7 @@ export type WarehousesPathQuery = {
 
 ```
 
-== React Query
+:::tab React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -365,7 +367,7 @@ export function useDeleteWarehouses() {
 
 ```
 
-== Zod Validation
+:::tab Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -386,7 +388,7 @@ export type WarehousesFormInput = z.infer<typeof WarehousesFormSchema>;
 
 ```
 
-:::
+::::
 
 
 :::tab API
@@ -400,9 +402,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-:::tabs
+::::tabs
 
-== Search
+:::tab Search
 
 #### <Badge type="info" text="GET" /> Search Warehouses
 
@@ -498,7 +500,7 @@ curl -X POST \
 
 ---
 
-== Pagination
+:::tab Pagination
 
 #### <Badge type="info" text="GET" /> Paginate Warehouses
 
@@ -596,7 +598,7 @@ curl -X POST \
 
 ---
 
-== Create
+:::tab Create
 
 #### <Badge type="tip" text="POST" /> Create Warehouses
 
@@ -692,7 +694,7 @@ curl -X POST \
 
 ---
 
-== Find & Update
+:::tab Find & Update
 
 #### <Badge type="info" text="GET" /> Find Warehouses by ID
 
@@ -819,7 +821,7 @@ curl -X PUT \
 
 ---
 
-== Delete
+:::tab Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete Warehouses
 
@@ -858,7 +860,7 @@ curl -X DELETE \
 
 ---
 
-:::
+::::
 
 
 ::::

@@ -30,6 +30,7 @@ _Tables that reference this table via foreign keys._
 
 ## Entity Relationship Diagram
 
+```mermaid
 erDiagram
     Organizations }o--|| Organizations : "FK"
     Organizations ||--o{ ApiKeys : "ref"
@@ -38,6 +39,7 @@ erDiagram
     Organizations ||--o{ Roles : "ref"
     Organizations ||--o{ Teams : "ref"
     Organizations ||--o{ Users : "ref"
+```
 
 ::::tabs
 
@@ -80,9 +82,9 @@ erDiagram
 
 ### Structs
 
-:::tabs
+::::tabs
 
-== Form
+:::tab Form
 
 #### OrganizationsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Organizations.go#:~:text=type%20OrganizationsForm%20struct)
 
@@ -101,7 +103,7 @@ _Create payload — excludes auto-generated PK fields_
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 | `DeletedAt` | `*time.Time` | `deletedAt` | YES |
 
-== Model
+:::tab Model
 
 #### Organizations [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Organizations.go#:~:text=type%20Organizations%20struct)
 
@@ -121,7 +123,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 | `DeletedAt` | `*time.Time` | `deletedAt` | YES |
 
-== Edit
+:::tab Edit
 
 #### OrganizationsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Organizations.go#:~:text=type%20OrganizationsEdit%20struct)
 
@@ -141,7 +143,7 @@ _Update payload — all fields are pointers (partial update)_
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 | `DeletedAt` | `*time.Time` | `deletedAt` | YES |
 
-== Filter
+:::tab Filter
 
 #### OrganizationsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Organizations.go#:~:text=type%20OrganizationsFilter%20struct)
 
@@ -161,7 +163,7 @@ _Query filter — all fields are pointers_
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 | `DeletedAt` | `*time.Time` | `deletedAt` | YES |
 
-== Page
+:::tab Page
 
 #### OrganizationsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Organizations.go#:~:text=type%20OrganizationsPage%20struct)
 
@@ -181,7 +183,7 @@ _Paginated response wrapper_
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 | `DeletedAt` | `*time.Time` | `deletedAt` | YES |
 
-== BatchUpdate
+:::tab BatchUpdate
 
 #### OrganizationsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Organizations.go#:~:text=type%20OrganizationsBatchUpdate%20struct)
 
@@ -194,13 +196,13 @@ type OrganizationsBatchUpdate struct {
 }
 ```
 
-:::
+::::
 
 ### Service & Endpoints
 
-:::tabs
+::::tabs
 
-== Service Methods
+:::tab Service Methods
 
 | Method | Signature |
 |---------|-----------|
@@ -210,7 +212,7 @@ type OrganizationsBatchUpdate struct {
 | [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Organizations.go#:~:text=)%20UpdateOrganizationsMultiple() | `(OrganizationsService) UpdateOrganizationsMultiple(data []OrganizationsBatchUpdate) error` |
 | [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Organizations.go#:~:text=)%20DeleteOrganizations() | `(OrganizationsService) DeleteOrganizations(id uuid.UUID) error` |
 
-== Endpoints
+:::tab Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -223,7 +225,7 @@ type OrganizationsBatchUpdate struct {
 | `PUT` | `/organizations/with-id/:id` | Update by ID |
 | `DELETE` | `/organizations/with-id/:id` | Delete by ID |
 
-== Query & Filters
+:::tab Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -238,7 +240,7 @@ type OrganizationsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-:::
+::::
 
 ### RPC Functions
 
@@ -253,9 +255,9 @@ type OrganizationsBatchUpdate struct {
 
 ## TypeScript Types & Hooks
 
-:::tabs
+::::tabs
 
-== Interfaces
+:::tab Interfaces
 
 ```typescript
 export interface Organizations {
@@ -318,7 +320,7 @@ export type OrganizationsPathQuery = {
 
 ```
 
-== React Query
+:::tab React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -372,7 +374,7 @@ export function useDeleteOrganizations() {
 
 ```
 
-== Zod Validation
+:::tab Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -394,7 +396,7 @@ export type OrganizationsFormInput = z.infer<typeof OrganizationsFormSchema>;
 
 ```
 
-:::
+::::
 
 
 :::tab API
@@ -408,9 +410,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-:::tabs
+::::tabs
 
-== Search
+:::tab Search
 
 #### <Badge type="info" text="GET" /> Search Organizations
 
@@ -506,7 +508,7 @@ curl -X POST \
 
 ---
 
-== Pagination
+:::tab Pagination
 
 #### <Badge type="info" text="GET" /> Paginate Organizations
 
@@ -604,7 +606,7 @@ curl -X POST \
 
 ---
 
-== Create
+:::tab Create
 
 #### <Badge type="tip" text="POST" /> Create Organizations
 
@@ -700,7 +702,7 @@ curl -X POST \
 
 ---
 
-== Find & Update
+:::tab Find & Update
 
 #### <Badge type="info" text="GET" /> Find Organizations by ID
 
@@ -827,7 +829,7 @@ curl -X PUT \
 
 ---
 
-== Delete
+:::tab Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete Organizations
 
@@ -866,7 +868,7 @@ curl -X DELETE \
 
 ---
 
-:::
+::::
 
 
 ::::

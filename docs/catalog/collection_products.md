@@ -22,9 +22,11 @@ _Tables this table references via foreign keys._
 
 ## Entity Relationship Diagram
 
+```mermaid
 erDiagram
     CollectionProducts }o--|| Collections : "FK"
     CollectionProducts }o--|| Products : "FK"
+```
 
 ::::tabs
 
@@ -64,9 +66,9 @@ erDiagram
 
 ### Structs
 
-:::tabs
+::::tabs
 
-== Form
+:::tab Form
 
 #### CollectionProductsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/CollectionProducts.go#:~:text=type%20CollectionProductsForm%20struct)
 
@@ -80,7 +82,7 @@ _Create payload — excludes auto-generated PK fields_
 | `SortOrder` | `int` | `sortOrder` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== Model
+:::tab Model
 
 #### CollectionProducts [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/CollectionProducts.go#:~:text=type%20CollectionProducts%20struct)
 
@@ -95,7 +97,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `SortOrder` | `int` | `sortOrder` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== Edit
+:::tab Edit
 
 #### CollectionProductsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/CollectionProducts.go#:~:text=type%20CollectionProductsEdit%20struct)
 
@@ -110,7 +112,7 @@ _Update payload — all fields are pointers (partial update)_
 | `SortOrder` | `*int` | `sortOrder` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Filter
+:::tab Filter
 
 #### CollectionProductsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/CollectionProducts.go#:~:text=type%20CollectionProductsFilter%20struct)
 
@@ -125,7 +127,7 @@ _Query filter — all fields are pointers_
 | `SortOrder` | `*int` | `sortOrder` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-== Page
+:::tab Page
 
 #### CollectionProductsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/CollectionProducts.go#:~:text=type%20CollectionProductsPage%20struct)
 
@@ -140,7 +142,7 @@ _Paginated response wrapper_
 | `SortOrder` | `int` | `sortOrder` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-== BatchUpdate
+:::tab BatchUpdate
 
 #### CollectionProductsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/CollectionProducts.go#:~:text=type%20CollectionProductsBatchUpdate%20struct)
 
@@ -153,13 +155,13 @@ type CollectionProductsBatchUpdate struct {
 }
 ```
 
-:::
+::::
 
 ### Service & Endpoints
 
-:::tabs
+::::tabs
 
-== Service Methods
+:::tab Service Methods
 
 | Method | Signature |
 |---------|-----------|
@@ -169,7 +171,7 @@ type CollectionProductsBatchUpdate struct {
 | [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/CollectionProducts.go#:~:text=)%20UpdateCollectionProductsMultiple() | `(CollectionProductsService) UpdateCollectionProductsMultiple(data []CollectionProductsBatchUpdate) error` |
 | [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/CollectionProducts.go#:~:text=)%20DeleteCollectionProducts() | `(CollectionProductsService) DeleteCollectionProducts(id uuid.UUID) error` |
 
-== Endpoints
+:::tab Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -182,7 +184,7 @@ type CollectionProductsBatchUpdate struct {
 | `PUT` | `/collection-products/with-id/:id` | Update by ID |
 | `DELETE` | `/collection-products/with-id/:id` | Delete by ID |
 
-== Query & Filters
+:::tab Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -197,7 +199,7 @@ type CollectionProductsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-:::
+::::
 
 ### RPC Functions
 
@@ -212,9 +214,9 @@ type CollectionProductsBatchUpdate struct {
 
 ## TypeScript Types & Hooks
 
-:::tabs
+::::tabs
 
-== Interfaces
+:::tab Interfaces
 
 ```typescript
 export interface CollectionProducts {
@@ -262,7 +264,7 @@ export type CollectionProductsPathQuery = {
 
 ```
 
-== React Query
+:::tab React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -316,7 +318,7 @@ export function useDeleteCollectionProducts() {
 
 ```
 
-== Zod Validation
+:::tab Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -333,7 +335,7 @@ export type CollectionProductsFormInput = z.infer<typeof CollectionProductsFormS
 
 ```
 
-:::
+::::
 
 
 :::tab API
@@ -347,9 +349,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-:::tabs
+::::tabs
 
-== Search
+:::tab Search
 
 #### <Badge type="info" text="GET" /> Search CollectionProducts
 
@@ -442,7 +444,7 @@ curl -X POST \
 
 ---
 
-== Pagination
+:::tab Pagination
 
 #### <Badge type="info" text="GET" /> Paginate CollectionProducts
 
@@ -537,7 +539,7 @@ curl -X POST \
 
 ---
 
-== Create
+:::tab Create
 
 #### <Badge type="tip" text="POST" /> Create CollectionProducts
 
@@ -627,7 +629,7 @@ curl -X POST \
 
 ---
 
-== Find & Update
+:::tab Find & Update
 
 #### <Badge type="info" text="GET" /> Find CollectionProducts by ID
 
@@ -751,7 +753,7 @@ curl -X PUT \
 
 ---
 
-== Delete
+:::tab Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete CollectionProducts
 
@@ -790,7 +792,7 @@ curl -X DELETE \
 
 ---
 
-:::
+::::
 
 
 ::::
