@@ -30,7 +30,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -67,9 +67,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### TeamMembersForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/TeamMembers.go#:~:text=type%20TeamMembersForm%20struct)
 
@@ -84,7 +84,7 @@ _Create payload — excludes auto-generated PK fields_
 | `JoinedAt` | `time.Time` | `joinedAt` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab Model
+== Model
 
 #### TeamMembers [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/TeamMembers.go#:~:text=type%20TeamMembers%20struct)
 
@@ -100,7 +100,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `JoinedAt` | `time.Time` | `joinedAt` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### TeamMembersEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/TeamMembers.go#:~:text=type%20TeamMembersEdit%20struct)
 
@@ -116,7 +116,7 @@ _Update payload — all fields are pointers (partial update)_
 | `JoinedAt` | `*time.Time` | `joinedAt` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### TeamMembersFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/TeamMembers.go#:~:text=type%20TeamMembersFilter%20struct)
 
@@ -132,7 +132,7 @@ _Query filter — all fields are pointers_
 | `JoinedAt` | `*time.Time` | `joinedAt` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-:::tab Page
+== Page
 
 #### TeamMembersPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/TeamMembers.go#:~:text=type%20TeamMembersPage%20struct)
 
@@ -148,7 +148,7 @@ _Paginated response wrapper_
 | `JoinedAt` | `time.Time` | `joinedAt` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### TeamMembersBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/TeamMembers.go#:~:text=type%20TeamMembersBatchUpdate%20struct)
 
@@ -161,23 +161,23 @@ type TeamMembersBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/TeamMembers.go#:~:text=)%20CreateTeamMembers() | `(TeamMembersService) CreateTeamMembers(data TeamMembersForm) (TeamMembersForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/TeamMembers.go#:~:text=)%20CreateTeamMembersMultiple() | `(TeamMembersService) CreateTeamMembersMultiple(data []TeamMembersForm) ([]TeamMembersForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/TeamMembers.go#:~:text=)%20UpdateTeamMembers() | `(TeamMembersService) UpdateTeamMembers(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/TeamMembers.go#:~:text=)%20UpdateTeamMembersMultiple() | `(TeamMembersService) UpdateTeamMembersMultiple(data []TeamMembersBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/TeamMembers.go#:~:text=)%20DeleteTeamMembers() | `(TeamMembersService) DeleteTeamMembers(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/TeamMembers.go#:~:text=%29%20CreateTeamMembers%28%29) | `(TeamMembersService) CreateTeamMembers(data TeamMembersForm) (TeamMembersForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/TeamMembers.go#:~:text=%29%20CreateTeamMembersMultiple%28%29) | `(TeamMembersService) CreateTeamMembersMultiple(data []TeamMembersForm) ([]TeamMembersForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/TeamMembers.go#:~:text=%29%20UpdateTeamMembers%28%29) | `(TeamMembersService) UpdateTeamMembers(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/TeamMembers.go#:~:text=%29%20UpdateTeamMembersMultiple%28%29) | `(TeamMembersService) UpdateTeamMembersMultiple(data []TeamMembersBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/TeamMembers.go#:~:text=%29%20DeleteTeamMembers%28%29) | `(TeamMembersService) DeleteTeamMembers(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -190,7 +190,7 @@ type TeamMembersBatchUpdate struct {
 | `PUT` | `/team-members/with-id/:id` | Update by ID |
 | `DELETE` | `/team-members/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -205,7 +205,7 @@ type TeamMembersBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -216,13 +216,13 @@ type TeamMembersBatchUpdate struct {
 | `users_by_organization` | `p_org_id uuid` | `integer` | `/rpc/users_by_organization` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export interface TeamMembers {
@@ -273,7 +273,7 @@ export type TeamMembersPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -327,7 +327,7 @@ export function useDeleteTeamMembers() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -345,10 +345,10 @@ export type TeamMembersFormInput = z.infer<typeof TeamMembersFormSchema>;
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -359,9 +359,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search TeamMembers
 
@@ -455,7 +455,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate TeamMembers
 
@@ -551,7 +551,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create TeamMembers
 
@@ -643,7 +643,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find TeamMembers by ID
 
@@ -768,7 +768,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete TeamMembers
 
@@ -807,7 +807,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

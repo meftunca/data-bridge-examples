@@ -28,7 +28,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -61,9 +61,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### SuppliersForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/Suppliers.go#:~:text=type%20SuppliersForm%20struct)
 
@@ -82,7 +82,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Model
+== Model
 
 #### Suppliers [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/Suppliers.go#:~:text=type%20Suppliers%20struct)
 
@@ -102,7 +102,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### SuppliersEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/Suppliers.go#:~:text=type%20SuppliersEdit%20struct)
 
@@ -122,7 +122,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### SuppliersFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/Suppliers.go#:~:text=type%20SuppliersFilter%20struct)
 
@@ -142,7 +142,7 @@ _Query filter — all fields are pointers_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Page
+== Page
 
 #### SuppliersPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/Suppliers.go#:~:text=type%20SuppliersPage%20struct)
 
@@ -162,7 +162,7 @@ _Paginated response wrapper_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### SuppliersBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/Suppliers.go#:~:text=type%20SuppliersBatchUpdate%20struct)
 
@@ -175,23 +175,23 @@ type SuppliersBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/Suppliers.go#:~:text=)%20CreateSuppliers() | `(SuppliersService) CreateSuppliers(data SuppliersForm) (SuppliersForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/Suppliers.go#:~:text=)%20CreateSuppliersMultiple() | `(SuppliersService) CreateSuppliersMultiple(data []SuppliersForm) ([]SuppliersForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/Suppliers.go#:~:text=)%20UpdateSuppliers() | `(SuppliersService) UpdateSuppliers(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/Suppliers.go#:~:text=)%20UpdateSuppliersMultiple() | `(SuppliersService) UpdateSuppliersMultiple(data []SuppliersBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/Suppliers.go#:~:text=)%20DeleteSuppliers() | `(SuppliersService) DeleteSuppliers(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/Suppliers.go#:~:text=%29%20CreateSuppliers%28%29) | `(SuppliersService) CreateSuppliers(data SuppliersForm) (SuppliersForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/Suppliers.go#:~:text=%29%20CreateSuppliersMultiple%28%29) | `(SuppliersService) CreateSuppliersMultiple(data []SuppliersForm) ([]SuppliersForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/Suppliers.go#:~:text=%29%20UpdateSuppliers%28%29) | `(SuppliersService) UpdateSuppliers(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/Suppliers.go#:~:text=%29%20UpdateSuppliersMultiple%28%29) | `(SuppliersService) UpdateSuppliersMultiple(data []SuppliersBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/Suppliers.go#:~:text=%29%20DeleteSuppliers%28%29) | `(SuppliersService) DeleteSuppliers(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -204,7 +204,7 @@ type SuppliersBatchUpdate struct {
 | `PUT` | `/suppliers/with-id/:id` | Update by ID |
 | `DELETE` | `/suppliers/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -219,7 +219,7 @@ type SuppliersBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -229,13 +229,13 @@ type SuppliersBatchUpdate struct {
 | `warehouse_utilization` | `p_warehouse_id uuid` | `numeric` | `/rpc/warehouse_utilization` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export interface Suppliers {
@@ -298,7 +298,7 @@ export type SuppliersPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -352,7 +352,7 @@ export function useDeleteSuppliers() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -374,10 +374,10 @@ export type SuppliersFormInput = z.infer<typeof SuppliersFormSchema>;
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -388,9 +388,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search Suppliers
 
@@ -487,7 +487,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate Suppliers
 
@@ -586,7 +586,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create Suppliers
 
@@ -684,7 +684,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find Suppliers by ID
 
@@ -812,7 +812,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete Suppliers
 
@@ -851,7 +851,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

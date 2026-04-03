@@ -30,7 +30,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -63,9 +63,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### OrderStatusHistoryForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/OrderStatusHistory.go#:~:text=type%20OrderStatusHistoryForm%20struct)
 
@@ -81,7 +81,7 @@ _Create payload — excludes auto-generated PK fields_
 | `Note` | `string` | `note` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab Model
+== Model
 
 #### OrderStatusHistory [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/OrderStatusHistory.go#:~:text=type%20OrderStatusHistory%20struct)
 
@@ -98,7 +98,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `Note` | `string` | `note` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### OrderStatusHistoryEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/OrderStatusHistory.go#:~:text=type%20OrderStatusHistoryEdit%20struct)
 
@@ -115,7 +115,7 @@ _Update payload — all fields are pointers (partial update)_
 | `Note` | `*string` | `note` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### OrderStatusHistoryFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/OrderStatusHistory.go#:~:text=type%20OrderStatusHistoryFilter%20struct)
 
@@ -132,7 +132,7 @@ _Query filter — all fields are pointers_
 | `Note` | `*string` | `note` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-:::tab Page
+== Page
 
 #### OrderStatusHistoryPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/OrderStatusHistory.go#:~:text=type%20OrderStatusHistoryPage%20struct)
 
@@ -149,7 +149,7 @@ _Paginated response wrapper_
 | `Note` | `string` | `note` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### OrderStatusHistoryBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/OrderStatusHistory.go#:~:text=type%20OrderStatusHistoryBatchUpdate%20struct)
 
@@ -162,23 +162,23 @@ type OrderStatusHistoryBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/OrderStatusHistory.go#:~:text=)%20CreateOrderStatusHistory() | `(OrderStatusHistoryService) CreateOrderStatusHistory(data OrderStatusHistoryForm) (OrderStatusHistoryForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/OrderStatusHistory.go#:~:text=)%20CreateOrderStatusHistoryMultiple() | `(OrderStatusHistoryService) CreateOrderStatusHistoryMultiple(data []OrderStatusHistoryForm) ([]OrderStatusHistoryForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/OrderStatusHistory.go#:~:text=)%20UpdateOrderStatusHistory() | `(OrderStatusHistoryService) UpdateOrderStatusHistory(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/OrderStatusHistory.go#:~:text=)%20UpdateOrderStatusHistoryMultiple() | `(OrderStatusHistoryService) UpdateOrderStatusHistoryMultiple(data []OrderStatusHistoryBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/OrderStatusHistory.go#:~:text=)%20DeleteOrderStatusHistory() | `(OrderStatusHistoryService) DeleteOrderStatusHistory(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/OrderStatusHistory.go#:~:text=%29%20CreateOrderStatusHistory%28%29) | `(OrderStatusHistoryService) CreateOrderStatusHistory(data OrderStatusHistoryForm) (OrderStatusHistoryForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/OrderStatusHistory.go#:~:text=%29%20CreateOrderStatusHistoryMultiple%28%29) | `(OrderStatusHistoryService) CreateOrderStatusHistoryMultiple(data []OrderStatusHistoryForm) ([]OrderStatusHistoryForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/OrderStatusHistory.go#:~:text=%29%20UpdateOrderStatusHistory%28%29) | `(OrderStatusHistoryService) UpdateOrderStatusHistory(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/OrderStatusHistory.go#:~:text=%29%20UpdateOrderStatusHistoryMultiple%28%29) | `(OrderStatusHistoryService) UpdateOrderStatusHistoryMultiple(data []OrderStatusHistoryBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/OrderStatusHistory.go#:~:text=%29%20DeleteOrderStatusHistory%28%29) | `(OrderStatusHistoryService) DeleteOrderStatusHistory(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -191,7 +191,7 @@ type OrderStatusHistoryBatchUpdate struct {
 | `PUT` | `/order-status-history/with-id/:id` | Update by ID |
 | `DELETE` | `/order-status-history/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -206,7 +206,7 @@ type OrderStatusHistoryBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -217,13 +217,13 @@ type OrderStatusHistoryBatchUpdate struct {
 | `total_revenue` | - | `numeric` | `/rpc/total_revenue` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export interface OrderStatusHistory {
@@ -277,7 +277,7 @@ export type OrderStatusHistoryPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -331,7 +331,7 @@ export function useDeleteOrderStatusHistory() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -350,10 +350,10 @@ export type OrderStatusHistoryFormInput = z.infer<typeof OrderStatusHistoryFormS
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -364,9 +364,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search OrderStatusHistory
 
@@ -461,7 +461,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate OrderStatusHistory
 
@@ -558,7 +558,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create OrderStatusHistory
 
@@ -652,7 +652,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find OrderStatusHistory by ID
 
@@ -778,7 +778,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete OrderStatusHistory
 
@@ -817,7 +817,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

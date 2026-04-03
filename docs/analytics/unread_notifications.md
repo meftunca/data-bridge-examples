@@ -8,7 +8,7 @@ title: UnreadNotifications
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -30,9 +30,9 @@ title: UnreadNotifications
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### UnreadNotificationsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/UnreadNotifications.go#:~:text=type%20UnreadNotificationsForm%20struct)
 
@@ -49,7 +49,7 @@ _Create payload — excludes auto-generated PK fields_
 | `ActionUrl` | `*string` | `actionUrl` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-:::tab Model
+== Model
 
 #### UnreadNotifications [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/UnreadNotifications.go#:~:text=type%20UnreadNotifications%20struct)
 
@@ -66,7 +66,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `ActionUrl` | `*string` | `actionUrl` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-:::tab Edit
+== Edit
 
 #### UnreadNotificationsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/UnreadNotifications.go#:~:text=type%20UnreadNotificationsEdit%20struct)
 
@@ -83,7 +83,7 @@ _Update payload — all fields are pointers (partial update)_
 | `ActionUrl` | `*string` | `actionUrl` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### UnreadNotificationsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/UnreadNotifications.go#:~:text=type%20UnreadNotificationsFilter%20struct)
 
@@ -100,7 +100,7 @@ _Query filter — all fields are pointers_
 | `ActionUrl` | `*string` | `actionUrl` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-:::tab Page
+== Page
 
 #### UnreadNotificationsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/UnreadNotifications.go#:~:text=type%20UnreadNotificationsPage%20struct)
 
@@ -117,24 +117,24 @@ _Paginated response wrapper_
 | `ActionUrl` | `*string` | `actionUrl` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 _View — read-only, no write service methods._
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
 | `GET` | `/unread-notifications/` | Search with query params |
 | `GET` | `/unread-notifications/pagination` | Paginated listing |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -149,7 +149,7 @@ _View — read-only, no write service methods._
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -160,13 +160,13 @@ _View — read-only, no write service methods._
 | `unread_notification_count` | `p_user_id uuid` | `integer` | `/rpc/unread_notification_count` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export interface UnreadNotifications {
@@ -221,7 +221,7 @@ export type UnreadNotificationsPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -248,7 +248,7 @@ export function useUnreadNotificationsDetail(id: any) {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -268,10 +268,10 @@ export type UnreadNotificationsFormInput = z.infer<typeof UnreadNotificationsFor
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -282,9 +282,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search UnreadNotifications
 
@@ -379,7 +379,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate UnreadNotifications
 
@@ -476,7 +476,7 @@ curl -X POST \
 
 ---
 
-::::
+:::
 
 
 ::::

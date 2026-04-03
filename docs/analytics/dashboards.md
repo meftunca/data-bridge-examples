@@ -39,7 +39,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -73,9 +73,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### DashboardsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Dashboards.go#:~:text=type%20DashboardsForm%20struct)
 
@@ -92,7 +92,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Model
+== Model
 
 #### Dashboards [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Dashboards.go#:~:text=type%20Dashboards%20struct)
 
@@ -110,7 +110,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### DashboardsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Dashboards.go#:~:text=type%20DashboardsEdit%20struct)
 
@@ -128,7 +128,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### DashboardsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Dashboards.go#:~:text=type%20DashboardsFilter%20struct)
 
@@ -146,7 +146,7 @@ _Query filter — all fields are pointers_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Page
+== Page
 
 #### DashboardsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Dashboards.go#:~:text=type%20DashboardsPage%20struct)
 
@@ -164,7 +164,7 @@ _Paginated response wrapper_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### DashboardsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Dashboards.go#:~:text=type%20DashboardsBatchUpdate%20struct)
 
@@ -177,23 +177,23 @@ type DashboardsBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Dashboards.go#:~:text=)%20CreateDashboards() | `(DashboardsService) CreateDashboards(data DashboardsForm) (DashboardsForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Dashboards.go#:~:text=)%20CreateDashboardsMultiple() | `(DashboardsService) CreateDashboardsMultiple(data []DashboardsForm) ([]DashboardsForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Dashboards.go#:~:text=)%20UpdateDashboards() | `(DashboardsService) UpdateDashboards(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Dashboards.go#:~:text=)%20UpdateDashboardsMultiple() | `(DashboardsService) UpdateDashboardsMultiple(data []DashboardsBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Dashboards.go#:~:text=)%20DeleteDashboards() | `(DashboardsService) DeleteDashboards(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Dashboards.go#:~:text=%29%20CreateDashboards%28%29) | `(DashboardsService) CreateDashboards(data DashboardsForm) (DashboardsForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Dashboards.go#:~:text=%29%20CreateDashboardsMultiple%28%29) | `(DashboardsService) CreateDashboardsMultiple(data []DashboardsForm) ([]DashboardsForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Dashboards.go#:~:text=%29%20UpdateDashboards%28%29) | `(DashboardsService) UpdateDashboards(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Dashboards.go#:~:text=%29%20UpdateDashboardsMultiple%28%29) | `(DashboardsService) UpdateDashboardsMultiple(data []DashboardsBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Dashboards.go#:~:text=%29%20DeleteDashboards%28%29) | `(DashboardsService) DeleteDashboards(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -206,7 +206,7 @@ type DashboardsBatchUpdate struct {
 | `PUT` | `/dashboards/with-id/:id` | Update by ID |
 | `DELETE` | `/dashboards/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -221,7 +221,7 @@ type DashboardsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -232,13 +232,13 @@ type DashboardsBatchUpdate struct {
 | `unread_notification_count` | `p_user_id uuid` | `integer` | `/rpc/unread_notification_count` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export interface Dashboards {
@@ -295,7 +295,7 @@ export type DashboardsPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -349,7 +349,7 @@ export function useDeleteDashboards() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -369,10 +369,10 @@ export type DashboardsFormInput = z.infer<typeof DashboardsFormSchema>;
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -383,9 +383,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search Dashboards
 
@@ -480,7 +480,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate Dashboards
 
@@ -577,7 +577,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create Dashboards
 
@@ -671,7 +671,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find Dashboards by ID
 
@@ -797,7 +797,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete Dashboards
 
@@ -836,7 +836,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

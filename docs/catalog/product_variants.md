@@ -38,7 +38,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -76,9 +76,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### ProductVariantsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductVariants.go#:~:text=type%20ProductVariantsForm%20struct)
 
@@ -96,7 +96,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Model
+== Model
 
 #### ProductVariants [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductVariants.go#:~:text=type%20ProductVariants%20struct)
 
@@ -115,7 +115,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### ProductVariantsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductVariants.go#:~:text=type%20ProductVariantsEdit%20struct)
 
@@ -134,7 +134,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### ProductVariantsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductVariants.go#:~:text=type%20ProductVariantsFilter%20struct)
 
@@ -153,7 +153,7 @@ _Query filter — all fields are pointers_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Page
+== Page
 
 #### ProductVariantsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductVariants.go#:~:text=type%20ProductVariantsPage%20struct)
 
@@ -172,7 +172,7 @@ _Paginated response wrapper_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### ProductVariantsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductVariants.go#:~:text=type%20ProductVariantsBatchUpdate%20struct)
 
@@ -185,23 +185,23 @@ type ProductVariantsBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductVariants.go#:~:text=)%20CreateProductVariants() | `(ProductVariantsService) CreateProductVariants(data ProductVariantsForm) (ProductVariantsForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductVariants.go#:~:text=)%20CreateProductVariantsMultiple() | `(ProductVariantsService) CreateProductVariantsMultiple(data []ProductVariantsForm) ([]ProductVariantsForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductVariants.go#:~:text=)%20UpdateProductVariants() | `(ProductVariantsService) UpdateProductVariants(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductVariants.go#:~:text=)%20UpdateProductVariantsMultiple() | `(ProductVariantsService) UpdateProductVariantsMultiple(data []ProductVariantsBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductVariants.go#:~:text=)%20DeleteProductVariants() | `(ProductVariantsService) DeleteProductVariants(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductVariants.go#:~:text=%29%20CreateProductVariants%28%29) | `(ProductVariantsService) CreateProductVariants(data ProductVariantsForm) (ProductVariantsForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductVariants.go#:~:text=%29%20CreateProductVariantsMultiple%28%29) | `(ProductVariantsService) CreateProductVariantsMultiple(data []ProductVariantsForm) ([]ProductVariantsForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductVariants.go#:~:text=%29%20UpdateProductVariants%28%29) | `(ProductVariantsService) UpdateProductVariants(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductVariants.go#:~:text=%29%20UpdateProductVariantsMultiple%28%29) | `(ProductVariantsService) UpdateProductVariantsMultiple(data []ProductVariantsBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductVariants.go#:~:text=%29%20DeleteProductVariants%28%29) | `(ProductVariantsService) DeleteProductVariants(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -214,7 +214,7 @@ type ProductVariantsBatchUpdate struct {
 | `PUT` | `/product-variants/with-id/:id` | Update by ID |
 | `DELETE` | `/product-variants/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -229,7 +229,7 @@ type ProductVariantsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -240,13 +240,13 @@ type ProductVariantsBatchUpdate struct {
 | `products_by_category` | `p_category_id uuid` | `integer` | `/rpc/products_by_category` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export interface ProductVariants {
@@ -306,7 +306,7 @@ export type ProductVariantsPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -360,7 +360,7 @@ export function useDeleteProductVariants() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -381,10 +381,10 @@ export type ProductVariantsFormInput = z.infer<typeof ProductVariantsFormSchema>
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -395,9 +395,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search ProductVariants
 
@@ -493,7 +493,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate ProductVariants
 
@@ -591,7 +591,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create ProductVariants
 
@@ -687,7 +687,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find ProductVariants by ID
 
@@ -814,7 +814,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete ProductVariants
 
@@ -853,7 +853,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

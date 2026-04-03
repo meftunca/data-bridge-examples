@@ -32,7 +32,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -69,9 +69,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### RefundsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Refunds.go#:~:text=type%20RefundsForm%20struct)
 
@@ -90,7 +90,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Model
+== Model
 
 #### Refunds [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Refunds.go#:~:text=type%20Refunds%20struct)
 
@@ -110,7 +110,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### RefundsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Refunds.go#:~:text=type%20RefundsEdit%20struct)
 
@@ -130,7 +130,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### RefundsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Refunds.go#:~:text=type%20RefundsFilter%20struct)
 
@@ -150,7 +150,7 @@ _Query filter — all fields are pointers_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Page
+== Page
 
 #### RefundsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Refunds.go#:~:text=type%20RefundsPage%20struct)
 
@@ -170,7 +170,7 @@ _Paginated response wrapper_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### RefundsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Refunds.go#:~:text=type%20RefundsBatchUpdate%20struct)
 
@@ -183,23 +183,23 @@ type RefundsBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Refunds.go#:~:text=)%20CreateRefunds() | `(RefundsService) CreateRefunds(data RefundsForm) (RefundsForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Refunds.go#:~:text=)%20CreateRefundsMultiple() | `(RefundsService) CreateRefundsMultiple(data []RefundsForm) ([]RefundsForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Refunds.go#:~:text=)%20UpdateRefunds() | `(RefundsService) UpdateRefunds(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Refunds.go#:~:text=)%20UpdateRefundsMultiple() | `(RefundsService) UpdateRefundsMultiple(data []RefundsBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Refunds.go#:~:text=)%20DeleteRefunds() | `(RefundsService) DeleteRefunds(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Refunds.go#:~:text=%29%20CreateRefunds%28%29) | `(RefundsService) CreateRefunds(data RefundsForm) (RefundsForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Refunds.go#:~:text=%29%20CreateRefundsMultiple%28%29) | `(RefundsService) CreateRefundsMultiple(data []RefundsForm) ([]RefundsForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Refunds.go#:~:text=%29%20UpdateRefunds%28%29) | `(RefundsService) UpdateRefunds(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Refunds.go#:~:text=%29%20UpdateRefundsMultiple%28%29) | `(RefundsService) UpdateRefundsMultiple(data []RefundsBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Refunds.go#:~:text=%29%20DeleteRefunds%28%29) | `(RefundsService) DeleteRefunds(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -212,7 +212,7 @@ type RefundsBatchUpdate struct {
 | `PUT` | `/refunds/with-id/:id` | Update by ID |
 | `DELETE` | `/refunds/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -227,7 +227,7 @@ type RefundsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -238,13 +238,13 @@ type RefundsBatchUpdate struct {
 | `total_revenue` | - | `numeric` | `/rpc/total_revenue` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export interface Refunds {
@@ -307,7 +307,7 @@ export type RefundsPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -361,7 +361,7 @@ export function useDeleteRefunds() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -383,10 +383,10 @@ export type RefundsFormInput = z.infer<typeof RefundsFormSchema>;
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -397,9 +397,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search Refunds
 
@@ -496,7 +496,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate Refunds
 
@@ -595,7 +595,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create Refunds
 
@@ -693,7 +693,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find Refunds by ID
 
@@ -821,7 +821,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete Refunds
 
@@ -860,7 +860,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

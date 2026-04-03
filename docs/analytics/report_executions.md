@@ -30,7 +30,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -67,9 +67,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### ReportExecutionsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/ReportExecutions.go#:~:text=type%20ReportExecutionsForm%20struct)
 
@@ -89,7 +89,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CompletedAt` | `*time.Time` | `completedAt` | YES |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab Model
+== Model
 
 #### ReportExecutions [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/ReportExecutions.go#:~:text=type%20ReportExecutions%20struct)
 
@@ -110,7 +110,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CompletedAt` | `*time.Time` | `completedAt` | YES |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### ReportExecutionsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/ReportExecutions.go#:~:text=type%20ReportExecutionsEdit%20struct)
 
@@ -131,7 +131,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CompletedAt` | `*time.Time` | `completedAt` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### ReportExecutionsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/ReportExecutions.go#:~:text=type%20ReportExecutionsFilter%20struct)
 
@@ -152,7 +152,7 @@ _Query filter — all fields are pointers_
 | `CompletedAt` | `*time.Time` | `completedAt` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-:::tab Page
+== Page
 
 #### ReportExecutionsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/ReportExecutions.go#:~:text=type%20ReportExecutionsPage%20struct)
 
@@ -173,7 +173,7 @@ _Paginated response wrapper_
 | `CompletedAt` | `*time.Time` | `completedAt` | YES |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### ReportExecutionsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/ReportExecutions.go#:~:text=type%20ReportExecutionsBatchUpdate%20struct)
 
@@ -186,23 +186,23 @@ type ReportExecutionsBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/ReportExecutions.go#:~:text=)%20CreateReportExecutions() | `(ReportExecutionsService) CreateReportExecutions(data ReportExecutionsForm) (ReportExecutionsForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/ReportExecutions.go#:~:text=)%20CreateReportExecutionsMultiple() | `(ReportExecutionsService) CreateReportExecutionsMultiple(data []ReportExecutionsForm) ([]ReportExecutionsForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/ReportExecutions.go#:~:text=)%20UpdateReportExecutions() | `(ReportExecutionsService) UpdateReportExecutions(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/ReportExecutions.go#:~:text=)%20UpdateReportExecutionsMultiple() | `(ReportExecutionsService) UpdateReportExecutionsMultiple(data []ReportExecutionsBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/ReportExecutions.go#:~:text=)%20DeleteReportExecutions() | `(ReportExecutionsService) DeleteReportExecutions(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/ReportExecutions.go#:~:text=%29%20CreateReportExecutions%28%29) | `(ReportExecutionsService) CreateReportExecutions(data ReportExecutionsForm) (ReportExecutionsForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/ReportExecutions.go#:~:text=%29%20CreateReportExecutionsMultiple%28%29) | `(ReportExecutionsService) CreateReportExecutionsMultiple(data []ReportExecutionsForm) ([]ReportExecutionsForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/ReportExecutions.go#:~:text=%29%20UpdateReportExecutions%28%29) | `(ReportExecutionsService) UpdateReportExecutions(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/ReportExecutions.go#:~:text=%29%20UpdateReportExecutionsMultiple%28%29) | `(ReportExecutionsService) UpdateReportExecutionsMultiple(data []ReportExecutionsBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/ReportExecutions.go#:~:text=%29%20DeleteReportExecutions%28%29) | `(ReportExecutionsService) DeleteReportExecutions(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -215,7 +215,7 @@ type ReportExecutionsBatchUpdate struct {
 | `PUT` | `/report-executions/with-id/:id` | Update by ID |
 | `DELETE` | `/report-executions/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -230,7 +230,7 @@ type ReportExecutionsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -241,13 +241,13 @@ type ReportExecutionsBatchUpdate struct {
 | `unread_notification_count` | `p_user_id uuid` | `integer` | `/rpc/unread_notification_count` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export interface ReportExecutions {
@@ -313,7 +313,7 @@ export type ReportExecutionsPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -367,7 +367,7 @@ export function useDeleteReportExecutions() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -390,10 +390,10 @@ export type ReportExecutionsFormInput = z.infer<typeof ReportExecutionsFormSchem
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -404,9 +404,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search ReportExecutions
 
@@ -505,7 +505,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate ReportExecutions
 
@@ -606,7 +606,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create ReportExecutions
 
@@ -708,7 +708,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find ReportExecutions by ID
 
@@ -838,7 +838,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete ReportExecutions
 
@@ -877,7 +877,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

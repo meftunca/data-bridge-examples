@@ -40,7 +40,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -78,9 +78,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### OrderItemsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/OrderItems.go#:~:text=type%20OrderItemsForm%20struct)
 
@@ -100,7 +100,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Model
+== Model
 
 #### OrderItems [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/OrderItems.go#:~:text=type%20OrderItems%20struct)
 
@@ -121,7 +121,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### OrderItemsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/OrderItems.go#:~:text=type%20OrderItemsEdit%20struct)
 
@@ -142,7 +142,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### OrderItemsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/OrderItems.go#:~:text=type%20OrderItemsFilter%20struct)
 
@@ -163,7 +163,7 @@ _Query filter — all fields are pointers_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Page
+== Page
 
 #### OrderItemsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/OrderItems.go#:~:text=type%20OrderItemsPage%20struct)
 
@@ -184,7 +184,7 @@ _Paginated response wrapper_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### OrderItemsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/OrderItems.go#:~:text=type%20OrderItemsBatchUpdate%20struct)
 
@@ -197,23 +197,23 @@ type OrderItemsBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/OrderItems.go#:~:text=)%20CreateOrderItems() | `(OrderItemsService) CreateOrderItems(data OrderItemsForm) (OrderItemsForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/OrderItems.go#:~:text=)%20CreateOrderItemsMultiple() | `(OrderItemsService) CreateOrderItemsMultiple(data []OrderItemsForm) ([]OrderItemsForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/OrderItems.go#:~:text=)%20UpdateOrderItems() | `(OrderItemsService) UpdateOrderItems(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/OrderItems.go#:~:text=)%20UpdateOrderItemsMultiple() | `(OrderItemsService) UpdateOrderItemsMultiple(data []OrderItemsBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/OrderItems.go#:~:text=)%20DeleteOrderItems() | `(OrderItemsService) DeleteOrderItems(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/OrderItems.go#:~:text=%29%20CreateOrderItems%28%29) | `(OrderItemsService) CreateOrderItems(data OrderItemsForm) (OrderItemsForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/OrderItems.go#:~:text=%29%20CreateOrderItemsMultiple%28%29) | `(OrderItemsService) CreateOrderItemsMultiple(data []OrderItemsForm) ([]OrderItemsForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/OrderItems.go#:~:text=%29%20UpdateOrderItems%28%29) | `(OrderItemsService) UpdateOrderItems(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/OrderItems.go#:~:text=%29%20UpdateOrderItemsMultiple%28%29) | `(OrderItemsService) UpdateOrderItemsMultiple(data []OrderItemsBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/OrderItems.go#:~:text=%29%20DeleteOrderItems%28%29) | `(OrderItemsService) DeleteOrderItems(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -226,7 +226,7 @@ type OrderItemsBatchUpdate struct {
 | `PUT` | `/order-items/with-id/:id` | Update by ID |
 | `DELETE` | `/order-items/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -241,7 +241,7 @@ type OrderItemsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -252,13 +252,13 @@ type OrderItemsBatchUpdate struct {
 | `total_revenue` | - | `numeric` | `/rpc/total_revenue` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export interface OrderItems {
@@ -324,7 +324,7 @@ export type OrderItemsPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -378,7 +378,7 @@ export function useDeleteOrderItems() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -401,10 +401,10 @@ export type OrderItemsFormInput = z.infer<typeof OrderItemsFormSchema>;
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -415,9 +415,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search OrderItems
 
@@ -515,7 +515,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate OrderItems
 
@@ -615,7 +615,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create OrderItems
 
@@ -715,7 +715,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find OrderItems by ID
 
@@ -844,7 +844,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete OrderItems
 
@@ -883,7 +883,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

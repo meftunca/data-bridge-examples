@@ -28,7 +28,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -63,9 +63,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### CouponsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Coupons.go#:~:text=type%20CouponsForm%20struct)
 
@@ -86,7 +86,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Model
+== Model
 
 #### Coupons [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Coupons.go#:~:text=type%20Coupons%20struct)
 
@@ -108,7 +108,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### CouponsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Coupons.go#:~:text=type%20CouponsEdit%20struct)
 
@@ -130,7 +130,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### CouponsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Coupons.go#:~:text=type%20CouponsFilter%20struct)
 
@@ -152,7 +152,7 @@ _Query filter — all fields are pointers_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Page
+== Page
 
 #### CouponsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Coupons.go#:~:text=type%20CouponsPage%20struct)
 
@@ -174,7 +174,7 @@ _Paginated response wrapper_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### CouponsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Coupons.go#:~:text=type%20CouponsBatchUpdate%20struct)
 
@@ -187,23 +187,23 @@ type CouponsBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Coupons.go#:~:text=)%20CreateCoupons() | `(CouponsService) CreateCoupons(data CouponsForm) (CouponsForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Coupons.go#:~:text=)%20CreateCouponsMultiple() | `(CouponsService) CreateCouponsMultiple(data []CouponsForm) ([]CouponsForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Coupons.go#:~:text=)%20UpdateCoupons() | `(CouponsService) UpdateCoupons(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Coupons.go#:~:text=)%20UpdateCouponsMultiple() | `(CouponsService) UpdateCouponsMultiple(data []CouponsBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Coupons.go#:~:text=)%20DeleteCoupons() | `(CouponsService) DeleteCoupons(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Coupons.go#:~:text=%29%20CreateCoupons%28%29) | `(CouponsService) CreateCoupons(data CouponsForm) (CouponsForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Coupons.go#:~:text=%29%20CreateCouponsMultiple%28%29) | `(CouponsService) CreateCouponsMultiple(data []CouponsForm) ([]CouponsForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Coupons.go#:~:text=%29%20UpdateCoupons%28%29) | `(CouponsService) UpdateCoupons(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Coupons.go#:~:text=%29%20UpdateCouponsMultiple%28%29) | `(CouponsService) UpdateCouponsMultiple(data []CouponsBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Coupons.go#:~:text=%29%20DeleteCoupons%28%29) | `(CouponsService) DeleteCoupons(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -216,7 +216,7 @@ type CouponsBatchUpdate struct {
 | `PUT` | `/coupons/with-id/:id` | Update by ID |
 | `DELETE` | `/coupons/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -231,7 +231,7 @@ type CouponsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -242,13 +242,13 @@ type CouponsBatchUpdate struct {
 | `total_revenue` | - | `numeric` | `/rpc/total_revenue` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export interface Coupons {
@@ -317,7 +317,7 @@ export type CouponsPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -371,7 +371,7 @@ export function useDeleteCoupons() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -395,10 +395,10 @@ export type CouponsFormInput = z.infer<typeof CouponsFormSchema>;
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -409,9 +409,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search Coupons
 
@@ -510,7 +510,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate Coupons
 
@@ -611,7 +611,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create Coupons
 
@@ -713,7 +713,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find Coupons by ID
 
@@ -843,7 +843,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete Coupons
 
@@ -882,7 +882,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

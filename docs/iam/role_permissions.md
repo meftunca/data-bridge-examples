@@ -30,7 +30,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -65,9 +65,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### RolePermissionsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/RolePermissions.go#:~:text=type%20RolePermissionsForm%20struct)
 
@@ -80,7 +80,7 @@ _Create payload — excludes auto-generated PK fields_
 | `PermissionId` | `uuid.UUID` | `permissionId` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab Model
+== Model
 
 #### RolePermissions [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/RolePermissions.go#:~:text=type%20RolePermissions%20struct)
 
@@ -94,7 +94,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `PermissionId` | `uuid.UUID` | `permissionId` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### RolePermissionsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/RolePermissions.go#:~:text=type%20RolePermissionsEdit%20struct)
 
@@ -108,7 +108,7 @@ _Update payload — all fields are pointers (partial update)_
 | `PermissionId` | `*uuid.UUID` | `permissionId` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### RolePermissionsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/RolePermissions.go#:~:text=type%20RolePermissionsFilter%20struct)
 
@@ -122,7 +122,7 @@ _Query filter — all fields are pointers_
 | `PermissionId` | `*uuid.UUID` | `permissionId` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-:::tab Page
+== Page
 
 #### RolePermissionsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/RolePermissions.go#:~:text=type%20RolePermissionsPage%20struct)
 
@@ -136,7 +136,7 @@ _Paginated response wrapper_
 | `PermissionId` | `uuid.UUID` | `permissionId` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### RolePermissionsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/RolePermissions.go#:~:text=type%20RolePermissionsBatchUpdate%20struct)
 
@@ -149,23 +149,23 @@ type RolePermissionsBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/RolePermissions.go#:~:text=)%20CreateRolePermissions() | `(RolePermissionsService) CreateRolePermissions(data RolePermissionsForm) (RolePermissionsForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/RolePermissions.go#:~:text=)%20CreateRolePermissionsMultiple() | `(RolePermissionsService) CreateRolePermissionsMultiple(data []RolePermissionsForm) ([]RolePermissionsForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/RolePermissions.go#:~:text=)%20UpdateRolePermissions() | `(RolePermissionsService) UpdateRolePermissions(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/RolePermissions.go#:~:text=)%20UpdateRolePermissionsMultiple() | `(RolePermissionsService) UpdateRolePermissionsMultiple(data []RolePermissionsBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/RolePermissions.go#:~:text=)%20DeleteRolePermissions() | `(RolePermissionsService) DeleteRolePermissions(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/RolePermissions.go#:~:text=%29%20CreateRolePermissions%28%29) | `(RolePermissionsService) CreateRolePermissions(data RolePermissionsForm) (RolePermissionsForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/RolePermissions.go#:~:text=%29%20CreateRolePermissionsMultiple%28%29) | `(RolePermissionsService) CreateRolePermissionsMultiple(data []RolePermissionsForm) ([]RolePermissionsForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/RolePermissions.go#:~:text=%29%20UpdateRolePermissions%28%29) | `(RolePermissionsService) UpdateRolePermissions(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/RolePermissions.go#:~:text=%29%20UpdateRolePermissionsMultiple%28%29) | `(RolePermissionsService) UpdateRolePermissionsMultiple(data []RolePermissionsBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/RolePermissions.go#:~:text=%29%20DeleteRolePermissions%28%29) | `(RolePermissionsService) DeleteRolePermissions(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -178,7 +178,7 @@ type RolePermissionsBatchUpdate struct {
 | `PUT` | `/role-permissions/with-id/:id` | Update by ID |
 | `DELETE` | `/role-permissions/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -193,7 +193,7 @@ type RolePermissionsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -204,13 +204,13 @@ type RolePermissionsBatchUpdate struct {
 | `users_by_organization` | `p_org_id uuid` | `integer` | `/rpc/users_by_organization` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export interface RolePermissions {
@@ -255,7 +255,7 @@ export type RolePermissionsPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -309,7 +309,7 @@ export function useDeleteRolePermissions() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -325,10 +325,10 @@ export type RolePermissionsFormInput = z.infer<typeof RolePermissionsFormSchema>
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -339,9 +339,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search RolePermissions
 
@@ -433,7 +433,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate RolePermissions
 
@@ -527,7 +527,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create RolePermissions
 
@@ -615,7 +615,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find RolePermissions by ID
 
@@ -738,7 +738,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete RolePermissions
 
@@ -777,7 +777,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

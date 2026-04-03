@@ -37,7 +37,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -75,9 +75,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### StorageZonesForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/StorageZones.go#:~:text=type%20StorageZonesForm%20struct)
 
@@ -94,7 +94,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Model
+== Model
 
 #### StorageZones [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/StorageZones.go#:~:text=type%20StorageZones%20struct)
 
@@ -112,7 +112,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### StorageZonesEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/StorageZones.go#:~:text=type%20StorageZonesEdit%20struct)
 
@@ -130,7 +130,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### StorageZonesFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/StorageZones.go#:~:text=type%20StorageZonesFilter%20struct)
 
@@ -148,7 +148,7 @@ _Query filter — all fields are pointers_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Page
+== Page
 
 #### StorageZonesPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/StorageZones.go#:~:text=type%20StorageZonesPage%20struct)
 
@@ -166,7 +166,7 @@ _Paginated response wrapper_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### StorageZonesBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/StorageZones.go#:~:text=type%20StorageZonesBatchUpdate%20struct)
 
@@ -179,23 +179,23 @@ type StorageZonesBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/StorageZones.go#:~:text=)%20CreateStorageZones() | `(StorageZonesService) CreateStorageZones(data StorageZonesForm) (StorageZonesForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/StorageZones.go#:~:text=)%20CreateStorageZonesMultiple() | `(StorageZonesService) CreateStorageZonesMultiple(data []StorageZonesForm) ([]StorageZonesForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/StorageZones.go#:~:text=)%20UpdateStorageZones() | `(StorageZonesService) UpdateStorageZones(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/StorageZones.go#:~:text=)%20UpdateStorageZonesMultiple() | `(StorageZonesService) UpdateStorageZonesMultiple(data []StorageZonesBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/StorageZones.go#:~:text=)%20DeleteStorageZones() | `(StorageZonesService) DeleteStorageZones(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/StorageZones.go#:~:text=%29%20CreateStorageZones%28%29) | `(StorageZonesService) CreateStorageZones(data StorageZonesForm) (StorageZonesForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/StorageZones.go#:~:text=%29%20CreateStorageZonesMultiple%28%29) | `(StorageZonesService) CreateStorageZonesMultiple(data []StorageZonesForm) ([]StorageZonesForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/StorageZones.go#:~:text=%29%20UpdateStorageZones%28%29) | `(StorageZonesService) UpdateStorageZones(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/StorageZones.go#:~:text=%29%20UpdateStorageZonesMultiple%28%29) | `(StorageZonesService) UpdateStorageZonesMultiple(data []StorageZonesBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/StorageZones.go#:~:text=%29%20DeleteStorageZones%28%29) | `(StorageZonesService) DeleteStorageZones(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -208,7 +208,7 @@ type StorageZonesBatchUpdate struct {
 | `PUT` | `/storage-zones/with-id/:id` | Update by ID |
 | `DELETE` | `/storage-zones/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -223,7 +223,7 @@ type StorageZonesBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -233,13 +233,13 @@ type StorageZonesBatchUpdate struct {
 | `warehouse_utilization` | `p_warehouse_id uuid` | `numeric` | `/rpc/warehouse_utilization` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export interface StorageZones {
@@ -296,7 +296,7 @@ export type StorageZonesPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -350,7 +350,7 @@ export function useDeleteStorageZones() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -370,10 +370,10 @@ export type StorageZonesFormInput = z.infer<typeof StorageZonesFormSchema>;
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -384,9 +384,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search StorageZones
 
@@ -481,7 +481,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate StorageZones
 
@@ -578,7 +578,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create StorageZones
 
@@ -672,7 +672,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find StorageZones by ID
 
@@ -798,7 +798,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete StorageZones
 
@@ -837,7 +837,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

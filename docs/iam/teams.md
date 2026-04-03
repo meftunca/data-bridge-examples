@@ -39,7 +39,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -72,9 +72,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### TeamsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Teams.go#:~:text=type%20TeamsForm%20struct)
 
@@ -90,7 +90,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Model
+== Model
 
 #### Teams [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Teams.go#:~:text=type%20Teams%20struct)
 
@@ -107,7 +107,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### TeamsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Teams.go#:~:text=type%20TeamsEdit%20struct)
 
@@ -124,7 +124,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### TeamsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Teams.go#:~:text=type%20TeamsFilter%20struct)
 
@@ -141,7 +141,7 @@ _Query filter — all fields are pointers_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Page
+== Page
 
 #### TeamsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Teams.go#:~:text=type%20TeamsPage%20struct)
 
@@ -158,7 +158,7 @@ _Paginated response wrapper_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### TeamsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Teams.go#:~:text=type%20TeamsBatchUpdate%20struct)
 
@@ -171,23 +171,23 @@ type TeamsBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Teams.go#:~:text=)%20CreateTeams() | `(TeamsService) CreateTeams(data TeamsForm) (TeamsForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Teams.go#:~:text=)%20CreateTeamsMultiple() | `(TeamsService) CreateTeamsMultiple(data []TeamsForm) ([]TeamsForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Teams.go#:~:text=)%20UpdateTeams() | `(TeamsService) UpdateTeams(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Teams.go#:~:text=)%20UpdateTeamsMultiple() | `(TeamsService) UpdateTeamsMultiple(data []TeamsBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Teams.go#:~:text=)%20DeleteTeams() | `(TeamsService) DeleteTeams(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Teams.go#:~:text=%29%20CreateTeams%28%29) | `(TeamsService) CreateTeams(data TeamsForm) (TeamsForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Teams.go#:~:text=%29%20CreateTeamsMultiple%28%29) | `(TeamsService) CreateTeamsMultiple(data []TeamsForm) ([]TeamsForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Teams.go#:~:text=%29%20UpdateTeams%28%29) | `(TeamsService) UpdateTeams(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Teams.go#:~:text=%29%20UpdateTeamsMultiple%28%29) | `(TeamsService) UpdateTeamsMultiple(data []TeamsBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Teams.go#:~:text=%29%20DeleteTeams%28%29) | `(TeamsService) DeleteTeams(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -200,7 +200,7 @@ type TeamsBatchUpdate struct {
 | `PUT` | `/teams/with-id/:id` | Update by ID |
 | `DELETE` | `/teams/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -215,7 +215,7 @@ type TeamsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -226,13 +226,13 @@ type TeamsBatchUpdate struct {
 | `users_by_organization` | `p_org_id uuid` | `integer` | `/rpc/users_by_organization` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export interface Teams {
@@ -286,7 +286,7 @@ export type TeamsPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -340,7 +340,7 @@ export function useDeleteTeams() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -359,10 +359,10 @@ export type TeamsFormInput = z.infer<typeof TeamsFormSchema>;
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -373,9 +373,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search Teams
 
@@ -469,7 +469,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate Teams
 
@@ -565,7 +565,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create Teams
 
@@ -657,7 +657,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find Teams by ID
 
@@ -782,7 +782,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete Teams
 
@@ -821,7 +821,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

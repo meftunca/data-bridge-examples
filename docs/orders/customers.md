@@ -41,7 +41,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -77,9 +77,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### CustomersForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Customers.go#:~:text=type%20CustomersForm%20struct)
 
@@ -98,7 +98,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Model
+== Model
 
 #### Customers [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Customers.go#:~:text=type%20Customers%20struct)
 
@@ -118,7 +118,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### CustomersEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Customers.go#:~:text=type%20CustomersEdit%20struct)
 
@@ -138,7 +138,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### CustomersFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Customers.go#:~:text=type%20CustomersFilter%20struct)
 
@@ -158,7 +158,7 @@ _Query filter — all fields are pointers_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Page
+== Page
 
 #### CustomersPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Customers.go#:~:text=type%20CustomersPage%20struct)
 
@@ -178,7 +178,7 @@ _Paginated response wrapper_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### CustomersBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Customers.go#:~:text=type%20CustomersBatchUpdate%20struct)
 
@@ -191,23 +191,23 @@ type CustomersBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Customers.go#:~:text=)%20CreateCustomers() | `(CustomersService) CreateCustomers(data CustomersForm) (CustomersForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Customers.go#:~:text=)%20CreateCustomersMultiple() | `(CustomersService) CreateCustomersMultiple(data []CustomersForm) ([]CustomersForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Customers.go#:~:text=)%20UpdateCustomers() | `(CustomersService) UpdateCustomers(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Customers.go#:~:text=)%20UpdateCustomersMultiple() | `(CustomersService) UpdateCustomersMultiple(data []CustomersBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Customers.go#:~:text=)%20DeleteCustomers() | `(CustomersService) DeleteCustomers(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Customers.go#:~:text=%29%20CreateCustomers%28%29) | `(CustomersService) CreateCustomers(data CustomersForm) (CustomersForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Customers.go#:~:text=%29%20CreateCustomersMultiple%28%29) | `(CustomersService) CreateCustomersMultiple(data []CustomersForm) ([]CustomersForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Customers.go#:~:text=%29%20UpdateCustomers%28%29) | `(CustomersService) UpdateCustomers(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Customers.go#:~:text=%29%20UpdateCustomersMultiple%28%29) | `(CustomersService) UpdateCustomersMultiple(data []CustomersBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Customers.go#:~:text=%29%20DeleteCustomers%28%29) | `(CustomersService) DeleteCustomers(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -220,7 +220,7 @@ type CustomersBatchUpdate struct {
 | `PUT` | `/customers/with-id/:id` | Update by ID |
 | `DELETE` | `/customers/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -235,7 +235,7 @@ type CustomersBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -246,13 +246,13 @@ type CustomersBatchUpdate struct {
 | `total_revenue` | - | `numeric` | `/rpc/total_revenue` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export interface Customers {
@@ -315,7 +315,7 @@ export type CustomersPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -369,7 +369,7 @@ export function useDeleteCustomers() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -391,10 +391,10 @@ export type CustomersFormInput = z.infer<typeof CustomersFormSchema>;
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -405,9 +405,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search Customers
 
@@ -504,7 +504,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate Customers
 
@@ -603,7 +603,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create Customers
 
@@ -701,7 +701,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find Customers by ID
 
@@ -829,7 +829,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete Customers
 
@@ -868,7 +868,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

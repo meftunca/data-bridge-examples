@@ -37,7 +37,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -85,9 +85,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### AlertRulesForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/AlertRules.go#:~:text=type%20AlertRulesForm%20struct)
 
@@ -107,7 +107,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Model
+== Model
 
 #### AlertRules [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/AlertRules.go#:~:text=type%20AlertRules%20struct)
 
@@ -128,7 +128,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### AlertRulesEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/AlertRules.go#:~:text=type%20AlertRulesEdit%20struct)
 
@@ -149,7 +149,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### AlertRulesFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/AlertRules.go#:~:text=type%20AlertRulesFilter%20struct)
 
@@ -170,7 +170,7 @@ _Query filter — all fields are pointers_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Page
+== Page
 
 #### AlertRulesPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/AlertRules.go#:~:text=type%20AlertRulesPage%20struct)
 
@@ -191,7 +191,7 @@ _Paginated response wrapper_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### AlertRulesBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/AlertRules.go#:~:text=type%20AlertRulesBatchUpdate%20struct)
 
@@ -204,23 +204,23 @@ type AlertRulesBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/AlertRules.go#:~:text=)%20CreateAlertRules() | `(AlertRulesService) CreateAlertRules(data AlertRulesForm) (AlertRulesForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/AlertRules.go#:~:text=)%20CreateAlertRulesMultiple() | `(AlertRulesService) CreateAlertRulesMultiple(data []AlertRulesForm) ([]AlertRulesForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/AlertRules.go#:~:text=)%20UpdateAlertRules() | `(AlertRulesService) UpdateAlertRules(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/AlertRules.go#:~:text=)%20UpdateAlertRulesMultiple() | `(AlertRulesService) UpdateAlertRulesMultiple(data []AlertRulesBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/AlertRules.go#:~:text=)%20DeleteAlertRules() | `(AlertRulesService) DeleteAlertRules(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/AlertRules.go#:~:text=%29%20CreateAlertRules%28%29) | `(AlertRulesService) CreateAlertRules(data AlertRulesForm) (AlertRulesForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/AlertRules.go#:~:text=%29%20CreateAlertRulesMultiple%28%29) | `(AlertRulesService) CreateAlertRulesMultiple(data []AlertRulesForm) ([]AlertRulesForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/AlertRules.go#:~:text=%29%20UpdateAlertRules%28%29) | `(AlertRulesService) UpdateAlertRules(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/AlertRules.go#:~:text=%29%20UpdateAlertRulesMultiple%28%29) | `(AlertRulesService) UpdateAlertRulesMultiple(data []AlertRulesBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/AlertRules.go#:~:text=%29%20DeleteAlertRules%28%29) | `(AlertRulesService) DeleteAlertRules(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -233,7 +233,7 @@ type AlertRulesBatchUpdate struct {
 | `PUT` | `/alert-rules/with-id/:id` | Update by ID |
 | `DELETE` | `/alert-rules/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -248,7 +248,7 @@ type AlertRulesBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -259,13 +259,13 @@ type AlertRulesBatchUpdate struct {
 | `unread_notification_count` | `p_user_id uuid` | `integer` | `/rpc/unread_notification_count` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export type AnalyticsEventSeverity =
@@ -340,7 +340,7 @@ export type AlertRulesPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -394,7 +394,7 @@ export function useDeleteAlertRules() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -419,10 +419,10 @@ export type AlertRulesFormInput = z.infer<typeof AlertRulesFormSchema>;
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -433,9 +433,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search AlertRules
 
@@ -533,7 +533,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate AlertRules
 
@@ -633,7 +633,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create AlertRules
 
@@ -733,7 +733,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find AlertRules by ID
 
@@ -862,7 +862,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete AlertRules
 
@@ -901,7 +901,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

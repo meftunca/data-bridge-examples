@@ -28,7 +28,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -76,9 +76,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### EventsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Events.go#:~:text=type%20EventsForm%20struct)
 
@@ -98,7 +98,7 @@ _Create payload — excludes auto-generated PK fields_
 | `ProcessedAt` | `*time.Time` | `processedAt` | YES |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab Model
+== Model
 
 #### Events [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Events.go#:~:text=type%20Events%20struct)
 
@@ -119,7 +119,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `ProcessedAt` | `*time.Time` | `processedAt` | YES |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### EventsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Events.go#:~:text=type%20EventsEdit%20struct)
 
@@ -140,7 +140,7 @@ _Update payload — all fields are pointers (partial update)_
 | `ProcessedAt` | `*time.Time` | `processedAt` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### EventsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Events.go#:~:text=type%20EventsFilter%20struct)
 
@@ -161,7 +161,7 @@ _Query filter — all fields are pointers_
 | `ProcessedAt` | `*time.Time` | `processedAt` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-:::tab Page
+== Page
 
 #### EventsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Events.go#:~:text=type%20EventsPage%20struct)
 
@@ -182,7 +182,7 @@ _Paginated response wrapper_
 | `ProcessedAt` | `*time.Time` | `processedAt` | YES |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### EventsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Events.go#:~:text=type%20EventsBatchUpdate%20struct)
 
@@ -195,23 +195,23 @@ type EventsBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Events.go#:~:text=)%20CreateEvents() | `(EventsService) CreateEvents(data EventsForm) (EventsForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Events.go#:~:text=)%20CreateEventsMultiple() | `(EventsService) CreateEventsMultiple(data []EventsForm) ([]EventsForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Events.go#:~:text=)%20UpdateEvents() | `(EventsService) UpdateEvents(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Events.go#:~:text=)%20UpdateEventsMultiple() | `(EventsService) UpdateEventsMultiple(data []EventsBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Events.go#:~:text=)%20DeleteEvents() | `(EventsService) DeleteEvents(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Events.go#:~:text=%29%20CreateEvents%28%29) | `(EventsService) CreateEvents(data EventsForm) (EventsForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Events.go#:~:text=%29%20CreateEventsMultiple%28%29) | `(EventsService) CreateEventsMultiple(data []EventsForm) ([]EventsForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Events.go#:~:text=%29%20UpdateEvents%28%29) | `(EventsService) UpdateEvents(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Events.go#:~:text=%29%20UpdateEventsMultiple%28%29) | `(EventsService) UpdateEventsMultiple(data []EventsBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Events.go#:~:text=%29%20DeleteEvents%28%29) | `(EventsService) DeleteEvents(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -224,7 +224,7 @@ type EventsBatchUpdate struct {
 | `PUT` | `/events/with-id/:id` | Update by ID |
 | `DELETE` | `/events/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -239,7 +239,7 @@ type EventsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -250,13 +250,13 @@ type EventsBatchUpdate struct {
 | `unread_notification_count` | `p_user_id uuid` | `integer` | `/rpc/unread_notification_count` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export type AnalyticsEventSeverity =
@@ -331,7 +331,7 @@ export type EventsPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -385,7 +385,7 @@ export function useDeleteEvents() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -410,10 +410,10 @@ export type EventsFormInput = z.infer<typeof EventsFormSchema>;
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -424,9 +424,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search Events
 
@@ -525,7 +525,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate Events
 
@@ -626,7 +626,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create Events
 
@@ -728,7 +728,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find Events by ID
 
@@ -858,7 +858,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete Events
 
@@ -897,7 +897,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

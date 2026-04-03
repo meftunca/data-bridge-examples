@@ -28,7 +28,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -63,9 +63,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### NotificationsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Notifications.go#:~:text=type%20NotificationsForm%20struct)
 
@@ -84,7 +84,7 @@ _Create payload — excludes auto-generated PK fields_
 | `ReadAt` | `*time.Time` | `readAt` | YES |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab Model
+== Model
 
 #### Notifications [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Notifications.go#:~:text=type%20Notifications%20struct)
 
@@ -104,7 +104,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `ReadAt` | `*time.Time` | `readAt` | YES |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### NotificationsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Notifications.go#:~:text=type%20NotificationsEdit%20struct)
 
@@ -124,7 +124,7 @@ _Update payload — all fields are pointers (partial update)_
 | `ReadAt` | `*time.Time` | `readAt` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### NotificationsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Notifications.go#:~:text=type%20NotificationsFilter%20struct)
 
@@ -144,7 +144,7 @@ _Query filter — all fields are pointers_
 | `ReadAt` | `*time.Time` | `readAt` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-:::tab Page
+== Page
 
 #### NotificationsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Notifications.go#:~:text=type%20NotificationsPage%20struct)
 
@@ -164,7 +164,7 @@ _Paginated response wrapper_
 | `ReadAt` | `*time.Time` | `readAt` | YES |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### NotificationsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/Notifications.go#:~:text=type%20NotificationsBatchUpdate%20struct)
 
@@ -177,23 +177,23 @@ type NotificationsBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Notifications.go#:~:text=)%20CreateNotifications() | `(NotificationsService) CreateNotifications(data NotificationsForm) (NotificationsForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Notifications.go#:~:text=)%20CreateNotificationsMultiple() | `(NotificationsService) CreateNotificationsMultiple(data []NotificationsForm) ([]NotificationsForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Notifications.go#:~:text=)%20UpdateNotifications() | `(NotificationsService) UpdateNotifications(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Notifications.go#:~:text=)%20UpdateNotificationsMultiple() | `(NotificationsService) UpdateNotificationsMultiple(data []NotificationsBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Notifications.go#:~:text=)%20DeleteNotifications() | `(NotificationsService) DeleteNotifications(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Notifications.go#:~:text=%29%20CreateNotifications%28%29) | `(NotificationsService) CreateNotifications(data NotificationsForm) (NotificationsForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Notifications.go#:~:text=%29%20CreateNotificationsMultiple%28%29) | `(NotificationsService) CreateNotificationsMultiple(data []NotificationsForm) ([]NotificationsForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Notifications.go#:~:text=%29%20UpdateNotifications%28%29) | `(NotificationsService) UpdateNotifications(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Notifications.go#:~:text=%29%20UpdateNotificationsMultiple%28%29) | `(NotificationsService) UpdateNotificationsMultiple(data []NotificationsBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/Notifications.go#:~:text=%29%20DeleteNotifications%28%29) | `(NotificationsService) DeleteNotifications(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -206,7 +206,7 @@ type NotificationsBatchUpdate struct {
 | `PUT` | `/notifications/with-id/:id` | Update by ID |
 | `DELETE` | `/notifications/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -221,7 +221,7 @@ type NotificationsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -232,13 +232,13 @@ type NotificationsBatchUpdate struct {
 | `unread_notification_count` | `p_user_id uuid` | `integer` | `/rpc/unread_notification_count` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export interface Notifications {
@@ -301,7 +301,7 @@ export type NotificationsPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -355,7 +355,7 @@ export function useDeleteNotifications() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -377,10 +377,10 @@ export type NotificationsFormInput = z.infer<typeof NotificationsFormSchema>;
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -391,9 +391,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search Notifications
 
@@ -491,7 +491,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate Notifications
 
@@ -591,7 +591,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create Notifications
 
@@ -691,7 +691,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find Notifications by ID
 
@@ -820,7 +820,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete Notifications
 
@@ -859,7 +859,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

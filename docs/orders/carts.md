@@ -37,7 +37,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -68,9 +68,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### CartsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Carts.go#:~:text=type%20CartsForm%20struct)
 
@@ -85,7 +85,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Model
+== Model
 
 #### Carts [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Carts.go#:~:text=type%20Carts%20struct)
 
@@ -101,7 +101,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### CartsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Carts.go#:~:text=type%20CartsEdit%20struct)
 
@@ -117,7 +117,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### CartsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Carts.go#:~:text=type%20CartsFilter%20struct)
 
@@ -133,7 +133,7 @@ _Query filter — all fields are pointers_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Page
+== Page
 
 #### CartsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Carts.go#:~:text=type%20CartsPage%20struct)
 
@@ -149,7 +149,7 @@ _Paginated response wrapper_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### CartsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Carts.go#:~:text=type%20CartsBatchUpdate%20struct)
 
@@ -162,23 +162,23 @@ type CartsBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Carts.go#:~:text=)%20CreateCarts() | `(CartsService) CreateCarts(data CartsForm) (CartsForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Carts.go#:~:text=)%20CreateCartsMultiple() | `(CartsService) CreateCartsMultiple(data []CartsForm) ([]CartsForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Carts.go#:~:text=)%20UpdateCarts() | `(CartsService) UpdateCarts(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Carts.go#:~:text=)%20UpdateCartsMultiple() | `(CartsService) UpdateCartsMultiple(data []CartsBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Carts.go#:~:text=)%20DeleteCarts() | `(CartsService) DeleteCarts(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Carts.go#:~:text=%29%20CreateCarts%28%29) | `(CartsService) CreateCarts(data CartsForm) (CartsForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Carts.go#:~:text=%29%20CreateCartsMultiple%28%29) | `(CartsService) CreateCartsMultiple(data []CartsForm) ([]CartsForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Carts.go#:~:text=%29%20UpdateCarts%28%29) | `(CartsService) UpdateCarts(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Carts.go#:~:text=%29%20UpdateCartsMultiple%28%29) | `(CartsService) UpdateCartsMultiple(data []CartsBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Carts.go#:~:text=%29%20DeleteCarts%28%29) | `(CartsService) DeleteCarts(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -191,7 +191,7 @@ type CartsBatchUpdate struct {
 | `PUT` | `/carts/with-id/:id` | Update by ID |
 | `DELETE` | `/carts/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -206,7 +206,7 @@ type CartsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -217,13 +217,13 @@ type CartsBatchUpdate struct {
 | `total_revenue` | - | `numeric` | `/rpc/total_revenue` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export interface Carts {
@@ -274,7 +274,7 @@ export type CartsPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -328,7 +328,7 @@ export function useDeleteCarts() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -346,10 +346,10 @@ export type CartsFormInput = z.infer<typeof CartsFormSchema>;
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -360,9 +360,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search Carts
 
@@ -455,7 +455,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate Carts
 
@@ -550,7 +550,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create Carts
 
@@ -640,7 +640,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find Carts by ID
 
@@ -764,7 +764,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete Carts
 
@@ -803,7 +803,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

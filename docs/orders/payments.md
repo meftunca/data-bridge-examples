@@ -37,7 +37,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -95,9 +95,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### PaymentsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Payments.go#:~:text=type%20PaymentsForm%20struct)
 
@@ -117,7 +117,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Model
+== Model
 
 #### Payments [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Payments.go#:~:text=type%20Payments%20struct)
 
@@ -138,7 +138,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### PaymentsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Payments.go#:~:text=type%20PaymentsEdit%20struct)
 
@@ -159,7 +159,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### PaymentsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Payments.go#:~:text=type%20PaymentsFilter%20struct)
 
@@ -180,7 +180,7 @@ _Query filter — all fields are pointers_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Page
+== Page
 
 #### PaymentsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Payments.go#:~:text=type%20PaymentsPage%20struct)
 
@@ -201,7 +201,7 @@ _Paginated response wrapper_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### PaymentsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//orders/structures/Payments.go#:~:text=type%20PaymentsBatchUpdate%20struct)
 
@@ -214,23 +214,23 @@ type PaymentsBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Payments.go#:~:text=)%20CreatePayments() | `(PaymentsService) CreatePayments(data PaymentsForm) (PaymentsForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Payments.go#:~:text=)%20CreatePaymentsMultiple() | `(PaymentsService) CreatePaymentsMultiple(data []PaymentsForm) ([]PaymentsForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Payments.go#:~:text=)%20UpdatePayments() | `(PaymentsService) UpdatePayments(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Payments.go#:~:text=)%20UpdatePaymentsMultiple() | `(PaymentsService) UpdatePaymentsMultiple(data []PaymentsBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Payments.go#:~:text=)%20DeletePayments() | `(PaymentsService) DeletePayments(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Payments.go#:~:text=%29%20CreatePayments%28%29) | `(PaymentsService) CreatePayments(data PaymentsForm) (PaymentsForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Payments.go#:~:text=%29%20CreatePaymentsMultiple%28%29) | `(PaymentsService) CreatePaymentsMultiple(data []PaymentsForm) ([]PaymentsForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Payments.go#:~:text=%29%20UpdatePayments%28%29) | `(PaymentsService) UpdatePayments(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Payments.go#:~:text=%29%20UpdatePaymentsMultiple%28%29) | `(PaymentsService) UpdatePaymentsMultiple(data []PaymentsBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//orders/services/Payments.go#:~:text=%29%20DeletePayments%28%29) | `(PaymentsService) DeletePayments(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -243,7 +243,7 @@ type PaymentsBatchUpdate struct {
 | `PUT` | `/payments/with-id/:id` | Update by ID |
 | `DELETE` | `/payments/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -258,7 +258,7 @@ type PaymentsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -269,13 +269,13 @@ type PaymentsBatchUpdate struct {
 | `total_revenue` | - | `numeric` | `/rpc/total_revenue` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export type OrdersPaymentMethod =
@@ -359,7 +359,7 @@ export type PaymentsPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -413,7 +413,7 @@ export function useDeletePayments() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -440,10 +440,10 @@ export type PaymentsFormInput = z.infer<typeof PaymentsFormSchema>;
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -454,9 +454,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search Payments
 
@@ -554,7 +554,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate Payments
 
@@ -654,7 +654,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create Payments
 
@@ -754,7 +754,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find Payments by ID
 
@@ -883,7 +883,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete Payments
 
@@ -922,7 +922,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

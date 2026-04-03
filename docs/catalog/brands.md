@@ -37,7 +37,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -74,9 +74,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### BrandsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Brands.go#:~:text=type%20BrandsForm%20struct)
 
@@ -93,7 +93,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Model
+== Model
 
 #### Brands [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Brands.go#:~:text=type%20Brands%20struct)
 
@@ -111,7 +111,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### BrandsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Brands.go#:~:text=type%20BrandsEdit%20struct)
 
@@ -129,7 +129,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### BrandsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Brands.go#:~:text=type%20BrandsFilter%20struct)
 
@@ -147,7 +147,7 @@ _Query filter — all fields are pointers_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Page
+== Page
 
 #### BrandsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Brands.go#:~:text=type%20BrandsPage%20struct)
 
@@ -165,7 +165,7 @@ _Paginated response wrapper_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### BrandsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Brands.go#:~:text=type%20BrandsBatchUpdate%20struct)
 
@@ -178,23 +178,23 @@ type BrandsBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Brands.go#:~:text=)%20CreateBrands() | `(BrandsService) CreateBrands(data BrandsForm) (BrandsForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Brands.go#:~:text=)%20CreateBrandsMultiple() | `(BrandsService) CreateBrandsMultiple(data []BrandsForm) ([]BrandsForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Brands.go#:~:text=)%20UpdateBrands() | `(BrandsService) UpdateBrands(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Brands.go#:~:text=)%20UpdateBrandsMultiple() | `(BrandsService) UpdateBrandsMultiple(data []BrandsBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Brands.go#:~:text=)%20DeleteBrands() | `(BrandsService) DeleteBrands(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Brands.go#:~:text=%29%20CreateBrands%28%29) | `(BrandsService) CreateBrands(data BrandsForm) (BrandsForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Brands.go#:~:text=%29%20CreateBrandsMultiple%28%29) | `(BrandsService) CreateBrandsMultiple(data []BrandsForm) ([]BrandsForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Brands.go#:~:text=%29%20UpdateBrands%28%29) | `(BrandsService) UpdateBrands(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Brands.go#:~:text=%29%20UpdateBrandsMultiple%28%29) | `(BrandsService) UpdateBrandsMultiple(data []BrandsBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Brands.go#:~:text=%29%20DeleteBrands%28%29) | `(BrandsService) DeleteBrands(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -207,7 +207,7 @@ type BrandsBatchUpdate struct {
 | `PUT` | `/brands/with-id/:id` | Update by ID |
 | `DELETE` | `/brands/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -222,7 +222,7 @@ type BrandsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -233,13 +233,13 @@ type BrandsBatchUpdate struct {
 | `products_by_category` | `p_category_id uuid` | `integer` | `/rpc/products_by_category` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export interface Brands {
@@ -296,7 +296,7 @@ export type BrandsPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -350,7 +350,7 @@ export function useDeleteBrands() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -370,10 +370,10 @@ export type BrandsFormInput = z.infer<typeof BrandsFormSchema>;
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -384,9 +384,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search Brands
 
@@ -481,7 +481,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate Brands
 
@@ -578,7 +578,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create Brands
 
@@ -672,7 +672,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find Brands by ID
 
@@ -798,7 +798,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete Brands
 
@@ -837,7 +837,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

@@ -30,7 +30,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -68,9 +68,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### CategoriesForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Categories.go#:~:text=type%20CategoriesForm%20struct)
 
@@ -88,7 +88,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Model
+== Model
 
 #### Categories [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Categories.go#:~:text=type%20Categories%20struct)
 
@@ -107,7 +107,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### CategoriesEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Categories.go#:~:text=type%20CategoriesEdit%20struct)
 
@@ -126,7 +126,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### CategoriesFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Categories.go#:~:text=type%20CategoriesFilter%20struct)
 
@@ -145,7 +145,7 @@ _Query filter — all fields are pointers_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Page
+== Page
 
 #### CategoriesPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Categories.go#:~:text=type%20CategoriesPage%20struct)
 
@@ -164,7 +164,7 @@ _Paginated response wrapper_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### CategoriesBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Categories.go#:~:text=type%20CategoriesBatchUpdate%20struct)
 
@@ -177,23 +177,23 @@ type CategoriesBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Categories.go#:~:text=)%20CreateCategories() | `(CategoriesService) CreateCategories(data CategoriesForm) (CategoriesForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Categories.go#:~:text=)%20CreateCategoriesMultiple() | `(CategoriesService) CreateCategoriesMultiple(data []CategoriesForm) ([]CategoriesForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Categories.go#:~:text=)%20UpdateCategories() | `(CategoriesService) UpdateCategories(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Categories.go#:~:text=)%20UpdateCategoriesMultiple() | `(CategoriesService) UpdateCategoriesMultiple(data []CategoriesBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Categories.go#:~:text=)%20DeleteCategories() | `(CategoriesService) DeleteCategories(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Categories.go#:~:text=%29%20CreateCategories%28%29) | `(CategoriesService) CreateCategories(data CategoriesForm) (CategoriesForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Categories.go#:~:text=%29%20CreateCategoriesMultiple%28%29) | `(CategoriesService) CreateCategoriesMultiple(data []CategoriesForm) ([]CategoriesForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Categories.go#:~:text=%29%20UpdateCategories%28%29) | `(CategoriesService) UpdateCategories(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Categories.go#:~:text=%29%20UpdateCategoriesMultiple%28%29) | `(CategoriesService) UpdateCategoriesMultiple(data []CategoriesBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Categories.go#:~:text=%29%20DeleteCategories%28%29) | `(CategoriesService) DeleteCategories(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -206,7 +206,7 @@ type CategoriesBatchUpdate struct {
 | `PUT` | `/categories/with-id/:id` | Update by ID |
 | `DELETE` | `/categories/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -221,7 +221,7 @@ type CategoriesBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -232,13 +232,13 @@ type CategoriesBatchUpdate struct {
 | `products_by_category` | `p_category_id uuid` | `integer` | `/rpc/products_by_category` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export interface Categories {
@@ -298,7 +298,7 @@ export type CategoriesPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -352,7 +352,7 @@ export function useDeleteCategories() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -373,10 +373,10 @@ export type CategoriesFormInput = z.infer<typeof CategoriesFormSchema>;
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -387,9 +387,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search Categories
 
@@ -485,7 +485,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate Categories
 
@@ -583,7 +583,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create Categories
 
@@ -679,7 +679,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find Categories by ID
 
@@ -806,7 +806,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete Categories
 
@@ -845,7 +845,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

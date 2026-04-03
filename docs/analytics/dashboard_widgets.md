@@ -28,7 +28,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -62,9 +62,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### DashboardWidgetsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/DashboardWidgets.go#:~:text=type%20DashboardWidgetsForm%20struct)
 
@@ -82,7 +82,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Model
+== Model
 
 #### DashboardWidgets [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/DashboardWidgets.go#:~:text=type%20DashboardWidgets%20struct)
 
@@ -101,7 +101,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### DashboardWidgetsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/DashboardWidgets.go#:~:text=type%20DashboardWidgetsEdit%20struct)
 
@@ -120,7 +120,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### DashboardWidgetsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/DashboardWidgets.go#:~:text=type%20DashboardWidgetsFilter%20struct)
 
@@ -139,7 +139,7 @@ _Query filter — all fields are pointers_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Page
+== Page
 
 #### DashboardWidgetsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/DashboardWidgets.go#:~:text=type%20DashboardWidgetsPage%20struct)
 
@@ -158,7 +158,7 @@ _Paginated response wrapper_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### DashboardWidgetsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/DashboardWidgets.go#:~:text=type%20DashboardWidgetsBatchUpdate%20struct)
 
@@ -171,23 +171,23 @@ type DashboardWidgetsBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/DashboardWidgets.go#:~:text=)%20CreateDashboardWidgets() | `(DashboardWidgetsService) CreateDashboardWidgets(data DashboardWidgetsForm) (DashboardWidgetsForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/DashboardWidgets.go#:~:text=)%20CreateDashboardWidgetsMultiple() | `(DashboardWidgetsService) CreateDashboardWidgetsMultiple(data []DashboardWidgetsForm) ([]DashboardWidgetsForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/DashboardWidgets.go#:~:text=)%20UpdateDashboardWidgets() | `(DashboardWidgetsService) UpdateDashboardWidgets(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/DashboardWidgets.go#:~:text=)%20UpdateDashboardWidgetsMultiple() | `(DashboardWidgetsService) UpdateDashboardWidgetsMultiple(data []DashboardWidgetsBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/DashboardWidgets.go#:~:text=)%20DeleteDashboardWidgets() | `(DashboardWidgetsService) DeleteDashboardWidgets(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/DashboardWidgets.go#:~:text=%29%20CreateDashboardWidgets%28%29) | `(DashboardWidgetsService) CreateDashboardWidgets(data DashboardWidgetsForm) (DashboardWidgetsForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/DashboardWidgets.go#:~:text=%29%20CreateDashboardWidgetsMultiple%28%29) | `(DashboardWidgetsService) CreateDashboardWidgetsMultiple(data []DashboardWidgetsForm) ([]DashboardWidgetsForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/DashboardWidgets.go#:~:text=%29%20UpdateDashboardWidgets%28%29) | `(DashboardWidgetsService) UpdateDashboardWidgets(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/DashboardWidgets.go#:~:text=%29%20UpdateDashboardWidgetsMultiple%28%29) | `(DashboardWidgetsService) UpdateDashboardWidgetsMultiple(data []DashboardWidgetsBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/DashboardWidgets.go#:~:text=%29%20DeleteDashboardWidgets%28%29) | `(DashboardWidgetsService) DeleteDashboardWidgets(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -200,7 +200,7 @@ type DashboardWidgetsBatchUpdate struct {
 | `PUT` | `/dashboard-widgets/with-id/:id` | Update by ID |
 | `DELETE` | `/dashboard-widgets/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -215,7 +215,7 @@ type DashboardWidgetsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -226,13 +226,13 @@ type DashboardWidgetsBatchUpdate struct {
 | `unread_notification_count` | `p_user_id uuid` | `integer` | `/rpc/unread_notification_count` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export interface DashboardWidgets {
@@ -292,7 +292,7 @@ export type DashboardWidgetsPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -346,7 +346,7 @@ export function useDeleteDashboardWidgets() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -367,10 +367,10 @@ export type DashboardWidgetsFormInput = z.infer<typeof DashboardWidgetsFormSchem
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -381,9 +381,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search DashboardWidgets
 
@@ -479,7 +479,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate DashboardWidgets
 
@@ -577,7 +577,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create DashboardWidgets
 
@@ -673,7 +673,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find DashboardWidgets by ID
 
@@ -800,7 +800,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete DashboardWidgets
 
@@ -839,7 +839,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

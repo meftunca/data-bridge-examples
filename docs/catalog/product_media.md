@@ -28,7 +28,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -75,9 +75,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### ProductMediaForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductMedia.go#:~:text=type%20ProductMediaForm%20struct)
 
@@ -96,7 +96,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Model
+== Model
 
 #### ProductMedia [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductMedia.go#:~:text=type%20ProductMedia%20struct)
 
@@ -116,7 +116,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### ProductMediaEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductMedia.go#:~:text=type%20ProductMediaEdit%20struct)
 
@@ -136,7 +136,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### ProductMediaFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductMedia.go#:~:text=type%20ProductMediaFilter%20struct)
 
@@ -156,7 +156,7 @@ _Query filter — all fields are pointers_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Page
+== Page
 
 #### ProductMediaPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductMedia.go#:~:text=type%20ProductMediaPage%20struct)
 
@@ -176,7 +176,7 @@ _Paginated response wrapper_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### ProductMediaBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductMedia.go#:~:text=type%20ProductMediaBatchUpdate%20struct)
 
@@ -189,23 +189,23 @@ type ProductMediaBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductMedia.go#:~:text=)%20CreateProductMedia() | `(ProductMediaService) CreateProductMedia(data ProductMediaForm) (ProductMediaForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductMedia.go#:~:text=)%20CreateProductMediaMultiple() | `(ProductMediaService) CreateProductMediaMultiple(data []ProductMediaForm) ([]ProductMediaForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductMedia.go#:~:text=)%20UpdateProductMedia() | `(ProductMediaService) UpdateProductMedia(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductMedia.go#:~:text=)%20UpdateProductMediaMultiple() | `(ProductMediaService) UpdateProductMediaMultiple(data []ProductMediaBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductMedia.go#:~:text=)%20DeleteProductMedia() | `(ProductMediaService) DeleteProductMedia(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductMedia.go#:~:text=%29%20CreateProductMedia%28%29) | `(ProductMediaService) CreateProductMedia(data ProductMediaForm) (ProductMediaForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductMedia.go#:~:text=%29%20CreateProductMediaMultiple%28%29) | `(ProductMediaService) CreateProductMediaMultiple(data []ProductMediaForm) ([]ProductMediaForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductMedia.go#:~:text=%29%20UpdateProductMedia%28%29) | `(ProductMediaService) UpdateProductMedia(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductMedia.go#:~:text=%29%20UpdateProductMediaMultiple%28%29) | `(ProductMediaService) UpdateProductMediaMultiple(data []ProductMediaBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductMedia.go#:~:text=%29%20DeleteProductMedia%28%29) | `(ProductMediaService) DeleteProductMedia(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -218,7 +218,7 @@ type ProductMediaBatchUpdate struct {
 | `PUT` | `/product-media/with-id/:id` | Update by ID |
 | `DELETE` | `/product-media/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -233,7 +233,7 @@ type ProductMediaBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -244,13 +244,13 @@ type ProductMediaBatchUpdate struct {
 | `products_by_category` | `p_category_id uuid` | `integer` | `/rpc/products_by_category` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export type CatalogMediaType =
@@ -322,7 +322,7 @@ export type ProductMediaPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -376,7 +376,7 @@ export function useDeleteProductMedia() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -400,10 +400,10 @@ export type ProductMediaFormInput = z.infer<typeof ProductMediaFormSchema>;
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -414,9 +414,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search ProductMedia
 
@@ -513,7 +513,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate ProductMedia
 
@@ -612,7 +612,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create ProductMedia
 
@@ -710,7 +710,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find ProductMedia by ID
 
@@ -838,7 +838,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete ProductMedia
 
@@ -877,7 +877,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

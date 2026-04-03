@@ -41,7 +41,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -77,9 +77,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### RolesForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Roles.go#:~:text=type%20RolesForm%20struct)
 
@@ -95,7 +95,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Model
+== Model
 
 #### Roles [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Roles.go#:~:text=type%20Roles%20struct)
 
@@ -112,7 +112,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### RolesEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Roles.go#:~:text=type%20RolesEdit%20struct)
 
@@ -129,7 +129,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### RolesFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Roles.go#:~:text=type%20RolesFilter%20struct)
 
@@ -146,7 +146,7 @@ _Query filter — all fields are pointers_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Page
+== Page
 
 #### RolesPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Roles.go#:~:text=type%20RolesPage%20struct)
 
@@ -163,7 +163,7 @@ _Paginated response wrapper_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### RolesBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Roles.go#:~:text=type%20RolesBatchUpdate%20struct)
 
@@ -176,23 +176,23 @@ type RolesBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Roles.go#:~:text=)%20CreateRoles() | `(RolesService) CreateRoles(data RolesForm) (RolesForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Roles.go#:~:text=)%20CreateRolesMultiple() | `(RolesService) CreateRolesMultiple(data []RolesForm) ([]RolesForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Roles.go#:~:text=)%20UpdateRoles() | `(RolesService) UpdateRoles(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Roles.go#:~:text=)%20UpdateRolesMultiple() | `(RolesService) UpdateRolesMultiple(data []RolesBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Roles.go#:~:text=)%20DeleteRoles() | `(RolesService) DeleteRoles(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Roles.go#:~:text=%29%20CreateRoles%28%29) | `(RolesService) CreateRoles(data RolesForm) (RolesForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Roles.go#:~:text=%29%20CreateRolesMultiple%28%29) | `(RolesService) CreateRolesMultiple(data []RolesForm) ([]RolesForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Roles.go#:~:text=%29%20UpdateRoles%28%29) | `(RolesService) UpdateRoles(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Roles.go#:~:text=%29%20UpdateRolesMultiple%28%29) | `(RolesService) UpdateRolesMultiple(data []RolesBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Roles.go#:~:text=%29%20DeleteRoles%28%29) | `(RolesService) DeleteRoles(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -205,7 +205,7 @@ type RolesBatchUpdate struct {
 | `PUT` | `/roles/with-id/:id` | Update by ID |
 | `DELETE` | `/roles/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -220,7 +220,7 @@ type RolesBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -231,13 +231,13 @@ type RolesBatchUpdate struct {
 | `users_by_organization` | `p_org_id uuid` | `integer` | `/rpc/users_by_organization` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export interface Roles {
@@ -291,7 +291,7 @@ export type RolesPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -345,7 +345,7 @@ export function useDeleteRoles() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -364,10 +364,10 @@ export type RolesFormInput = z.infer<typeof RolesFormSchema>;
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -378,9 +378,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search Roles
 
@@ -474,7 +474,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate Roles
 
@@ -570,7 +570,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create Roles
 
@@ -662,7 +662,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find Roles by ID
 
@@ -787,7 +787,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete Roles
 
@@ -826,7 +826,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

@@ -30,7 +30,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -63,9 +63,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### PriceHistoryForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/PriceHistory.go#:~:text=type%20PriceHistoryForm%20struct)
 
@@ -81,7 +81,7 @@ _Create payload — excludes auto-generated PK fields_
 | `Reason` | `string` | `reason` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab Model
+== Model
 
 #### PriceHistory [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/PriceHistory.go#:~:text=type%20PriceHistory%20struct)
 
@@ -98,7 +98,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `Reason` | `string` | `reason` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### PriceHistoryEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/PriceHistory.go#:~:text=type%20PriceHistoryEdit%20struct)
 
@@ -115,7 +115,7 @@ _Update payload — all fields are pointers (partial update)_
 | `Reason` | `*string` | `reason` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### PriceHistoryFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/PriceHistory.go#:~:text=type%20PriceHistoryFilter%20struct)
 
@@ -132,7 +132,7 @@ _Query filter — all fields are pointers_
 | `Reason` | `*string` | `reason` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-:::tab Page
+== Page
 
 #### PriceHistoryPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/PriceHistory.go#:~:text=type%20PriceHistoryPage%20struct)
 
@@ -149,7 +149,7 @@ _Paginated response wrapper_
 | `Reason` | `string` | `reason` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### PriceHistoryBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/PriceHistory.go#:~:text=type%20PriceHistoryBatchUpdate%20struct)
 
@@ -162,23 +162,23 @@ type PriceHistoryBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/PriceHistory.go#:~:text=)%20CreatePriceHistory() | `(PriceHistoryService) CreatePriceHistory(data PriceHistoryForm) (PriceHistoryForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/PriceHistory.go#:~:text=)%20CreatePriceHistoryMultiple() | `(PriceHistoryService) CreatePriceHistoryMultiple(data []PriceHistoryForm) ([]PriceHistoryForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/PriceHistory.go#:~:text=)%20UpdatePriceHistory() | `(PriceHistoryService) UpdatePriceHistory(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/PriceHistory.go#:~:text=)%20UpdatePriceHistoryMultiple() | `(PriceHistoryService) UpdatePriceHistoryMultiple(data []PriceHistoryBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/PriceHistory.go#:~:text=)%20DeletePriceHistory() | `(PriceHistoryService) DeletePriceHistory(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/PriceHistory.go#:~:text=%29%20CreatePriceHistory%28%29) | `(PriceHistoryService) CreatePriceHistory(data PriceHistoryForm) (PriceHistoryForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/PriceHistory.go#:~:text=%29%20CreatePriceHistoryMultiple%28%29) | `(PriceHistoryService) CreatePriceHistoryMultiple(data []PriceHistoryForm) ([]PriceHistoryForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/PriceHistory.go#:~:text=%29%20UpdatePriceHistory%28%29) | `(PriceHistoryService) UpdatePriceHistory(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/PriceHistory.go#:~:text=%29%20UpdatePriceHistoryMultiple%28%29) | `(PriceHistoryService) UpdatePriceHistoryMultiple(data []PriceHistoryBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/PriceHistory.go#:~:text=%29%20DeletePriceHistory%28%29) | `(PriceHistoryService) DeletePriceHistory(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -191,7 +191,7 @@ type PriceHistoryBatchUpdate struct {
 | `PUT` | `/price-history/with-id/:id` | Update by ID |
 | `DELETE` | `/price-history/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -206,7 +206,7 @@ type PriceHistoryBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -217,13 +217,13 @@ type PriceHistoryBatchUpdate struct {
 | `products_by_category` | `p_category_id uuid` | `integer` | `/rpc/products_by_category` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export interface PriceHistory {
@@ -277,7 +277,7 @@ export type PriceHistoryPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -331,7 +331,7 @@ export function useDeletePriceHistory() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -350,10 +350,10 @@ export type PriceHistoryFormInput = z.infer<typeof PriceHistoryFormSchema>;
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -364,9 +364,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search PriceHistory
 
@@ -461,7 +461,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate PriceHistory
 
@@ -558,7 +558,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create PriceHistory
 
@@ -652,7 +652,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find PriceHistory by ID
 
@@ -778,7 +778,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete PriceHistory
 
@@ -817,7 +817,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

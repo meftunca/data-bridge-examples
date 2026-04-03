@@ -30,7 +30,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -63,9 +63,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### AlertHistoryForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/AlertHistory.go#:~:text=type%20AlertHistoryForm%20struct)
 
@@ -81,7 +81,7 @@ _Create payload — excludes auto-generated PK fields_
 | `ResolvedBy` | `*uuid.UUID` | `resolvedBy` | YES |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab Model
+== Model
 
 #### AlertHistory [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/AlertHistory.go#:~:text=type%20AlertHistory%20struct)
 
@@ -98,7 +98,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `ResolvedBy` | `*uuid.UUID` | `resolvedBy` | YES |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### AlertHistoryEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/AlertHistory.go#:~:text=type%20AlertHistoryEdit%20struct)
 
@@ -115,7 +115,7 @@ _Update payload — all fields are pointers (partial update)_
 | `ResolvedBy` | `*uuid.UUID` | `resolvedBy` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### AlertHistoryFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/AlertHistory.go#:~:text=type%20AlertHistoryFilter%20struct)
 
@@ -132,7 +132,7 @@ _Query filter — all fields are pointers_
 | `ResolvedBy` | `*uuid.UUID` | `resolvedBy` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-:::tab Page
+== Page
 
 #### AlertHistoryPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/AlertHistory.go#:~:text=type%20AlertHistoryPage%20struct)
 
@@ -149,7 +149,7 @@ _Paginated response wrapper_
 | `ResolvedBy` | `*uuid.UUID` | `resolvedBy` | YES |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### AlertHistoryBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/structures/AlertHistory.go#:~:text=type%20AlertHistoryBatchUpdate%20struct)
 
@@ -162,23 +162,23 @@ type AlertHistoryBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/AlertHistory.go#:~:text=)%20CreateAlertHistory() | `(AlertHistoryService) CreateAlertHistory(data AlertHistoryForm) (AlertHistoryForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/AlertHistory.go#:~:text=)%20CreateAlertHistoryMultiple() | `(AlertHistoryService) CreateAlertHistoryMultiple(data []AlertHistoryForm) ([]AlertHistoryForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/AlertHistory.go#:~:text=)%20UpdateAlertHistory() | `(AlertHistoryService) UpdateAlertHistory(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/AlertHistory.go#:~:text=)%20UpdateAlertHistoryMultiple() | `(AlertHistoryService) UpdateAlertHistoryMultiple(data []AlertHistoryBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/AlertHistory.go#:~:text=)%20DeleteAlertHistory() | `(AlertHistoryService) DeleteAlertHistory(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/AlertHistory.go#:~:text=%29%20CreateAlertHistory%28%29) | `(AlertHistoryService) CreateAlertHistory(data AlertHistoryForm) (AlertHistoryForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/AlertHistory.go#:~:text=%29%20CreateAlertHistoryMultiple%28%29) | `(AlertHistoryService) CreateAlertHistoryMultiple(data []AlertHistoryForm) ([]AlertHistoryForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/AlertHistory.go#:~:text=%29%20UpdateAlertHistory%28%29) | `(AlertHistoryService) UpdateAlertHistory(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/AlertHistory.go#:~:text=%29%20UpdateAlertHistoryMultiple%28%29) | `(AlertHistoryService) UpdateAlertHistoryMultiple(data []AlertHistoryBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//analytics/services/AlertHistory.go#:~:text=%29%20DeleteAlertHistory%28%29) | `(AlertHistoryService) DeleteAlertHistory(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -191,7 +191,7 @@ type AlertHistoryBatchUpdate struct {
 | `PUT` | `/alert-history/with-id/:id` | Update by ID |
 | `DELETE` | `/alert-history/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -206,7 +206,7 @@ type AlertHistoryBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -217,13 +217,13 @@ type AlertHistoryBatchUpdate struct {
 | `unread_notification_count` | `p_user_id uuid` | `integer` | `/rpc/unread_notification_count` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export interface AlertHistory {
@@ -277,7 +277,7 @@ export type AlertHistoryPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -331,7 +331,7 @@ export function useDeleteAlertHistory() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -350,10 +350,10 @@ export type AlertHistoryFormInput = z.infer<typeof AlertHistoryFormSchema>;
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -364,9 +364,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search AlertHistory
 
@@ -461,7 +461,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate AlertHistory
 
@@ -558,7 +558,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create AlertHistory
 
@@ -652,7 +652,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find AlertHistory by ID
 
@@ -778,7 +778,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete AlertHistory
 
@@ -817,7 +817,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

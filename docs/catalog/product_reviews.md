@@ -30,7 +30,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -66,9 +66,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### ProductReviewsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductReviews.go#:~:text=type%20ProductReviewsForm%20struct)
 
@@ -87,7 +87,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Model
+== Model
 
 #### ProductReviews [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductReviews.go#:~:text=type%20ProductReviews%20struct)
 
@@ -107,7 +107,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### ProductReviewsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductReviews.go#:~:text=type%20ProductReviewsEdit%20struct)
 
@@ -127,7 +127,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### ProductReviewsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductReviews.go#:~:text=type%20ProductReviewsFilter%20struct)
 
@@ -147,7 +147,7 @@ _Query filter — all fields are pointers_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Page
+== Page
 
 #### ProductReviewsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductReviews.go#:~:text=type%20ProductReviewsPage%20struct)
 
@@ -167,7 +167,7 @@ _Paginated response wrapper_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### ProductReviewsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/ProductReviews.go#:~:text=type%20ProductReviewsBatchUpdate%20struct)
 
@@ -180,23 +180,23 @@ type ProductReviewsBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductReviews.go#:~:text=)%20CreateProductReviews() | `(ProductReviewsService) CreateProductReviews(data ProductReviewsForm) (ProductReviewsForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductReviews.go#:~:text=)%20CreateProductReviewsMultiple() | `(ProductReviewsService) CreateProductReviewsMultiple(data []ProductReviewsForm) ([]ProductReviewsForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductReviews.go#:~:text=)%20UpdateProductReviews() | `(ProductReviewsService) UpdateProductReviews(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductReviews.go#:~:text=)%20UpdateProductReviewsMultiple() | `(ProductReviewsService) UpdateProductReviewsMultiple(data []ProductReviewsBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductReviews.go#:~:text=)%20DeleteProductReviews() | `(ProductReviewsService) DeleteProductReviews(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductReviews.go#:~:text=%29%20CreateProductReviews%28%29) | `(ProductReviewsService) CreateProductReviews(data ProductReviewsForm) (ProductReviewsForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductReviews.go#:~:text=%29%20CreateProductReviewsMultiple%28%29) | `(ProductReviewsService) CreateProductReviewsMultiple(data []ProductReviewsForm) ([]ProductReviewsForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductReviews.go#:~:text=%29%20UpdateProductReviews%28%29) | `(ProductReviewsService) UpdateProductReviews(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductReviews.go#:~:text=%29%20UpdateProductReviewsMultiple%28%29) | `(ProductReviewsService) UpdateProductReviewsMultiple(data []ProductReviewsBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/ProductReviews.go#:~:text=%29%20DeleteProductReviews%28%29) | `(ProductReviewsService) DeleteProductReviews(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -209,7 +209,7 @@ type ProductReviewsBatchUpdate struct {
 | `PUT` | `/product-reviews/with-id/:id` | Update by ID |
 | `DELETE` | `/product-reviews/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -224,7 +224,7 @@ type ProductReviewsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -235,13 +235,13 @@ type ProductReviewsBatchUpdate struct {
 | `products_by_category` | `p_category_id uuid` | `integer` | `/rpc/products_by_category` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export interface ProductReviews {
@@ -304,7 +304,7 @@ export type ProductReviewsPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -358,7 +358,7 @@ export function useDeleteProductReviews() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -380,10 +380,10 @@ export type ProductReviewsFormInput = z.infer<typeof ProductReviewsFormSchema>;
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -394,9 +394,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search ProductReviews
 
@@ -493,7 +493,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate ProductReviews
 
@@ -592,7 +592,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create ProductReviews
 
@@ -690,7 +690,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find ProductReviews by ID
 
@@ -818,7 +818,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete ProductReviews
 
@@ -857,7 +857,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

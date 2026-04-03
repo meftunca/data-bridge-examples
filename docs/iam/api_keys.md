@@ -30,7 +30,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -66,9 +66,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### ApiKeysForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/ApiKeys.go#:~:text=type%20ApiKeysForm%20struct)
 
@@ -87,7 +87,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Model
+== Model
 
 #### ApiKeys [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/ApiKeys.go#:~:text=type%20ApiKeys%20struct)
 
@@ -107,7 +107,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### ApiKeysEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/ApiKeys.go#:~:text=type%20ApiKeysEdit%20struct)
 
@@ -127,7 +127,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### ApiKeysFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/ApiKeys.go#:~:text=type%20ApiKeysFilter%20struct)
 
@@ -147,7 +147,7 @@ _Query filter — all fields are pointers_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Page
+== Page
 
 #### ApiKeysPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/ApiKeys.go#:~:text=type%20ApiKeysPage%20struct)
 
@@ -167,7 +167,7 @@ _Paginated response wrapper_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### ApiKeysBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/ApiKeys.go#:~:text=type%20ApiKeysBatchUpdate%20struct)
 
@@ -180,23 +180,23 @@ type ApiKeysBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/ApiKeys.go#:~:text=)%20CreateApiKeys() | `(ApiKeysService) CreateApiKeys(data ApiKeysForm) (ApiKeysForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/ApiKeys.go#:~:text=)%20CreateApiKeysMultiple() | `(ApiKeysService) CreateApiKeysMultiple(data []ApiKeysForm) ([]ApiKeysForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/ApiKeys.go#:~:text=)%20UpdateApiKeys() | `(ApiKeysService) UpdateApiKeys(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/ApiKeys.go#:~:text=)%20UpdateApiKeysMultiple() | `(ApiKeysService) UpdateApiKeysMultiple(data []ApiKeysBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/ApiKeys.go#:~:text=)%20DeleteApiKeys() | `(ApiKeysService) DeleteApiKeys(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/ApiKeys.go#:~:text=%29%20CreateApiKeys%28%29) | `(ApiKeysService) CreateApiKeys(data ApiKeysForm) (ApiKeysForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/ApiKeys.go#:~:text=%29%20CreateApiKeysMultiple%28%29) | `(ApiKeysService) CreateApiKeysMultiple(data []ApiKeysForm) ([]ApiKeysForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/ApiKeys.go#:~:text=%29%20UpdateApiKeys%28%29) | `(ApiKeysService) UpdateApiKeys(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/ApiKeys.go#:~:text=%29%20UpdateApiKeysMultiple%28%29) | `(ApiKeysService) UpdateApiKeysMultiple(data []ApiKeysBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/ApiKeys.go#:~:text=%29%20DeleteApiKeys%28%29) | `(ApiKeysService) DeleteApiKeys(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -209,7 +209,7 @@ type ApiKeysBatchUpdate struct {
 | `PUT` | `/api-keys/with-id/:id` | Update by ID |
 | `DELETE` | `/api-keys/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -224,7 +224,7 @@ type ApiKeysBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -235,13 +235,13 @@ type ApiKeysBatchUpdate struct {
 | `users_by_organization` | `p_org_id uuid` | `integer` | `/rpc/users_by_organization` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export interface ApiKeys {
@@ -304,7 +304,7 @@ export type ApiKeysPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -358,7 +358,7 @@ export function useDeleteApiKeys() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -380,10 +380,10 @@ export type ApiKeysFormInput = z.infer<typeof ApiKeysFormSchema>;
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -394,9 +394,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search ApiKeys
 
@@ -493,7 +493,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate ApiKeys
 
@@ -592,7 +592,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create ApiKeys
 
@@ -690,7 +690,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find ApiKeys by ID
 
@@ -818,7 +818,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete ApiKeys
 
@@ -857,7 +857,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

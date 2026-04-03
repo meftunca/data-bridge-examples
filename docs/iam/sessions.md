@@ -28,7 +28,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -60,9 +60,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### SessionsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Sessions.go#:~:text=type%20SessionsForm%20struct)
 
@@ -78,7 +78,7 @@ _Create payload — excludes auto-generated PK fields_
 | `ExpiresAt` | `time.Time` | `expiresAt` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab Model
+== Model
 
 #### Sessions [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Sessions.go#:~:text=type%20Sessions%20struct)
 
@@ -95,7 +95,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `ExpiresAt` | `time.Time` | `expiresAt` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### SessionsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Sessions.go#:~:text=type%20SessionsEdit%20struct)
 
@@ -112,7 +112,7 @@ _Update payload — all fields are pointers (partial update)_
 | `ExpiresAt` | `*time.Time` | `expiresAt` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### SessionsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Sessions.go#:~:text=type%20SessionsFilter%20struct)
 
@@ -129,7 +129,7 @@ _Query filter — all fields are pointers_
 | `ExpiresAt` | `*time.Time` | `expiresAt` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-:::tab Page
+== Page
 
 #### SessionsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Sessions.go#:~:text=type%20SessionsPage%20struct)
 
@@ -146,7 +146,7 @@ _Paginated response wrapper_
 | `ExpiresAt` | `time.Time` | `expiresAt` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### SessionsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Sessions.go#:~:text=type%20SessionsBatchUpdate%20struct)
 
@@ -159,23 +159,23 @@ type SessionsBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Sessions.go#:~:text=)%20CreateSessions() | `(SessionsService) CreateSessions(data SessionsForm) (SessionsForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Sessions.go#:~:text=)%20CreateSessionsMultiple() | `(SessionsService) CreateSessionsMultiple(data []SessionsForm) ([]SessionsForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Sessions.go#:~:text=)%20UpdateSessions() | `(SessionsService) UpdateSessions(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Sessions.go#:~:text=)%20UpdateSessionsMultiple() | `(SessionsService) UpdateSessionsMultiple(data []SessionsBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Sessions.go#:~:text=)%20DeleteSessions() | `(SessionsService) DeleteSessions(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Sessions.go#:~:text=%29%20CreateSessions%28%29) | `(SessionsService) CreateSessions(data SessionsForm) (SessionsForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Sessions.go#:~:text=%29%20CreateSessionsMultiple%28%29) | `(SessionsService) CreateSessionsMultiple(data []SessionsForm) ([]SessionsForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Sessions.go#:~:text=%29%20UpdateSessions%28%29) | `(SessionsService) UpdateSessions(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Sessions.go#:~:text=%29%20UpdateSessionsMultiple%28%29) | `(SessionsService) UpdateSessionsMultiple(data []SessionsBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Sessions.go#:~:text=%29%20DeleteSessions%28%29) | `(SessionsService) DeleteSessions(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -188,7 +188,7 @@ type SessionsBatchUpdate struct {
 | `PUT` | `/sessions/with-id/:id` | Update by ID |
 | `DELETE` | `/sessions/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -203,7 +203,7 @@ type SessionsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -214,13 +214,13 @@ type SessionsBatchUpdate struct {
 | `users_by_organization` | `p_org_id uuid` | `integer` | `/rpc/users_by_organization` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export interface Sessions {
@@ -274,7 +274,7 @@ export type SessionsPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -328,7 +328,7 @@ export function useDeleteSessions() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -347,10 +347,10 @@ export type SessionsFormInput = z.infer<typeof SessionsFormSchema>;
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -361,9 +361,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search Sessions
 
@@ -458,7 +458,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate Sessions
 
@@ -555,7 +555,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create Sessions
 
@@ -649,7 +649,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find Sessions by ID
 
@@ -775,7 +775,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete Sessions
 
@@ -814,7 +814,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

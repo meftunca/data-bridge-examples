@@ -30,7 +30,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -64,9 +64,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### PurchaseOrderItemsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/PurchaseOrderItems.go#:~:text=type%20PurchaseOrderItemsForm%20struct)
 
@@ -83,7 +83,7 @@ _Create payload — excludes auto-generated PK fields_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Model
+== Model
 
 #### PurchaseOrderItems [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/PurchaseOrderItems.go#:~:text=type%20PurchaseOrderItems%20struct)
 
@@ -101,7 +101,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### PurchaseOrderItemsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/PurchaseOrderItems.go#:~:text=type%20PurchaseOrderItemsEdit%20struct)
 
@@ -119,7 +119,7 @@ _Update payload — all fields are pointers (partial update)_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### PurchaseOrderItemsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/PurchaseOrderItems.go#:~:text=type%20PurchaseOrderItemsFilter%20struct)
 
@@ -137,7 +137,7 @@ _Query filter — all fields are pointers_
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 | `UpdatedAt` | `*time.Time` | `updatedAt` | YES |
 
-:::tab Page
+== Page
 
 #### PurchaseOrderItemsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/PurchaseOrderItems.go#:~:text=type%20PurchaseOrderItemsPage%20struct)
 
@@ -155,7 +155,7 @@ _Paginated response wrapper_
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 | `UpdatedAt` | `time.Time` | `updatedAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### PurchaseOrderItemsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/structures/PurchaseOrderItems.go#:~:text=type%20PurchaseOrderItemsBatchUpdate%20struct)
 
@@ -168,23 +168,23 @@ type PurchaseOrderItemsBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/PurchaseOrderItems.go#:~:text=)%20CreatePurchaseOrderItems() | `(PurchaseOrderItemsService) CreatePurchaseOrderItems(data PurchaseOrderItemsForm) (PurchaseOrderItemsForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/PurchaseOrderItems.go#:~:text=)%20CreatePurchaseOrderItemsMultiple() | `(PurchaseOrderItemsService) CreatePurchaseOrderItemsMultiple(data []PurchaseOrderItemsForm) ([]PurchaseOrderItemsForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/PurchaseOrderItems.go#:~:text=)%20UpdatePurchaseOrderItems() | `(PurchaseOrderItemsService) UpdatePurchaseOrderItems(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/PurchaseOrderItems.go#:~:text=)%20UpdatePurchaseOrderItemsMultiple() | `(PurchaseOrderItemsService) UpdatePurchaseOrderItemsMultiple(data []PurchaseOrderItemsBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/PurchaseOrderItems.go#:~:text=)%20DeletePurchaseOrderItems() | `(PurchaseOrderItemsService) DeletePurchaseOrderItems(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/PurchaseOrderItems.go#:~:text=%29%20CreatePurchaseOrderItems%28%29) | `(PurchaseOrderItemsService) CreatePurchaseOrderItems(data PurchaseOrderItemsForm) (PurchaseOrderItemsForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/PurchaseOrderItems.go#:~:text=%29%20CreatePurchaseOrderItemsMultiple%28%29) | `(PurchaseOrderItemsService) CreatePurchaseOrderItemsMultiple(data []PurchaseOrderItemsForm) ([]PurchaseOrderItemsForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/PurchaseOrderItems.go#:~:text=%29%20UpdatePurchaseOrderItems%28%29) | `(PurchaseOrderItemsService) UpdatePurchaseOrderItems(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/PurchaseOrderItems.go#:~:text=%29%20UpdatePurchaseOrderItemsMultiple%28%29) | `(PurchaseOrderItemsService) UpdatePurchaseOrderItemsMultiple(data []PurchaseOrderItemsBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//logistics/services/PurchaseOrderItems.go#:~:text=%29%20DeletePurchaseOrderItems%28%29) | `(PurchaseOrderItemsService) DeletePurchaseOrderItems(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -197,7 +197,7 @@ type PurchaseOrderItemsBatchUpdate struct {
 | `PUT` | `/purchase-order-items/with-id/:id` | Update by ID |
 | `DELETE` | `/purchase-order-items/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -212,7 +212,7 @@ type PurchaseOrderItemsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -222,13 +222,13 @@ type PurchaseOrderItemsBatchUpdate struct {
 | `warehouse_utilization` | `p_warehouse_id uuid` | `numeric` | `/rpc/warehouse_utilization` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export interface PurchaseOrderItems {
@@ -285,7 +285,7 @@ export type PurchaseOrderItemsPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -339,7 +339,7 @@ export function useDeletePurchaseOrderItems() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -359,10 +359,10 @@ export type PurchaseOrderItemsFormInput = z.infer<typeof PurchaseOrderItemsFormS
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -373,9 +373,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search PurchaseOrderItems
 
@@ -470,7 +470,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate PurchaseOrderItems
 
@@ -567,7 +567,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create PurchaseOrderItems
 
@@ -661,7 +661,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find PurchaseOrderItems by ID
 
@@ -787,7 +787,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete PurchaseOrderItems
 
@@ -826,7 +826,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

@@ -32,7 +32,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -72,9 +72,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### InvitationsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Invitations.go#:~:text=type%20InvitationsForm%20struct)
 
@@ -92,7 +92,7 @@ _Create payload — excludes auto-generated PK fields_
 | `ExpiresAt` | `time.Time` | `expiresAt` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab Model
+== Model
 
 #### Invitations [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Invitations.go#:~:text=type%20Invitations%20struct)
 
@@ -111,7 +111,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `ExpiresAt` | `time.Time` | `expiresAt` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### InvitationsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Invitations.go#:~:text=type%20InvitationsEdit%20struct)
 
@@ -130,7 +130,7 @@ _Update payload — all fields are pointers (partial update)_
 | `ExpiresAt` | `*time.Time` | `expiresAt` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### InvitationsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Invitations.go#:~:text=type%20InvitationsFilter%20struct)
 
@@ -149,7 +149,7 @@ _Query filter — all fields are pointers_
 | `ExpiresAt` | `*time.Time` | `expiresAt` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-:::tab Page
+== Page
 
 #### InvitationsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Invitations.go#:~:text=type%20InvitationsPage%20struct)
 
@@ -168,7 +168,7 @@ _Paginated response wrapper_
 | `ExpiresAt` | `time.Time` | `expiresAt` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### InvitationsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//iam/structures/Invitations.go#:~:text=type%20InvitationsBatchUpdate%20struct)
 
@@ -181,23 +181,23 @@ type InvitationsBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Invitations.go#:~:text=)%20CreateInvitations() | `(InvitationsService) CreateInvitations(data InvitationsForm) (InvitationsForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Invitations.go#:~:text=)%20CreateInvitationsMultiple() | `(InvitationsService) CreateInvitationsMultiple(data []InvitationsForm) ([]InvitationsForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Invitations.go#:~:text=)%20UpdateInvitations() | `(InvitationsService) UpdateInvitations(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Invitations.go#:~:text=)%20UpdateInvitationsMultiple() | `(InvitationsService) UpdateInvitationsMultiple(data []InvitationsBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Invitations.go#:~:text=)%20DeleteInvitations() | `(InvitationsService) DeleteInvitations(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Invitations.go#:~:text=%29%20CreateInvitations%28%29) | `(InvitationsService) CreateInvitations(data InvitationsForm) (InvitationsForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Invitations.go#:~:text=%29%20CreateInvitationsMultiple%28%29) | `(InvitationsService) CreateInvitationsMultiple(data []InvitationsForm) ([]InvitationsForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Invitations.go#:~:text=%29%20UpdateInvitations%28%29) | `(InvitationsService) UpdateInvitations(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Invitations.go#:~:text=%29%20UpdateInvitationsMultiple%28%29) | `(InvitationsService) UpdateInvitationsMultiple(data []InvitationsBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//iam/services/Invitations.go#:~:text=%29%20DeleteInvitations%28%29) | `(InvitationsService) DeleteInvitations(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -210,7 +210,7 @@ type InvitationsBatchUpdate struct {
 | `PUT` | `/invitations/with-id/:id` | Update by ID |
 | `DELETE` | `/invitations/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -225,7 +225,7 @@ type InvitationsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -236,13 +236,13 @@ type InvitationsBatchUpdate struct {
 | `users_by_organization` | `p_org_id uuid` | `integer` | `/rpc/users_by_organization` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export interface Invitations {
@@ -302,7 +302,7 @@ export type InvitationsPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -356,7 +356,7 @@ export function useDeleteInvitations() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -377,10 +377,10 @@ export type InvitationsFormInput = z.infer<typeof InvitationsFormSchema>;
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -391,9 +391,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search Invitations
 
@@ -490,7 +490,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate Invitations
 
@@ -589,7 +589,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create Invitations
 
@@ -687,7 +687,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find Invitations by ID
 
@@ -815,7 +815,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete Invitations
 
@@ -854,7 +854,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::

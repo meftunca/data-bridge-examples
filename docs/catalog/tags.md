@@ -28,7 +28,7 @@ erDiagram
 
 ::::tabs
 
-:::tab FullStack
+=== FullStack
 
 ## Columns
 
@@ -55,9 +55,9 @@ erDiagram
 
 ### Structs
 
-::::tabs
+:::tabs
 
-:::tab Form
+== Form
 
 #### TagsForm [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Tags.go#:~:text=type%20TagsForm%20struct)
 
@@ -69,7 +69,7 @@ _Create payload — excludes auto-generated PK fields_
 | `Slug` | `string` | `slug` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab Model
+== Model
 
 #### Tags [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Tags.go#:~:text=type%20Tags%20struct)
 
@@ -82,7 +82,7 @@ _Full model — all columns + GORM/JSON tags + preload relations_
 | `Slug` | `string` | `slug` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab Edit
+== Edit
 
 #### TagsEdit [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Tags.go#:~:text=type%20TagsEdit%20struct)
 
@@ -95,7 +95,7 @@ _Update payload — all fields are pointers (partial update)_
 | `Slug` | `*string` | `slug` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-:::tab Filter
+== Filter
 
 #### TagsFilter [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Tags.go#:~:text=type%20TagsFilter%20struct)
 
@@ -108,7 +108,7 @@ _Query filter — all fields are pointers_
 | `Slug` | `*string` | `slug` | YES |
 | `CreatedAt` | `*time.Time` | `createdAt` | YES |
 
-:::tab Page
+== Page
 
 #### TagsPage [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Tags.go#:~:text=type%20TagsPage%20struct)
 
@@ -121,7 +121,7 @@ _Paginated response wrapper_
 | `Slug` | `string` | `slug` | NO |
 | `CreatedAt` | `time.Time` | `createdAt` | NO |
 
-:::tab BatchUpdate
+== BatchUpdate
 
 #### TagsBatchUpdate [![source](https://img.shields.io/badge/source-gray?style=flat-square&logo=github)](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/structures/Tags.go#:~:text=type%20TagsBatchUpdate%20struct)
 
@@ -134,23 +134,23 @@ type TagsBatchUpdate struct {
 }
 ```
 
-::::
+:::
 
 ### Service & Endpoints
 
-::::tabs
+:::tabs
 
-:::tab Service Methods
+== Service Methods
 
 | Method | Signature |
 |---------|-----------|
-| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Tags.go#:~:text=)%20CreateTags() | `(TagsService) CreateTags(data TagsForm) (TagsForm, error)` |
-| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Tags.go#:~:text=)%20CreateTagsMultiple() | `(TagsService) CreateTagsMultiple(data []TagsForm) ([]TagsForm, error)` |
-| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Tags.go#:~:text=)%20UpdateTags() | `(TagsService) UpdateTags(id uuid.UUID, data interface{}) error` |
-| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Tags.go#:~:text=)%20UpdateTagsMultiple() | `(TagsService) UpdateTagsMultiple(data []TagsBatchUpdate) error` |
-| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Tags.go#:~:text=)%20DeleteTags() | `(TagsService) DeleteTags(id uuid.UUID) error` |
+| [Create](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Tags.go#:~:text=%29%20CreateTags%28%29) | `(TagsService) CreateTags(data TagsForm) (TagsForm, error)` |
+| [Create Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Tags.go#:~:text=%29%20CreateTagsMultiple%28%29) | `(TagsService) CreateTagsMultiple(data []TagsForm) ([]TagsForm, error)` |
+| [Update](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Tags.go#:~:text=%29%20UpdateTags%28%29) | `(TagsService) UpdateTags(id uuid.UUID, data interface{}) error` |
+| [Update Multiple](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Tags.go#:~:text=%29%20UpdateTagsMultiple%28%29) | `(TagsService) UpdateTagsMultiple(data []TagsBatchUpdate) error` |
+| [Delete](https://github.com/meftunca/data-bridge-examples/blob/main//catalog/services/Tags.go#:~:text=%29%20DeleteTags%28%29) | `(TagsService) DeleteTags(id uuid.UUID) error` |
 
-:::tab Endpoints
+== Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
@@ -163,7 +163,7 @@ type TagsBatchUpdate struct {
 | `PUT` | `/tags/with-id/:id` | Update by ID |
 | `DELETE` | `/tags/with-id/:id` | Delete by ID |
 
-:::tab Query & Filters
+== Query & Filters
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -178,7 +178,7 @@ type TagsBatchUpdate struct {
 
 **Filter Operators:** `eq` `neq` `gt` `gte` `lt` `lte` `in` `notin` `like` `ilike` `is` `isnot` `between`
 
-::::
+:::
 
 ### RPC Functions
 
@@ -189,13 +189,13 @@ type TagsBatchUpdate struct {
 | `products_by_category` | `p_category_id uuid` | `integer` | `/rpc/products_by_category` |
 
 
-:::tab Frontend
+=== Frontend
 
 ## TypeScript Types & Hooks
 
-::::tabs
+:::tabs
 
-:::tab Interfaces
+== Interfaces
 
 ```typescript
 export interface Tags {
@@ -237,7 +237,7 @@ export type TagsPathQuery = {
 
 ```
 
-:::tab React Query
+== React Query
 
 ```typescript
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -291,7 +291,7 @@ export function useDeleteTags() {
 
 ```
 
-:::tab Zod Validation
+== Zod Validation
 
 ```typescript
 import { z } from "zod";
@@ -306,10 +306,10 @@ export type TagsFormInput = z.infer<typeof TagsFormSchema>;
 
 ```
 
-::::
+:::
 
 
-:::tab API
+=== API
 
 <script setup>
 import { useOpenapi } from 'vitepress-openapi'
@@ -320,9 +320,9 @@ useOpenapi({ spec })
 
 ## API Reference
 
-::::tabs
+:::tabs
 
-:::tab Search
+== Search
 
 #### <Badge type="info" text="GET" /> Search Tags
 
@@ -413,7 +413,7 @@ curl -X POST \
 
 ---
 
-:::tab Pagination
+== Pagination
 
 #### <Badge type="info" text="GET" /> Paginate Tags
 
@@ -506,7 +506,7 @@ curl -X POST \
 
 ---
 
-:::tab Create
+== Create
 
 #### <Badge type="tip" text="POST" /> Create Tags
 
@@ -592,7 +592,7 @@ curl -X POST \
 
 ---
 
-:::tab Find & Update
+== Find & Update
 
 #### <Badge type="info" text="GET" /> Find Tags by ID
 
@@ -714,7 +714,7 @@ curl -X PUT \
 
 ---
 
-:::tab Delete
+== Delete
 
 #### <Badge type="danger" text="DELETE" /> Delete Tags
 
@@ -753,7 +753,7 @@ curl -X DELETE \
 
 ---
 
-::::
+:::
 
 
 ::::
